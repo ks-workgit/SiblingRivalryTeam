@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float m_speed = 8;
-    [SerializeField] float m_jumpPower = 6;
+    [SerializeField] float m_speed;
+    [SerializeField] float m_dashSpeed;
+    [SerializeField] float m_jumpPower;
 
     bool m_isGrounded;
+    bool m_isDash;
 
     Vector3 m_direction;
-    Vector3 m_veloctiy;
+    Vector3 m_velocity;
 
     PlayerInput m_playerInput;
     Rigidbody m_rigidbody;
@@ -25,20 +27,27 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_isGrounded = false;
+        m_isDash = false;
     }
 
     private void OnEnable()
     {
         m_playerInput.actions["Move"].performed += OnMove;
         m_playerInput.actions["Move"].canceled += OnMoveCancel;
+        m_playerInput.actions["Dash"].performed += OnDash;
         m_playerInput.actions["Jump"].performed += OnJump;
+        m_playerInput.actions["Attack"].performed += OnAttack;
+        m_playerInput.actions["Guard"].performed += OnGuard;
     }
 
     private void OnDisable()
     {
         m_playerInput.actions["Move"].performed -= OnMove;
         m_playerInput.actions["Move"].canceled -= OnMoveCancel;
+        m_playerInput.actions["Dash"].performed -= OnDash;
         m_playerInput.actions["Jump"].performed -= OnJump;
+        m_playerInput.actions["Attack"].performed -= OnAttack;
+        m_playerInput.actions["Guard"].performed -= OnGuard;
     }
 
     private void OnMove(InputAction.CallbackContext callback)
@@ -52,7 +61,22 @@ public class PlayerController : MonoBehaviour
         m_direction = Vector3.zero;
     }
 
-    void OnJump(InputAction.CallbackContext callback)
+    public void OnDash(InputAction.CallbackContext callback)
+    {
+        switch (callback.phase)
+        {
+            case InputActionPhase.Performed:
+                // ボタンが押されたとき
+                m_isDash = true;
+                break;
+            case InputActionPhase.Canceled:
+                // ボタンが離されたとき
+                m_isDash = false;
+                break;
+        }
+    }
+
+    private void OnJump(InputAction.CallbackContext callback)
     {
         if (m_isGrounded)
         {
@@ -61,21 +85,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnAttack(InputAction.CallbackContext callback)
+    {
+        Debug.Log("攻撃！");
+    }
+
+    private void OnGuard(InputAction.CallbackContext callback)
+    {
+        Debug.Log("防御！");
+    }
+
     private void FixedUpdate()
     {
         // カメラの正面ベクトルを作成
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
         // カメラの向きを考慮した移動量
-        m_veloctiy = cameraForward * m_direction.z + Camera.main.transform.right * m_direction.x;
-        m_veloctiy *= m_speed;
+        m_velocity = cameraForward * m_direction.z + Camera.main.transform.right * m_direction.x;
+        m_velocity *= m_isDash ? m_dashSpeed : m_speed;
+        
+        // 進行方向にゆっくり向く
+        if (m_velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(m_velocity.normalized), 0.3f);
+        }
 
-        m_veloctiy.y = m_rigidbody.velocity.y;
+        m_velocity.y = m_rigidbody.velocity.y;
 
-        m_rigidbody.velocity = m_veloctiy;
+        m_rigidbody.velocity = m_velocity;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
