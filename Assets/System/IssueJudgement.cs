@@ -5,6 +5,7 @@ using UnityEngine;
 public class IssueJudgement : MonoBehaviour
 {
 	[SerializeField] CrownCount crownCount;
+	[SerializeField] GameObject ResultScreen;
 
 	static int[] VectoryCrownCount = { 3, 5, 10 };
 	static int[] RemainingLife = { 3, 5 };
@@ -29,11 +30,15 @@ public class IssueJudgement : MonoBehaviour
 		//‰¤Š¥‚ğ‹K’è”W‚ß‚½‚çŸ—˜
 		if (m_crownCount == VectoryCrownCount[0])
 		{
+			ResultScreen.SetActive(true);
+
 			Debug.Log("‚©‚¿‰¤Š¥‚Å");
 		}
 		//c‹@‚ğŒ¸‚ç‚µ‚½‚çŸ—˜
 		else if(m_remainingLife == RemainingLife[0])
 		{
+			ResultScreen.SetActive(true);
+
 			Debug.Log("‚©‚¿‘Ì—Í‚È‚­‚µ‚Ä");
 		}
     }
