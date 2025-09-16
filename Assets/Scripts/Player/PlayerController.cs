@@ -82,4 +82,12 @@ public class PlayerController : MonoBehaviour
             m_isGrounded = true;
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            m_isGrounded = false;
+        }
+    }
 }
