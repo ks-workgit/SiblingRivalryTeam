@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IssueJudgement : MonoBehaviour
 {
-	[SerializeField] CrownCount crownCount;
+	[SerializeField] CharacterManeger characterManeger;
 	[SerializeField] GameObject ResultScreen;
 
 	static int[] VectoryCrownCount = { 3, 5, 10 };
@@ -12,6 +12,7 @@ public class IssueJudgement : MonoBehaviour
 
 	int m_crownCount;
 	int m_remainingLife;
+	bool m_isDeth;
 
 	int m_vectoryCrownCountIndex;
 	int m_remainingLifeIndex;
@@ -25,7 +26,8 @@ public class IssueJudgement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		m_crownCount = crownCount.GetCrownCount();
+		m_crownCount = characterManeger.GetCrownCount();
+		m_isDeth = characterManeger.GetIsDeth();
 
 		//‰¤Š¥‚ğ‹K’è”W‚ß‚½‚çŸ—˜
 		if (m_crownCount == VectoryCrownCount[0])
@@ -39,7 +41,7 @@ public class IssueJudgement : MonoBehaviour
 		{
 			ResultScreen.SetActive(true);
 
-			Debug.Log("‚©‚¿‘Ì—Í‚È‚­‚µ‚Ä");
+			Debug.Log("‚©‚¿c‹@‚È‚­‚µ‚Ä");
 		}
     }
 }
