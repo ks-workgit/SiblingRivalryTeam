@@ -14,6 +14,8 @@ public class CharacterManeger : MonoBehaviour
 
 	bool m_isDeth = false;
 
+	bool m_isRespawn = false;
+
 	public int GetCrownCount()
 	{
 		return m_crownCount;
@@ -22,6 +24,21 @@ public class CharacterManeger : MonoBehaviour
 	public bool GetIsDeth()
 	{
 		return m_isDeth;
+	}
+
+	public int GetHelth()
+	{
+		return m_helth;
+	}
+
+	public int GetRemainingLife()
+	{
+		return m_remainingLife;
+	}
+
+	public void OnIsRespawn()
+	{
+		m_isRespawn = true;
 	}
 
 	// Start is called before the first frame update
@@ -46,16 +63,21 @@ public class CharacterManeger : MonoBehaviour
 
 	void KnockDown()
 	{
-		m_remainingLife--;
+		if (m_isRespawn)
+		{
+			m_remainingLife--;
 
-		m_helth = MaxHelth;
+			m_helth = MaxHelth;
+
+			m_isRespawn = false;
+		}
 	}
 
 	//É_ÉÅÅ[ÉWèàóù
 	public void Damage(int damage)
 	{
 		m_helth -= damage;
-	}
+	}	
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -66,6 +88,8 @@ public class CharacterManeger : MonoBehaviour
 
 			Debug.Log("â§ä•Ç∞Ç¡Ç∆");
 			Debug.Log("â§ä•Ç©Ç∏" + m_crownCount);
+
+			Destroy(other.gameObject);
 		}
 	}
 }
