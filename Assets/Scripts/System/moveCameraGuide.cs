@@ -9,6 +9,6 @@ public class moveCameraGuide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		CameraGuide.transform.position += new Vector3(0.005f,0,0);
+		CameraGuide.transform.position += new Vector3(0.001f,0,0);
     }
 }

@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-=======
-  - Crown
->>>>>>> e9b79dd6b3ff6f41663f64083c5045a0c4365ea6
-  - Ground
+  tags: []
   layers:
   - Default
   - TransparentFX
