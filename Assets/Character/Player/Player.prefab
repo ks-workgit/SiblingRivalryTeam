@@ -1394,6 +1394,7 @@ MonoBehaviour:
   m_speed: 8
   m_dashSpeed: 12
   m_jumpPower: 8
+  m_avoidancePower: 6
 --- !u!114 &-3323073569137445664
 MonoBehaviour:
   m_ObjectHideFlags: 0

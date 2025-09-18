@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     bool m_isGrounded;
     bool m_isDash;
+    bool m_isGuard;
+    bool m_isAvoidance;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         m_isGrounded = false;
         m_isDash = false;
+        m_isGuard = false;
+        m_isAvoidance = false;
     }
 
     private void OnEnable()
@@ -53,25 +57,45 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputAction.CallbackContext callback)
     {
         var value = callback.ReadValue<Vector2>();
-        m_direction = new Vector3(value.x, 0, value.y);
+        var inputDirection = new Vector3(value.x, 0, value.y);
+
+        if (!m_isGuard)
+        {
+            m_direction = inputDirection;
+            return;
+        }
+
+        if (!m_isAvoidance)
+        {
+            if (inputDirection.sqrMagnitude > 0.01f)
+            {
+                m_isAvoidance = true;
+                StartCoroutine(Avoidance(inputDirection));
+                Debug.Log("回避！");
+            }
+        }
     }
 
     private void OnMoveCancel(InputAction.CallbackContext callback)
     {
         m_direction = Vector3.zero;
+        m_isAvoidance = false;
     }
 
     public void OnDash(InputAction.CallbackContext callback)
     {
+        Debug.Log("Dash Phase: " + callback.phase);
         switch (callback.phase)
         {
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
                 m_isDash = true;
+                Debug.Log("ダッシュ" + m_isDash);
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
                 m_isDash = false;
+                Debug.Log("ダッシュ" + m_isDash);
                 break;
         }
     }
@@ -90,9 +114,23 @@ public class PlayerController : MonoBehaviour
         Debug.Log("攻撃！");
     }
 
-    private void OnGuard(InputAction.CallbackContext callback)
+    public void OnGuard(InputAction.CallbackContext callback)
     {
-        Debug.Log("防御！");
+        Debug.Log("Guard Phase: " + callback.phase);
+        switch (callback.phase)
+        {
+            case InputActionPhase.Performed:
+                // ボタンが押されたとき
+                m_isGuard = true;
+                m_direction = Vector3.zero;
+                Debug.Log("防御開始");
+                break;
+            case InputActionPhase.Canceled:
+                // ボタンが離されたとき
+                m_isGuard = false;
+                Debug.Log("防御終了");
+                break;
+        }
     }
 
     private void FixedUpdate()
@@ -130,5 +168,31 @@ public class PlayerController : MonoBehaviour
         {
             m_isGrounded = false;
         }
+    }
+
+    IEnumerator Avoidance(Vector3 direction)
+    {
+        float distance = 3.0f;    // 回避距離
+        float duration = 0.2f;  // 回避にかける時間
+        float elapsed = 0f;
+
+        Vector3 start = transform.position;
+        // 回避先の座標を計算
+        Vector3 target = start + direction.normalized * distance;
+
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            transform.position = Vector3.Lerp(start, target, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = target;
+
+        yield return new WaitForSeconds(1.0f);
+
+        m_isAvoidance = false;
     }
 }
