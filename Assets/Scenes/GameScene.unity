@@ -1110,8 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1382352d60870c40b7e5a1b0628da6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterManeger: {fileID: 1678478168}
-  ResultScreen: {fileID: 1158917769}
+  m_characterManeger: {fileID: 1678478168}
+  m_resultScreen: {fileID: 1158917769}
 --- !u!4 &1683724506
 Transform:
   m_ObjectHideFlags: 0

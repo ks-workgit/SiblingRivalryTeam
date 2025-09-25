@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_speed;
     [SerializeField] float m_dashSpeed;
     [SerializeField] float m_jumpPower;
+    [SerializeField] float m_rollDistance;
+    [SerializeField] float m_rollForce;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
         var value = callback.ReadValue<Vector2>();
         var inputDirection = new Vector3(value.x, 0, value.y);
 
+        // ガードしていないときはプレイヤーの移動
         if (!m_isGuard)
         {
             m_direction = inputDirection;
@@ -71,7 +74,6 @@ public class PlayerController : MonoBehaviour
             {
                 m_isAvoidance = true;
                 StartCoroutine(Avoidance(inputDirection));
-                Debug.Log("回避！");
             }
         }
     }
@@ -79,30 +81,26 @@ public class PlayerController : MonoBehaviour
     private void OnMoveCancel(InputAction.CallbackContext callback)
     {
         m_direction = Vector3.zero;
-        m_isAvoidance = false;
     }
 
     public void OnDash(InputAction.CallbackContext callback)
     {
-        Debug.Log("Dash Phase: " + callback.phase);
         switch (callback.phase)
         {
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
                 m_isDash = true;
-                Debug.Log("ダッシュ" + m_isDash);
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
                 m_isDash = false;
-                Debug.Log("ダッシュ" + m_isDash);
                 break;
         }
     }
 
     private void OnJump(InputAction.CallbackContext callback)
     {
-        if (m_isGrounded)
+        if (m_isGrounded && !m_isGuard)
         {
             m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode.Impulse);
             m_isGrounded = false;
@@ -116,7 +114,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnGuard(InputAction.CallbackContext callback)
     {
-        Debug.Log("Guard Phase: " + callback.phase);
+        if (!m_isGrounded) return;
+
         switch (callback.phase)
         {
             case InputActionPhase.Performed:
@@ -170,26 +169,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 回避
     IEnumerator Avoidance(Vector3 direction)
     {
-        float distance = 3.0f;    // 回避距離
-        float duration = 0.2f;  // 回避にかける時間
-        float elapsed = 0f;
-
-        Vector3 start = transform.position;
-        // 回避先の座標を計算
-        Vector3 target = start + direction.normalized * distance;
-
-
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
-            transform.position = Vector3.Lerp(start, target, t);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = target;
+        Vector3 rollVelocity = direction.normalized * m_rollDistance;
+        m_rigidbody.AddForce(rollVelocity * m_rollForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1.0f);
 
