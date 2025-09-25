@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_dashSpeed;
     [SerializeField] float m_jumpPower;
     [SerializeField] float m_rollDistance;
-    [SerializeField] float m_rollForce;
+    [SerializeField] float m_rollCollTime;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -172,10 +172,32 @@ public class PlayerController : MonoBehaviour
     // 回避
     IEnumerator Avoidance(Vector3 direction)
     {
-        Vector3 rollVelocity = direction.normalized * m_rollDistance;
-        m_rigidbody.AddForce(rollVelocity * m_rollForce, ForceMode.Impulse);
+        float rollDuration = 0.3f;
+        float elapsed = 0f;
+        Vector3 moveDir = direction.normalized;
+        float speed = m_rollDistance / rollDuration;
 
-        yield return new WaitForSeconds(1.0f);
+        float checkDistance = speed * Time.deltaTime;
+
+        while (elapsed < rollDuration)
+        {
+            // Raycastで回避方向をチェック
+            if (Physics.Raycast(transform.position, moveDir, checkDistance))
+            {
+                Debug.Log("壁にぶつかったので回避中断");
+                break;
+            }
+
+            transform.Translate(moveDir * checkDistance, Space.World);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        //Vector3 rollVelocity = direction.normalized * m_rollDistance;
+        //m_rigidbody.AddForce(rollVelocity * m_rollForce, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(m_rollCollTime);
 
         m_isAvoidance = false;
     }
