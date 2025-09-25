@@ -1230,7 +1230,6 @@ GameObject:
   - component: {fileID: 6024647458782278495}
   - component: {fileID: 820952947232024951}
   - component: {fileID: 1171541136595196072}
-  - component: {fileID: 2806705144527394270}
   - component: {fileID: 5308132522452223668}
   - component: {fileID: 5478181343302709016}
   - component: {fileID: -3323073569137445664}
@@ -1331,27 +1330,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &2806705144527394270
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6218075769930803476}
-  m_Material: {fileID: 13400000, guid: b79b9b4f7fc096c4f8a99eb033316da0, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.27, z: 1}
-  m_Center: {x: 0, y: -0.84, z: 0}
 --- !u!54 &5308132522452223668
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1394,7 +1372,6 @@ MonoBehaviour:
   m_speed: 8
   m_dashSpeed: 12
   m_jumpPower: 8
-  m_avoidancePower: 6
 --- !u!114 &-3323073569137445664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,6 +1384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_helth: 100
+  m_remainingLife: 0
 --- !u!114 &3258370644097789667
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ public class CharacterManeger : MonoBehaviour
 	const int MaxHelth = 100;
 	static int[] RemainingLife = { 3, 5 };
 
-	int m_helth = MaxHelth;
+	[SerializeField] int m_helth = MaxHelth;
 	int m_crownCount = 0;
-	int m_remainingLife;
+	[SerializeField] int m_remainingLife;
 
 	bool m_isDeth = false;
 
@@ -77,6 +77,8 @@ public class CharacterManeger : MonoBehaviour
 	public void Damage(int damage)
 	{
 		m_helth -= damage;
+
+		Debug.Log("Žc‚èHP" +  m_helth);
 	}	
 
 	private void OnTriggerEnter(Collider other)
