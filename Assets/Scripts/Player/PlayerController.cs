@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
         if (!m_isGuard)
         {
             m_direction = inputDirection;
+            if (m_isDash) m_animator.SetBool("Dash", true);
+            else m_animator.SetBool("Move", true);
             return;
         }
 
@@ -84,6 +86,8 @@ public class PlayerController : MonoBehaviour
     private void OnMoveCancel(InputAction.CallbackContext callback)
     {
         m_direction = Vector3.zero;
+        m_animator.SetBool("Dash", false);
+        m_animator.SetBool("Move", false);
     }
 
     public void OnDash(InputAction.CallbackContext callback)
@@ -93,10 +97,12 @@ public class PlayerController : MonoBehaviour
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
                 m_isDash = true;
+                Debug.Log("ダッシュ : " +  m_isDash);
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
                 m_isDash = false;
+                Debug.Log("ダッシュ : " + m_isDash);
                 break;
         }
     }
@@ -113,6 +119,7 @@ public class PlayerController : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext callback)
     {
         Debug.Log("攻撃！");
+        m_animator.SetTrigger("Attack");
     }
 
     public void OnGuard(InputAction.CallbackContext callback)
