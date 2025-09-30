@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
 	const float TimeLimit = 1;//爆弾が爆発するまでの制限時間
 	const int DetonationDamage = 50;
-	Vector3 KnockBackPower = new Vector3(0, 10, 0);
+	Vector3 KnockBackPower = new Vector3(0, 15, 0);
 
 	float m_timeLimit;  //爆弾が爆発するまでの制限時間カウント用
 
@@ -16,7 +16,7 @@ public class Bomb : MonoBehaviour
 	CharacterManeger m_characterManeger;
 	Rigidbody m_rigidbody;
 
-	bool m_createdEffect = false;
+	private bool m_createdEffect = false;
 
 	void Update()
     {
@@ -47,7 +47,7 @@ public class Bomb : MonoBehaviour
 			m_rigidbody = other.GetComponent<Rigidbody>();
 
 			m_characterManeger.Damage(DetonationDamage);
-			m_rigidbody.AddForce(KnockBackPower, ForceMode.Impulse);
+			m_rigidbody.velocity = KnockBackPower;
 		}
 	}
 
@@ -59,5 +59,5 @@ public class Bomb : MonoBehaviour
 		}
 		m_collider.enabled = false;
 		Destroy(gameObject);
-	}
+	}	
 }
