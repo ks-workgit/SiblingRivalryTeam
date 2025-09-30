@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
 
+    [SerializeField] Animator m_animator;
+    [SerializeField] GroundCheck m_footGround;
+
     bool m_isGrounded;
     bool m_isDash;
     bool m_isGuard;
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        m_isGrounded = false;
+        m_isGrounded = true;
         m_isDash = false;
         m_isGuard = false;
         m_isAvoidance = false;
@@ -132,6 +135,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        OnGround();
+    }
+
     private void FixedUpdate()
     {
         // カメラの正面ベクトルを作成
@@ -153,26 +161,26 @@ public class PlayerController : MonoBehaviour
         m_rigidbody.velocity = m_velocity;
     }
 
-    private void OnCollisionStay(Collision collision)
+    // 接地
+    private void OnGround()
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (m_footGround.CheckGround())
         {
             m_isGrounded = true;
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
+        else
         {
             m_isGrounded = false;
+            m_isGuard = false;
         }
+
+        Debug.Log("接地:" +  m_isGrounded);
     }
 
     // 回避
     IEnumerator Avoidance(Vector3 direction)
     {
-        float rollDuration = 0.3f;
+        float rollDuration = 0.2f;
         float elapsed = 0f;
         Vector3 moveDir = direction.normalized;
         float speed = m_rollDistance / rollDuration;
@@ -193,9 +201,6 @@ public class PlayerController : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        //Vector3 rollVelocity = direction.normalized * m_rollDistance;
-        //m_rigidbody.AddForce(rollVelocity * m_rollForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(m_rollCollTime);
 

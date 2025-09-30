@@ -1272,6 +1272,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724048294}
   m_CullTransparentMesh: 1
+--- !u!114 &1759846296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7755580167802845980, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+  m_PrefabInstance: {fileID: 8685128483355304764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec010e59574c6546943099b9dc90aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1839930508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1464,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5437008604992580782, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5437008604992680142, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -1468,6 +1483,22 @@ PrefabInstance:
     - target: {fileID: 5437008604992680142, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478181343302709016, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: leftGround
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478181343302709016, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_footGround
+      value: 
+      objectReference: {fileID: 1759846296}
+    - target: {fileID: 5478181343302709016, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_leftGround
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478181343302709016, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_rightGround
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_Name
