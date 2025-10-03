@@ -18,17 +18,19 @@ public class PlayerController : MonoBehaviour
     bool m_isDash;
     bool m_isGuard;
     bool m_isAvoidance;
+    bool m_isMoving;
+    bool m_canMove;
 
     Vector3 m_direction;
     Vector3 m_velocity;
 
     PlayerInput m_playerInput;
-    Rigidbody m_rigidbody;
+    Rigidbody m_rigidBody;
 
     private void Awake()
     {
         m_playerInput = GetComponent<PlayerInput>();
-        m_rigidbody = GetComponent<Rigidbody>();
+        m_rigidBody = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         m_isDash = false;
         m_isGuard = false;
         m_isAvoidance = false;
+        m_isMoving = false;
+        m_canMove = true;
     }
 
     private void OnEnable()
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext callback)
     {
+        m_isMoving = true;
         var value = callback.ReadValue<Vector2>();
         var inputDirection = new Vector3(value.x, 0, value.y);
 
@@ -68,8 +73,6 @@ public class PlayerController : MonoBehaviour
         if (!m_isGuard)
         {
             m_direction = inputDirection;
-            if (m_isDash) m_animator.SetBool("Dash", true);
-            else m_animator.SetBool("Move", true);
             return;
         }
 
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveCancel(InputAction.CallbackContext callback)
     {
+        m_isMoving = false;
         m_direction = Vector3.zero;
         m_animator.SetBool("Dash", false);
         m_animator.SetBool("Move", false);
@@ -97,12 +101,10 @@ public class PlayerController : MonoBehaviour
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
                 m_isDash = true;
-                Debug.Log("ダッシュ : " +  m_isDash);
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
                 m_isDash = false;
-                Debug.Log("ダッシュ : " + m_isDash);
                 break;
         }
     }
@@ -111,13 +113,17 @@ public class PlayerController : MonoBehaviour
     {
         if (m_isGrounded && !m_isGuard)
         {
-            m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode.Impulse);
-            m_isGrounded = false;
+            m_rigidBody.AddForce(transform.up * m_jumpPower, ForceMode.Impulse);
+            m_isGrounded = false;          
+            m_animator.SetTrigger("Jump");            
         }
     }
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
+        if (!m_isGrounded) return;
+        m_canMove = false;
+        m_rigidBody.velocity = Vector3.zero;
         Debug.Log("攻撃！");
         m_animator.SetTrigger("Attack");
     }
@@ -142,9 +148,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AttackEnd()
+    {
+        m_canMove = true;
+        Debug.Log(m_canMove);
+    }
+
     private void Update()
     {
+        // 移動時のアニメーション
+        if (m_isMoving && !m_isGuard)
+        {
+            if (m_isDash)
+            {
+                m_animator.SetBool("Dash", true);
+            }
+            else
+            {
+                m_animator.SetBool("Dash", false);
+                m_animator.SetBool("Move", true);
+            }
+        }
+
         OnGround();
+
+        Debug.Log("canMove : " + m_canMove);
     }
 
     private void FixedUpdate()
@@ -163,9 +191,13 @@ public class PlayerController : MonoBehaviour
                 Quaternion.LookRotation(m_velocity.normalized), 0.3f);
         }
 
-        m_velocity.y = m_rigidbody.velocity.y;
+        // 移動
+        if (m_canMove)
+        {
+            m_velocity.y = m_rigidBody.velocity.y;
 
-        m_rigidbody.velocity = m_velocity;
+            m_rigidBody.velocity = m_velocity;
+        }
     }
 
     // 接地
@@ -180,8 +212,6 @@ public class PlayerController : MonoBehaviour
             m_isGrounded = false;
             m_isGuard = false;
         }
-
-        Debug.Log("接地:" +  m_isGrounded);
     }
 
     // 回避
