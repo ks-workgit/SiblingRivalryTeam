@@ -9842,6 +9842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8386418643347837246}
+  - component: {fileID: 7479582932557421629}
   m_Layer: 0
   m_Name: FloatingTile
   m_TagString: Untagged
@@ -9867,6 +9868,18 @@ Transform:
   - {fileID: 380407617933452539}
   m_Father: {fileID: 5454424951339771204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7479582932557421629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965659752396342171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494f5c0c1076e4f4d8a80f85f05255a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6969004177333240227
 GameObject:
   m_ObjectHideFlags: 0
