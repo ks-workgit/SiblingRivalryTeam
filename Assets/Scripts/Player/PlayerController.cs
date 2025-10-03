@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if (m_isGrounded && !m_isGuard)
         {
             m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode.Impulse);
+            m_animator.SetTrigger("Jump");
             m_isGrounded = false;
         }
     }
