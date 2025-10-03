@@ -8,17 +8,17 @@ public class TakeItem : MonoBehaviour
 	[SerializeField] Image m_itemIcon;
 	[SerializeField] ItemDatas m_itemDatas;
 	[SerializeField] Transform m_playerTransform;
+	[SerializeField] CharacterManeger m_characterManeger;
 
 	private bool m_nowHaveItem = false;	//今アイテムを持っているか
 
 	int m_haveItemId;	//今持っているアイテムの識別番号は何番かを保存
 
-	private GameObject m_haveItem;
-
+	HealItem m_healItem;
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Q))
+		if(Input.GetKeyDown(KeyCode.Q) && m_nowHaveItem)
 		{
 			ItemUse();
 		}
@@ -56,6 +56,8 @@ public class TakeItem : MonoBehaviour
 
 			m_haveItemId = ItemId;
 
+			Debug.Log("拾った");
+
 			//落ちていたアイテムオブジェクトを削除
 			Destroy(other.gameObject);
 		}
@@ -77,6 +79,21 @@ public class TakeItem : MonoBehaviour
 
 			throwItemRb.velocity = transform.forward;
 
+			m_nowHaveItem = false;
+		}
+		else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 1 && 
+			m_characterManeger.GetHelth() < 100)
+		{
+			GameObject healItem = Instantiate(
+				m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs);
+
+			m_healItem = healItem.GetComponent<HealItem>();
+
+			m_healItem.SetCharacterManeger(m_characterManeger);
+
+			m_healItem.Heal();
+
+			m_nowHaveItem = false;
 		}
 	}
 }

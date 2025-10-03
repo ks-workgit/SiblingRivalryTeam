@@ -54,6 +54,10 @@ public class CharacterManeger : MonoBehaviour
 		{
 			KnockDown();
 		}
+		if (m_helth >= MaxHelth)
+		{
+			m_helth = MaxHelth;
+		}
 
 		if(m_remainingLife <= 0)
 		{
@@ -79,7 +83,12 @@ public class CharacterManeger : MonoBehaviour
 		m_helth -= damage;
 
 		Debug.Log("Žc‚èHP" +  m_helth);
-	}	
+	}
+
+	public void Heal(int healValue)
+	{
+		m_helth += healValue;
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{

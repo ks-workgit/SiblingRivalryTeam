@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-	const float TimeLimit = 1;//”š’e‚ª”š”­‚·‚é‚Ü‚Å‚Ì§ŒÀŠÔ
+	const float TimeLimit = 2;//”š’e‚ª”š”­‚·‚é‚Ü‚Å‚Ì§ŒÀŠÔ
 	const int DetonationDamage = 50;
 	Vector3 KnockBackPower = new Vector3(0, 15, 0);
 
