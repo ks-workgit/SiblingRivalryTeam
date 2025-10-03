@@ -7,10 +7,15 @@ public class CharacterManeger : MonoBehaviour
 {
 	const int MaxHelth = 100;
 	static int[] RemainingLife = { 3, 5 };
+	const int AttackDamage = 5;
+	const int AttackSpeed = 10;
 
 	int m_helth = MaxHelth;
 	[SerializeField] int m_crownCount = 0;
 	int m_remainingLife;
+
+	int m_attackDamage;
+	int m_attackSpeed;
 
 	bool m_isDeth = false;
 
@@ -41,13 +46,23 @@ public class CharacterManeger : MonoBehaviour
 		m_isRespawn = true;
 	}
 
-	// Start is called before the first frame update
+	public int GetSetAtttackDamage
+	{
+		get { return m_attackDamage; }
+		set { m_attackDamage = value; }
+	}
+
+	public int GetSetAtttackSpeed
+	{
+		get { return m_attackSpeed; }
+		set { m_attackSpeed = value; }
+	}
+
 	void Start()
     {
 		m_remainingLife = RemainingLife[0];
 	}
 
-    // Update is called once per frame
     void Update()
     {
         if(m_helth <= 0)

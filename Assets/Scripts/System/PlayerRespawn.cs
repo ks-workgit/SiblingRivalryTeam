@@ -14,13 +14,13 @@ public class PlayerRespawn : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		m_rigidbody = GetComponent<Rigidbody>();
 		DethPlayer = gameObject;
 	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
 	{
 		if (m_characterManeger.GetHelth() <= 0)
 		{
@@ -31,10 +31,9 @@ public class PlayerRespawn : MonoBehaviour
 
 		if (m_isKnockDown)
 		{
-			//時間を少し開けてリスポーンさせる
-			Invoke("Respawn", 2);
+			Respawn();
 		}
-    }
+	}
 
 	void Respawn()
 	{
