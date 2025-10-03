@@ -9,7 +9,7 @@ public class CharacterManeger : MonoBehaviour
 	static int[] RemainingLife = { 3, 5 };
 
 	int m_helth = MaxHelth;
-	int m_crownCount = 0;
+	[SerializeField] int m_crownCount = 0;
 	int m_remainingLife;
 
 	bool m_isDeth = false;
