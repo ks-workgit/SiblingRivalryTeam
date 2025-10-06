@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
 
-    [SerializeField] Animator m_animator;
+    Animator m_animator;
     [SerializeField] GroundCheck m_footGround;
 
     bool m_isGrounded;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        m_animator = GetComponent<Animator>();
         m_playerInput = GetComponent<PlayerInput>();
         m_rigidBody = GetComponent<Rigidbody>();
     }
@@ -148,10 +149,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AttackEnd()
+    public void ResetTrigger()
     {
         m_canMove = true;
-        Debug.Log(m_canMove);
+        m_animator.ResetTrigger("Jump");
+        m_animator.ResetTrigger("Attack");
     }
 
     private void Update()
