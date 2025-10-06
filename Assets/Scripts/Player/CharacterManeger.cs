@@ -10,12 +10,12 @@ public class CharacterManeger : MonoBehaviour
 	const int AttackDamage = 5;
 	const int AttackSpeed = 10;
 
-	int m_helth = MaxHelth;
+	[SerializeField] int m_helth = MaxHelth;
 	[SerializeField] int m_crownCount = 0;
 	int m_remainingLife;
 
-	int m_attackDamage;
-	int m_attackSpeed;
+	int m_attackDamage = AttackDamage;
+	int m_attackSpeed = AttackSpeed;
 
 	bool m_isDeth = false;
 

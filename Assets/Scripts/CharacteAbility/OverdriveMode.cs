@@ -6,25 +6,38 @@ public class OverdriveMode : MonoBehaviour
 {
 	[SerializeField] CharacterManeger m_characterManeger;
 
+	const int SkillDuration = 10;
+	const int magnification = 2;
+
 	private void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			UseSkill();
+			StartCoroutine(UseSkill());
 		}
 	}
 
-	void UseSkill()
+	IEnumerator UseSkill()
 	{
 		int attackDamage = m_characterManeger.GetSetAtttackDamage;
 		int attackSpeed = m_characterManeger.GetSetAtttackSpeed;
 
-		attackDamage *= 2;
-		attackSpeed *= 2;
+		attackDamage *= magnification;
+		attackSpeed *= magnification;
 
 		m_characterManeger.GetSetAtttackDamage = attackDamage;
 		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
 
 		Debug.Log("オーバードライブモード使用");
+
+		yield return new WaitForSeconds(SkillDuration);
+
+		attackDamage /= magnification;
+		attackSpeed /= magnification;
+
+		m_characterManeger.GetSetAtttackDamage = attackDamage;
+		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
+
+		Debug.Log("オーバードライブモード終了");
 	}
 }
