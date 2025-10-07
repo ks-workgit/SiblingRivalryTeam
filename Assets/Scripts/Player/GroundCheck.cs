@@ -12,6 +12,7 @@ public class GroundCheck : MonoBehaviour
 
     public bool CheckGround()
     {
+        // ‘«Œ³‚©‚ç‰º‚ÉRay‚ð”ò‚Î‚·
         m_direction = Vector3.down;
 
         m_position = transform.position + m_offset;

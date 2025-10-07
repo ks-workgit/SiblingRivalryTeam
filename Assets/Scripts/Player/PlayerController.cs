@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    Animator m_animator;
+    PlayerInput m_playerInput;
+    Rigidbody m_rigidBody;
+
     [SerializeField] float m_speed;
     [SerializeField] float m_dashSpeed;
     [SerializeField] float m_jumpPower;
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
-
-    Animator m_animator;
     [SerializeField] GroundCheck m_footGround;
 
     bool m_isGrounded;
@@ -23,9 +25,6 @@ public class PlayerController : MonoBehaviour
 
     Vector3 m_direction;
     Vector3 m_velocity;
-
-    PlayerInput m_playerInput;
-    Rigidbody m_rigidBody;
 
     private void Awake()
     {
@@ -82,6 +81,8 @@ public class PlayerController : MonoBehaviour
             if (inputDirection.sqrMagnitude > 0.01f)
             {
                 m_isAvoidance = true;
+                m_animator.SetBool("Guard", false);
+                m_animator.SetTrigger("Roll");
                 StartCoroutine(Avoidance(inputDirection));
             }
         }
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         if (m_isGrounded && !m_isGuard)
         {
             m_rigidBody.AddForce(transform.up * m_jumpPower, ForceMode.Impulse);
-            m_isGrounded = false;          
+            m_isGrounded = false;
             m_animator.SetTrigger("Jump");            
         }
     }
@@ -137,12 +138,14 @@ public class PlayerController : MonoBehaviour
         {
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
+                m_animator.SetBool("Guard", true);
                 m_isGuard = true;
                 m_direction = Vector3.zero;
                 Debug.Log("防御開始");
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
+                m_animator.SetBool("Guard", false);
                 m_isGuard = false;
                 Debug.Log("防御終了");
                 break;
@@ -226,6 +229,9 @@ public class PlayerController : MonoBehaviour
 
         float checkDistance = speed * Time.deltaTime;
 
+        // 回避方向に向く
+        transform.rotation = Quaternion.LookRotation(moveDir);
+
         while (elapsed < rollDuration)
         {
             // Raycastで回避方向をチェック
@@ -244,5 +250,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(m_rollCollTime);
 
         m_isAvoidance = false;
+        m_isGuard = false;
     }
 }

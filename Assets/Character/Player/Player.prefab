@@ -1288,7 +1288,19 @@ MonoBehaviour:
     m_ActionId: e54a76fe-91c9-43d7-9c65-e68d1af2b7dc
     m_ActionName: Player/Attack[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5478181343302709016}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnGuard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: df778454-8c29-4d0b-b55d-ad2b304a5877
     m_ActionName: Player/Guard[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
