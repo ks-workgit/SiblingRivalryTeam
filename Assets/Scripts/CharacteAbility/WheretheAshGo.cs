@@ -28,8 +28,6 @@ public class WheretheAshGo : MonoBehaviour
 		{
 			if (m_fireColldown >= FireColldown)
 			{
-				
-
 				GameObject m_fire = Instantiate(
 					FirePrefab,
 					gameObject.transform.position,

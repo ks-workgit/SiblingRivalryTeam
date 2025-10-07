@@ -20,6 +20,8 @@ public class IssueJudgement : MonoBehaviour
 	int m_vectoryCrownCountIndex;
 	int m_remainingLifeIndex;
 
+	bool m_isEnd;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -35,6 +37,14 @@ public class IssueJudgement : MonoBehaviour
 		m_2pCrownCount = m_characterManeger[1].GetCrownCount();
 		m_2pIsDeth = m_characterManeger[1].GetIsDeth();
 
+		if(!m_isEnd)
+		{
+			Judgement();
+		}		
+	}
+
+	void Judgement()
+	{
 		//王冠を規定数集めたら勝利
 		if (m_1pCrownCount >= VectoryCrownCount[0])
 		{
@@ -43,15 +53,19 @@ public class IssueJudgement : MonoBehaviour
 			m_winnerText.text = "1P Win";
 
 			Debug.Log("かち王冠で");
+
+			m_isEnd = true;
 		}
 		//残機を減らしたら勝利
-		else if(m_1pIsDeth)
+		else if (m_2pIsDeth)
 		{
 			m_resultScreen.SetActive(true);
 
 			m_winnerText.text = "1P Win";
 
 			Debug.Log("かち残機なくして");
+
+			m_isEnd = true;
 		}
 
 		//王冠を規定数集めたら勝利
@@ -62,15 +76,19 @@ public class IssueJudgement : MonoBehaviour
 			m_winnerText.text = "2P Win";
 
 			Debug.Log("かち王冠で");
+
+			m_isEnd = true;
 		}
 		//残機を減らしたら勝利
-		else if (m_2pIsDeth)
+		else if (m_1pIsDeth)
 		{
 			m_resultScreen.SetActive(true);
 
 			m_winnerText.text = "2P Win";
 
 			Debug.Log("かち残機なくして");
+
+			m_isEnd = true;
 		}
 	}
 }
