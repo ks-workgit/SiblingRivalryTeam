@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OneWayPlatform : MonoBehaviour
 {
-	private Collider platformCollider;
+	[SerializeField] Collider platformCollider;
 
 	// Start is called before the first frame update
 	void Start()

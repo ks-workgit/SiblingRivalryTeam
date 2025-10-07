@@ -23,8 +23,8 @@ public class FloatingPlatform : MonoBehaviour
 		if (goingUp)
 		{
 			//–ˆƒtƒŒ[ƒ€ˆÚ“®‚·‚é‹——£
-			transform.position = Vector3.MoveTowards
-				(transform.position,
+			transform.position = Vector3.MoveTowards(
+				transform.position,
 				startPos + Vector3.up * floatHeight,
 				step
 				);
