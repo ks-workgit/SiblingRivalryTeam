@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Jump"].performed += OnJump;
         m_playerInput.actions["Attack"].performed += OnAttack;
         m_playerInput.actions["Guard"].performed += OnGuard;
+        m_playerInput.actions["AvoidanceStick"].performed += OnAvoidanceStick;
+        m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
     }
 
     private void OnDisable()
@@ -61,31 +63,15 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Jump"].performed -= OnJump;
         m_playerInput.actions["Attack"].performed -= OnAttack;
         m_playerInput.actions["Guard"].performed -= OnGuard;
+        m_playerInput.actions["AvoidanceStick"].performed -= OnAvoidanceStick;
+        m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
     }
 
     private void OnMove(InputAction.CallbackContext callback)
     {
         m_isMoving = true;
         var value = callback.ReadValue<Vector2>();
-        var inputDirection = new Vector3(value.x, 0, value.y);
-
-        // ガードしていないときはプレイヤーの移動
-        if (!m_isGuard)
-        {
-            m_direction = inputDirection;
-            return;
-        }
-
-        if (!m_isAvoidance)
-        {
-            if (inputDirection.sqrMagnitude > 0.01f)
-            {
-                m_isAvoidance = true;
-                m_animator.SetBool("Guard", false);
-                m_animator.SetTrigger("Roll");
-                StartCoroutine(Avoidance(inputDirection));
-            }
-        }
+        m_direction = new Vector3(value.x, 0, value.y);
     }
 
     private void OnMoveCancel(InputAction.CallbackContext callback)
@@ -149,6 +135,33 @@ public class PlayerController : MonoBehaviour
                 m_isGuard = false;
                 Debug.Log("防御終了");
                 break;
+        }
+    }
+
+    private void OnAvoidanceStick(InputAction.CallbackContext callback)
+    {
+        if (!m_isGrounded) return;
+
+        var value = callback.ReadValue<Vector2>();
+        var inputDirection = new Vector3(value.x, 0, value.y);
+        if (!m_isAvoidance)
+        {
+            m_isAvoidance = true;
+            m_animator.SetTrigger("Roll");
+            StartCoroutine(Avoidance(inputDirection));
+        }
+    }
+
+    private void OnAvoidanceKey(InputAction.CallbackContext callback)
+    {
+        if (!m_isGrounded) return;
+
+        var forward = transform.forward;
+        if (!m_isAvoidance)
+        {
+            m_isAvoidance = true;
+            m_animator.SetTrigger("Roll");                       
+            StartCoroutine(Avoidance(forward));            
         }
     }
 
@@ -227,13 +240,14 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = direction.normalized;
         float speed = m_rollDistance / rollDuration;
 
-        float checkDistance = speed * Time.deltaTime;
-
         // 回避方向に向く
         transform.rotation = Quaternion.LookRotation(moveDir);
 
         while (elapsed < rollDuration)
         {
+            float delta = Time.deltaTime;
+            float checkDistance = speed * delta;
+
             // Raycastで回避方向をチェック
             if (Physics.Raycast(transform.position, moveDir, checkDistance))
             {
@@ -243,7 +257,7 @@ public class PlayerController : MonoBehaviour
 
             transform.Translate(moveDir * checkDistance, Space.World);
 
-            elapsed += Time.deltaTime;
+            elapsed += delta;
             yield return null;
         }
 

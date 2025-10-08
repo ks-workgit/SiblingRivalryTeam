@@ -999,6 +999,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1171541136595196072, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258370644097789667, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258370644097789667, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: 497f9ccd-e6ba-470c-a23f-7935ae4c0d82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258370644097789667, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Player/AvoidanceKey[/Keyboard/ctrl]
+      objectReference: {fileID: 0}
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_Name
       value: Player
