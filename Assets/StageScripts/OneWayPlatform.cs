@@ -17,7 +17,7 @@ public class OneWayPlatform : MonoBehaviour
 		{
 			Rigidbody rb = collision.rigidbody;
 
-			// プレイヤーが下から突き上げてきた場合（上向き速度がある場合）
+			// プレイヤーが下から突き上げてきた場合(上向き速度がある場合)
 			if (rb != null && rb.velocity.y > 0)
 			{
 				// 一時的に当たり判定を無効化
