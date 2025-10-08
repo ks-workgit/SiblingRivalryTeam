@@ -23,6 +23,15 @@ public class TakeItem : MonoBehaviour
 		{
 			ItemUse();
 		}
+
+		if(!m_nowHaveItem)
+		{
+			m_itemIcon.enabled = false;
+		}
+		else
+		{
+			m_itemIcon.enabled = true;
+		}
 	}
 
 	//拾ったアイテムのアイコンを設定
