@@ -7,7 +7,7 @@ public class LoadItemIcon : MonoBehaviour
 {
 	public static Sprite Load(int ItemId)
 	{
-		var rawData = File.ReadAllBytes("Assets/Item/ItemIcons/" + ItemId.ToString("000") + ".png");
+		var rawData = File.ReadAllBytes("Assets/Prefabs/Item/ItemIcons/" + ItemId.ToString("000") + ".png");
 		Texture2D texture = new Texture2D(0, 0);
 		texture.LoadImage(rawData);
 		return Sprite.Create(

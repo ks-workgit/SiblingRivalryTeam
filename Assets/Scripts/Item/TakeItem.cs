@@ -15,6 +15,7 @@ public class TakeItem : MonoBehaviour
 	int m_haveItemId;	//今持っているアイテムの識別番号は何番かを保存
 
 	HealItem m_healItem;
+	Shield m_shield;
 
 	private void Update()
 	{
@@ -38,11 +39,10 @@ public class TakeItem : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("Item") && !m_nowHaveItem)
 		{
-			int ItemId = 0;
 			//落ちていたアイテムからアイテムの識別番号を貰ってくる
 			DropItem dropItem = other.GetComponent<DropItem>();
 
-			ItemId = dropItem.GetItemId();
+			int ItemId = dropItem.GetItemId();
 			var itemData = m_itemDatas.m_itemDatas[ItemId];
 
 			//アイコン生成
@@ -51,7 +51,7 @@ public class TakeItem : MonoBehaviour
 			//拾ったアイテムを生成しておく
 			if(itemData.m_itemKindNum != 0)
 			{
-				Instantiate(itemData.m_itemPrefabs);
+				//Instantiate(itemData.m_itemPrefabs);
 			}
 
 			m_haveItemId = ItemId;
@@ -77,10 +77,9 @@ public class TakeItem : MonoBehaviour
 
 			Vector3 forward = transform.forward;
 
-			throwItemRb.velocity = transform.forward;
-
-			m_nowHaveItem = false;
+			throwItemRb.velocity = transform.forward;			
 		}
+		//HP回復系アイテム
 		else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 1 && 
 			m_characterManeger.GetHelth() < 100)
 		{
@@ -92,8 +91,21 @@ public class TakeItem : MonoBehaviour
 			m_healItem.SetCharacterManeger(m_characterManeger);
 
 			m_healItem.Heal();
-
-			m_nowHaveItem = false;
 		}
+		//シールド付与系アイテム
+		else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 2 &&
+			m_characterManeger.GetShield() < 100)
+		{
+			GameObject shieldItem = Instantiate(
+				m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs);
+
+			m_shield = shieldItem.GetComponent<Shield>();
+
+			m_shield.SetCharacterManeger(m_characterManeger);
+
+			m_shield.GetShiled();
+		}
+
+		m_nowHaveItem = false;
 	}
 }
