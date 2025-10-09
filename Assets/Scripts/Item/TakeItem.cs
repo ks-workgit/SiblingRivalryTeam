@@ -79,14 +79,14 @@ public class TakeItem : MonoBehaviour
 		{
 			GameObject throwItem = Instantiate(
 				m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs,
-				new Vector3(m_playerTransform.position.x, m_playerTransform.position.y, m_playerTransform.position.z),
+				new Vector3(m_playerTransform.position.x, m_playerTransform.position.y + 1, m_playerTransform.position.z),
 				Quaternion.identity);
 
 			Rigidbody throwItemRb = throwItem.GetComponent<Rigidbody>();
 
 			Vector3 forward = transform.forward;
 
-			throwItemRb.velocity = transform.forward;			
+			throwItemRb.velocity = new Vector3(transform.forward.x * 5, transform.forward.y * 5, transform.forward.z * 5);			
 		}
 		//HP‰ñ•œŒnƒAƒCƒeƒ€
 		else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 1 && 
@@ -115,6 +115,6 @@ public class TakeItem : MonoBehaviour
 			m_shield.GetShiled();
 		}
 
-		m_nowHaveItem = false;
+		//m_nowHaveItem = false;
 	}
 }

@@ -21,7 +21,9 @@ public class GloryInDeath : MonoBehaviour
     {
         if(m_characterManeger.GetHelth() <= 0)
 		{
+			m_characterManeger.Heal(100);
 
+			Debug.Log("–¼—_‚ ‚éŽ€”­“®");
 		}
     }
 }
