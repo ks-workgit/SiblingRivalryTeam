@@ -6,17 +6,25 @@ using UnityEngine;
 public class CharacterManeger : MonoBehaviour
 {
 	const int MaxHelth = 100;
-	const int MaxShield = 100;
-	static int[] RemainingLife = { 3, 5 };
+	static int[] RemainingLife = { 3, 5 };		//残機の初期数
+	const int AttackDamage = 5;
+	const int AttackSpeed = 10;
 
 	[SerializeField] int m_helth = MaxHelth;
-	[SerializeField] int m_shield;
-	[SerializeField] int m_crownCount = 0;
-	[SerializeField] int m_remainingLife;
+	[SerializeField] int m_crownCount = 0;		//王冠持ってる数
+	int m_remainingLife;
+
+	int m_attackDamage = AttackDamage;
+	int m_attackSpeed = AttackSpeed;
 
 	bool m_isDeth = false;
 
 	bool m_isRespawn = false;
+
+	public void GetCrown()
+	{
+		m_crownCount++;
+	}
 
 	public int GetCrownCount()
 	{
@@ -33,11 +41,6 @@ public class CharacterManeger : MonoBehaviour
 		return m_helth;
 	}
 
-	public int GetShield()
-	{
-		return m_shield;
-	}
-
 	public int GetRemainingLife()
 	{
 		return m_remainingLife;
@@ -48,27 +51,28 @@ public class CharacterManeger : MonoBehaviour
 		m_isRespawn = true;
 	}
 
-	// Start is called before the first frame update
+	public int GetSetAtttackDamage
+	{
+		get { return m_attackDamage; }
+		set { m_attackDamage = value; }
+	}
+
+	public int GetSetAtttackSpeed
+	{
+		get { return m_attackSpeed; }
+		set { m_attackSpeed = value; }
+	}
+
 	void Start()
     {
 		m_remainingLife = RemainingLife[0];
 	}
 
-    // Update is called once per frame
     void Update()
     {
         if(m_helth <= 0)
 		{
 			KnockDown();
-		}
-		//HPやシールドがマックスになった時に
-		if (m_helth >= MaxHelth)
-		{
-			m_helth = MaxHelth;
-		}
-		if(m_shield >= MaxShield)
-		{
-			m_shield = MaxShield;
 		}
 
 		if(m_remainingLife <= 0)
@@ -77,6 +81,7 @@ public class CharacterManeger : MonoBehaviour
 		}
     }
 
+	//体力がゼロになった時の処理
 	void KnockDown()
 	{
 		if (m_isRespawn)
@@ -92,48 +97,6 @@ public class CharacterManeger : MonoBehaviour
 	//ダメージ処理
 	public void Damage(int damage)
 	{
-		if(m_shield > 0)
-		{
-			int beforeShield = m_shield;
-
-			m_shield -= damage;
-
-			damage -= beforeShield;
-
-			if(damage > 0)
-			{
-				m_helth -= damage;
-			}
-		}
-		else
-		{
-			m_helth -= damage;
-		}
-
-		Debug.Log("残りHP" +  m_helth);
-	}
-
-	public void Heal(int healValue)
-	{
-		m_helth += healValue;
-	}
-
-	public void GetShield(int shieldValue)
-	{
-		m_shield += shieldValue;
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		//王冠に触れたときに王冠の数を増やす
-		if (other.CompareTag("Crown"))
-		{
-			m_crownCount++;
-
-			Debug.Log("王冠げっと");
-			Debug.Log("王冠かず" + m_crownCount);
-
-			Destroy(other.gameObject);
-		}
+		m_helth -= damage;
 	}
 }

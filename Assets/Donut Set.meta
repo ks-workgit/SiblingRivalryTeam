@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Donut Set.meta
 guid: a36a84c396897460c934151f9f82e5a3
+========
+guid: eb5fa8dbd0295d84ab198def67d0951e
+>>>>>>>> キャラクターシステム:Assets/VFXPACK_FIRE_WALLCOEUR.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
