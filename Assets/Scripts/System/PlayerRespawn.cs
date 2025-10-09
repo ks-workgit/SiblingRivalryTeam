@@ -31,8 +31,7 @@ public class PlayerRespawn : MonoBehaviour
 
 		if (m_isKnockDown)
 		{
-			//時間を少し開けてリスポーンさせる
-			Invoke("Respawn", 2);
+			Respawn();
 		}
     }
 

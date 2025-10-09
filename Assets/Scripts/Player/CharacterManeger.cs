@@ -6,11 +6,13 @@ using UnityEngine;
 public class CharacterManeger : MonoBehaviour
 {
 	const int MaxHelth = 100;
+	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };
 
-	int m_helth = MaxHelth;
-	int m_crownCount = 0;
-	int m_remainingLife;
+	[SerializeField] int m_helth = MaxHelth;
+	[SerializeField] int m_shield;
+	[SerializeField] int m_crownCount = 0;
+	[SerializeField] int m_remainingLife;
 
 	bool m_isDeth = false;
 
@@ -29,6 +31,11 @@ public class CharacterManeger : MonoBehaviour
 	public int GetHelth()
 	{
 		return m_helth;
+	}
+
+	public int GetShield()
+	{
+		return m_shield;
 	}
 
 	public int GetRemainingLife()
@@ -54,6 +61,15 @@ public class CharacterManeger : MonoBehaviour
 		{
 			KnockDown();
 		}
+		//HPやシールドがマックスになった時に
+		if (m_helth >= MaxHelth)
+		{
+			m_helth = MaxHelth;
+		}
+		if(m_shield >= MaxShield)
+		{
+			m_shield = MaxShield;
+		}
 
 		if(m_remainingLife <= 0)
 		{
@@ -76,8 +92,36 @@ public class CharacterManeger : MonoBehaviour
 	//ダメージ処理
 	public void Damage(int damage)
 	{
-		m_helth -= damage;
-	}	
+		if(m_shield > 0)
+		{
+			int beforeShield = m_shield;
+
+			m_shield -= damage;
+
+			damage -= beforeShield;
+
+			if(damage > 0)
+			{
+				m_helth -= damage;
+			}
+		}
+		else
+		{
+			m_helth -= damage;
+		}
+
+		Debug.Log("残りHP" +  m_helth);
+	}
+
+	public void Heal(int healValue)
+	{
+		m_helth += healValue;
+	}
+
+	public void GetShield(int shieldValue)
+	{
+		m_shield += shieldValue;
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
