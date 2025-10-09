@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2597405465669284934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3932799614856406329}
+  - component: {fileID: 6149161442103693991}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3932799614856406329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597405465669284934}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 811689801220189445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6149161442103693991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597405465669284934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec010e59574c6546943099b9dc90aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_offset: {x: 0, y: 0.1, z: 0}
+  m_groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_distance: 0.35
 --- !u!1 &5437008604992578464
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +459,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5437008604992680142}
-  - component: {fileID: 7755580167802845980}
   m_Layer: 0
   m_Name: TT_demo_female
   m_TagString: Untagged
@@ -436,20 +484,6 @@ Transform:
   - {fileID: 5437008604992681920}
   m_Father: {fileID: 811689801220189445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7755580167802845980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5437008604992580782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec010e59574c6546943099b9dc90aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_offset: {x: 0, y: 0.1, z: 0}
-  m_distance: 0.35
 --- !u!1 &5437008604992580896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,8 +1174,8 @@ GameObject:
   - component: {fileID: 3258370644097789667}
   - component: {fileID: 5478181343302709016}
   - component: {fileID: -3323073569137445664}
-  - component: {fileID: 1171541136595196072}
-  - component: {fileID: 5308132522452223668}
+  - component: {fileID: 1510526128495418106}
+  - component: {fileID: -354147980165965390}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1162,6 +1196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3932799614856406329}
   - {fileID: 5437008604992680142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1307,6 +1342,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7459ca07-3e39-4b81-936d-f24071737bbd
     m_ActionName: Player/Avoidance[/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 497f9ccd-e6ba-470c-a23f-7935ae4c0d82
+    m_ActionName: Player/AvoidanceKey[/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1324,12 +1363,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9c99b01c45c45499c7f9048639530a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 8
-  m_dashSpeed: 12
-  m_jumpPower: 8
+  m_speed: 5
+  m_dashSpeed: 8
+  m_jumpSpeed: 10
+  m_gravity: 15
+  m_fallSpeed: 10
+  m_initFallSpeed: 2
   m_rollDistance: 2.5
   m_rollCollTime: 0.5
-  m_footGround: {fileID: 7755580167802845980}
+  m_footGround: {fileID: 6149161442103693991}
 --- !u!114 &-3323073569137445664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,14 +1384,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1171541136595196072
-CapsuleCollider:
+--- !u!114 &1510526128495418106
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6218075769930803476}
-  m_Material: {fileID: 13400000, guid: b79b9b4f7fc096c4f8a99eb033316da0, type: 2}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69c99ae08173ce40b01c0f73e071455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_respawnPos: {fileID: 0}
+  m_characterManeger: {fileID: -3323073569137445664}
+--- !u!143 &-354147980165965390
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218075769930803476}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1360,35 +1416,11 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  serializedVersion: 3
   m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5308132522452223668
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6218075769930803476}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0

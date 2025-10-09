@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 8820360955984804106, guid: f751a8c6cd7947546b1a28df552bc9b6, type: 3}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0605333
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -202,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_TagString
@@ -345,7 +349,7 @@ GameObject:
   - component: {fileID: 246288729}
   - component: {fileID: 246288728}
   - component: {fileID: 246288727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1324,13 +1328,13 @@ GameObject:
   - component: {fileID: 1435122801}
   - component: {fileID: 1435122800}
   - component: {fileID: 1435122799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stage
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1435122799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1431,7 +1435,7 @@ GameObject:
   - component: {fileID: 1694937523}
   - component: {fileID: 1694937522}
   - component: {fileID: 1694937521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
