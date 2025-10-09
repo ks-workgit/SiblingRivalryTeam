@@ -5,30 +5,27 @@ using UnityEngine;
 public class WheretheAshGo : MonoBehaviour
 {
 	[SerializeField] GameObject FirePrefab;
-	const float FireDuration = 10;
-	const float FireColldown = 0.5f;
+	const float FireColldown = 0.5f;		//炎を出すクールダウン
 
-	const int SkillDuration = 10;
+	const int SkillDuration = 10;		//スキルの長さ
 
 	float m_fireColldown;
 	bool m_isUseSkill;
 
-	GameObject m_fire;
+	private void Start()
+	{
+		StartCoroutine(UseSkill());
+	}
 
 	private void Update()
 	{
 		m_fireColldown += Time.deltaTime;
 
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			StartCoroutine(UseSkill());
-		}
-
 		if(m_isUseSkill)
 		{
 			if (m_fireColldown >= FireColldown)
 			{
-				GameObject m_fire = Instantiate(
+				Instantiate(
 					FirePrefab,
 					gameObject.transform.position,
 					Quaternion.identity
@@ -50,7 +47,7 @@ public class WheretheAshGo : MonoBehaviour
 		m_isUseSkill = false;
 
 		Debug.Log("灰の行方終了");
+
+		Destroy(gameObject);
 	}
-
-
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 public class CharacterManeger : MonoBehaviour
 {
 	const int MaxHelth = 100;
-	static int[] RemainingLife = { 3, 5 };
+	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
 	const int AttackDamage = 5;
 	const int AttackSpeed = 10;
 
 	[SerializeField] int m_helth = MaxHelth;
-	[SerializeField] int m_crownCount = 0;
+	[SerializeField] int m_crownCount = 0;		//‰¤Š¥‚Á‚Ä‚é”
 	int m_remainingLife;
 
 	int m_attackDamage = AttackDamage;
@@ -20,6 +20,11 @@ public class CharacterManeger : MonoBehaviour
 	bool m_isDeth = false;
 
 	bool m_isRespawn = false;
+
+	public void GetCrown()
+	{
+		m_crownCount++;
+	}
 
 	public int GetCrownCount()
 	{
@@ -76,6 +81,7 @@ public class CharacterManeger : MonoBehaviour
 		}
     }
 
+	//‘Ì—Í‚ªƒ[ƒ‚É‚È‚Á‚½‚Ìˆ—
 	void KnockDown()
 	{
 		if (m_isRespawn)
@@ -94,17 +100,17 @@ public class CharacterManeger : MonoBehaviour
 		m_helth -= damage;
 	}	
 
-	private void OnTriggerEnter(Collider other)
-	{
-		//‰¤Š¥‚ÉG‚ê‚½‚Æ‚«‚É‰¤Š¥‚Ì”‚ğ‘‚â‚·
-		if (other.CompareTag("Crown"))
-		{
-			m_crownCount++;
+	//private void OnTriggerEnter(Collider other)
+	//{
+	//	//‰¤Š¥‚ÉG‚ê‚½‚Æ‚«‚É‰¤Š¥‚Ì”‚ğ‘‚â‚·
+	//	if (other.CompareTag("Crown"))
+	//	{
+	//		m_crownCount++;
 
-			Debug.Log("‰¤Š¥‚°‚Á‚Æ");
-			Debug.Log("‰¤Š¥‚©‚¸" + m_crownCount);
+	//		Debug.Log("‰¤Š¥‚°‚Á‚Æ");
+	//		Debug.Log("‰¤Š¥‚©‚¸" + m_crownCount);
 
-			Destroy(other.gameObject);
-		}
-	}
+	//		Destroy(other.gameObject);
+	//	}
+	//}
 }

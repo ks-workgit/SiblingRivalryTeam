@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class OverdriveMode : MonoBehaviour
 {
-	[SerializeField] CharacterManeger m_characterManeger;
+	CharacterManeger m_characterManeger;
 
-	const int SkillDuration = 10;
-	const int magnification = 2;
+	const int SkillDuration = 10;	//スキルの長さ
+	const int Magnification = 2;	//強化の倍率
 
-	private void Update()
+	GameObject m_player;
+
+	private void Start()
 	{
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			StartCoroutine(UseSkill());
-		}
+		m_player = transform.parent.gameObject;
+
+		m_characterManeger = m_player.GetComponent<CharacterManeger>();
+
+		StartCoroutine(UseSkill());
 	}
 
 	IEnumerator UseSkill()
@@ -22,8 +25,8 @@ public class OverdriveMode : MonoBehaviour
 		int attackDamage = m_characterManeger.GetSetAtttackDamage;
 		int attackSpeed = m_characterManeger.GetSetAtttackSpeed;
 
-		attackDamage *= magnification;
-		attackSpeed *= magnification;
+		attackDamage *= Magnification;
+		attackSpeed *= Magnification;
 
 		m_characterManeger.GetSetAtttackDamage = attackDamage;
 		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
@@ -32,12 +35,14 @@ public class OverdriveMode : MonoBehaviour
 
 		yield return new WaitForSeconds(SkillDuration);
 
-		attackDamage /= magnification;
-		attackSpeed /= magnification;
+		attackDamage /= Magnification;
+		attackSpeed /= Magnification;
 
 		m_characterManeger.GetSetAtttackDamage = attackDamage;
 		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
 
 		Debug.Log("オーバードライブモード終了");
+
+		Destroy(gameObject);
 	}
 }
