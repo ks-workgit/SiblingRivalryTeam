@@ -6,11 +6,13 @@ using UnityEngine;
 public class CharacterManeger : MonoBehaviour
 {
 	const int MaxHelth = 100;
+	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
 	const int AttackDamage = 5;
 	const int AttackSpeed = 10;
 
 	[SerializeField] int m_helth = MaxHelth;
+	[SerializeField] int m_shield = MaxShield;
 	[SerializeField] int m_crownCount = 0;		//‰¤Š¥‚Á‚Ä‚é”
 	int m_remainingLife;
 
@@ -39,6 +41,11 @@ public class CharacterManeger : MonoBehaviour
 	public int GetHelth()
 	{
 		return m_helth;
+	}
+
+	public int GetShield()
+	{
+		return m_shield;
 	}
 
 	public int GetRemainingLife()
@@ -98,5 +105,15 @@ public class CharacterManeger : MonoBehaviour
 	public void Damage(int damage)
 	{
 		m_helth -= damage;
+	}
+
+	public void Heal(int healValue)
+	{
+		m_helth += healValue;
+	}
+
+	public void GetShield(int shieldValue)
+	{
+		m_shield += shieldValue;
 	}
 }
