@@ -19,7 +19,7 @@ public class TakeItem : MonoBehaviour
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Q) && m_nowHaveItem)
+		if(Input.GetKeyDown(KeyCode.E) && m_nowHaveItem)
 		{
 			ItemUse();
 		}
