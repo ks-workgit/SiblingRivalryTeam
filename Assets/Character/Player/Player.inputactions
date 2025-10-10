@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AvoidanceStick",
+                    "type": "Value",
+                    "id": "7459ca07-3e39-4b81-936d-f24071737bbd",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AvoidanceKey",
+                    "type": "Button",
+                    "id": "497f9ccd-e6ba-470c-a23f-7935ae4c0d82",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -337,7 +355,7 @@
                 {
                     "name": "",
                     "id": "8412bf04-0e6e-4639-bbbb-c4671bcb5bb1",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -359,7 +377,7 @@
                 {
                     "name": "",
                     "id": "778fdf74-dbe3-4459-8d2f-03dd55f0dc23",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -375,6 +393,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Guard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d742bc0d-000e-4fb2-8606-ae517f4afdd3",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AvoidanceStick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84707ab3-f8f0-4d8f-8cf3-661aa289cf31",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AvoidanceKey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
