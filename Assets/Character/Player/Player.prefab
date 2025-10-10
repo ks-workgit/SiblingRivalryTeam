@@ -1175,6 +1175,8 @@ GameObject:
   - component: {fileID: 5478181343302709016}
   - component: {fileID: -3323073569137445664}
   - component: {fileID: 1510526128495418106}
+  - component: {fileID: 307195813595906490}
+  - component: {fileID: 6440123992225554232}
   - component: {fileID: -354147980165965390}
   m_Layer: 0
   m_Name: Player
@@ -1384,6 +1386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_helth: 100
+  m_shield: 100
+  m_crownCount: 0
 --- !u!114 &1510526128495418106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,6 +1403,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_respawnPos: {fileID: 0}
   m_characterManeger: {fileID: -3323073569137445664}
+--- !u!114 &307195813595906490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218075769930803476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bbb3ee57f3bd7488bb6b40c45798de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_itemIcon: {fileID: 0}
+  m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
+  m_playerTransform: {fileID: 811689801220189445}
+  m_characterManeger: {fileID: -3323073569137445664}
+--- !u!114 &6440123992225554232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218075769930803476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23acfecbaa9a0ff4fbd7acdd1932fba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityObject:
+  - {fileID: 4073351128963682796, guid: 2ce78df94e4cf36409605cf916d2b4c2, type: 3}
+  - {fileID: 771319788479578692, guid: a8b79578945325a468776e312c251d35, type: 3}
+  - {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
+  - {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
+  - {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
+  m_characterId: 0
 --- !u!143 &-354147980165965390
 CharacterController:
   m_ObjectHideFlags: 0

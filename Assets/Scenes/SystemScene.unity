@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_TagString
@@ -557,6 +557,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_offset: {x: 0, y: 0.1, z: 0}
+  m_groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   m_distance: 0.35
 --- !u!95 &392173068 stripped
 Animator:
@@ -1128,7 +1131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1435122799
 BoxCollider:
   m_ObjectHideFlags: 0
