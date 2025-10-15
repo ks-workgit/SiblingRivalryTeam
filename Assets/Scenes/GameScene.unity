@@ -366,9 +366,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307195813595906490, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -376,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -585,6 +589,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307195813595906490, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.42
@@ -595,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.078
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 811689801220189445, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1289,8 +1297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1382352d60870c40b7e5a1b0628da6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_characterManeger: {fileID: 0}
+  m_characterManeger:
+  - {fileID: 0}
   m_resultScreen: {fileID: 1158917769}
+  m_winnerText: {fileID: 0}
 --- !u!4 &1683724506
 Transform:
   m_ObjectHideFlags: 0

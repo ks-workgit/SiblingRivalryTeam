@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    const float StanDuration = 1.5f;
+
     Animator m_animator;
     PlayerInput m_playerInput;
     CharacterController m_characterController;
@@ -19,7 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rollCollTime;
     [SerializeField] GroundCheck m_footGround;
 
+    [SerializeField] Collider m_collider;
+
     float m_verticalVelocity;
+    float m_recoverTime;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
     bool m_isAvoidance;
     bool m_isMoving;
     bool m_canMove;
+    bool m_isStun;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -46,6 +52,8 @@ public class PlayerController : MonoBehaviour
         m_isAvoidance = false;
         m_isMoving = false;
         m_canMove = true;
+        m_isStun = false;
+        m_collider.enabled = false;
     }
 
     private void OnEnable()
@@ -113,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded) return;
+        if (!m_isGrounded || m_isStun) return;
 
         m_canMove = false;
         Debug.Log("攻撃！");
@@ -122,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnGuard(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded) return;
+        if (!m_isGrounded || m_isStun) return;
 
         switch (callback.phase)
         {
@@ -145,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceStick(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard) return;
+        if (!m_isGrounded || m_isGuard || m_isStun) return;
 
         // スティックを倒した方向に回避
         var value = callback.ReadValue<Vector2>();
@@ -160,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceKey(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard) return;
+        if (!m_isGrounded || m_isGuard || m_isStun) return;
 
         // 前方向に回避
         var forward = transform.forward;
@@ -177,6 +185,23 @@ public class PlayerController : MonoBehaviour
         m_canMove = true;
         m_animator.ResetTrigger("Jump");
         m_animator.ResetTrigger("Attack");
+    }
+
+    public void EnableCollision()
+    {
+        m_collider.enabled = true;
+    }
+
+    public void DisableCollision()
+    {
+        m_collider.enabled = false;
+    }
+
+    public void SetIsStun(bool isStun)
+    {
+        m_recoverTime = StanDuration;
+        m_isStun = isStun;
+        m_animator.SetTrigger("Stun");
     }
 
     private void Update()
@@ -226,9 +251,19 @@ public class PlayerController : MonoBehaviour
         }
 
         // 移動
-        if (m_canMove)
+        if (m_canMove && !m_isStun)
         {
             m_characterController.Move(moveDelta);
+        }
+        if (m_isStun)
+        {
+            // スタンからの復帰時間を減らしていく
+            m_recoverTime -= Time.deltaTime;
+            if (m_recoverTime < 0)
+            {
+                m_recoverTime = 0;
+                m_isStun = false;
+            }
         }
 
         // 移動時のアニメーション
