@@ -10,7 +10,7 @@ public class Fire : MonoBehaviour
 
 	float m_damageColldwon;
 
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
 	private void OnTriggerStay(Collider other)
 	{
@@ -18,7 +18,7 @@ public class Fire : MonoBehaviour
 		{
 			m_damageColldwon += Time.deltaTime;
 
-			m_characterManeger = other.GetComponent<CharacterManeger>();
+			m_characterManeger = other.GetComponent<CharacterManager>();
 
 			if (m_damageColldwon >= DamageColldwon )
 			{

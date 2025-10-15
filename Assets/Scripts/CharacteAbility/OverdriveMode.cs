@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverdriveMode : MonoBehaviour
 {
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
 	const int SkillDuration = 10;	//ƒXƒLƒ‹‚Ì’·‚³
 	const int Magnification = 2;	//‹­‰»‚Ì”{—¦
@@ -15,7 +15,7 @@ public class OverdriveMode : MonoBehaviour
 	{
 		m_player = transform.parent.gameObject;
 
-		m_characterManeger = m_player.GetComponent<CharacterManeger>();
+		m_characterManeger = m_player.GetComponent<CharacterManager>();
 
 		StartCoroutine(UseSkill());
 	}

@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
 	[SerializeField] SphereCollider m_collider;
 	[SerializeField] GameObject m_bombEffect;
 
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 	Rigidbody m_rigidbody;
 
 	private bool m_createdEffect = false;
@@ -43,7 +43,7 @@ public class Bomb : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{ 
 
-			m_characterManeger = other.GetComponent<CharacterManeger>();
+			m_characterManeger = other.GetComponent<CharacterManager>();
 			m_rigidbody = other.GetComponent<Rigidbody>();
 
 			m_characterManeger.Damage(DetonationDamage);

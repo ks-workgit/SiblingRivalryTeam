@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IssueJudgement : MonoBehaviour
 {
-	[SerializeField] CharacterManeger[] m_characterManeger;
+	[SerializeField] CharacterManager[] m_characterManeger;
 	[SerializeField] GameObject m_resultScreen;
 	[SerializeField] TextMeshProUGUI m_winnerText;
 

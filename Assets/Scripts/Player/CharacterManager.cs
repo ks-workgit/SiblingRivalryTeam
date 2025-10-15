@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharacterManeger : MonoBehaviour
+public class CharacterManager : MonoBehaviour
 {
 	const int MaxHelth = 100;
 	const int MaxShield = 100;

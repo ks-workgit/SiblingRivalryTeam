@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GloryInDeath : MonoBehaviour
 {
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
 	GameObject m_player;
 
@@ -13,7 +13,7 @@ public class GloryInDeath : MonoBehaviour
     {
 		m_player = transform.parent.gameObject;
 
-        m_characterManeger = m_player.GetComponent<CharacterManeger>();
+        m_characterManeger = m_player.GetComponent<CharacterManager>();
 	}
 
     // Update is called once per frame

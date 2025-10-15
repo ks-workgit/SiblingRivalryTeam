@@ -6,9 +6,9 @@ public class HealItem : MonoBehaviour
 {
 	[SerializeField] int m_healValue;
 	
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
-	public void SetCharacterManeger(CharacterManeger characterManeger)
+	public void SetCharacterManeger(CharacterManager characterManeger)
 	{
 		m_characterManeger = characterManeger;
 	}

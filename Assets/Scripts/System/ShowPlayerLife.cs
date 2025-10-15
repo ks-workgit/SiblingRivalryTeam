@@ -6,7 +6,7 @@ using static UnityEditor.PlayerSettings;
 
 public class ShowPlayerLife : MonoBehaviour
 {
-	[SerializeField] CharacterManeger characterManeger;
+	[SerializeField] CharacterManager characterManeger;
 	[SerializeField] GameObject m_remainingLifeUi;
 
 	int m_remainingLife;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
 	[SerializeField] Transform m_respawnPos;
-	[SerializeField] CharacterManeger m_characterManeger;
+	[SerializeField] CharacterManager m_characterManeger;
 	GameObject DethPlayer;
 
 	bool m_isKnockDown;

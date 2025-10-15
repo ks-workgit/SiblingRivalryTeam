@@ -8,7 +8,7 @@ public class TakeItem : MonoBehaviour
 	[SerializeField] Image m_itemIcon;
 	[SerializeField] ItemDatas m_itemDatas;
 	[SerializeField] Transform m_playerTransform;
-	[SerializeField] CharacterManeger m_characterManeger;
+	[SerializeField] CharacterManager m_characterManeger;
 
 	private bool m_nowHaveItem = false;	//¡ƒAƒCƒeƒ€‚ğ‚Á‚Ä‚¢‚é‚©
 

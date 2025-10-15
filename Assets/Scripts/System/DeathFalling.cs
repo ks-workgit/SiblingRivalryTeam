@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathFalling : MonoBehaviour
 {
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
 	const int m_playerMaxHelth = 100;
 
@@ -12,7 +12,7 @@ public class DeathFalling : MonoBehaviour
 	{
 		if(other.CompareTag("Player"))
 		{
-			m_characterManeger = other.GetComponent<CharacterManeger>();
+			m_characterManeger = other.GetComponent<CharacterManager>();
 
 			m_characterManeger.Damage(m_playerMaxHelth);
 		}

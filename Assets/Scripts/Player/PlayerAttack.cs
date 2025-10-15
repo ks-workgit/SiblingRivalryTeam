@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     Collider m_collider;
 
-    [SerializeField] CharacterManeger m_characterManeger;
+    [SerializeField] CharacterManager m_characterManeger;
 
     private void Start()
     {

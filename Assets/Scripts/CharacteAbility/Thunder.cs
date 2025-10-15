@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Thunder : MonoBehaviour
 {
-	CharacterManeger m_characterManeger;
+	CharacterManager m_characterManeger;
 
 	int m_damage = 75;
 
@@ -12,7 +12,7 @@ public class Thunder : MonoBehaviour
 	{
 		if(other.CompareTag("Player"))
 		{
-			m_characterManeger = other.GetComponent<CharacterManeger>();
+			m_characterManeger = other.GetComponent<CharacterManager>();
 
 			m_characterManeger.Damage(m_damage);
 		}
