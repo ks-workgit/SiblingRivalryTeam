@@ -18,12 +18,17 @@ public class UseAbility : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
 		{
-			Instantiate(
-				m_abilityObject[m_characterId],
-				gameObject.transform.position,
-				Quaternion.identity,
-				gameObject.transform
-				);
-		}
+            //Use();
+        }
+    }
+
+	public void Use()
+	{
+        Instantiate(
+                m_abilityObject[m_characterId],
+                gameObject.transform.position,
+                Quaternion.identity,
+                gameObject.transform
+                );
     }
 }

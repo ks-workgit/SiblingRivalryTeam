@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     Collider m_collider;
 
-    [SerializeField] CharacterManager m_characterManeger;
+    [SerializeField] CharacterManager m_characterManager;
 
     private void Start()
     {
@@ -30,11 +30,14 @@ public class PlayerAttack : MonoBehaviour
             // PlayerControllerを持つオブジェクトが当たったら
             if (other.TryGetComponent(out PlayerController playerController))
             {
-                // そのオブジェクトの動きを止める
-                playerController.SetIsStun(true);
-                //playerController.OnHit();
-                m_characterManeger.Damage(m_damage);
-                Debug.Log("ヒット");
+                // 無敵状態でなければダメージを受ける
+                if (!playerController.GetIsInvincible())
+                {
+                    // そのオブジェクトの動きを止める
+                    playerController.SetIsStun(true);
+                    m_characterManager.Damage(m_damage);
+                    Debug.Log("ヒット");
+                }
             }
 
             // 多段ヒット防止

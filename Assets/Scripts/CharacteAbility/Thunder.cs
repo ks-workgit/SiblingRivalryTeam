@@ -14,7 +14,14 @@ public class Thunder : MonoBehaviour
 		{
 			m_characterManeger = other.GetComponent<CharacterManager>();
 
-			m_characterManeger.Damage(m_damage);
+			if (other.TryGetComponent(out PlayerController playerController))
+			{
+				if (!playerController.GetIsInvincible())
+				{
+					playerController.SetIsStun(true);
+                    m_characterManeger.Damage(m_damage);
+                }
+			}
 		}
 	}
 }

@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6440123992225554232, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_characterId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -435,7 +439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -636,6 +640,14 @@ PrefabInstance:
     - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440123992225554232, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
+      propertyPath: m_characterId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -950,13 +962,13 @@ GameObject:
   - component: {fileID: 1348688523}
   - component: {fileID: 1348688522}
   - component: {fileID: 1348688521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1348688521
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1056,13 +1068,13 @@ GameObject:
   - component: {fileID: 1515819283}
   - component: {fileID: 1515819282}
   - component: {fileID: 1515819281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1515819281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1284,7 +1296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1683724505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,13 +1474,13 @@ GameObject:
   - component: {fileID: 1839930511}
   - component: {fileID: 1839930510}
   - component: {fileID: 1839930509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1839930509
 BoxCollider:
   m_ObjectHideFlags: 0
