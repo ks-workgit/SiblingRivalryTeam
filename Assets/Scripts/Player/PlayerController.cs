@@ -5,11 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    const float StanDuration = 1.5f;
-
-    Animator m_animator;
-    PlayerInput m_playerInput;
-    CharacterController m_characterController;
+    const float StanDuration = 1.5f;    // ”í’e‚µ‚½‚Æ‚«‚ÌƒXƒ^ƒ“‚·‚éŠÔ
+    const float InvincibleTime = 2.0f;  // ”í’e‚µ‚½Œã‚Ì–³“GŠÔ
 
     [SerializeField] float m_speed;
     [SerializeField] float m_dashSpeed;
@@ -19,13 +16,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_initFallSpeed;
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
-    [SerializeField] GroundCheck m_footGround;
 
+    Animator m_animator;
+    PlayerInput m_playerInput;
+    CharacterController m_characterController;
+
+    [SerializeField] GroundCheck m_footGround;
+    [SerializeField] GameObject m_shieldObject;
     [SerializeField] Collider m_collider;
+
     [SerializeField] UseAbility m_useAbility;
 
     float m_verticalVelocity;
     float m_recoverTime;
+    float m_invincibleTimer;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
         m_isStun = false;
         m_isInvincible = false;
         m_collider.enabled = false;
+        m_shieldObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -89,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext callback)
     {
+        if (m_isStun) return;
+
         m_isMoving = true;
         var value = callback.ReadValue<Vector2>();
         m_direction = new Vector3(value.x, 0, value.y);
@@ -131,7 +138,6 @@ public class PlayerController : MonoBehaviour
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
 
         m_canMove = false;
-        Debug.Log("UŒ‚I");
         m_animator.SetTrigger("Attack");
     }
 
@@ -143,19 +149,19 @@ public class PlayerController : MonoBehaviour
         {
             case InputActionPhase.Performed:
                 // ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+                m_shieldObject.SetActive(true);
                 m_animator.SetBool("Guard", true);
                 m_isGuard = true;
                 m_isInvincible = true;
                 m_canMove = false;
-                Debug.Log("–hŒäŠJn");
                 break;
             case InputActionPhase.Canceled:
                 // ƒ{ƒ^ƒ“‚ª—£‚³‚ê‚½‚Æ‚«
+                m_shieldObject.SetActive(false);
                 m_animator.SetBool("Guard", false);
                 m_isGuard = false;
                 m_isInvincible = false;
                 m_canMove = true;
-                Debug.Log("–hŒäI—¹");
                 break;
         }
     }
@@ -231,7 +237,9 @@ public class PlayerController : MonoBehaviour
     public void SetIsStun(bool isStun)
     {
         m_recoverTime = StanDuration;
+        m_invincibleTimer = InvincibleTime;
         m_isStun = isStun;
+        m_isInvincible = true;
         m_animator.SetTrigger("Stun");
     }
 
@@ -292,6 +300,8 @@ public class PlayerController : MonoBehaviour
         {
             m_characterController.Move(moveDelta);
         }
+
+        // ”í’e
         if (m_isStun)
         {
             // ƒXƒ^ƒ“‚©‚ç‚Ì•œ‹AŠÔ‚ğŒ¸‚ç‚µ‚Ä‚¢‚­
@@ -300,6 +310,18 @@ public class PlayerController : MonoBehaviour
             {
                 m_recoverTime = 0;
                 m_isStun = false;
+            }
+        }
+
+        // ”í’e‚Ì–³“G
+        if (m_isInvincible && !m_isAvoidance && !m_isGuard)
+        {
+            // –³“GŠÔ‚ğŒ¸‚ç‚µ‚Ä‚¢‚­
+            m_invincibleTimer -= Time.deltaTime;
+            if (m_invincibleTimer < 0)
+            {
+                m_invincibleTimer = 0;
+                m_isInvincible = false;
             }
         }
 
