@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+	[SerializeField] int m_playerId;
+
 	const int MaxHelth = 100;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
 	const int AttackDamage = 5;
 	const int AttackSpeed = 10;
 
+	[SerializeField] CharacterDatas m_characterDatas;
+
 	[SerializeField] int m_helth = MaxHelth;
 	[SerializeField] int m_shield = MaxShield;
-	[SerializeField] int m_crownCount = 0;		//‰¤Š¥‚Á‚Ä‚é”
 	int m_remainingLife;
 
 	int m_attackDamage = AttackDamage;
@@ -23,19 +26,14 @@ public class CharacterManager : MonoBehaviour
 
 	bool m_isRespawn = false;
 
-	public void GetCrown()
+	public void SetPlayerId(int playerId)
 	{
-		m_crownCount++;
+		m_playerId = playerId;
 	}
 
-	public int GetCrownCount()
+	public int GetPlayerId()
 	{
-		return m_crownCount;
-	}
-
-	public bool GetIsDeth()
-	{
-		return m_isDeth;
+		return m_playerId;
 	}
 
 	public int GetHelth()
@@ -53,6 +51,11 @@ public class CharacterManager : MonoBehaviour
 		return m_remainingLife;
 	}
 
+	public bool GetIsDeth()
+	{
+		return m_isDeth;
+	}
+	
 	public void OnIsRespawn()
 	{
 		m_isRespawn = true;
@@ -85,6 +88,8 @@ public class CharacterManager : MonoBehaviour
 		if(m_remainingLife <= 0)
 		{
 			m_isDeth = true;
+
+			m_characterDatas.IsDeth[m_playerId] = true;
 		}
     }
 

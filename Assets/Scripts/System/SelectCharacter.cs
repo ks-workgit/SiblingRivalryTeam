@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
@@ -85,8 +86,6 @@ public class SelectCharacter : MonoBehaviour
 			m_characterId = 0;
 		}
 
-		m_characterIcon.sprite = LoadCharacterIcon.Load(m_characterId);
-
 		if(m_change)
 		{
 			TitleChangeCharacter();
@@ -111,8 +110,13 @@ public class SelectCharacter : MonoBehaviour
 			m_characterDatas.m_characterInfometions[m_characterId].m_titleCharacterPrefab,
 			m_player.transform);
 
+		//キャラクターアイコン
+		m_characterIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_characterIcon;
+
+		//アビリティアイコン
 		m_abilityIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_abilityIcon;
 
+		//キャラクターの名前
 		m_characterName.text = m_characterDatas.m_characterInfometions[m_characterId].m_chacterName;
 
 		m_change = false;
