@@ -356,6 +356,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+	public void OnIsGrounded()
+	{
+		m_isGrounded = true;
+	}
+
     // ‰ñ”ð
     IEnumerator Avoidance(Vector3 direction)
     {

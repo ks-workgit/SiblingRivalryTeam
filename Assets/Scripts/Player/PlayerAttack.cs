@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     Collider m_collider;
 
-    [SerializeField] CharacterManager m_characterManager;
+	CharacterManager m_characterManager;
 
     private void Start()
     {
@@ -35,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
                 {
                     // そのオブジェクトの動きを止める
                     playerController.SetIsStun(true);
+
+					m_characterManager = other.GetComponent<CharacterManager>();
                     m_characterManager.Damage(m_damage);
                     Debug.Log("ヒット");
                 }

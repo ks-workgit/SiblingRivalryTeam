@@ -1395,9 +1395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerId: 0
+  m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_playerRespawn: {fileID: 1510526128495418106}
   m_helth: 100
   m_shield: 100
-  m_crownCount: 0
 --- !u!114 &1510526128495418106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,8 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69c99ae08173ce40b01c0f73e071455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_respawnPos: {fileID: 0}
-  m_characterManeger: {fileID: -3323073569137445664}
+  m_characterManager: {fileID: -3323073569137445664}
 --- !u!114 &307195813595906490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,7 +1425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bbb3ee57f3bd7488bb6b40c45798de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemIcon: {fileID: 0}
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
   m_playerTransform: {fileID: 811689801220189445}
   m_characterManeger: {fileID: -3323073569137445664}

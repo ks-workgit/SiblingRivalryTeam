@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
 	[SerializeField] CharacterManager m_characterManager;
+	[SerializeField] PlayerController m_playerController;
 	Transform m_respawnPos;
 
 	bool m_isKnockDown;
@@ -51,6 +52,8 @@ public class PlayerRespawn : MonoBehaviour
 			this.gameObject.transform.position = m_respawnPos.position;
 
 			m_isKnockDown = false;
+
+			m_playerController.OnIsGrounded();
 
 			m_characterController.enabled = true;
 		}
