@@ -1,5 +1,73 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106166991831502482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8369105017446286911}
+  - component: {fileID: 5517168283884451276}
+  - component: {fileID: 8234806457749191198}
+  m_Layer: 0
+  m_Name: AttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8369105017446286911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106166991831502482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 991922258400168200}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5517168283884451276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106166991831502482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.1668179}
+  m_Center: {x: 0, y: 0, z: 0.7890202}
+--- !u!114 &8234806457749191198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106166991831502482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd56726a952e07408893a18b849e4f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_owner: {fileID: 8473122308971430539}
+  m_damage: 10
 --- !u!1 &138154811334876458
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,10 +150,11 @@ Transform:
   m_GameObject: {fileID: 8473122308971430539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.94, y: 3.1, z: 0.9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8369105017446286911}
   - {fileID: 6607151433887562646}
   - {fileID: 8180094421069750753}
   m_Father: {fileID: 0}
@@ -262,6 +331,7 @@ MonoBehaviour:
   m_rollDistance: 2.5
   m_rollCollTime: 0.5
   m_footGround: {fileID: 5021954069424491535}
+  m_collider: {fileID: 5517168283884451276}
 --- !u!114 &7183497722728275446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,9 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerId: 0
+  m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_playerRespawn: {fileID: 843749356261702207}
   m_helth: 100
   m_shield: 100
-  m_crownCount: 0
 --- !u!114 &843749356261702207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,8 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69c99ae08173ce40b01c0f73e071455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_respawnPos: {fileID: 0}
-  m_characterManeger: {fileID: 7183497722728275446}
+  m_characterManager: {fileID: 7183497722728275446}
 --- !u!114 &6299846856175193632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bbb3ee57f3bd7488bb6b40c45798de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemIcon: {fileID: 0}
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
   m_playerTransform: {fileID: 991922258400168200}
   m_characterManeger: {fileID: 7183497722728275446}
@@ -345,13 +415,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.7
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!1001 &1647239249028409593
 PrefabInstance:
   m_ObjectHideFlags: 0

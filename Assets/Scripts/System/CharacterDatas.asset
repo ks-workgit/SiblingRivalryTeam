@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOneCharacterId: 3
   PlayerTwoCharacterId: 1
+  CrownCount: 0000000000000000
+  IsDeth: 0000
   m_characterInfometions:
   - m_characterPrefab: {fileID: 6218075769930803476, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
     m_titleCharacterPrefab: {fileID: 2237340058932335362, guid: 5acfd34f659cf1c4bb213c59e129a767, type: 3}

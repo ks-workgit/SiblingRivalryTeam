@@ -14,6 +14,7 @@ public class CharacterManager : MonoBehaviour
 	const int AttackSpeed = 10;
 
 	[SerializeField] CharacterDatas m_characterDatas;
+	[SerializeField] PlayerRespawn m_playerRespawn;
 
 	[SerializeField] int m_helth = MaxHelth;
 	[SerializeField] int m_shield = MaxShield;

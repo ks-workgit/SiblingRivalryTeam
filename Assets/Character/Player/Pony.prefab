@@ -49,6 +49,74 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_distance: 0.35
+--- !u!1 &3102009129343801391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8886535958084624391}
+  - component: {fileID: 3961946726447890526}
+  - component: {fileID: 1246009178864513545}
+  m_Layer: 0
+  m_Name: AttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8886535958084624391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102009129343801391}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5601331812989150633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3961946726447890526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102009129343801391}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.1668179}
+  m_Center: {x: 0, y: 0, z: 0.7890202}
+--- !u!114 &1246009178864513545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102009129343801391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd56726a952e07408893a18b849e4f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_owner: {fileID: 4335917065569303653}
+  m_damage: 10
 --- !u!1 &4335917065569303653
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,10 +150,11 @@ Transform:
   m_GameObject: {fileID: 4335917065569303653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.4, y: 3.1, z: 3.744}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8886535958084624391}
   - {fileID: 8538383663079505190}
   - {fileID: 7426005414057782719}
   m_Father: {fileID: 0}
@@ -262,6 +331,7 @@ MonoBehaviour:
   m_rollDistance: 2.5
   m_rollCollTime: 0.5
   m_footGround: {fileID: 233858930467046929}
+  m_collider: {fileID: 3961946726447890526}
 --- !u!114 &5100428621951176289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,9 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerId: 0
+  m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_playerRespawn: {fileID: 4570142558801225979}
   m_helth: 100
   m_shield: 100
-  m_crownCount: 0
 --- !u!114 &4570142558801225979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,8 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69c99ae08173ce40b01c0f73e071455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_respawnPos: {fileID: 0}
-  m_characterManeger: {fileID: 5100428621951176289}
+  m_characterManager: {fileID: 5100428621951176289}
 --- !u!114 &763355596717534571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bbb3ee57f3bd7488bb6b40c45798de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemIcon: {fileID: 0}
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
   m_playerTransform: {fileID: 5601331812989150633}
   m_characterManeger: {fileID: 5100428621951176289}
@@ -345,13 +415,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.7
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!1001 &7848993747975143761
 PrefabInstance:
   m_ObjectHideFlags: 0

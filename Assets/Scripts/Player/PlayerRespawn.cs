@@ -5,32 +5,38 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-	[SerializeField] Transform m_respawnPos;
-	[SerializeField] CharacterManager m_characterManeger;
-	GameObject DethPlayer;
+	[SerializeField] CharacterManager m_characterManager;
+	Transform m_respawnPos;
 
 	bool m_isKnockDown;
-	Rigidbody m_rigidbody;
+
+	CharacterController m_characterController;
+
+	public void SetRespawnPos(Transform respawnPos)
+	{
+		m_respawnPos = respawnPos;
+	}
+
+	public bool GetIsKnockDown()
+	{
+		return m_isKnockDown;
+	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		m_rigidbody = GetComponent<Rigidbody>();
-		DethPlayer = gameObject;
+		m_characterController = GetComponent<CharacterController>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (m_characterManeger.GetHelth() <= 0)
+		if (m_characterManager.GetHelth() <= 0)
 		{
 			m_isKnockDown = true;
 
-			m_characterManeger.OnIsRespawn();
-		}
+			m_characterManager.OnIsRespawn();
 
-		if (m_isKnockDown)
-		{
 			Respawn();
 		}
 	}
@@ -38,13 +44,15 @@ public class PlayerRespawn : MonoBehaviour
 	void Respawn()
 	{
 		//プレイヤーをリスポーン位置にリスポーンさせる
-		if (!m_characterManeger.GetIsDeth())
+		if (!m_characterManager.GetIsDeth())
 		{
-			DethPlayer.transform.position = m_respawnPos.position;
+			m_characterController.enabled = false;
 
-			m_rigidbody.velocity = Vector3.zero;
+			this.gameObject.transform.position = m_respawnPos.position;
 
 			m_isKnockDown = false;
+
+			m_characterController.enabled = true;
 		}
 	}
 }

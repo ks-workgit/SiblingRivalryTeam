@@ -11,7 +11,7 @@ public class CreatePlayer : MonoBehaviour
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] IssueJudgement m_issueJudgement;
 
-	[SerializeField] PlayerInput m_playerInput;
+	[SerializeField] Transform m_respawnPos;
 
 	[SerializeField] Image[] itemIcon;
 
@@ -45,13 +45,18 @@ public class CreatePlayer : MonoBehaviour
 		m_playerInputManager.playerPrefab =
 			m_characterDatas.m_characterInfometions[characterId[playerId]].m_characterPrefab;
 
-		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);		
+		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);
 
 		m_takeItem = player.GetComponent<TakeItem>();
 		m_takeItem.SetItemIcon(itemIcon[playerId]);
 
-		CharacterManeger characterManeger = player.GetComponent<CharacterManeger>();
+		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
 		characterManeger.SetPlayerId(playerId);
+
+		PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
+		playerRespawn.SetRespawnPos(m_respawnPos);
+
+		player.transform.position = m_respawnPos.position;
 
 		Debug.Log("生成　プレイヤーID" + playerId + "キャラクターID" + characterId[playerId]);
 	}
