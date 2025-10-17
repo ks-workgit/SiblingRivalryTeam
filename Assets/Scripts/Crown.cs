@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crown : MonoBehaviour
 {
+	[SerializeField] CharacterDatas m_characterDatas;
 	CharacterManeger m_characterManeger;
 	
 	private void OnTriggerEnter(Collider other)
@@ -12,7 +13,7 @@ public class Crown : MonoBehaviour
 		{
 			m_characterManeger = other.GetComponent<CharacterManeger>();
 
-			m_characterManeger.GetCrown();
+			m_characterDatas.CrownCount[m_characterManeger.GetPlayerId()]++;
 
 			Destroy(gameObject);
 		}

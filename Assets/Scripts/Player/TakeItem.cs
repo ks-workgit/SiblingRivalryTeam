@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class TakeItem : MonoBehaviour
 {
-	[SerializeField] Image m_itemIcon;
 	[SerializeField] ItemDatas m_itemDatas;
 	[SerializeField] Transform m_playerTransform;
 	[SerializeField] CharacterManeger m_characterManeger;
 
+	Image m_itemIcon;
 	private bool m_nowHaveItem = false;	//今アイテムを持っているか
 
 	int m_haveItemId;	//今持っているアイテムの識別番号は何番かを保存
 
 	HealItem m_healItem;
 	Shield m_shield;
+
+	public void SetItemIcon(Image image)
+	{
+		m_itemIcon = image;
+	}
 
 	private void Update()
 	{
