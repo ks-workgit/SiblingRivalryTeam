@@ -5,11 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    const float StanDuration = 1.5f;
-
-    Animator m_animator;
-    PlayerInput m_playerInput;
-    CharacterController m_characterController;
+    const float StanDuration = 1.5f;    // 被弾したときのスタンする時間
+    const float InvincibleTime = 2.0f;  // 被弾した後の無敵時間
 
     [SerializeField] float m_speed;
     [SerializeField] float m_dashSpeed;
@@ -19,20 +16,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_initFallSpeed;
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
-    [SerializeField] GroundCheck m_footGround;
 
+    Animator m_animator;
+    PlayerInput m_playerInput;
+    CharacterController m_characterController;
+
+    [SerializeField] GroundCheck m_footGround;
+    [SerializeField] GameObject m_shieldObject;
     [SerializeField] Collider m_collider;
+
+    [SerializeField] UseAbility m_useAbility;
 
     float m_verticalVelocity;
     float m_recoverTime;
+    float m_invincibleTimer;
 
     bool m_isGrounded;
     bool m_isDash;
+    bool m_isAttacking;
     bool m_isGuard;
     bool m_isAvoidance;
     bool m_isMoving;
     bool m_canMove;
     bool m_isStun;
+    bool m_isInvincible;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -48,12 +55,15 @@ public class PlayerController : MonoBehaviour
     {
         m_isGrounded = true;
         m_isDash = false;
+        m_isAttacking = false;
         m_isGuard = false;
         m_isAvoidance = false;
         m_isMoving = false;
         m_canMove = true;
         m_isStun = false;
+        m_isInvincible = false;
         m_collider.enabled = false;
+        m_shieldObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -66,6 +76,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Guard"].performed += OnGuard;
         m_playerInput.actions["AvoidanceStick"].performed += OnAvoidanceStick;
         m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
+        m_playerInput.actions["Ability"].performed += OnAbility;
     }
 
     private void OnDisable()
@@ -78,10 +89,13 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Guard"].performed -= OnGuard;
         m_playerInput.actions["AvoidanceStick"].performed -= OnAvoidanceStick;
         m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
+        m_playerInput.actions["Ability"].performed -= OnAbility;
     }
 
     private void OnMove(InputAction.CallbackContext callback)
     {
+        if (m_isStun) return;
+
         m_isMoving = true;
         var value = callback.ReadValue<Vector2>();
         m_direction = new Vector3(value.x, 0, value.y);
@@ -112,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard) return;
+        if (!m_isGrounded || m_isGuard || m_isStun) return;
 
         m_verticalVelocity = m_jumpSpeed;
         m_isGrounded = false;
@@ -121,39 +135,40 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isStun) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
 
         m_canMove = false;
-        Debug.Log("攻撃！");
         m_animator.SetTrigger("Attack");
     }
 
     public void OnGuard(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isStun) return;
+        if (!m_isGrounded || m_isStun || m_isAvoidance || m_isAttacking) return;
 
         switch (callback.phase)
         {
             case InputActionPhase.Performed:
                 // ボタンが押されたとき
+                m_shieldObject.SetActive(true);
                 m_animator.SetBool("Guard", true);
                 m_isGuard = true;
+                m_isInvincible = true;
                 m_canMove = false;
-                Debug.Log("防御開始");
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
+                m_shieldObject.SetActive(false);
                 m_animator.SetBool("Guard", false);
                 m_isGuard = false;
+                m_isInvincible = false;
                 m_canMove = true;
-                Debug.Log("防御終了");
                 break;
         }
     }
 
     private void OnAvoidanceStick(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking) return;
 
         // スティックを倒した方向に回避
         var value = callback.ReadValue<Vector2>();
@@ -168,7 +183,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceKey(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking) return;
 
         // 前方向に回避
         var forward = transform.forward;
@@ -180,6 +195,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnAbility(InputAction.CallbackContext callback)
+    {
+        if (m_isStun) return;
+        m_useAbility.Use();
+    }
+
+    // アニメーションから呼ばれる
     public void ResetTrigger()
     {
         m_canMove = true;
@@ -187,21 +209,44 @@ public class PlayerController : MonoBehaviour
         m_animator.ResetTrigger("Attack");
     }
 
+    // 攻撃開始
+    public void AttackStart()
+    {
+        m_isAttacking = true;
+    }
+
+    // 攻撃終了
+    public void AttackEnd()
+    {
+        m_isAttacking = false;
+    }
+
+    // コライダーをオンにする
     public void EnableCollision()
     {
         m_collider.enabled = true;
     }
 
+    // コライダーをオフにする
     public void DisableCollision()
     {
         m_collider.enabled = false;
     }
 
+    // 被弾フラグをセットする
     public void SetIsStun(bool isStun)
     {
         m_recoverTime = StanDuration;
+        m_invincibleTimer = InvincibleTime;
         m_isStun = isStun;
+        m_isInvincible = true;
         m_animator.SetTrigger("Stun");
+    }
+
+    // 無敵フラグを返す
+    public bool GetIsInvincible()
+    {
+        return m_isInvincible;
     }
 
     private void Update()
@@ -255,6 +300,8 @@ public class PlayerController : MonoBehaviour
         {
             m_characterController.Move(moveDelta);
         }
+
+        // 被弾
         if (m_isStun)
         {
             // スタンからの復帰時間を減らしていく
@@ -263,6 +310,18 @@ public class PlayerController : MonoBehaviour
             {
                 m_recoverTime = 0;
                 m_isStun = false;
+            }
+        }
+
+        // 被弾時の無敵
+        if (m_isInvincible && !m_isAvoidance && !m_isGuard)
+        {
+            // 無敵時間を減らしていく
+            m_invincibleTimer -= Time.deltaTime;
+            if (m_invincibleTimer < 0)
+            {
+                m_invincibleTimer = 0;
+                m_isInvincible = false;
             }
         }
 
@@ -281,8 +340,6 @@ public class PlayerController : MonoBehaviour
         }
 
         OnGround();
-
-        Debug.Log("canMove : " + m_canMove);
     }
 
     // 接地
@@ -302,15 +359,16 @@ public class PlayerController : MonoBehaviour
     // 回避
     IEnumerator Avoidance(Vector3 direction)
     {
+        m_isGuard = false;
+        m_isInvincible = true;
+
         float rollDuration = 0.3f;
         float elapsed = 0f;
         Vector3 moveDir = direction.normalized;
         float speed = m_rollDistance / rollDuration;
 
         // 回避方向に向く
-        transform.rotation = Quaternion.LookRotation(moveDir);
-
-        m_isGuard = false;
+        transform.rotation = Quaternion.LookRotation(moveDir);                
 
         while (elapsed < rollDuration)
         {
@@ -329,6 +387,8 @@ public class PlayerController : MonoBehaviour
             elapsed += delta;
             yield return null;
         }
+
+        m_isInvincible = false;
 
         yield return new WaitForSeconds(m_rollCollTime);
 
