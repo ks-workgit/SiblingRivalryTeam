@@ -13,7 +13,7 @@ public class CreatePlayer : MonoBehaviour
 
 	[SerializeField] Transform m_respawnPos;
 
-	[SerializeField] Image[] itemIcon;
+	[SerializeField] Image[] m_itemIcon;
 
 	TakeItem m_takeItem;
 
@@ -48,7 +48,7 @@ public class CreatePlayer : MonoBehaviour
 		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);
 
 		m_takeItem = player.GetComponent<TakeItem>();
-		m_takeItem.SetItemIcon(itemIcon[playerId]);
+		m_takeItem.SetItemIcon(m_itemIcon[playerId]);
 
 		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
 		characterManeger.SetPlayerId(playerId);

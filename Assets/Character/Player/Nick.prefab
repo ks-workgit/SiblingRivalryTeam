@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 7314802202389301887}
-  m_damage: 10
+  m_characterManager: {fileID: 8204210986646314341}
 --- !u!1 &2642738866544689952
 GameObject:
   m_ObjectHideFlags: 0

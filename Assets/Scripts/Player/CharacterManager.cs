@@ -12,8 +12,8 @@ public class CharacterManager : MonoBehaviour
 	const float MaxStamina = 100;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
-	const int AttackDamage = 5;
-	const int AttackSpeed = 10;
+	const int AttackDamage = 10;
+	const int AttackSpeed = 1;
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;

@@ -7,11 +7,12 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject m_owner;
-    [SerializeField] int m_damage;
+	[SerializeField] CharacterManager m_characterManager;
+    int m_damage;
 
     Collider m_collider;
 
-	CharacterManager m_characterManager;
+	CharacterManager m_enemy;
 
     private void Start()
     {
@@ -25,7 +26,9 @@ public class PlayerAttack : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"{m_owner.name} hit {other.name}");
+			m_damage = m_characterManager.GetSetAtttackDamage;
+
+			Debug.Log($"{m_owner.name} hit {other.name}");
 
             // PlayerControllerを持つオブジェクトが当たったら
             if (other.TryGetComponent(out PlayerController playerController))
@@ -36,8 +39,8 @@ public class PlayerAttack : MonoBehaviour
                     // そのオブジェクトの動きを止める
                     playerController.SetIsStun(true);
 
-					m_characterManager = other.GetComponent<CharacterManager>();
-                    m_characterManager.Damage(m_damage);
+					m_enemy = other.GetComponent<CharacterManager>();
+					m_enemy.Damage(m_damage);
                     Debug.Log("ヒット");
                 }
             }

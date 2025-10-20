@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 6218075769930803476}
-  m_damage: 10
+  m_characterManager: {fileID: -3323073569137445664}
 --- !u!1001 &1416712468652458831
 PrefabInstance:
   m_ObjectHideFlags: 0

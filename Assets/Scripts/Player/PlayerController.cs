@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
 
         m_canMove = false;
+		m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
         m_animator.SetTrigger("Attack");
     }
 
