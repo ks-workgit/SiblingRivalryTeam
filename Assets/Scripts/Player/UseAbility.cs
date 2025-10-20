@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UseAbility : MonoBehaviour
 {
-	[SerializeField] GameObject[] m_abilityObject;	//アビリティ格納用
+	[SerializeField] AbilityDatas m_abilityDatas;
 
 	[SerializeField] int m_characterId;
+
+	float m_ablityCoolDown;
 
 	private void Start()
 	{
@@ -16,19 +18,21 @@ public class UseAbility : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-		{
-            //Use();
-        }
-    }
+		m_ablityCoolDown -= Time.deltaTime;
+	}
 
 	public void Use()
 	{
-        Instantiate(
-                m_abilityObject[m_characterId],
-                gameObject.transform.position,
-                Quaternion.identity,
-                gameObject.transform
-                );
+		if (m_ablityCoolDown <= 0)
+		{
+			Instantiate(
+			  m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityPrefab,
+			  gameObject.transform.position,
+			  Quaternion.identity,
+			  gameObject.transform
+			  );
+
+			m_ablityCoolDown = m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityCoolDown;
+		}      
     }
 }

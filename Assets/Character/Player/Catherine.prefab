@@ -1413,6 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterManager: {fileID: -3323073569137445664}
+  m_playerController: {fileID: 5478181343302709016}
 --- !u!114 &307195813595906490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,6 +1447,7 @@ MonoBehaviour:
   - {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
   - {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
   - {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
+  m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 0
 --- !u!143 &-354147980165965390
 CharacterController:
@@ -1541,7 +1543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_owner: {fileID: 6218075769930803476}
   m_damage: 10
-  m_characterManager: {fileID: -3323073569137445664}
 --- !u!1001 &1416712468652458831
 PrefabInstance:
   m_ObjectHideFlags: 0

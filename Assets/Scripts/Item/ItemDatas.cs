@@ -12,6 +12,7 @@ public class ItemDatas : ScriptableObject
 public class ItemInfomertions
 {
 	public GameObject m_itemPrefabs;
+	public GameObject m_dropItemPrefabs;
 	public int m_itemId;
 	public string m_name;
 	public int m_itemKindNum;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dca6de3a01a1e4ebcc31989f06522c, type: 3}
+  m_Name: AbilityDatas
+  m_EditorClassIdentifier: 
+  m_abilityInfometions:
+  - m_abilityPrefab: {fileID: 4073351128963682796, guid: 2ce78df94e4cf36409605cf916d2b4c2, type: 3}
+    m_abilityCoolDown: 45
+  - m_abilityPrefab: {fileID: 771319788479578692, guid: a8b79578945325a468776e312c251d35, type: 3}
+    m_abilityCoolDown: 45
+  - m_abilityPrefab: {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
+    m_abilityCoolDown: 60
+  - m_abilityPrefab: {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
+    m_abilityCoolDown: 45
+  - m_abilityPrefab: {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
+    m_abilityCoolDown: 0

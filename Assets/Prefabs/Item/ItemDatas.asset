@@ -14,22 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_itemDatas:
   - m_itemPrefabs: {fileID: 2287009186831885779, guid: 60a0de0706e58774fbedf0fedd76e184, type: 3}
+    m_dropItemPrefabs: {fileID: 4104999256305941393, guid: a2148b4d97a062a46bc402a7d20757fd, type: 3}
     m_itemId: 0
     m_name: Bomb
     m_itemKindNum: 0
   - m_itemPrefabs: {fileID: 805305953236288442, guid: 7311c10c253b07c478ad75c744340631, type: 3}
+    m_dropItemPrefabs: {fileID: 8303406497602835359, guid: a1f5c87aea5e55445915970eca5a9a19, type: 3}
     m_itemId: 1
     m_name: Donut
     m_itemKindNum: 1
   - m_itemPrefabs: {fileID: 4791993677673310231, guid: b0a5cbcf597846044ae1ee739ea953fc, type: 3}
+    m_dropItemPrefabs: {fileID: 7255642907937858143, guid: 9d195665f3b180f4eb0a7884b4ea7d46, type: 3}
     m_itemId: 2
     m_name: ShieldPositon
     m_itemKindNum: 1
   - m_itemPrefabs: {fileID: 4547455878607570360, guid: b1680b3d8139d0444818ff9b9ab01d71, type: 3}
+    m_dropItemPrefabs: {fileID: 217347444547420952, guid: d9fc3598b9cca544795e26a24bd2dde4, type: 3}
     m_itemId: 3
     m_name: Shield
     m_itemKindNum: 2
   - m_itemPrefabs: {fileID: 4962560833042547825, guid: 3af21923d96221643b63c68b245cad17, type: 3}
+    m_dropItemPrefabs: {fileID: 5504844140821340209, guid: e5354d92944fc3a4caa2c81dcc8c5b0d, type: 3}
     m_itemId: 4
     m_name: ShieldPositon
     m_itemKindNum: 2

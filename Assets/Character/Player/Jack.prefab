@@ -68,7 +68,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_owner: {fileID: 8473122308971430539}
   m_damage: 10
-  m_characterManager: {fileID: 0}
 --- !u!1 &138154811334876458
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterManager: {fileID: 7183497722728275446}
+  m_playerController: {fileID: 251645640395374294}
 --- !u!114 &6299846856175193632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,12 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23acfecbaa9a0ff4fbd7acdd1932fba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_abilityObject:
-  - {fileID: 4073351128963682796, guid: 2ce78df94e4cf36409605cf916d2b4c2, type: 3}
-  - {fileID: 771319788479578692, guid: a8b79578945325a468776e312c251d35, type: 3}
-  - {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
-  - {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
-  - {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
+  m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 2
 --- !u!143 &6148952053277437396
 CharacterController:

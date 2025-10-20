@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa6387504d6356438a138bf485e3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shildValue: 100
+  m_shildValue: 50
