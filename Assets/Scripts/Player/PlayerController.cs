@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_initFallSpeed;
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
+    [SerializeField] float m_staminaDecrease;
+    [SerializeField] float m_staminaRecovery;
 
     Animator m_animator;
     PlayerInput m_playerInput;
@@ -25,11 +27,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject m_shieldObject;
     [SerializeField] Collider m_collider;
 
-    [SerializeField] UseAbility m_useAbility;
+    UseAbility m_useAbility;
+    CharacterManager m_characterManager;
 
     float m_verticalVelocity;
     float m_recoverTime;
     float m_invincibleTimer;
+
+    float m_stamina;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -49,6 +54,8 @@ public class PlayerController : MonoBehaviour
         m_characterController = GetComponent<CharacterController>();
         m_animator = GetComponent<Animator>();
         m_playerInput = GetComponent<PlayerInput>();
+        m_useAbility = GetComponent<UseAbility>();
+        m_characterManager = GetComponent<CharacterManager>();
     }
 
     private void Start()
@@ -64,6 +71,7 @@ public class PlayerController : MonoBehaviour
         m_isInvincible = false;
         m_collider.enabled = false;
         m_shieldObject.SetActive(false);
+        m_stamina = m_characterManager.GetStamina();
     }
 
     private void OnEnable()
@@ -94,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext callback)
     {
-        if (m_isStun) return;
+        if (m_isStun || m_isGuard) return;
 
         m_isMoving = true;
         var value = callback.ReadValue<Vector2>();
@@ -299,6 +307,24 @@ public class PlayerController : MonoBehaviour
         if (m_canMove && !m_isStun)
         {
             m_characterController.Move(moveDelta);
+        }
+
+        if (m_isDash && m_isMoving)
+        {
+            m_stamina -= m_staminaDecrease * Time.deltaTime;
+            if (m_stamina <= 0)
+            {
+                m_isDash = false;
+            }
+            Debug.Log("スタミナ : " + m_stamina);
+        }
+        else
+        {
+            if (m_stamina <= m_characterManager.GetMaxStamina())
+            {
+                m_stamina += m_staminaRecovery * Time.deltaTime;
+            }
+            Debug.Log("スタミナ : " + m_stamina);
         }
 
         // 被弾

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharacterManager : MonoBehaviour
 {
 	[SerializeField] int m_playerId;
 
 	const int MaxHelth = 100;
+	const float MaxStamina = 100;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//écã@ÇÃèâä˙êî
 	const int AttackDamage = 5;
@@ -16,8 +18,11 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
 
+	[SerializeField] Slider m_healthBar;
+
 	[SerializeField] int m_helth = MaxHelth;
-	[SerializeField] int m_shield = MaxShield;
+	[SerializeField] float m_stamina = MaxStamina;
+	[SerializeField] int m_shield;
 	int m_remainingLife;
 
 	int m_attackDamage = AttackDamage;
@@ -40,6 +45,16 @@ public class CharacterManager : MonoBehaviour
 	public int GetHelth()
 	{
 		return m_helth;
+	}
+
+	public float GetStamina()
+	{
+		return m_stamina;
+	}
+
+	public float GetMaxStamina()
+	{
+		return MaxStamina;
 	}
 
 	public int GetShield()
@@ -118,7 +133,7 @@ public class CharacterManager : MonoBehaviour
 		m_helth += healValue;
 	}
 
-	public void GetShield(int shieldValue)
+    public void GetShield(int shieldValue)
 	{
 		m_shield += shieldValue;
 	}

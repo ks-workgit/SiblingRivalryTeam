@@ -151,7 +151,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3740226768401195949}
@@ -327,18 +327,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9c99b01c45c45499c7f9048639530a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 5
-  m_dashSpeed: 8
-  m_jumpSpeed: 10
+  m_speed: 7
+  m_dashSpeed: 10
+  m_jumpSpeed: 15
   m_gravity: 15
   m_fallSpeed: 10
   m_initFallSpeed: 2
   m_rollDistance: 2.5
   m_rollCollTime: 0.5
+  m_staminaDecrease: 5
+  m_staminaRecovery: 10
   m_footGround: {fileID: 621263224269328094}
   m_shieldObject: {fileID: 2817690043882628789}
   m_collider: {fileID: 851244729558127954}
-  m_useAbility: {fileID: 5690507617016210172}
 --- !u!114 &6952976182452654463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
   m_playerRespawn: {fileID: 3326981224083637023}
   m_helth: 100
+  m_stamina: 100
   m_shield: 100
 --- !u!114 &3326981224083637023
 MonoBehaviour:

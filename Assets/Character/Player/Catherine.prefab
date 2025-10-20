@@ -1194,8 +1194,8 @@ Transform:
   m_GameObject: {fileID: 6218075769930803476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3932799614856406329}
@@ -1371,18 +1371,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9c99b01c45c45499c7f9048639530a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 5
-  m_dashSpeed: 8
-  m_jumpSpeed: 10
+  m_speed: 7
+  m_dashSpeed: 10
+  m_jumpSpeed: 15
   m_gravity: 15
   m_fallSpeed: 10
   m_initFallSpeed: 2
   m_rollDistance: 2.5
   m_rollCollTime: 0.5
+  m_staminaDecrease: 5
+  m_staminaRecovery: 10
   m_footGround: {fileID: 6149161442103693991}
   m_shieldObject: {fileID: 886908323011427554}
   m_collider: {fileID: 7542535790984505252}
-  m_useAbility: {fileID: 6440123992225554232}
 --- !u!114 &-3323073569137445664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1400,7 @@ MonoBehaviour:
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
   m_playerRespawn: {fileID: 1510526128495418106}
   m_helth: 100
+  m_stamina: 100
   m_shield: 100
 --- !u!114 &1510526128495418106
 MonoBehaviour:
@@ -1441,12 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23acfecbaa9a0ff4fbd7acdd1932fba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_abilityObject:
-  - {fileID: 4073351128963682796, guid: 2ce78df94e4cf36409605cf916d2b4c2, type: 3}
-  - {fileID: 771319788479578692, guid: a8b79578945325a468776e312c251d35, type: 3}
-  - {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
-  - {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
-  - {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 0
 --- !u!143 &-354147980165965390
