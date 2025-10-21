@@ -19,7 +19,7 @@ public class CreateDropItem : MonoBehaviour
 		int itemIndex = Random.Range(0, m_itemDatas.m_itemDatas.Count);
 
 		Instantiate(
-			m_itemDatas.m_itemDatas[itemIndex].m_dropItemPrefabs,
+			m_itemDatas.m_itemDatas[0].m_dropItemPrefabs,
 			CrownSpownPos[spownIndex].position,
 			Quaternion.identity
 			);

@@ -433,4 +433,9 @@ public class PlayerController : MonoBehaviour
 
         m_isAvoidance = false;
     }
+
+	public void KnockBack(float kockBackPower)
+	{
+		m_verticalVelocity = kockBackPower;
+	}
 }

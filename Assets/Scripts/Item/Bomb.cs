@@ -14,9 +14,12 @@ public class Bomb : MonoBehaviour
 	[SerializeField] GameObject m_bombEffect;
 
 	CharacterManager m_characterManeger;
-	Rigidbody m_rigidbody;
+	CharacterController m_characterController;
+	PlayerController m_playerController;
 
 	private bool m_createdEffect = false;
+
+	bool m_isHit;
 
 	void Update()
     {
@@ -35,28 +38,30 @@ public class Bomb : MonoBehaviour
 			}
 
 			StartCoroutine(Detonation());
-		}
+		}		
     }
 	
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{ 
-
 			m_characterManeger = other.GetComponent<CharacterManager>();
-			m_rigidbody = other.GetComponent<Rigidbody>();
+			m_playerController = other.GetComponent<PlayerController>();
 
-			m_characterManeger.Damage(DetonationDamage);
-			m_rigidbody.velocity = KnockBackPower;
+			if (!m_isHit)
+			{
+				m_characterManeger.Damage(DetonationDamage);
+			}
+
+			m_playerController.KnockBack(KnockBackPower.y);
+
+			m_isHit = true;
 		}
 	}
 
 	IEnumerator Detonation()
 	{
-		for (var i = 0; i < 20; i++)
-		{
-			yield return null;
-		}
+		yield return new WaitForSeconds(1);
 		m_collider.enabled = false;
 		Destroy(gameObject);
 	}	

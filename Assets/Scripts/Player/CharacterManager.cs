@@ -26,7 +26,7 @@ public class CharacterManager : MonoBehaviour
 	int m_remainingLife;
 
 	int m_attackDamage = AttackDamage;
-	int m_attackSpeed = AttackSpeed;
+	[SerializeField] int m_attackSpeed = AttackSpeed;
 
 	bool m_isDeth = false;
 
