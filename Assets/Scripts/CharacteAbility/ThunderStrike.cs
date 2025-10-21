@@ -12,15 +12,21 @@ public class ThunderStrike: MonoBehaviour
 
 	Vector3 m_enemyPos;
 
+	Vector3 m_playerPos;
+
 	private void Start()
 	{
 		StartCoroutine(UseSkill());
+
+		m_playerPos = transform.parent.position;
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.CompareTag("Player") && !m_searchPlayer)
 		{
+			if (m_playerPos == other.transform.position) return;
+
 			m_enemyPos = other.transform.position;
 
 			m_enemyPos.y -= 1; 

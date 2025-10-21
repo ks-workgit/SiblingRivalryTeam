@@ -7,7 +7,6 @@ public class Thunder : MonoBehaviour
 	CharacterManager m_characterManeger;
 
 	int m_damage = 75;
-
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.CompareTag("Player"))
@@ -19,8 +18,8 @@ public class Thunder : MonoBehaviour
 				if (!playerController.GetIsInvincible())
 				{
 					playerController.SetIsStun(true);
-                    m_characterManeger.Damage(m_damage);
-                }
+                    m_characterManeger.Damage(m_damage);					
+				}
 			}
 		}
 	}
