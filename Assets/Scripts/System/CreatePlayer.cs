@@ -14,6 +14,7 @@ public class CreatePlayer : MonoBehaviour
 	[SerializeField] Transform m_respawnPos;
 
 	[SerializeField] Image[] m_itemIcon;
+	[SerializeField] Image[] m_abilityIcon;
 
 	TakeItem m_takeItem;
 
@@ -55,6 +56,9 @@ public class CreatePlayer : MonoBehaviour
 
 		PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
 		playerRespawn.SetRespawnPos(m_respawnPos);
+
+		UseAbility useAbility = player.GetComponent<UseAbility>();
+		useAbility.SetAbilityIcon(m_abilityIcon[playerId]);
 
 		player.transform.position = m_respawnPos.position;
 

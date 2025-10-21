@@ -10,7 +10,7 @@ public class CharacterManager : MonoBehaviour
 
 	const int MaxHelth = 100;
 	const float MaxStamina = 100;
-	const int MaxShield = 100;
+	//const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//残機の初期数
 	const int AttackDamage = 10;
 	const int AttackSpeed = 1;
@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
 
 	[SerializeField] int m_helth = MaxHelth;
 	[SerializeField] float m_stamina = MaxStamina;
-	[SerializeField] int m_shield;
+	[SerializeField] int m_shield = 0;
 	int m_remainingLife;
 
 	int m_attackDamage = AttackDamage;
@@ -100,6 +100,10 @@ public class CharacterManager : MonoBehaviour
 		{
 			KnockDown();
 		}
+		if(m_shield <= 0)
+		{
+			m_shield = 0;
+		}
 
 		if(m_remainingLife <= 0)
 		{
@@ -125,7 +129,22 @@ public class CharacterManager : MonoBehaviour
 	//ダメージ処理
 	public void Damage(int damage)
 	{
-		m_helth -= damage;
+		if(m_shield > 0)
+		{
+			int restDamage;
+			if (m_shield < damage)
+			{
+				restDamage = damage - m_shield;
+
+				m_helth -= restDamage;
+			}
+
+			m_shield -= damage;
+		}
+		else
+		{
+			m_helth -= damage;
+		}			
 	}
 
 	public void Heal(int healValue)

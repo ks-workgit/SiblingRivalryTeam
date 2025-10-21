@@ -12,5 +12,6 @@ public class AbilityDatas : ScriptableObject
 public class AbilityData
 {
 	public GameObject m_abilityPrefab;
+	public Sprite m_abilityIcon;
 	public float m_abilityCoolDown;
 }

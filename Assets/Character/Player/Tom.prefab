@@ -357,7 +357,8 @@ MonoBehaviour:
   m_playerRespawn: {fileID: 3326981224083637023}
   m_helth: 100
   m_stamina: 100
-  m_shield: 100
+  m_shield: 0
+  m_attackSpeed: 1
 --- !u!114 &3326981224083637023
 MonoBehaviour:
   m_ObjectHideFlags: 0

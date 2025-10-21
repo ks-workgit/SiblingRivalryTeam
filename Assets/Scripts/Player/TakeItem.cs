@@ -83,7 +83,9 @@ public class TakeItem : MonoBehaviour
                 Vector3 forward = transform.forward;
 
                 throwItemRb.velocity = new Vector3(transform.forward.x * 5, transform.forward.y * 5, transform.forward.z * 5);
-            }
+
+				m_nowHaveItem = false;
+			}
             //HP回復系アイテム
             else if (m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 1 &&
                 m_characterManeger.GetHelth() < 100)
@@ -96,10 +98,12 @@ public class TakeItem : MonoBehaviour
                 m_healItem.SetCharacterManeger(m_characterManeger);
 
                 m_healItem.Heal();
-            }
+
+				m_nowHaveItem = false;
+			}
             //シールド付与系アイテム
             else if (m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 2 &&
-                m_characterManeger.GetShield() < 100)
+                m_characterManeger.GetShield() < 1000)
             {
                 GameObject shieldItem = Instantiate(
                     m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs);
@@ -109,9 +113,9 @@ public class TakeItem : MonoBehaviour
                 m_shield.SetCharacterManeger(m_characterManeger);
 
                 m_shield.GetShiled();
-            }
 
-            m_nowHaveItem = false;
+				m_nowHaveItem = false;
+			}           
         }
     }
 }
