@@ -9,7 +9,7 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] int m_playerId;
 
 	const int MaxHelth = 100;
-	const float MaxStamina = 100;
+	const float MaxStamina = 30;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
 	const int AttackDamage = 10;
@@ -47,7 +47,12 @@ public class CharacterManager : MonoBehaviour
 		return m_helth;
 	}
 
-	public float GetStamina()
+    public int GetMaxHealth()
+    {
+        return MaxHelth;
+    }
+
+    public float GetStamina()
 	{
 		return m_stamina;
 	}

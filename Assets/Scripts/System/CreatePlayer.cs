@@ -13,6 +13,8 @@ public class CreatePlayer : MonoBehaviour
 
 	[SerializeField] Transform m_respawnPos;
 
+    [SerializeField] PlayerUI m_playerUI;
+    [SerializeField] Slider[] m_healthBar, m_staminaBar;
 	[SerializeField] Image[] m_itemIcon;
 
 	TakeItem m_takeItem;
@@ -50,10 +52,17 @@ public class CreatePlayer : MonoBehaviour
 		m_takeItem = player.GetComponent<TakeItem>();
 		m_takeItem.SetItemIcon(m_itemIcon[playerId]);
 
+
 		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
 		characterManeger.SetPlayerId(playerId);
 
-		PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
+		m_playerUI.SetCharacterManager(characterManeger);
+		PlayerController playerController = player.GetComponent<PlayerController>();
+		m_playerUI.SetPlayerController(playerController);
+        m_playerUI.SetBar(m_healthBar[playerId], m_staminaBar[playerId]);
+
+
+        PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
 		playerRespawn.SetRespawnPos(m_respawnPos);
 
 		player.transform.position = m_respawnPos.position;

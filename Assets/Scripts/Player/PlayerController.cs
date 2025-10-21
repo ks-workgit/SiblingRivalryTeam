@@ -267,6 +267,11 @@ public class PlayerController : MonoBehaviour
         return m_isInvincible;
     }
 
+    public float GetStamina()
+    {
+        return m_stamina;
+    }
+
     private void Update()
     {
         var isGrounded = m_characterController.isGrounded;
@@ -334,7 +339,7 @@ public class PlayerController : MonoBehaviour
                 m_stamina += m_staminaRecovery * Time.deltaTime;
             }
         }
-
+        Debug.Log("スタミナ : " + m_stamina);
         // 被弾
         if (m_isStun)
         {
