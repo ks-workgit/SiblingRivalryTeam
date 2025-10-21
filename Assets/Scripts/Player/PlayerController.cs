@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     UseAbility m_useAbility;
     CharacterManager m_characterManager;
+    TakeItem m_takeItem;
 
     float m_verticalVelocity;
     float m_recoverTime;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput = GetComponent<PlayerInput>();
         m_useAbility = GetComponent<UseAbility>();
         m_characterManager = GetComponent<CharacterManager>();
+        m_takeItem = GetComponent<TakeItem>();
     }
 
     private void Start()
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceStick"].performed += OnAvoidanceStick;
         m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed += OnAbility;
+        m_playerInput.actions["Item"].performed += OnItem;
     }
 
     private void OnDisable()
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceStick"].performed -= OnAvoidanceStick;
         m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed -= OnAbility;
+        m_playerInput.actions["Item"].performed -= OnItem;
     }
 
     private void OnMove(InputAction.CallbackContext callback)
@@ -210,6 +214,11 @@ public class PlayerController : MonoBehaviour
         m_useAbility.Use();
     }
 
+    private void OnItem(InputAction.CallbackContext callback)
+    {
+        m_takeItem.ItemUse();
+    }
+
     // アニメーションから呼ばれる
     public void ResetTrigger()
     {
@@ -317,7 +326,6 @@ public class PlayerController : MonoBehaviour
             {
                 m_isDash = false;
             }
-            Debug.Log("スタミナ : " + m_stamina);
         }
         else
         {
@@ -325,7 +333,6 @@ public class PlayerController : MonoBehaviour
             {
                 m_stamina += m_staminaRecovery * Time.deltaTime;
             }
-            Debug.Log("スタミナ : " + m_stamina);
         }
 
         // 被弾
