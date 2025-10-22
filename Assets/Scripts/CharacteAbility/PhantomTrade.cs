@@ -6,10 +6,14 @@ public class PhantomTrade : MonoBehaviour
 {
 	GameObject m_player;
 
+	AudioSource m_se;
+
 	private void Start()
 	{
 		m_player = transform.parent.gameObject;
-	}
+
+        m_se = GetComponent<AudioSource>();	
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -17,7 +21,9 @@ public class PhantomTrade : MonoBehaviour
 		{
 			if (other.transform.position == m_player.transform.position) return;
 
-			CharacterController enemy = other.GetComponent<CharacterController>();
+            m_se.Play();
+
+            CharacterController enemy = other.GetComponent<CharacterController>();
 			CharacterController player = m_player.GetComponent<CharacterController>();
 
 			enemy.enabled = false;

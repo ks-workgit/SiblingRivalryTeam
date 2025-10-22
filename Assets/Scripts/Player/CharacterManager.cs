@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour
 {
 	[SerializeField] int m_playerId;
 
-	const int MaxHelth = 100;
+	const float MaxHelth = 100;
 	const float MaxStamina = 30;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
@@ -20,7 +20,7 @@ public class CharacterManager : MonoBehaviour
 
 	[SerializeField] Slider m_healthBar;
 
-	[SerializeField] int m_helth = MaxHelth;
+	[SerializeField] float m_helth = MaxHelth;
 	[SerializeField] float m_stamina = MaxStamina;
 	[SerializeField] int m_shield;
 	int m_remainingLife;
@@ -42,12 +42,12 @@ public class CharacterManager : MonoBehaviour
 		return m_playerId;
 	}
 
-	public int GetHelth()
+	public float GetHelth()
 	{
 		return m_helth;
 	}
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return MaxHelth;
     }

@@ -7,14 +7,14 @@ public class WheretheAshGo : MonoBehaviour
 	[SerializeField] GameObject FirePrefab;
 	const float FireColldown = 0.5f;		//炎を出すクールダウン
 
-	const int SkillDuration = 10;		//スキルの長さ
+	const int SkillDuration = 10;       //スキルの長さ
 
 	float m_fireColldown;
 	bool m_isUseSkill;
 
 	private void Start()
 	{
-		StartCoroutine(UseSkill());
+        StartCoroutine(UseSkill());
 	}
 
 	private void Update()

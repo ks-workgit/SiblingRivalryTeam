@@ -17,11 +17,18 @@ public class Bomb : MonoBehaviour
 	CharacterController m_characterController;
 	PlayerController m_playerController;
 
+	AudioSource m_audioSource;
+
 	private bool m_createdEffect = false;
 
 	bool m_isHit;
 
-	void Update()
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
     {
 		m_timeLimit += Time.deltaTime;
 
@@ -35,7 +42,9 @@ public class Bomb : MonoBehaviour
 				Instantiate(m_bombEffect,gameObject.transform.position,Quaternion.identity);
 
 				m_createdEffect = true;
-			}
+
+                m_audioSource.Play();
+            }
 
 			StartCoroutine(Detonation());
 		}		
