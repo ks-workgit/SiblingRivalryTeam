@@ -38,5 +38,7 @@ public class PlayerUI : MonoBehaviour
     {
         m_healthBar.value = m_characterManager.GetHelth() / m_characterManager.GetMaxHealth();
         m_staminaBar.value = m_playerController.GetStamina() / m_characterManager.GetMaxStamina();
+
+        Debug.Log($"stamina: {m_playerController.GetStamina()} / {m_characterManager.GetMaxStamina()} = {m_playerController.GetStamina() / m_characterManager.GetMaxStamina()}");
     }
 }

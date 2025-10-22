@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviour
                 m_stamina += m_staminaRecovery * Time.deltaTime;
             }
         }
-        Debug.Log("スタミナ : " + m_stamina);
+
         // 被弾
         if (m_isStun)
         {

@@ -310,6 +310,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e9c8befb-23df-4b64-82f3-b3afce30a242
     m_ActionName: Player/Ability[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c608d27f-7798-4395-8107-f554e951e4ac
+    m_ActionName: Player/Item[/DualShock4GamepadHID/buttonEast,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -356,8 +360,9 @@ MonoBehaviour:
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
   m_playerRespawn: {fileID: 843749356261702207}
   m_helth: 100
-  m_stamina: 100
+  m_stamina: 30
   m_shield: 100
+  m_attackSpeed: 1
 --- !u!114 &843749356261702207
 MonoBehaviour:
   m_ObjectHideFlags: 0
