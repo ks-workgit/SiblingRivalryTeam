@@ -13,7 +13,7 @@ public class CreatePlayer : MonoBehaviour
 
 	[SerializeField] Transform m_respawnPos;
 
-    [SerializeField] PlayerUI m_playerUI;
+    [SerializeField] PlayerUI[] m_playerUI;
     [SerializeField] Slider[] m_healthBar, m_staminaBar;
 	[SerializeField] Image[] m_itemIcon;
 
@@ -56,10 +56,10 @@ public class CreatePlayer : MonoBehaviour
 		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
 		characterManeger.SetPlayerId(playerId);
 
-		m_playerUI.SetCharacterManager(characterManeger);
+		m_playerUI[playerId].SetCharacterManager(characterManeger);
 		PlayerController playerController = player.GetComponent<PlayerController>();
-		m_playerUI.SetPlayerController(playerController);
-        m_playerUI.SetBar(m_healthBar[playerId], m_staminaBar[playerId]);
+		m_playerUI[playerId].SetPlayerController(playerController);
+        m_playerUI[playerId].SetBar(m_healthBar[playerId], m_staminaBar[playerId]);
 
 
         PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
