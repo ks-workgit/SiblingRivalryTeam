@@ -359,6 +359,7 @@ MonoBehaviour:
   m_playerId: 0
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
   m_playerRespawn: {fileID: 4570142558801225979}
+  m_playerController: {fileID: 8927889661890160384}
   m_helth: 100
   m_stamina: 30
   m_shield: 100

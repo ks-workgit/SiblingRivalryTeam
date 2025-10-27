@@ -17,6 +17,7 @@ public class CharacterManager : MonoBehaviour
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
+	[SerializeField] PlayerController m_playerController;
 
 	[SerializeField] Slider m_healthBar;
 
@@ -130,7 +131,12 @@ public class CharacterManager : MonoBehaviour
 	//ƒ_ƒ[ƒWˆ—
 	public void Damage(int damage)
 	{
-		m_helth -= damage;
+		// –³“G‚¶‚á‚È‚¢‚Æ‚«
+		if (!m_playerController.GetIsInvincible())
+		{
+			m_playerController.SetIsStun(true);
+			m_helth -= damage;
+		}
 	}
 
 	public void Heal(int healValue)

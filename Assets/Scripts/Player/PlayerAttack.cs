@@ -29,21 +29,10 @@ public class PlayerAttack : MonoBehaviour
 			m_damage = m_characterManager.GetSetAtttackDamage;
 
 			Debug.Log($"{m_owner.name} hit {other.name}");
-
-            // PlayerControllerを持つオブジェクトが当たったら
-            if (other.TryGetComponent(out PlayerController playerController))
-            {
-                // 無敵状態でなければダメージを受ける
-                if (!playerController.GetIsInvincible())
-                {
-                    // そのオブジェクトの動きを止める
-                    playerController.SetIsStun(true);
-
-					m_enemy = other.GetComponent<CharacterManager>();
-					m_enemy.Damage(m_damage);
-                    Debug.Log("ヒット");
-                }
-            }
+            
+			m_enemy = other.GetComponent<CharacterManager>();
+			m_enemy.Damage(m_damage);
+            Debug.Log("ヒット");
 
             // 多段ヒット防止
             m_collider.enabled = false;
