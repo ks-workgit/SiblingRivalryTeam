@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour
     Vector3 m_direction;
     Vector3 m_velocity;
 
-	bool m_isRespawn;
-
     private void Awake()
     {
         m_characterController = GetComponent<CharacterController>();
@@ -283,49 +281,29 @@ public class PlayerController : MonoBehaviour
     public float GetStamina()
     {
         return m_stamina;
-    }
-
-	public bool GetIsAny()
-	{
-		return m_isAny;
-	}
-
-	public void SetIsAny()
-	{
-		m_isAny = false;
-		m_isRespawn = false;
-	}
-
-	public void NowRespawn()
-	{
-		m_isRespawn = true;
-	}
+    }	
 
 	private void Update()
     {	
-		if (!m_isRespawn)
+		var isGrounded = m_characterController.isGrounded;
+
+		if (isGrounded && !m_isGrounded)
 		{
-			var isGrounded = m_characterController.isGrounded;
+			// 着地する瞬間に落下の初速を指定しておく
+			m_verticalVelocity = -m_initFallSpeed;
+		}
+		else if (!isGrounded)
+		{
+			// 空中にいるときは下向きに重力加速度を与えて落下させる
+			m_verticalVelocity -= m_gravity * Time.deltaTime;
 
-			if (isGrounded && !m_isGrounded)
+			// 落下する速さ以上にならないように補正
+			if (m_verticalVelocity < -m_fallSpeed)
 			{
-				// 着地する瞬間に落下の初速を指定しておく
-				m_verticalVelocity = -m_initFallSpeed;
-			}
-			else if (!isGrounded)
-			{
-				// 空中にいるときは下向きに重力加速度を与えて落下させる
-				m_verticalVelocity -= m_gravity * Time.deltaTime;
-
-				// 落下する速さ以上にならないように補正
-				if (m_verticalVelocity < -m_fallSpeed)
-				{
 					m_verticalVelocity = -m_fallSpeed;
-				}
 			}
-
-			m_isGrounded = isGrounded;
-		}        
+		}
+		m_isGrounded = isGrounded;
 
         // カメラの正面ベクトルを作成
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;

@@ -11,7 +11,6 @@ public class PlayerRespawn : MonoBehaviour
 	Transform m_respawnPos;
 
 	bool m_isKnockDown;
-	bool m_isRespawn;
 
 	CharacterController m_characterController;
 
@@ -41,23 +40,7 @@ public class PlayerRespawn : MonoBehaviour
 			m_characterManager.OnIsRespawn();
 
 			Respawn();
-
-			m_isRespawn = true;
 		}
-
-		if(m_playerController.GetIsAny())
-		{
-			m_isRespawn = false;
-
-			m_playerController.SetIsAny();
-		}
-
-		if(m_isRespawn)
-		{
-			m_playerController.NowRespawn();			
-		}
-
-		Debug.Log("isRespawn " + m_isRespawn);
 	}
 
 	void Respawn()

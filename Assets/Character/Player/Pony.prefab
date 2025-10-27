@@ -362,7 +362,7 @@ MonoBehaviour:
   m_playerController: {fileID: 8927889661890160384}
   m_helth: 100
   m_stamina: 30
-  m_shield: 100
+  m_shield: 0
   m_attackSpeed: 1
 --- !u!114 &4570142558801225979
 MonoBehaviour:
