@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IssueJudgement : MonoBehaviour
 {
 	[SerializeField] GameObject m_resultScreen;
-	[SerializeField] TextMeshProUGUI m_winnerText;
+	[SerializeField] Image m_winnerImage;
 	[SerializeField] CharacterDatas characterDatas;
+
+	[SerializeField] Sprite[] m_winnerSprites;
 
 	static int[] VectoryCrownCount = { 3, 5, 10 };
 
@@ -47,7 +50,7 @@ public class IssueJudgement : MonoBehaviour
 		{
 			m_resultScreen.SetActive(true);
 
-			m_winnerText.text = "1P Win";
+			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち王冠で");
 
@@ -60,7 +63,7 @@ public class IssueJudgement : MonoBehaviour
 		{
 			m_resultScreen.SetActive(true);
 
-			m_winnerText.text = "1P Win";
+			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち残機なくして");
 
@@ -74,7 +77,7 @@ public class IssueJudgement : MonoBehaviour
 		{
 			m_resultScreen.SetActive(true);
 
-			m_winnerText.text = "2P Win";
+			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち王冠で");
 
@@ -87,7 +90,7 @@ public class IssueJudgement : MonoBehaviour
 		{
 			m_resultScreen.SetActive(true);
 
-			m_winnerText.text = "2P Win";
+			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち残機なくして");
 

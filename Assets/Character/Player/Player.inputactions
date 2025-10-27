@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "All",
+                    "type": "Button",
+                    "id": "67c1efed-2bc5-4673-a058-ba8b37c37ebe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -477,6 +486,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "110b64b2-c3d6-4c60-90d3-a8e45b578e15",
+                    "path": "<Gamepad>/*",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

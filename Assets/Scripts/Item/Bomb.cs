@@ -21,8 +21,6 @@ public class Bomb : MonoBehaviour
 
 	private bool m_createdEffect = false;
 
-	bool m_isHit;
-
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
@@ -50,21 +48,14 @@ public class Bomb : MonoBehaviour
 		}		
     }
 	
-	private void OnTriggerStay(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{ 
 			m_characterManeger = other.GetComponent<CharacterManager>();
 			m_playerController = other.GetComponent<PlayerController>();
 
-			if (!m_isHit)
-			{
-				m_characterManeger.Damage(DetonationDamage);
-			}
-
-			m_playerController.KnockBack(KnockBackPower.y);
-
-			m_isHit = true;
+			m_characterManeger.Damage(DetonationDamage);
 		}
 	}
 

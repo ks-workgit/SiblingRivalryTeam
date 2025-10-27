@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     CharacterManager m_characterManager;
     TakeItem m_takeItem;
 
+	InputAction m_anyAction;
+
     float m_verticalVelocity;
     float m_recoverTime;
     float m_invincibleTimer;
@@ -46,9 +48,12 @@ public class PlayerController : MonoBehaviour
     bool m_canMove;
     bool m_isStun;
     bool m_isInvincible;
+	bool m_isAny;
 
     Vector3 m_direction;
     Vector3 m_velocity;
+
+	bool m_isRespawn;
 
     private void Awake()
     {
@@ -58,7 +63,7 @@ public class PlayerController : MonoBehaviour
         m_useAbility = GetComponent<UseAbility>();
         m_characterManager = GetComponent<CharacterManager>();
         m_takeItem = GetComponent<TakeItem>();
-    }
+	}
 
     private void Start()
     {
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
         m_canMove = true;
         m_isStun = false;
         m_isInvincible = false;
+
         m_collider.enabled = false;
         m_shieldObject.SetActive(false);
         m_stamina = m_characterManager.GetStamina();
@@ -88,7 +94,8 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed += OnAbility;
         m_playerInput.actions["Item"].performed += OnItem;
-    }
+		m_playerInput.actions["All"].performed += OnAny;
+	}
 
     private void OnDisable()
     {
@@ -102,7 +109,8 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed -= OnAbility;
         m_playerInput.actions["Item"].performed -= OnItem;
-    }
+		m_playerInput.actions["All"].performed -= OnAny;
+	}
 
     private void OnMove(InputAction.CallbackContext callback)
     {
@@ -219,8 +227,13 @@ public class PlayerController : MonoBehaviour
         m_takeItem.ItemUse();
     }
 
-    // アニメーションから呼ばれる
-    public void ResetTrigger()
+	private void OnAny(InputAction.CallbackContext context)
+	{
+		m_isAny = true;
+	}
+
+	// アニメーションから呼ばれる
+	public void ResetTrigger()
     {
         m_canMove = true;
         m_animator.ResetTrigger("Jump");
@@ -272,28 +285,47 @@ public class PlayerController : MonoBehaviour
         return m_stamina;
     }
 
-    private void Update()
-    {
-        var isGrounded = m_characterController.isGrounded;
+	public bool GetIsAny()
+	{
+		return m_isAny;
+	}
 
-        if (isGrounded && !m_isGrounded)
-        {
-            // 着地する瞬間に落下の初速を指定しておく
-            m_verticalVelocity = -m_initFallSpeed;
-        }
-        else if (!isGrounded)
-        {
-            // 空中にいるときは下向きに重力加速度を与えて落下させる
-            m_verticalVelocity -= m_gravity * Time.deltaTime;
+	public void SetIsAny()
+	{
+		m_isAny = false;
+		m_isRespawn = false;
+	}
 
-            // 落下する速さ以上にならないように補正
-            if (m_verticalVelocity < -m_fallSpeed)
-            {
-                m_verticalVelocity = -m_fallSpeed;
-            }
-        }
+	public void NowRespawn()
+	{
+		m_isRespawn = true;
+	}
 
-        m_isGrounded = isGrounded;
+	private void Update()
+    {	
+		if (!m_isRespawn)
+		{
+			var isGrounded = m_characterController.isGrounded;
+
+			if (isGrounded && !m_isGrounded)
+			{
+				// 着地する瞬間に落下の初速を指定しておく
+				m_verticalVelocity = -m_initFallSpeed;
+			}
+			else if (!isGrounded)
+			{
+				// 空中にいるときは下向きに重力加速度を与えて落下させる
+				m_verticalVelocity -= m_gravity * Time.deltaTime;
+
+				// 落下する速さ以上にならないように補正
+				if (m_verticalVelocity < -m_fallSpeed)
+				{
+					m_verticalVelocity = -m_fallSpeed;
+				}
+			}
+
+			m_isGrounded = isGrounded;
+		}        
 
         // カメラの正面ベクトルを作成
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;

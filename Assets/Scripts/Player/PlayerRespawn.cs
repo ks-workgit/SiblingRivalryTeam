@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerRespawn : MonoBehaviour
 	Transform m_respawnPos;
 
 	bool m_isKnockDown;
+	bool m_isRespawn;
 
 	CharacterController m_characterController;
 
@@ -39,7 +41,23 @@ public class PlayerRespawn : MonoBehaviour
 			m_characterManager.OnIsRespawn();
 
 			Respawn();
+
+			m_isRespawn = true;
 		}
+
+		if(m_playerController.GetIsAny())
+		{
+			m_isRespawn = false;
+
+			m_playerController.SetIsAny();
+		}
+
+		if(m_isRespawn)
+		{
+			m_playerController.NowRespawn();			
+		}
+
+		Debug.Log("isRespawn " + m_isRespawn);
 	}
 
 	void Respawn()
@@ -47,9 +65,11 @@ public class PlayerRespawn : MonoBehaviour
 		//プレイヤーをリスポーン位置にリスポーンさせる
 		if (!m_characterManager.GetIsDeth())
 		{
+			Vector3 respawnPos = new Vector3(m_respawnPos.position.x, m_respawnPos.position.y + 1, m_respawnPos.position.z);
+
 			m_characterController.enabled = false;
 
-			this.gameObject.transform.position = m_respawnPos.position;
+			this.gameObject.transform.position = respawnPos;
 
 			m_isKnockDown = false;
 

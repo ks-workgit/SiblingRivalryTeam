@@ -21,7 +21,7 @@ public class Crown : MonoBehaviour
 
 	private void Update()
 	{
-		Debug.Log(m_se.isPlaying);
+		//Debug.Log(m_se.isPlaying);
 	}
 
 	private void OnTriggerEnter(Collider other)

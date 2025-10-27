@@ -83,6 +83,11 @@ public class CharacterManager : MonoBehaviour
 		m_isRespawn = true;
 	}
 
+	public void ReduceHealth(float reduceValue)
+	{
+		m_helth -= reduceValue;
+	}
+
 	public int GetSetAtttackDamage
 	{
 		get { return m_attackDamage; }
@@ -116,7 +121,7 @@ public class CharacterManager : MonoBehaviour
     }
 
 	//‘Ì—Í‚ªƒ[ƒ‚É‚È‚Á‚½‚Ìˆ—
-	void KnockDown()
+	public void KnockDown()
 	{
 		if (m_isRespawn)
 		{
