@@ -14,7 +14,6 @@ public class Bomb : MonoBehaviour
 	[SerializeField] GameObject m_bombEffect;
 
 	CharacterManager m_characterManeger;
-	CharacterController m_characterController;
 	PlayerController m_playerController;
 
 	AudioSource m_audioSource;

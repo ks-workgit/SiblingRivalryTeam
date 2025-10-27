@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityInfometions:
   - m_abilityPrefab: {fileID: 4073351128963682796, guid: 2ce78df94e4cf36409605cf916d2b4c2, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: df4054d0b4b87de48871318130529150, type: 3}
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 771319788479578692, guid: a8b79578945325a468776e312c251d35, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 406be21271272614488f2db24272466a, type: 3}
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 7618167807572161489, guid: 69873d077bc5f5b41b9c73e68f6ee42f, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 3b5357af1f1a25d4c9166981d4d274f1, type: 3}
     m_abilityCoolDown: 60
   - m_abilityPrefab: {fileID: 5185482259421743229, guid: 10489bd4181d62d4c9ee7e54d5a15702, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 17fd776ecc0a61047aaae9238c2daffc, type: 3}
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 8430356379485086543, guid: 6fca4f20c26f6bb46ae65129ba6d0254, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
     m_abilityCoolDown: 0
