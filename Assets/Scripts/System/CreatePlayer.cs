@@ -48,11 +48,12 @@ public class CreatePlayer : MonoBehaviour
 		m_playerInputManager.playerPrefab =
 			m_characterDatas.m_characterInfometions[characterId[playerId]].m_characterPrefab;
 
+		//ƒvƒŒƒCƒ„[‚ğ¶¬
 		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);
 
+		//‘ã“ü
 		m_takeItem = player.GetComponent<TakeItem>();
 		m_takeItem.SetItemIcon(m_itemIcon[playerId]);
-
 
 		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
 		characterManeger.SetPlayerId(playerId);

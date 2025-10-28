@@ -5,6 +5,7 @@ using UnityEngine;
 public class OverdriveMode : MonoBehaviour
 {
 	CharacterManager m_characterManeger;
+	PlayerController m_playerController;
 
 	const int SkillDuration = 10;	//スキルの長さ
 	const int Magnification = 2;	//強化の倍率
@@ -16,6 +17,7 @@ public class OverdriveMode : MonoBehaviour
 		m_player = transform.parent.gameObject;
 
 		m_characterManeger = m_player.GetComponent<CharacterManager>();
+		m_playerController = m_player.GetComponent<PlayerController>();
 
 		StartCoroutine(UseSkill());
 	}
@@ -24,12 +26,18 @@ public class OverdriveMode : MonoBehaviour
 	{
 		int attackDamage = m_characterManeger.GetSetAtttackDamage;
 		int attackSpeed = m_characterManeger.GetSetAtttackSpeed;
+		float speedMagnification = m_playerController.GetSetSpeedMagnification;
 
 		attackDamage *= Magnification;
 		attackSpeed *= Magnification;
+		speedMagnification *= Magnification;
 
 		m_characterManeger.GetSetAtttackDamage = attackDamage;
 		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
+
+		m_playerController.GetSetSpeedMagnification = speedMagnification;
+
+		m_playerController.ChangeSpeed();
 
 		Debug.Log("オーバードライブモード使用");
 
@@ -37,9 +45,14 @@ public class OverdriveMode : MonoBehaviour
 
 		attackDamage /= Magnification;
 		attackSpeed /= Magnification;
+		speedMagnification /= Magnification;
 
 		m_characterManeger.GetSetAtttackDamage = attackDamage;
 		m_characterManeger.GetSetAtttackSpeed = attackSpeed;
+
+		m_playerController.GetSetSpeedMagnification = speedMagnification;
+
+		m_playerController.InitializationSpeed();
 
 		Debug.Log("オーバードライブモード終了");
 

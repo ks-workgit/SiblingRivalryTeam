@@ -8,8 +8,11 @@ public class PlayerController : MonoBehaviour
     const float StanDuration = 1.5f;    // ”í’e‚µ‚½‚Æ‚«‚ÌƒXƒ^ƒ“‚·‚éŽžŠÔ
     const float InvincibleTime = 2.0f;  // ”í’e‚µ‚½Œã‚Ì–³“GŽžŠÔ
 
-    [SerializeField] float m_speed;
-    [SerializeField] float m_dashSpeed;
+	const float Speed = 7;
+	const float DashSpeed = 10;
+
+    [SerializeField] float m_speed = Speed;
+    [SerializeField] float m_dashSpeed = 10;
     [SerializeField] float m_jumpSpeed;
     [SerializeField] float m_gravity;
     [SerializeField] float m_fallSpeed;
@@ -37,7 +40,10 @@ public class PlayerController : MonoBehaviour
     float m_recoverTime;
     float m_invincibleTimer;
 
-    float m_stamina;
+	float m_speedMagnification;		//‘«‚Ì‘¬‚³‚Ì”{—¦
+
+
+	float m_stamina;
 
     bool m_isGrounded;
     bool m_isDash;
@@ -78,7 +84,9 @@ public class PlayerController : MonoBehaviour
         m_collider.enabled = false;
         m_shieldObject.SetActive(false);
         m_stamina = m_characterManager.GetStamina();
-    }
+
+		m_speedMagnification = 1;		
+	}
 
     private void OnEnable()
     {
@@ -283,8 +291,17 @@ public class PlayerController : MonoBehaviour
         return m_stamina;
     }	
 
+	public float GetSetSpeedMagnification
+	{
+		get { return m_speedMagnification; }
+		set { m_speedMagnification = value; }
+	}
+
 	private void Update()
-    {	
+    {
+		Debug.Log("m_speed " + m_speed);
+		Debug.Log("m_dashSpeed " + m_dashSpeed);
+
 		var isGrounded = m_characterController.isGrounded;
 
 		if (isGrounded && !m_isGrounded)
@@ -452,5 +469,17 @@ public class PlayerController : MonoBehaviour
 	public void KnockBack(float kockBackPower)
 	{
 		m_verticalVelocity = kockBackPower;
+	}
+
+	public void ChangeSpeed()
+	{
+		m_speed *= m_speedMagnification;
+		m_dashSpeed *= m_speedMagnification;
+	}
+
+	public void InitializationSpeed()
+	{
+		m_speed = Speed;
+		m_dashSpeed = DashSpeed;
 	}
 }
