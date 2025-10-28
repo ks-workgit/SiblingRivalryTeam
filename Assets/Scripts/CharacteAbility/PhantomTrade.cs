@@ -8,6 +8,8 @@ public class PhantomTrade : MonoBehaviour
 
 	AudioSource m_se;
 
+	bool m_isUse;
+
 	private void Start()
 	{
 		m_player = transform.parent.gameObject;
@@ -15,13 +17,21 @@ public class PhantomTrade : MonoBehaviour
         m_se = GetComponent<AudioSource>();	
     }
 
+	private void Update()
+	{
+		if (!m_se.isPlaying)
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (other.CompareTag("Player") && !m_isUse)
 		{
 			if (other.transform.position == m_player.transform.position) return;
 
-            m_se.Play();
+          //  m_se.Play();
 
             CharacterController enemy = other.GetComponent<CharacterController>();
 			CharacterController player = m_player.GetComponent<CharacterController>();
@@ -43,7 +53,7 @@ public class PhantomTrade : MonoBehaviour
 			enemy.enabled = true;
 			player.enabled = true;
 
-			Destroy(gameObject);
+			m_isUse = true;			
 		}
 	}
 }

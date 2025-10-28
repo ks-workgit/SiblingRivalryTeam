@@ -41,3 +41,9 @@ MonoBehaviour:
     m_chacterName: Nick
     m_characterIcon: {fileID: 21300000, guid: e0f91dbe234c21349842e415f5ae8407, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 17fd776ecc0a61047aaae9238c2daffc, type: 3}
+  - m_characterPrefab: {fileID: 4335917065569303653, guid: 21ddf39cf02fe654caa8b22c6319469e, type: 3}
+    m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
+    m_characterId: 4
+    m_chacterName: Pony
+    m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
