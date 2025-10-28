@@ -26,5 +26,15 @@ MonoBehaviour:
   - m_itemPrefabs: {fileID: 4791993677673310231, guid: b0a5cbcf597846044ae1ee739ea953fc, type: 3}
     m_dropItemPrefabs: {fileID: 7255642907937858143, guid: 9d195665f3b180f4eb0a7884b4ea7d46, type: 3}
     m_itemId: 2
+    m_name: HealPositon
+    m_itemKindNum: 1
+  - m_itemPrefabs: {fileID: 4791993677673310231, guid: b0a5cbcf597846044ae1ee739ea953fc, type: 3}
+    m_dropItemPrefabs: {fileID: 7255642907937858143, guid: 9d195665f3b180f4eb0a7884b4ea7d46, type: 3}
+    m_itemId: 2
+    m_name: ShieldPositon
+    m_itemKindNum: 1
+  - m_itemPrefabs: {fileID: 4791993677673310231, guid: b0a5cbcf597846044ae1ee739ea953fc, type: 3}
+    m_dropItemPrefabs: {fileID: 7255642907937858143, guid: 9d195665f3b180f4eb0a7884b4ea7d46, type: 3}
+    m_itemId: 2
     m_name: ShieldPositon
     m_itemKindNum: 1

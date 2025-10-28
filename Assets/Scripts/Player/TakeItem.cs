@@ -103,7 +103,7 @@ public class TakeItem : MonoBehaviour
 			}
             //シールド付与系アイテム
             else if (m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 2 &&
-                m_characterManeger.GetShield() < 1000)
+                m_characterManeger.GetShield() < 100)
             {
                 GameObject shieldItem = Instantiate(
                     m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs);
@@ -115,7 +115,20 @@ public class TakeItem : MonoBehaviour
                 m_shield.GetShiled();
 
 				m_nowHaveItem = false;
-			}           
-        }
+			}
+			//王冠を奪うアイテム
+			else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 3)
+			{
+				GameObject itemGhost = Instantiate(m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs);
+
+				Ghost ghost = itemGhost.GetComponent<Ghost>();
+
+				ghost.SetUsePlayerId(m_characterManeger.GetPlayerId());
+				ghost.StealCrown();
+
+				m_nowHaveItem = false;
+			}
+
+		}
     }
 }
