@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_initFallSpeed;
     [SerializeField] float m_rollDistance;
     [SerializeField] float m_rollCollTime;
+    [SerializeField] float m_rollStamina = 5;
     [SerializeField] float m_staminaDecrease;
     [SerializeField] float m_staminaRecovery;
 
@@ -195,7 +196,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceStick(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina) return;
 
         // スティックを倒した方向に回避
         var value = callback.ReadValue<Vector2>();
@@ -203,6 +204,7 @@ public class PlayerController : MonoBehaviour
         if (!m_isAvoidance)
         {
             m_isAvoidance = true;
+            m_stamina -= m_rollStamina;
             m_animator.SetTrigger("Roll");
             StartCoroutine(Avoidance(inputDirection));
         }
@@ -210,13 +212,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceKey(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina) return;
 
         // 前方向に回避
         var forward = transform.forward;
         if (!m_isAvoidance)
         {
             m_isAvoidance = true;
+            m_stamina -= m_rollStamina;
             m_animator.SetTrigger("Roll");                       
             StartCoroutine(Avoidance(forward));            
         }
@@ -351,7 +354,8 @@ public class PlayerController : MonoBehaviour
             m_characterController.Move(moveDelta);
         }
 
-        if (m_isDash && m_isMoving)
+        // スタミナ消費
+        if (m_isDash && m_isMoving && !m_isGuard)
         {
             m_stamina -= m_staminaDecrease * Time.deltaTime;
             if (m_stamina <= 0)
@@ -361,7 +365,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (m_stamina <= m_characterManager.GetMaxStamina())
+            if (m_stamina <= m_characterManager.GetMaxStamina() && !m_isGuard)
             {
                 m_stamina += m_staminaRecovery * Time.deltaTime;
             }

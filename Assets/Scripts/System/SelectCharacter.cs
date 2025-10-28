@@ -27,9 +27,9 @@ public class SelectCharacter : MonoBehaviour
 	bool m_change;
 	bool m_isReady;
 
-	void Start()
+    void Start()
 	{
-		TitleChangeCharacter();
+        TitleChangeCharacter();
 	}
 
 	public void RightButtonOnClick()
@@ -38,7 +38,7 @@ public class SelectCharacter : MonoBehaviour
 		{
 			m_characterId++;
 			m_change = true;
-		}
+        }
 	}
 
 	public void LeftButtonOnClick()
@@ -47,7 +47,7 @@ public class SelectCharacter : MonoBehaviour
 		{
 			m_characterId--;
 			m_change = true;
-		}
+        }
 	}
 
 	public void ReadyOnclick()
@@ -56,23 +56,11 @@ public class SelectCharacter : MonoBehaviour
 		{
 			m_moveGameScene.Ready();
 
-			for(int i = 0; i <= m_button.Length - 1; i++)
-			{
-				m_button[i].interactable = false;
-			}
-
 			m_isReady = true;
 		}
 		else
 		{
 			m_moveGameScene.NotReady();
-
-			m_button[0].interactable = false;
-
-			for (int i = 0; i <= m_button.Length - 1; i++)
-			{
-				m_button[i].interactable = true;
-			}
 
 			m_isReady = false;
 		}

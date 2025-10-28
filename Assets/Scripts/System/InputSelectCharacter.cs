@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class InputSelectCharacter : MonoBehaviour
 {
     SelectCharacter m_selectCharacter;
     PlayerInput m_playerInput;
+
+    [SerializeField] Button[] m_buttons;
+
+    public void SetButton(Button[] buttons)
+    {
+        m_buttons = buttons;
+    }
 
     private void Awake()
     {
@@ -31,6 +39,8 @@ public class InputSelectCharacter : MonoBehaviour
     private void OnRight(InputAction.CallbackContext callback)
     {
         m_selectCharacter.RightButtonOnClick();
+
+        m_buttons[0].onClick.Invoke();
     }
 
     private void OnLeft(InputAction.CallbackContext callback)

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class LocalMultiUISetup : MonoBehaviour
 {
@@ -32,7 +34,8 @@ public class LocalMultiUISetup : MonoBehaviour
     private void OnPlayerJoined(int playerId, Gamepad gamePad)
     {
         PlayerInput player = m_playerInputManager.JoinPlayer(-1, -1, null, gamePad);
+
         InputSelectCharacter inputSelectCharacter = player.GetComponent<InputSelectCharacter>();
-        inputSelectCharacter.SetSelectCharacter(m_selectCharacter[m_createPlayerCount]);
+        inputSelectCharacter.SetSelectCharacter(m_selectCharacter[playerId]);
     }
 }

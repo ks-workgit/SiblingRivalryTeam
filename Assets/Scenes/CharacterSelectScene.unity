@@ -620,11 +620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerInputManager: {fileID: 257584841}
-  m_playerUIInfo:
-  - m_playerRoot: {fileID: 2128977568}
-    m_firstSelected: {fileID: 924785809}
-  - m_playerRoot: {fileID: 265734251}
-    m_firstSelected: {fileID: 1443552185}
   m_selectCharacter:
   - {fileID: 893332376}
   - {fileID: 1510836991}
@@ -1658,19 +1653,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 924785812}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 893332376}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: LeftButtonOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &924785812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,19 +1988,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1392694221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 893332376}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: RightButtonOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1392694221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,19 +2242,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1443552188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510836991}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: LeftButtonOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1443552188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,19 +2496,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1482617665}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510836991}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: RightButtonOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1482617665
 MonoBehaviour:
   m_ObjectHideFlags: 0
