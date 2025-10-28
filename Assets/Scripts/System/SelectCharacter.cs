@@ -34,16 +34,20 @@ public class SelectCharacter : MonoBehaviour
 
 	public void RightButtonOnClick()
 	{
-		m_characterId++;
-
-		m_change = true;
+		if (!m_isReady)
+		{
+			m_characterId++;
+			m_change = true;
+		}
 	}
 
 	public void LeftButtonOnClick()
 	{
-		m_characterId--;
-
-		m_change = true;
+		if (!m_isReady)
+		{
+			m_characterId--;
+			m_change = true;
+		}
 	}
 
 	public void ReadyOnclick()
