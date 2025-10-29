@@ -9,11 +9,11 @@ public class InputSelectCharacter : MonoBehaviour
     SelectCharacter m_selectCharacter;
     PlayerInput m_playerInput;
 
-    [SerializeField] Button[] m_buttons;
+    //[SerializeField] Button[] m_buttons;
 
     public void SetButton(Button[] buttons)
     {
-        m_buttons = buttons;
+        //m_buttons = buttons;
     }
 
     private void Awake()
@@ -40,7 +40,7 @@ public class InputSelectCharacter : MonoBehaviour
     {
         m_selectCharacter.RightButtonOnClick();
 
-        m_buttons[0].onClick.Invoke();
+        //m_buttons[0].onClick.AddListener(() => Debug.Log("test"));
     }
 
     private void OnLeft(InputAction.CallbackContext callback)

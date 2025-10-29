@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 	const float Speed = 7;
 	const float DashSpeed = 10;
 
+    const float StaminaRecoveryTime = 1.0f; // スタミナが回復するまでの時間
+
     [SerializeField] float m_speed = Speed;
     [SerializeField] float m_dashSpeed = 10;
     [SerializeField] float m_jumpSpeed;
@@ -35,16 +37,14 @@ public class PlayerController : MonoBehaviour
     CharacterManager m_characterManager;
     TakeItem m_takeItem;
 
-	InputAction m_anyAction;
-
     float m_verticalVelocity;
-    float m_recoverTime;
-    float m_invincibleTimer;
+    float m_recoverTime;    // スタンからの復帰時間
+    float m_invincibleTimer;    // 被弾後の無敵時間
 
 	float m_speedMagnification;		//足の速さの倍率
 
-
-	float m_stamina;
+	float m_stamina;    // 現在のスタミナ
+    float m_duration;   // スタミナが回復するまでの時間
 
     bool m_isGrounded;
     bool m_isDash;
@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
     bool m_canMove;
     bool m_isStun;
     bool m_isInvincible;
-	bool m_isAny;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -101,7 +100,6 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed += OnAbility;
         m_playerInput.actions["Item"].performed += OnItem;
-		m_playerInput.actions["All"].performed += OnAny;
 	}
 
     private void OnDisable()
@@ -116,7 +114,6 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed -= OnAbility;
         m_playerInput.actions["Item"].performed -= OnItem;
-		m_playerInput.actions["All"].performed -= OnAny;
 	}
 
     private void OnMove(InputAction.CallbackContext callback)
@@ -236,11 +233,6 @@ public class PlayerController : MonoBehaviour
         m_takeItem.ItemUse();
     }
 
-	private void OnAny(InputAction.CallbackContext context)
-	{
-		m_isAny = true;
-	}
-
 	// アニメーションから呼ばれる
 	public void ResetTrigger()
     {
@@ -357,17 +349,23 @@ public class PlayerController : MonoBehaviour
         // スタミナ消費
         if (m_isDash && m_isMoving && !m_isGuard)
         {
+            m_duration = 0;
             m_stamina -= m_staminaDecrease * Time.deltaTime;
             if (m_stamina <= 0)
             {
                 m_isDash = false;
             }
         }
+        // スタミナ回復
         else
         {
             if (m_stamina <= m_characterManager.GetMaxStamina() && !m_isGuard)
             {
-                m_stamina += m_staminaRecovery * Time.deltaTime;
+                m_duration += Time.deltaTime;
+                if (m_duration >= StaminaRecoveryTime)
+                {
+                    m_stamina += m_staminaRecovery * Time.deltaTime;
+                }
             }
         }
 
@@ -436,6 +434,7 @@ public class PlayerController : MonoBehaviour
     {
         m_isGuard = false;
         m_isInvincible = true;
+        m_duration = 0;
 
         float rollDuration = 0.3f;
         float elapsed = 0f;

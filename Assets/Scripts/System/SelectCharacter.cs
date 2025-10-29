@@ -20,6 +20,7 @@ public class SelectCharacter : MonoBehaviour
 	[SerializeField] MoveGameScene m_moveGameScene;
 
 	[SerializeField] Button[] m_button;
+	[SerializeField] Image m_readyImage;
 
 	int m_characterId;
 	int m_characterIdLenght = 4;
@@ -30,6 +31,7 @@ public class SelectCharacter : MonoBehaviour
     void Start()
 	{
         TitleChangeCharacter();
+		m_readyImage.enabled = false;
 	}
 
 	public void RightButtonOnClick()
@@ -57,13 +59,15 @@ public class SelectCharacter : MonoBehaviour
 			m_moveGameScene.Ready();
 
 			m_isReady = true;
+			m_readyImage.enabled = true;
 		}
 		else
 		{
 			m_moveGameScene.NotReady();
 
 			m_isReady = false;
-		}
+            m_readyImage.enabled = false;
+        }
 	}
 
 	private void Update()
