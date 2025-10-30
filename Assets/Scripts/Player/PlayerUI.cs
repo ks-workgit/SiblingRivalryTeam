@@ -5,18 +5,26 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+	const int UiOffSet = 60;
+
     [SerializeField] Slider m_healthBar, m_staminaBar;
+	[SerializeField] CharacterDatas m_characterDatas;
+
+	[SerializeField] GameObject m_remainingLifeUiPrefab, m_crownUiPrefab;
+	[SerializeField] RectTransform m_parent;
+
     CharacterManager m_characterManager;
     PlayerController m_playerController;
 
-    private void Start()
-    {
+	List<GameObject> m_remainingLifeUis = new List<GameObject>();
 
-        //m_healthBar.value = m_characterManager.GetHelth();
-        //m_healthBar.maxValue = m_characterManager.GetMaxHealth();
-        //m_staminaBar.value = m_characterManager.GetStamina();
-        //m_staminaBar.maxValue = m_characterManager.GetMaxStamina();
-    }
+	int m_remainingLife;
+	int m_beforeRemainingLife;
+
+	private void Start()
+    {
+		CreateRemainingLifeUi();
+	}
 
     public void SetBar(Slider health, Slider stamina)
     {
@@ -36,10 +44,100 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        m_healthBar.value = m_characterManager.GetHelth() / m_characterManager.GetMaxHealth();
+		m_remainingLife = m_characterManager.GetRemainingLife();
+
+		m_healthBar.value = m_characterManager.GetHelth() / m_characterManager.GetMaxHealth();
         m_staminaBar.value = m_playerController.GetStamina() / m_characterManager.GetMaxStamina();
 
-       // Debug.Log($"stamina: {m_playerController.GetStamina()} / {m_characterManager.GetMaxStamina()} = {m_playerController.GetStamina() / m_characterManager.GetMaxStamina()}");
-        //Debug.Log("health:" + m_healthBar.value + "Helth" + m_characterManager.GetHelth() + "MaxHealth" + m_characterManager.GetMaxHealth());
-    }
+		DestoryRemainingLifeUi();
+	}
+
+	//残機のUI生成
+	void CreateRemainingLifeUi()
+	{
+		m_remainingLife = m_characterManager.GetRemainingLife();
+
+		//UIの生成
+		if (m_characterManager.GetPlayerId() == 0)
+		{
+			Image remainingLifeUi = m_remainingLifeUiPrefab.GetComponent<Image>();
+			remainingLifeUi.sprite =
+				m_characterDatas.m_characterInfometions[m_characterDatas.PlayerOneCharacterId].m_characterIcon;
+
+			for (int i = 0; i < m_remainingLife; i++)
+			{
+				GameObject remainingLife = Instantiate(
+					m_remainingLifeUiPrefab,
+					m_parent
+					);
+
+				remainingLife.transform.position = new Vector3(
+					remainingLife.transform.position.x + (UiOffSet * i), remainingLife.transform.position.y , remainingLife.transform.position.z);
+
+				m_remainingLifeUis.Add(remainingLife);
+			}			
+		}
+		else
+		{
+			Image remainingLifeUi = m_remainingLifeUiPrefab.GetComponent<Image>();
+			remainingLifeUi.sprite =
+				m_characterDatas.m_characterInfometions[m_characterDatas.PlayerTwoCharacterId].m_characterIcon;
+
+			for (int i = 0; i < m_remainingLife; i++)
+			{
+				GameObject remainingLife = Instantiate(
+					m_remainingLifeUiPrefab,
+					m_parent
+					);
+
+				remainingLife.transform.position = new Vector3(
+					remainingLife.transform.position.x - (UiOffSet * i), remainingLife.transform.position.y, remainingLife.transform.position.z);
+
+				m_remainingLifeUis.Add (remainingLife);
+			}
+		}
+
+		//残機数を保存
+		m_beforeRemainingLife = m_remainingLife;
+	}
+
+	//残機が減ったら削除
+	void DestoryRemainingLifeUi()
+	{
+		if(m_beforeRemainingLife != m_remainingLife)
+		{
+			Destroy(m_remainingLifeUis[m_remainingLifeUis.Count - 1]);
+
+			m_remainingLifeUis.RemoveAt(m_remainingLifeUis.Count - 1);
+
+			m_beforeRemainingLife = m_remainingLife;
+		}
+	}
+
+	void CreateCrownUi()
+	{
+		//王冠の表示
+		if (m_characterManager.GetPlayerId() == 0)
+		{
+			for(int i = 0; i > m_characterDatas.CrownCount[0]; i++)
+			{
+				RectTransform rect = new RectTransform();
+
+				rect.position = new Vector3(0, 0, 0);
+
+				Instantiate(
+					m_crownUiPrefab,
+					rect.position,
+					Quaternion.identity,
+					m_parent
+					);
+			}			
+		}
+		else
+		{
+			Instantiate(
+				m_crownUiPrefab
+				);
+		}
+	}
 }

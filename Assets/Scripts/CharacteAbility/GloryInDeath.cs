@@ -49,7 +49,7 @@ public class GloryInDeath : MonoBehaviour
 			m_characterManeger.GetSetAtttackDamage = m_characterManeger.GetSetAtttackDamage * 5;
 			m_characterManeger.GetSetAtttackSpeed = m_characterManeger.GetSetAtttackSpeed * 3;
 
-			m_playerController.GetSetSpeedMagnification = m_playerController.GetSetSpeedMagnification * 1.5f;
+			m_playerController.GetSetSpeedMagnification = 1.5f;
 
 			m_playerController.ChangeSpeed();
 
@@ -60,7 +60,7 @@ public class GloryInDeath : MonoBehaviour
 			m_characterManeger.GetSetAtttackDamage = m_characterManeger.GetSetAtttackDamage / 5;
 			m_characterManeger.GetSetAtttackSpeed = m_characterManeger.GetSetAtttackSpeed / 3;
 
-			m_playerController.GetSetSpeedMagnification = m_playerController.GetSetSpeedMagnification / 1.5f;
+			m_playerController.GetSetSpeedMagnification = 1;
 
 			m_playerController.InitializationSpeed();
 

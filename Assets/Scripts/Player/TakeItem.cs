@@ -80,8 +80,6 @@ public class TakeItem : MonoBehaviour
 
                 Rigidbody throwItemRb = throwItem.GetComponent<Rigidbody>();
 
-                Vector3 forward = transform.forward;
-
                 throwItemRb.velocity = new Vector3(transform.forward.x * 5, transform.forward.y * 5, transform.forward.z * 5);
 
 				m_nowHaveItem = false;

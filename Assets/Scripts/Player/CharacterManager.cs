@@ -24,7 +24,7 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] float m_helth = MaxHelth;
 	[SerializeField] float m_stamina = MaxStamina;
 	[SerializeField] int m_shield;
-	int m_remainingLife;
+	int m_remainingLife = RemainingLife[0];
 
 	[SerializeField] int m_attackDamage = AttackDamage;
 	[SerializeField] int m_attackSpeed = AttackSpeed;
@@ -102,7 +102,7 @@ public class CharacterManager : MonoBehaviour
 
 	void Start()
     {
-		m_remainingLife = RemainingLife[0];
+		
 	}
 
     void Update()
