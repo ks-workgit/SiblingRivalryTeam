@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,10 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Slider m_healthBar, m_staminaBar;
 	[SerializeField] CharacterDatas m_characterDatas;
 
-	[SerializeField] GameObject m_remainingLifeUiPrefab, m_crownUiPrefab;
+	[SerializeField] GameObject m_remainingLifeUiPrefab;
 	[SerializeField] RectTransform m_parent;
+
+	[SerializeField] TextMeshProUGUI m_crownText;
 
     CharacterManager m_characterManager;
     PlayerController m_playerController;
@@ -50,7 +53,8 @@ public class PlayerUI : MonoBehaviour
         m_staminaBar.value = m_playerController.GetStamina() / m_characterManager.GetMaxStamina();
 
 		DestoryRemainingLifeUi();
-	}
+		CreateCrownUi();
+    }
 
 	//残機のUI生成
 	void CreateRemainingLifeUi()
@@ -114,30 +118,9 @@ public class PlayerUI : MonoBehaviour
 		}
 	}
 
+	// 王冠の数を表示
 	void CreateCrownUi()
 	{
-		//王冠の表示
-		if (m_characterManager.GetPlayerId() == 0)
-		{
-			for(int i = 0; i > m_characterDatas.CrownCount[0]; i++)
-			{
-				RectTransform rect = new RectTransform();
-
-				rect.position = new Vector3(0, 0, 0);
-
-				Instantiate(
-					m_crownUiPrefab,
-					rect.position,
-					Quaternion.identity,
-					m_parent
-					);
-			}			
-		}
-		else
-		{
-			Instantiate(
-				m_crownUiPrefab
-				);
-		}
+        m_crownText.text = $"× {m_characterDatas.CrownCount[m_characterManager.GetPlayerId()]}";      		
 	}
 }

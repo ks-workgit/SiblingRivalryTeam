@@ -312,7 +312,7 @@ public class PlayerController : MonoBehaviour
 			// óéâ∫Ç∑ÇÈë¨Ç≥à»è„Ç…Ç»ÇÁÇ»Ç¢ÇÊÇ§Ç…ï‚ê≥
 			if (m_verticalVelocity < -m_fallSpeed)
 			{
-					m_verticalVelocity = -m_fallSpeed;
+				m_verticalVelocity = -m_fallSpeed;
 			}
 		}
 		m_isGrounded = isGrounded;
