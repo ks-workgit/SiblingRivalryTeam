@@ -22,6 +22,11 @@ public class TakeItem : MonoBehaviour
 		m_itemIcon = image;
 	}
 
+	public void SetHaveItem(bool haveItem)
+	{
+		m_nowHaveItem = haveItem;
+	}
+
 	private void Update()
 	{
 		if(!m_nowHaveItem)
@@ -122,9 +127,9 @@ public class TakeItem : MonoBehaviour
 				Ghost ghost = itemGhost.GetComponent<Ghost>();
 
 				ghost.SetUsePlayerId(m_characterManeger.GetPlayerId());
-				ghost.StealCrown();
+				ghost.SetTakeItem(this);
 
-				m_nowHaveItem = false;
+				ghost.StealCrown();
 			}
 
 		}

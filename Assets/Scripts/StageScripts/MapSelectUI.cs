@@ -50,6 +50,6 @@ public class MapSelectUI : MonoBehaviour
 	void StartGame()
 	{
 		Debug.Log("選ばれたマップ番号: " + SelectedMapIndex);
-		SceneManager.LoadScene("Stage");
+		SceneManager.LoadScene("CharacterSelectScene");
 	}
 }

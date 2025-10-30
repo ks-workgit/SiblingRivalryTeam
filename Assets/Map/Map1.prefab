@@ -2153,8 +2153,7 @@ GameObject:
   - component: {fileID: 367660831808554335}
   - component: {fileID: 3654083964236794618}
   - component: {fileID: 1536041145968754224}
-  - component: {fileID: 4604035290438900143}
-  - component: {fileID: 6257021761900626021}
+  - component: {fileID: 8340248911201559550}
   m_Layer: 6
   m_Name: Tile_Grass_plane
   m_TagString: Untagged
@@ -2227,8 +2226,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4604035290438900143
-BoxCollider:
+--- !u!64 &8340248911201559550
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2245,30 +2244,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
---- !u!65 &6257021761900626021
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031853422551654373}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4605771872901996020, guid: 7e345ee175d80894ba8beefc7a926f07, type: 3}
 --- !u!1 &1074903132377193629
 GameObject:
   m_ObjectHideFlags: 0
@@ -6556,8 +6535,7 @@ GameObject:
   - component: {fileID: 3296798305551975607}
   - component: {fileID: 1904828038424955666}
   - component: {fileID: 4434840893938663384}
-  - component: {fileID: 1674904442714331207}
-  - component: {fileID: 9083704542070489485}
+  - component: {fileID: 3194904450303586788}
   m_Layer: 6
   m_Name: Tile_Grass_plane
   m_TagString: Untagged
@@ -6630,8 +6608,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1674904442714331207
-BoxCollider:
+--- !u!64 &3194904450303586788
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6648,30 +6626,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
---- !u!65 &9083704542070489485
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777388619159657997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4605771872901996020, guid: 7e345ee175d80894ba8beefc7a926f07, type: 3}
 --- !u!1 &2794711663499401994
 GameObject:
   m_ObjectHideFlags: 0
@@ -7623,8 +7581,7 @@ GameObject:
   - component: {fileID: 4268925859556315269}
   - component: {fileID: 905679714270207776}
   - component: {fileID: 3131525317240990698}
-  - component: {fileID: 126282568041122933}
-  - component: {fileID: 7561856875984754111}
+  - component: {fileID: 140282053684386752}
   m_Layer: 6
   m_Name: Tile_Grass_plane
   m_TagString: Untagged
@@ -7697,8 +7654,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &126282568041122933
-BoxCollider:
+--- !u!64 &140282053684386752
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7715,30 +7672,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
---- !u!65 &7561856875984754111
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3491861871339047487}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4605771872901996020, guid: 7e345ee175d80894ba8beefc7a926f07, type: 3}
 --- !u!1 &3558451206387741082
 GameObject:
   m_ObjectHideFlags: 0
@@ -13018,8 +12955,7 @@ GameObject:
   - component: {fileID: 5970469687154663712}
   - component: {fileID: 7310614439346597509}
   - component: {fileID: 4796459293237353039}
-  - component: {fileID: 7504614000616308176}
-  - component: {fileID: 77695048340775962}
+  - component: {fileID: 3243831501849732889}
   m_Layer: 6
   m_Name: Tile_Grass_plane
   m_TagString: Untagged
@@ -13092,8 +13028,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7504614000616308176
-BoxCollider:
+--- !u!64 &3243831501849732889
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13110,30 +13046,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
---- !u!65 &77695048340775962
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6453814537193208730}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.00000017881393, z: 1.0000004}
-  m_Center: {x: 0, y: 1, z: 0.00000017881393}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4605771872901996020, guid: 7e345ee175d80894ba8beefc7a926f07, type: 3}
 --- !u!1 &6460335697125313929
 GameObject:
   m_ObjectHideFlags: 0

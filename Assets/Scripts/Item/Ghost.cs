@@ -6,12 +6,19 @@ public class Ghost : MonoBehaviour
 {
 	[SerializeField] CharacterDatas m_characterDatas;
 
+	TakeItem m_takeItem;
+
 	int m_usePlayerId;
 	int m_enemyPlayerId;
 
 	public void SetUsePlayerId(int usePlayerId)
 	{
 		m_usePlayerId = usePlayerId;
+	}
+	
+	public void SetTakeItem(TakeItem takeItem)
+	{
+		m_takeItem = takeItem;
 	}
 	
 	public void StealCrown()
@@ -25,9 +32,14 @@ public class Ghost : MonoBehaviour
 			m_enemyPlayerId = 0;
 		}
 
-		m_characterDatas.CrownCount[m_usePlayerId]++;
-		m_characterDatas.CrownCount[m_enemyPlayerId]--;
+		if (m_characterDatas.CrownCount[m_enemyPlayerId] > 0)
+		{
+			m_characterDatas.CrownCount[m_usePlayerId]++;
+			m_characterDatas.CrownCount[m_enemyPlayerId]--;
 
+			m_takeItem.SetHaveItem(false);
+		}
+		
 		Destroy(gameObject);
 	}
 }

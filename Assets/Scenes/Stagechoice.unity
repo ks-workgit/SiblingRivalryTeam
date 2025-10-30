@@ -259,33 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824720b497b5e4a41b19a16afc82d272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapImage: {fileID: 1149508756}
-  prevButton: {fileID: 1709232495}
-  nextButton: {fileID: 857339766}
-  startButton: {fileID: 1294258795}
-  mapSprites:
-  - {fileID: 21300000, guid: 39e3c9fb4c8d20340b5ff76fbca645bb, type: 3}
-  - {fileID: 21300000, guid: b7f7e29278265a345ad2da4aaa9712c7, type: 3}
-  - {fileID: 21300000, guid: 23af0f1067733164ca1a1b636f86a02c, type: 3}
-  mapGroups:
-  - mapVariants:
-    - {fileID: 611666462143311067, guid: 0c847f7c9a162b8479d029b64029eef6, type: 3}
-    - {fileID: 611666462143311067, guid: 7509ba9ff0ad48948a04993ed89fdf45, type: 3}
-    - {fileID: 611666462143311067, guid: d23321976d721be4f84f38cca85e081f, type: 3}
-  - mapVariants:
-    - {fileID: 5834407498415913906, guid: 331765960d6e9b24d8162fc7c3c61e1f, type: 3}
-    - {fileID: 5834407498415913906, guid: f2993da0bb4b9314da0b4afe99bf9e08, type: 3}
-    - {fileID: 5834407498415913906, guid: edd97ee70d0320342943f10c4167ad4c, type: 3}
-  - mapVariants:
-    - {fileID: 7366805281234022516, guid: 5ba2b906e6af5824394a9762b8da5e78, type: 3}
-    - {fileID: 7366805281234022516, guid: 74affcadceabdfb43a612b0980b7693d, type: 3}
-    - {fileID: 7366805281234022516, guid: 11bb9144770c10e4cb0c3c253a8ff88a, type: 3}
-  mapWidth: 90
-  currentMapIndex: 0
-  activeMaps: []
-  spawnX: 0
-  gameStarted: 0
-  variationIndex: 0
 --- !u!4 &731998832
 Transform:
   m_ObjectHideFlags: 0
@@ -1205,11 +1178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

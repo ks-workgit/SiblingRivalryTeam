@@ -108,7 +108,7 @@ public class PlayerUI : MonoBehaviour
 	//Žc‹@‚ªŒ¸‚Á‚½‚çíœ
 	void DestoryRemainingLifeUi()
 	{
-		if(m_beforeRemainingLife != m_remainingLife)
+		if(m_beforeRemainingLife != m_remainingLife && m_beforeRemainingLife > 0)
 		{
 			Destroy(m_remainingLifeUis[m_remainingLifeUis.Count - 1]);
 
