@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerRespawn : MonoBehaviour
 {
 	[SerializeField] CharacterManager m_characterManager;
 	[SerializeField] PlayerController m_playerController;
+
+	[SerializeField] GameObject m_crownPrefab;
+	[SerializeField] CharacterDatas m_characterDatas;
+
 	Transform m_respawnPos;
 
 	bool m_isKnockDown;
@@ -39,7 +44,19 @@ public class PlayerRespawn : MonoBehaviour
 
 			m_characterManager.OnIsRespawn();
 
+			DropCrown(transform.position);
+
 			Respawn();
+		}
+	}
+
+	void DropCrown(Vector3 playerPos)
+	{
+		if (m_characterDatas.CrownCount[m_characterManager.GetPlayerId()] > 0)
+		{
+			Instantiate(m_crownPrefab, playerPos, Quaternion.Euler(-90, 0, 0));
+
+			m_characterDatas.CrownCount[m_characterManager.GetPlayerId()]--;
 		}
 	}
 

@@ -384,6 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterManager: {fileID: 6952976182452654463}
   m_playerController: {fileID: 6594801641990257064}
+  m_crownPrefab: {fileID: 2203841068471228637, guid: f66c739d6c6dd224ba055733b5dfdfaa, type: 3}
+  m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
 --- !u!114 &6693269933412674304
 MonoBehaviour:
   m_ObjectHideFlags: 0

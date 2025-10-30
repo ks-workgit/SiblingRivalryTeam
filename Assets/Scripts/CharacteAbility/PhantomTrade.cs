@@ -19,9 +19,12 @@ public class PhantomTrade : MonoBehaviour
 
 	private void Update()
 	{
-		if (!m_se.isPlaying)
+		if (m_isUse)
 		{
-			Destroy(gameObject);
+			if (!m_se.isPlaying)
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 

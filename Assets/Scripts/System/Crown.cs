@@ -12,6 +12,8 @@ public class Crown : MonoBehaviour
 	AudioSource	m_se;
 	MeshRenderer m_mesh;
 
+	bool m_isGeted;
+
 	private void Start()
 	{
 		m_se = GetComponent<AudioSource>();
@@ -21,7 +23,13 @@ public class Crown : MonoBehaviour
 
 	private void Update()
 	{
-		//Debug.Log(m_se.isPlaying);
+		if(m_isGeted)
+		{
+			if (!m_se.isPlaying)
+			{
+				Destroy(gameObject);
+			}
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -36,10 +44,7 @@ public class Crown : MonoBehaviour
 			m_mesh.enabled = false;
 			m_boxCollider.enabled = false;
 
-			if(m_se.isPlaying == false)
-			{
-				Destroy(gameObject);
-			}
+			m_isGeted = true;
 		}
 	}
 }
