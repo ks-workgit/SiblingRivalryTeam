@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 5701073065960763494}
   - component: {fileID: 8177704623789865870}
   - component: {fileID: 1625486022966120475}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2278,7 +2278,7 @@ GameObject:
   - component: {fileID: 7182914993645187218}
   - component: {fileID: 1165152838600239673}
   - component: {fileID: 5209795600160102405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 4033096488925750235}
   - component: {fileID: 2827330145135219154}
   - component: {fileID: 8645276548118335912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4183,7 +4183,7 @@ GameObject:
   - component: {fileID: 8709480401597841463}
   - component: {fileID: 1071642006265494160}
   - component: {fileID: 2256732357842570042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4299,7 +4299,7 @@ GameObject:
   - component: {fileID: 2505440132861321067}
   - component: {fileID: 5817645140782143012}
   - component: {fileID: 2860856952989127207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5318,7 +5318,7 @@ GameObject:
   - component: {fileID: 305098848454170755}
   - component: {fileID: 8908227207592368556}
   - component: {fileID: 6056699523493387234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7159,7 +7159,7 @@ GameObject:
   - component: {fileID: 3060188661895666810}
   - component: {fileID: 6818021390372193381}
   - component: {fileID: 5876881678073081144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8214,7 +8214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424934175209236873}
   - component: {fileID: 6731683947678893006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9721,7 +9721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5388453655808707285}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10732,7 +10732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847599767981572808}
   - component: {fileID: 4129580281613556776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrownCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10789,7 +10789,7 @@ GameObject:
   - component: {fileID: 2378244424609714748}
   - component: {fileID: 2264694748767293390}
   - component: {fileID: 2313674814819606385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11258,7 +11258,7 @@ GameObject:
   - component: {fileID: 6247706993210038642}
   - component: {fileID: 49675641104100175}
   - component: {fileID: 701650633244181060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12516,7 +12516,7 @@ GameObject:
   - component: {fileID: 7150573103586587736}
   - component: {fileID: 7462450088399766795}
   - component: {fileID: 7864153929517523165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19729,6 +19729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeStump (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5277321170047512297, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -19803,6 +19807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeStump
       objectReference: {fileID: 0}
+    - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5277321170047512297, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -19876,6 +19884,10 @@ PrefabInstance:
     - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_Name
       value: TreeStump (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5277321170047512297, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_LocalScale.x
@@ -20007,6 +20019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge
       objectReference: {fileID: 0}
+    - target: {fileID: 7674317617464386109, guid: e1a0689d46886f144a45c3a21696b11f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7256063953571225426, guid: e1a0689d46886f144a45c3a21696b11f, type: 3}
     m_RemovedGameObjects: []
@@ -20106,6 +20122,10 @@ PrefabInstance:
     - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_Name
       value: TreeStump (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789330849309193299, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5277321170047512297, guid: 689e0e395ec9cb243b15de84f377e7c5, type: 3}
       propertyPath: m_LocalScale.x

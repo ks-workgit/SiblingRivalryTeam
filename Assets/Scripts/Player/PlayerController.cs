@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     bool m_canMove;
     bool m_isStun;
     bool m_isInvincible;
+	bool m_isJump;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -154,8 +155,10 @@ public class PlayerController : MonoBehaviour
 
         m_verticalVelocity = m_jumpSpeed;
         m_isGrounded = false;
-        m_animator.SetTrigger("Jump");            
-    }
+        m_animator.SetTrigger("Jump");
+
+		m_isJump = true;
+	}
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
@@ -292,14 +295,11 @@ public class PlayerController : MonoBehaviour
 		set { m_speedMagnification = value; }
 	}
 
-	private void Update()
+	private void FixedUpdate()
     {
-		Debug.Log("m_speed " + m_speed);
-		Debug.Log("m_dashSpeed " + m_dashSpeed);
-
 		var isGrounded = m_characterController.isGrounded;
 
-		if (isGrounded && !m_isGrounded)
+		if (isGrounded && !m_isGrounded && !m_isJump && m_verticalVelocity < 0)
 		{
 			// ’…’n‚·‚éuŠÔ‚É—Ž‰º‚Ì‰‘¬‚ðŽw’è‚µ‚Ä‚¨‚­
 			m_verticalVelocity = -m_initFallSpeed;
@@ -307,7 +307,14 @@ public class PlayerController : MonoBehaviour
 		else if (!isGrounded)
 		{
 			// ‹ó’†‚É‚¢‚é‚Æ‚«‚Í‰ºŒü‚«‚Éd—Í‰Á‘¬“x‚ð—^‚¦‚Ä—Ž‰º‚³‚¹‚é
-			m_verticalVelocity -= m_gravity * Time.deltaTime;
+			if(!m_isJump)
+			{
+				m_verticalVelocity -= m_gravity * Time.deltaTime;
+			}
+			else
+			{
+				m_isJump = false;
+			}
 
 			// —Ž‰º‚·‚é‘¬‚³ˆÈã‚É‚È‚ç‚È‚¢‚æ‚¤‚É•â³
 			if (m_verticalVelocity < -m_fallSpeed)
@@ -468,11 +475,6 @@ public class PlayerController : MonoBehaviour
 
         m_isAvoidance = false;
     }
-
-	public void KnockBack(float kockBackPower)
-	{
-		m_verticalVelocity = kockBackPower;
-	}
 
 	public void ChangeSpeed()
 	{

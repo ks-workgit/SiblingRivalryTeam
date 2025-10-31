@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 5701073065960763494}
   - component: {fileID: 8177704623789865870}
   - component: {fileID: 1625486022966120475}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2259,7 @@ GameObject:
   - component: {fileID: 7182914993645187218}
   - component: {fileID: 1165152838600239673}
   - component: {fileID: 5209795600160102405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3276,7 +3276,7 @@ GameObject:
   - component: {fileID: 4033096488925750235}
   - component: {fileID: 2827330145135219154}
   - component: {fileID: 8645276548118335912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4058,7 +4058,7 @@ GameObject:
   - component: {fileID: 8709480401597841463}
   - component: {fileID: 1071642006265494160}
   - component: {fileID: 2256732357842570042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4174,7 +4174,7 @@ GameObject:
   - component: {fileID: 2505440132861321067}
   - component: {fileID: 5817645140782143012}
   - component: {fileID: 2860856952989127207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5088,7 +5088,7 @@ GameObject:
   - component: {fileID: 305098848454170755}
   - component: {fileID: 8908227207592368556}
   - component: {fileID: 6056699523493387234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6907,7 +6907,7 @@ GameObject:
   - component: {fileID: 3060188661895666810}
   - component: {fileID: 6818021390372193381}
   - component: {fileID: 5876881678073081144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8068,7 +8068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424934175209236873}
   - component: {fileID: 6731683947678893006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10313,7 +10313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847599767981572808}
   - component: {fileID: 4129580281613556776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrownCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10370,7 +10370,7 @@ GameObject:
   - component: {fileID: 2378244424609714748}
   - component: {fileID: 2264694748767293390}
   - component: {fileID: 2313674814819606385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10839,7 +10839,7 @@ GameObject:
   - component: {fileID: 6247706993210038642}
   - component: {fileID: 49675641104100175}
   - component: {fileID: 701650633244181060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12097,7 +12097,7 @@ GameObject:
   - component: {fileID: 7150573103586587736}
   - component: {fileID: 7462450088399766795}
   - component: {fileID: 7864153929517523165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpownPos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

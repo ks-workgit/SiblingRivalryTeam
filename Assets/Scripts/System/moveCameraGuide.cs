@@ -7,8 +7,8 @@ public class moveCameraGuide : MonoBehaviour
 	[SerializeField] GameObject CameraGuide;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-		CameraGuide.transform.position += new Vector3(0.01f,0,0);
+		CameraGuide.transform.position += new Vector3(0.05f,0,0);
     }
 }

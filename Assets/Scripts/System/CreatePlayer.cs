@@ -48,6 +48,8 @@ public class CreatePlayer : MonoBehaviour
 		m_playerInputManager.playerPrefab =
 			m_characterDatas.m_characterInfometions[characterId[playerId]].m_characterPrefab;
 
+		m_playerInputManager.playerPrefab.transform.position = m_respawnPos.position;
+
 		//プレイヤーを生成
 		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);
 
@@ -69,8 +71,6 @@ public class CreatePlayer : MonoBehaviour
 
 		UseAbility useAbility = player.GetComponent<UseAbility>();
 		useAbility.SetAbilityIcon(m_abilityIcon[playerId]);
-
-		player.transform.position = m_respawnPos.position;
 
 		Debug.Log("生成　プレイヤーID" + playerId + "キャラクターID" + characterId[playerId]);
 	}

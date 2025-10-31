@@ -44,7 +44,7 @@ public class TakeItem : MonoBehaviour
 	{
 		m_nowHaveItem = true;
 
-		m_itemIcon.sprite = LoadItemIcon.Load(itemId);
+		m_itemIcon.sprite = m_itemDatas.m_itemDatas[itemId].m_itemIcon;
 
 		m_haveItemId = itemId;
 	}

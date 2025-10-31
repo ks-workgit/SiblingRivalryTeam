@@ -16,4 +16,5 @@ public class ItemInfomertions
 	public int m_itemId;
 	public string m_name;
 	public int m_itemKindNum;
+	public Sprite m_itemIcon;
 }
