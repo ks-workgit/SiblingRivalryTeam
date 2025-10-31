@@ -8,7 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
 	const int UiOffSet = 60;
 
-    [SerializeField] Slider m_healthBar, m_staminaBar;
+    [SerializeField] Slider m_healthBar, m_staminaBar, m_shildBar;
 	[SerializeField] CharacterDatas m_characterDatas;
 
 	[SerializeField] GameObject m_remainingLifeUiPrefab;
@@ -33,6 +33,7 @@ public class PlayerUI : MonoBehaviour
     {
         m_healthBar = health;
         m_staminaBar = stamina;
+
     }
 
     public void SetCharacterManager(CharacterManager characterManager)
@@ -51,6 +52,7 @@ public class PlayerUI : MonoBehaviour
 
 		m_healthBar.value = m_characterManager.GetHelth() / m_characterManager.GetMaxHealth();
         m_staminaBar.value = m_playerController.GetStamina() / m_characterManager.GetMaxStamina();
+		m_shildBar.value = m_characterManager.GetShield() / m_characterManager.GetMaxShield();
 
 		DestoryRemainingLifeUi();
 		CreateCrownUi();

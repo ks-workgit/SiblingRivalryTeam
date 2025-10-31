@@ -65,7 +65,6 @@ public class CreatePlayer : MonoBehaviour
 		m_playerUI[playerId].SetPlayerController(playerController);
         m_playerUI[playerId].SetBar(m_healthBar[playerId], m_staminaBar[playerId]);
 
-
         PlayerRespawn playerRespawn = player.GetComponent<PlayerRespawn>();
 		playerRespawn.SetRespawnPos(m_respawnPos);
 

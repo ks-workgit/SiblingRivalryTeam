@@ -68,6 +68,11 @@ public class CharacterManager : MonoBehaviour
 		return m_shield;
 	}
 
+	public float GetMaxShield()
+	{
+		return MaxShield;
+	}
+
 	public int GetRemainingLife()
 	{
 		return m_remainingLife;
@@ -118,6 +123,15 @@ public class CharacterManager : MonoBehaviour
 
 			m_characterDatas.IsDeth[m_playerId] = true;
 		}
+
+		if(m_helth > MaxHelth)
+		{
+			m_helth = MaxHelth;
+		}
+		if(m_shield >MaxShield)
+		{
+			m_shield = MaxShield;
+		}
     }
 
 	//体力がゼロになった時の処理
@@ -139,8 +153,30 @@ public class CharacterManager : MonoBehaviour
 		// 無敵じゃないとき
 		if (!m_playerController.GetIsInvincible())
 		{
+			//シールドがある時のダメージ処理
+			if(m_shield > 0)
+			{
+				//ダメージがシールドの量を上回った時
+				if(damage > m_shield)
+				{
+					int restDamage = 0;
+					restDamage = damage - m_shield;
+
+					m_shield -= damage;
+					m_helth -= restDamage;
+				}
+				else
+				{
+					m_shield -= damage;
+				}
+			}
+			//シールドがない時のダメージ処理
+			else
+			{
+				m_helth -= damage;
+			}
+
 			m_playerController.SetIsStun(true);
-			m_helth -= damage;
 		}
 	}
 
