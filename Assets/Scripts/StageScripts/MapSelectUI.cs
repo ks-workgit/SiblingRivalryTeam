@@ -27,14 +27,14 @@ public class MapSelectUI : MonoBehaviour
 		startButton.onClick.AddListener(StartGame);
 	}
 
-	void PrevMap()
+	public void PrevMap()
 	{
 		currentIndex--;
 		if (currentIndex < 0) currentIndex = mapSprites.Length - 1;
 		UpdateMapDisplay();
 	}
 
-	void NextMap()
+	public void NextMap()
 	{
 		currentIndex++;
 		if (currentIndex >= mapSprites.Length) currentIndex = 0;
@@ -47,7 +47,7 @@ public class MapSelectUI : MonoBehaviour
 		SelectedMapIndex = currentIndex;
 	}
 
-	void StartGame()
+	public void StartGame()
 	{
 		Debug.Log("選ばれたマップ番号: " + SelectedMapIndex);
 		SceneManager.LoadScene("CharacterSelectScene");
