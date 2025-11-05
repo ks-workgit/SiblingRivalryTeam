@@ -20,6 +20,8 @@ public class IssueJudgement : MonoBehaviour
 	int m_remainingLifeIndex;
 
 	bool m_isEnd;
+	bool m_isVictory1P;
+	bool m_isVictory2P;
 
 	// Start is called before the first frame update
 	void Start()
@@ -48,26 +50,28 @@ public class IssueJudgement : MonoBehaviour
 		//王冠を規定数集めたら勝利
 		if (characterDatas.CrownCount[0] >= VectoryCrownCount[0])
 		{
-			m_resultScreen.SetActive(true);
+			//m_resultScreen.SetActive(true);
 
 			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち王冠で");
 
 			m_isEnd = true;
+			m_isVictory1P = true;
 
             m_audioSource.Play();
         }
 		//残機を減らしたら勝利
 		else if (characterDatas.IsDeth[1])
 		{
-			m_resultScreen.SetActive(true);
+			//m_resultScreen.SetActive(true);
 
 			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち残機なくして");
 
 			m_isEnd = true;
+            m_isVictory1P = true;
 
             m_audioSource.Play();
         }
@@ -75,28 +79,42 @@ public class IssueJudgement : MonoBehaviour
 		//王冠を規定数集めたら勝利
 		if (characterDatas.CrownCount[1] >= VectoryCrownCount[0])
 		{
-			m_resultScreen.SetActive(true);
+			//m_resultScreen.SetActive(true);
 
 			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち王冠で");
 
 			m_isEnd = true;
+			m_isVictory2P = true;
 
             m_audioSource.Play();
         }
 		//残機を減らしたら勝利
 		else if (characterDatas.IsDeth[0])
 		{
-			m_resultScreen.SetActive(true);
+			//m_resultScreen.SetActive(true);
 
 			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち残機なくして");
 
 			m_isEnd = true;
+            m_isVictory2P = true;
 
             m_audioSource.Play();
         }
+	}
+
+	public bool GetVictoryPlayer(int player)
+	{
+		if (player == 1)
+		{
+			return m_isVictory1P;
+		}
+		else
+		{
+			return m_isVictory2P;
+		}
 	}
 }
