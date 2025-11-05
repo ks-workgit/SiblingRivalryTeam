@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84497e44362436449bd27c0f1ff0d06b, type: 3}
   m_Name: CharacterDatas
   m_EditorClassIdentifier: 
-  PlayerOneCharacterId: 3
+  PlayerOneCharacterId: 0
   PlayerTwoCharacterId: 0
   CrownCount: 0000000000000000
   IsDeth: 0000

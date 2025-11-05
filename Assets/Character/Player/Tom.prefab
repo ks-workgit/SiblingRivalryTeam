@@ -117,6 +117,111 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_distance: 0.35
+--- !u!1 &5038094841952460323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018222533527389183}
+  - component: {fileID: 787573640759311797}
+  - component: {fileID: 8594206834515491256}
+  - component: {fileID: 226049606680434159}
+  m_Layer: 0
+  m_Name: hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9018222533527389183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038094841952460323}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000011920929, y: 0.00000018586725, z: 0.00000016956224, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.09999995, y: 0.09999998, z: 0.10000003}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3591153915052381129}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &787573640759311797
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038094841952460323}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8594206834515491256
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038094841952460323}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &226049606680434159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038094841952460323}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!1 &5471674113087940143
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +238,7 @@ GameObject:
   - component: {fileID: 3326981224083637023}
   - component: {fileID: 6693269933412674304}
   - component: {fileID: 5690507617016210172}
+  - component: {fileID: 922938353181793011}
   - component: {fileID: 7633106174706896585}
   m_Layer: 0
   m_Name: Tom
@@ -318,6 +424,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 67c1efed-2bc5-4673-a058-ba8b37c37ebe
     m_ActionName: Player/All[/XInputControllerWindows/dpad,/XInputControllerWindows/start,/XInputControllerWindows/select,/XInputControllerWindows/leftStickPress,/XInputControllerWindows/rightStickPress,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftStick,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 457a6a7e-378f-47c4-9873-bd28d738390e
+    m_ActionName: Player/WeaponDrop[/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -415,6 +525,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 1
+--- !u!114 &922938353181793011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471674113087940143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138960a314f804d4ab48d7bd78624de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_handPos: {fileID: 9018222533527389183}
+  m_weaponDatas: {fileID: 11400000, guid: 595f0930daaee8149bffe01a15e7cade, type: 2}
+  m_characterManager: {fileID: 6952976182452654463}
+  m_playerController: {fileID: 6594801641990257064}
 --- !u!143 &7633106174706896585
 CharacterController:
   m_ObjectHideFlags: 0
@@ -562,12 +688,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7478225697108807222, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7478225697116208134, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7478225697115775476, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 9018222533527389183}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
 --- !u!4 &3591153915052380749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7478225697115775088, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
+  m_PrefabInstance: {fileID: 6201924889641480765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3591153915052381129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7478225697115775476, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
   m_PrefabInstance: {fileID: 6201924889641480765}
   m_PrefabAsset: {fileID: 0}

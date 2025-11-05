@@ -25,7 +25,7 @@ public class OverdriveMode : MonoBehaviour
 	IEnumerator UseSkill()
 	{
 		int attackDamage = m_characterManeger.GetSetAtttackDamage;
-		int attackSpeed = m_characterManeger.GetSetAtttackSpeed;
+		float attackSpeed = m_characterManeger.GetSetAtttackSpeed;
 		float speedMagnification = m_playerController.GetSetSpeedMagnification;
 
 		attackDamage *= Magnification;

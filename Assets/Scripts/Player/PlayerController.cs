@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     bool m_isStun;
     bool m_isInvincible;
 	bool m_isJump;
+	bool m_weaponDrop;
 
     Vector3 m_direction;
     Vector3 m_velocity;
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed += OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed += OnAbility;
         m_playerInput.actions["Item"].performed += OnItem;
+		m_playerInput.actions["WeaponDrop"].performed += OnWeaponDrop;
 	}
 
     private void OnDisable()
@@ -115,6 +117,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["AvoidanceKey"].performed -= OnAvoidanceKey;
         m_playerInput.actions["Ability"].performed -= OnAbility;
         m_playerInput.actions["Item"].performed -= OnItem;
+		m_playerInput.actions["WeaponDrop"].performed -= OnWeaponDrop;
 	}
 
     private void OnMove(InputAction.CallbackContext callback)
@@ -122,7 +125,7 @@ public class PlayerController : MonoBehaviour
         if (m_isStun || m_isGuard) return;
 
         m_isMoving = true;
-        var value = callback.ReadValue<Vector2>();
+		var value = callback.ReadValue<Vector2>();
         m_direction = new Vector3(value.x, 0, value.y);
     }
 
@@ -236,11 +239,18 @@ public class PlayerController : MonoBehaviour
         m_takeItem.ItemUse();
     }
 
+	private void OnWeaponDrop(InputAction.CallbackContext callback)
+	{
+		m_weaponDrop = true;
+	}
+
 	// アニメーションから呼ばれる
 	public void ResetTrigger()
     {
         m_canMove = true;
-        m_animator.ResetTrigger("Jump");
+		m_isAttacking = false;
+
+		m_animator.ResetTrigger("Jump");
         m_animator.ResetTrigger("Attack");
     }
 
@@ -289,6 +299,16 @@ public class PlayerController : MonoBehaviour
     {
         return m_stamina;
     }	
+
+	public bool GetWeaPonDrop()
+	{
+		return m_weaponDrop;
+	}
+
+	public void ResetWeaponDrop()
+	{
+		m_weaponDrop = false;
+	}
 
 	public float GetSetSpeedMagnification
 	{

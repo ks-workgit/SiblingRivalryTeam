@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponDrop",
+                    "type": "Button",
+                    "id": "457a6a7e-378f-47c4-9873-bd28d738390e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -497,6 +506,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "All",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c77def45-60f6-4020-bf7c-67c3d04638db",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

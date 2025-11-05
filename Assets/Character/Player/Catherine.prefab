@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022233110861739809}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10936239, y: -0.010146113, z: 0.9229493, w: -0.36891943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.097, y: 0.008, z: 0.005}
   m_LocalScale: {x: 0.10000001, y: 0.09999998, z: 0.10000003}
   m_ConstrainProportionsScale: 1
@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: 1510526128495418106}
   - component: {fileID: 307195813595906490}
   - component: {fileID: 6440123992225554232}
+  - component: {fileID: 5166605499398722763}
   - component: {fileID: -354147980165965390}
   - component: {fileID: 7414647318838584181}
   m_Layer: 0
@@ -1469,6 +1470,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 67c1efed-2bc5-4673-a058-ba8b37c37ebe
     m_ActionName: Player/All[/XInputControllerWindows/dpad,/XInputControllerWindows/start,/XInputControllerWindows/select,/XInputControllerWindows/leftStickPress,/XInputControllerWindows/rightStickPress,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftStick,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 457a6a7e-378f-47c4-9873-bd28d738390e
+    m_ActionName: Player/WeaponDrop[/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1566,6 +1571,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 0
+--- !u!114 &5166605499398722763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218075769930803476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138960a314f804d4ab48d7bd78624de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_handPos: {fileID: 3391943557984738613}
+  m_weaponDatas: {fileID: 11400000, guid: 595f0930daaee8149bffe01a15e7cade, type: 2}
+  m_characterManager: {fileID: -3323073569137445664}
+  m_playerController: {fileID: 5478181343302709016}
+  m_waepon: {fileID: 520035609755978569, guid: 0fc9a069ab4822d4796b1c802b95f0e6, type: 3}
 --- !u!143 &-354147980165965390
 CharacterController:
   m_ObjectHideFlags: 0

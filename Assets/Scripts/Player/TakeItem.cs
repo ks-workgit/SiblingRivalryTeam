@@ -78,10 +78,16 @@ public class TakeItem : MonoBehaviour
             //投げる系アイテム
             if (m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 0)
             {
-                GameObject throwItem = Instantiate(
+				//プレイヤーの前方の位置を計算
+				Vector3 playerFrontPos = new Vector3(
+					transform.position.x + transform.forward.x,
+					transform.position.y + transform.forward.y,
+					transform.position.z + transform.forward.z);
+
+				GameObject throwItem = Instantiate(
                     m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs,
-                    new Vector3(m_playerTransform.position.x, m_playerTransform.position.y + 1, m_playerTransform.position.z),
-                    Quaternion.identity);
+				   playerFrontPos,
+					Quaternion.identity);
 
                 Rigidbody throwItemRb = throwItem.GetComponent<Rigidbody>();
 

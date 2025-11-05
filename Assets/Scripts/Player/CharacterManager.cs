@@ -13,7 +13,7 @@ public class CharacterManager : MonoBehaviour
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
 	const int AttackDamage = 10;
-	const int AttackSpeed = 1;
+	const float AttackSpeed = 1;
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
@@ -27,7 +27,7 @@ public class CharacterManager : MonoBehaviour
 	int m_remainingLife = RemainingLife[0];
 
 	[SerializeField] int m_attackDamage = AttackDamage;
-	[SerializeField] int m_attackSpeed = AttackSpeed;
+	[SerializeField] float m_attackSpeed = AttackSpeed;
 
 	bool m_isDeth = false;
 
@@ -99,7 +99,7 @@ public class CharacterManager : MonoBehaviour
 		set { m_attackDamage = value; }
 	}
 
-	public int GetSetAtttackSpeed
+	public float GetSetAtttackSpeed
 	{
 		get { return m_attackSpeed; }
 		set { m_attackSpeed = value; }

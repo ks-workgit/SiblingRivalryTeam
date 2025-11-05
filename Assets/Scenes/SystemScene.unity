@@ -1025,10 +1025,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1382352d60870c40b7e5a1b0628da6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_characterManeger:
-  - {fileID: 1817275324}
   m_resultScreen: {fileID: 0}
-  m_winnerText: {fileID: 0}
+  m_winnerImage: {fileID: 0}
+  characterDatas: {fileID: 0}
+  m_winnerSprites: []
 --- !u!1 &1414173898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,8 +1230,8 @@ Transform:
   m_GameObject: {fileID: 1435122798}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.68, y: 0.99, z: 2.12}
-  m_LocalScale: {x: 85.55, y: 1, z: 10}
+  m_LocalPosition: {x: 4.58, y: 0.99, z: 2.12}
+  m_LocalScale: {x: 85.88, y: 1, z: 32.18}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1694937524}
@@ -1343,17 +1343,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1435122802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1817275324 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -3323073569137445664, guid: 80d6b614de5a6e340b067493edcb8f8f, type: 3}
-  m_PrefabInstance: {fileID: 162536887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32481171d90355544834b57a29745def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2055381602
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,16 +1,109 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TakeWeapon : MonoBehaviour
 {
+	const int AttackSpeedInitial = 1;
+	const float OffSet = 1;	
+
 	[SerializeField] Transform m_handPos;
+	[SerializeField] WeaponDatas m_weaponDatas;
+
+	[SerializeField] CharacterManager m_characterManager;
+	[SerializeField] PlayerController m_playerController;
+
+	GameObject m_haveWaepon;
+
+	int m_weaponId;
+
+	bool m_isHaveWaepon;
+	bool m_isDroping;
+
+	public bool GetIsDroping()
+	{
+		return m_isDroping;
+	}
+
+	private void Update()
+	{
+		DropWeapon();
+
+		if(!m_isHaveWaepon || m_isDroping)
+		{
+			m_playerController.ResetWeaponDrop();
+		}
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.CompareTag("Weapon"))
+		//武器に触れたら拾う
+		if(other.CompareTag("Weapon") && !m_isHaveWaepon && !m_isDroping)
 		{
+			DropWeapon dropWaepon = other.GetComponent<DropWeapon>();
 
+			m_weaponId = dropWaepon.GetWeaponId();
+
+			m_haveWaepon = Instantiate(
+				m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs,
+				m_handPos.position,
+				Quaternion.identity,
+				m_handPos);
+
+			m_haveWaepon.transform.localRotation = Quaternion.Euler(0, 0, 180);
+
+			m_characterManager.GetSetAtttackDamage += m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
+			m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
+
+			Destroy(other.gameObject);
+
+			m_isHaveWaepon = true;
 		}
+	}
+
+	//武器を捨てる処理
+	void DropWeapon()
+	{
+		if (m_playerController.GetWeaPonDrop() && m_isHaveWaepon && !m_isDroping)
+		{
+			m_isDroping = true;
+
+			Destroy(m_haveWaepon.gameObject);
+
+			//プレイヤーの前方の位置を計算
+			Vector3 playerFrontPos = new Vector3(
+				transform.position.x + transform.forward.x,
+				transform.position.y + transform.forward.y + OffSet,
+				transform.position.z + transform.forward.z);
+
+			GameObject dropWeapon = Instantiate(
+				m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs,
+				 playerFrontPos,
+				Quaternion.Euler(-90,0,0)
+				);
+
+			Rigidbody weaponRb = dropWeapon.GetComponent<Rigidbody>();
+			//落とした武器を前に投げる
+			weaponRb.velocity = new Vector3(transform.forward.x * 7, transform.forward.y * 7, transform.forward.z * 7);
+
+			m_playerController.ResetWeaponDrop();
+
+			m_characterManager.GetSetAtttackDamage -= m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
+			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
+
+			m_isHaveWaepon = false;
+
+			StartCoroutine(ResetHaveWeapon());
+		}
+	}
+
+	//投げた後すぐに拾えてしまうから時間を開けてから拾えるようにするため
+	IEnumerator ResetHaveWeapon()
+	{
+		yield return new WaitForSeconds(1);
+
+		m_isDroping = false;
 	}
 }
