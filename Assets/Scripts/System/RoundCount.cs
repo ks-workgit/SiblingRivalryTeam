@@ -10,12 +10,15 @@ public class RoundCount : MonoBehaviour
     [SerializeField] GameObject m_roundPanel;
     [SerializeField] IssueJudgement m_issueJudgement;
 
-    public static int m_round1P;
-    public static int m_round2P;
+    static int[] RoundsCount = { 1, 2, 3 }; // ラウンド数
+
+    // 現在のラウンド数
+    public static int Round1P = 0;
+    public static int Round2P = 0;
 
     bool m_isFinished = false;
 
-    const float SceneLoadTime = 3.0f;
+    const float SceneLoadTime = 3.0f;   // シーン遷移するまでの時間
 
     private void Start()
     {
@@ -24,7 +27,6 @@ public class RoundCount : MonoBehaviour
 
     private void Update()
     {
-
         if (!m_isFinished)
         {
             // 1Pの勝利
@@ -38,22 +40,22 @@ public class RoundCount : MonoBehaviour
                 WhichVictory(2);
             }
         }
-
     }
 
+    // 勝った方のカウントを増やす
     private void WhichVictory(int player)
     {
         if (player == 1)
         {
-            m_round1P++;            
+            Round1P++;            
         }
         else
         {
-            m_round2P++;            
+            Round2P++;            
         }
 
-        m_roundCount1P.text = m_round1P.ToString();
-        m_roundCount2P.text = m_round2P.ToString();
+        m_roundCount1P.text = Round1P.ToString();
+        m_roundCount2P.text = Round2P.ToString();
 
         m_roundPanel.SetActive(true);
         m_isFinished = true;
@@ -63,9 +65,20 @@ public class RoundCount : MonoBehaviour
 
     IEnumerator SceneLoad()
     {
-        Debug.Log(SceneLoadTime);
         yield return new WaitForSeconds(SceneLoadTime);
-        SceneManager.LoadScene("Stagechoice");
+
+        // 現在のラウンド数が設定したラウンド数以上になったか
+        if (Round1P >= RoundsCount[1] || Round2P >= RoundsCount[1])
+        {
+            Round1P = 0;
+            Round2P = 0;
+            SceneManager.LoadScene("Result");
+        }
+        else
+        {
+            SceneManager.LoadScene("Stagechoice");
+        }
+
         m_roundPanel.SetActive(false);
         m_isFinished = false;
     }

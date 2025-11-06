@@ -12,7 +12,7 @@ public class IssueJudgement : MonoBehaviour
 
 	[SerializeField] Sprite[] m_winnerSprites;
 
-	static int[] VectoryCrownCount = { 3, 5, 10 };
+	static int[] VictoryCrownCount = { 3, 5, 10 };
 
 	AudioSource m_audioSource;
 
@@ -48,7 +48,7 @@ public class IssueJudgement : MonoBehaviour
 	void Judgement()
 	{
 		//‰¤Š¥‚ğ‹K’è”W‚ß‚½‚çŸ—˜
-		if (characterDatas.CrownCount[0] >= VectoryCrownCount[0])
+		if (characterDatas.CrownCount[0] >= VictoryCrownCount[0])
 		{
 			//m_resultScreen.SetActive(true);
 
@@ -77,7 +77,7 @@ public class IssueJudgement : MonoBehaviour
         }
 
 		//‰¤Š¥‚ğ‹K’è”W‚ß‚½‚çŸ—˜
-		if (characterDatas.CrownCount[1] >= VectoryCrownCount[0])
+		if (characterDatas.CrownCount[1] >= VictoryCrownCount[0])
 		{
 			//m_resultScreen.SetActive(true);
 
@@ -106,6 +106,7 @@ public class IssueJudgement : MonoBehaviour
         }
 	}
 
+	// Ÿ‚Á‚½•û‚ğæ“¾‚·‚é
 	public bool GetVictoryPlayer(int player)
 	{
 		if (player == 1)
