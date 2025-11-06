@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Ability"].performed += OnAbility;
         m_playerInput.actions["Item"].performed += OnItem;
 		m_playerInput.actions["WeaponDrop"].performed += OnWeaponDrop;
+		m_playerInput.actions["ItemDrop"].performed += OnItemDrop;
 	}
 
     private void OnDisable()
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
         m_playerInput.actions["Ability"].performed -= OnAbility;
         m_playerInput.actions["Item"].performed -= OnItem;
 		m_playerInput.actions["WeaponDrop"].performed -= OnWeaponDrop;
+		m_playerInput.actions["ItemDrop"].performed -= OnItemDrop;
 	}
 
     private void OnMove(InputAction.CallbackContext callback)
@@ -242,6 +244,11 @@ public class PlayerController : MonoBehaviour
 	private void OnWeaponDrop(InputAction.CallbackContext callback)
 	{
 		m_weaponDrop = true;
+	}
+
+	private void OnItemDrop(InputAction.CallbackContext callback)
+	{
+		m_takeItem.DropItem();
 	}
 
 	// アニメーションから呼ばれる

@@ -6,10 +6,12 @@ public class SlowGrenade : MonoBehaviour
 {
 	[SerializeField] GameObject SlowField;
 
+	CapsuleCollider m_collider;
+
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        m_collider = GetComponent<CapsuleCollider>();
     }
 
 	private void OnTriggerEnter(Collider other)
@@ -21,6 +23,8 @@ public class SlowGrenade : MonoBehaviour
 				transform.position,
 				Quaternion.Euler(-90,0,0)
 				);
+
+			Destroy(gameObject);
 		}
 	}
 }

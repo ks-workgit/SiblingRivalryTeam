@@ -18,3 +18,13 @@ MonoBehaviour:
     m_weaponId: 0
     m_attackDamage: 10
     m_attackSpeed: 1
+  - m_weaponPrefabs: {fileID: 5959289845455520593, guid: 21eb4daa8164eea4f8e9d779f47cb374, type: 3}
+    m_dropWeaponPrefabs: {fileID: 788488347092482983, guid: e080c438d89503e4bb49e362c9f02973, type: 3}
+    m_weaponId: 1
+    m_attackDamage: 30
+    m_attackSpeed: 0.7
+  - m_weaponPrefabs: {fileID: 7448771026280248592, guid: b650f996999834d40b14ee3435e88123, type: 3}
+    m_dropWeaponPrefabs: {fileID: 289241028541015161, guid: 64722ad728189b644814d32aee2f9377, type: 3}
+    m_weaponId: 2
+    m_attackDamage: 5
+    m_attackSpeed: 1.5

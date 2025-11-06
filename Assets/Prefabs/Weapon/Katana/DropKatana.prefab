@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3415116383094193558}
   - component: {fileID: 881497812729008349}
   - component: {fileID: 7398508890007424054}
-  - component: {fileID: 8751458707135505124}
   m_Layer: 0
   m_Name: DropKatana
   m_TagString: Weapon
@@ -109,8 +108,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.46, y: 0.42, z: 1.0311142}
-  m_Center: {x: 0.000000014901161, y: 0.0000000037252859, z: 0.37032792}
+  m_Size: {x: 0.46, y: 0.42, z: 1.27}
+  m_Center: {x: 0.000000014901161, y: 0.0000000037252859, z: 0.31}
 --- !u!114 &881497812729008349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,24 +150,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &8751458707135505124
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4227139767313832769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.06, y: 0.04, z: 0.83}
-  m_Center: {x: 0.000000014901161, y: 0.000000003725291, z: -0.09}

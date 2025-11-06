@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8929259248203378386}
   - component: {fileID: 4037286096955364866}
   - component: {fileID: 3612494954360074157}
-  - component: {fileID: 7607324549469203369}
   - component: {fileID: 8462556626024233966}
   - component: {fileID: 5551136059946555390}
   m_Layer: 0
@@ -108,29 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.39, y: 0.27, z: 0.52533734}
-  m_Center: {x: -0.000000018626451, y: -4.656614e-10, z: -0.000000014901165}
---- !u!65 &7607324549469203369
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289241028541015161}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.11431167, y: 0.029722523, z: 0.52533734}
-  m_Center: {x: -0.000000018626451, y: -4.656614e-10, z: -0.43}
+  m_Size: {x: 0.39, y: 0.27, z: 0.98}
+  m_Center: {x: -0.000000018626451, y: -4.656614e-10, z: -0.19}
 --- !u!54 &8462556626024233966
 Rigidbody:
   m_ObjectHideFlags: 0

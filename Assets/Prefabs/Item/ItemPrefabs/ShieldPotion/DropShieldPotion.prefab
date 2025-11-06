@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6352165371553693216}
   - component: {fileID: 1914800862635436435}
   - component: {fileID: -6441951073880215387}
+  - component: {fileID: 5642377484058358}
   m_Layer: 0
   m_Name: DropShieldPotion
   m_TagString: Item
@@ -118,5 +119,32 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10056168, y: 0.25665405, z: 0.10573679}
-  m_Center: {x: 0.00009447336, y: 0.12782256, z: -0.001159519}
+  m_Size: {x: 0.10056168, y: 0.46, z: 0.10573679}
+  m_Center: {x: 0.00009447336, y: 0.06, z: -0.001159519}
+--- !u!54 &5642377484058358
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5504844140821340209}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

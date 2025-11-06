@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2794156576469139471}
   - component: {fileID: 6065573188817195520}
   - component: {fileID: 4501193131609394999}
-  - component: {fileID: 3919258317413089650}
   - component: {fileID: -4447732203270493430}
   m_Layer: 0
   m_Name: DropAxe
@@ -108,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.51, y: 0.34, z: 0.76856047}
-  m_Center: {x: -0.000000007450581, y: 0.000000007450582, z: 0.00000010430816}
+  m_Size: {x: 0.51, y: 0.34, z: 0.98}
+  m_Center: {x: -0.000000007450581, y: 0.000000007450582, z: -0.04}
 --- !u!54 &4501193131609394999
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,27 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &3919258317413089650
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788488347092482983}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.01, z: 0.76856047}
-  m_Center: {x: -0.000000007450581, y: 0.000000007450582, z: -0.25}
 --- !u!114 &-4447732203270493430
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class TakeItem : MonoBehaviour
 	HealItem m_healItem;
 	Shield m_shield;
 
+	bool m_isDroping;
+
 	public void SetItemIcon(Image image)
 	{
 		m_itemIcon = image;
@@ -51,7 +53,7 @@ public class TakeItem : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Item") && !m_nowHaveItem)
+		if(other.gameObject.CompareTag("Item") && !m_nowHaveItem && !m_isDroping)
 		{
 			//落ちていたアイテムからアイテムの識別番号を貰ってくる
 			DropItem dropItem = other.GetComponent<DropItem>();
@@ -69,6 +71,8 @@ public class TakeItem : MonoBehaviour
 			//落ちていたアイテムオブジェクトを削除
 			Destroy(other.gameObject);
 		}
+
+		
 	}
 
 	public void ItemUse()
@@ -140,4 +144,38 @@ public class TakeItem : MonoBehaviour
 
 		}
     }
+
+	public void DropItem()
+	{
+		if(m_nowHaveItem && !m_isDroping)
+		{
+			//プレイヤーの前方の位置を計算
+			Vector3 playerFrontPos = new Vector3(
+				transform.position.x + transform.forward.x,
+				transform.position.y + transform.forward.y,
+				transform.position.z + transform.forward.z);
+
+			GameObject dropItem =  Instantiate(
+				m_itemDatas.m_itemDatas[m_haveItemId].m_dropItemPrefabs,
+				playerFrontPos,
+				Quaternion.identity);
+
+			Rigidbody dropItemRb = dropItem.GetComponent<Rigidbody>();
+
+			dropItemRb.velocity = new Vector3(transform.forward.x * 5, transform.forward.y * 5, transform.forward.z * 5);
+
+			m_nowHaveItem = false;
+
+			m_isDroping = true;
+
+			StartCoroutine(ResetIsDroping());
+		}
+	}
+
+	IEnumerator ResetIsDroping()
+	{
+		yield return new WaitForSeconds(1);
+
+		m_isDroping = false;
+	}
 }
