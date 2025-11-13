@@ -9,8 +9,7 @@ public class RoundCount : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_roundCount1P, m_roundCount2P;
     [SerializeField] GameObject m_roundPanel;
     [SerializeField] IssueJudgement m_issueJudgement;
-
-    static int[] RoundsCount = { 1, 2, 3 }; // ラウンド数
+    [SerializeField] RuleSettingsData m_ruleSettingsData;
 
     // 現在のラウンド数
     public static int Round1P = 0;
@@ -68,7 +67,8 @@ public class RoundCount : MonoBehaviour
         yield return new WaitForSeconds(SceneLoadTime);
 
         // 現在のラウンド数が設定したラウンド数以上になったか
-        if (Round1P >= RoundsCount[1] || Round2P >= RoundsCount[1])
+        if (Round1P >= m_ruleSettingsData.RoundsCount[m_ruleSettingsData.m_roundCount] 
+            || Round2P >= m_ruleSettingsData.RoundsCount[m_ruleSettingsData.m_roundCount])
         {
             Round1P = 0;
             Round2P = 0;

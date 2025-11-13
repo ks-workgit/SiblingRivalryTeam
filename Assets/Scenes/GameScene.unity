@@ -1414,6 +1414,7 @@ MonoBehaviour:
   m_roundCount2P: {fileID: 1272974758}
   m_roundPanel: {fileID: 85271263}
   m_issueJudgement: {fileID: 1683724505}
+  m_ruleSettingsData: {fileID: 11400000, guid: 14d3469f19cfe904097ed361879ae977, type: 2}
 --- !u!1 &538779988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4085,7 @@ MonoBehaviour:
   m_resultScreen: {fileID: 1158917769}
   m_winnerImage: {fileID: 1418621482}
   characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_ruleSettingsData: {fileID: 11400000, guid: 14d3469f19cfe904097ed361879ae977, type: 2}
   m_winnerSprites:
   - {fileID: 21300000, guid: 9b5a9ca1f3734314bb36fc3131913088, type: 3}
   - {fileID: 21300000, guid: 7c546c9f3207ef147aedeb5b84deab65, type: 3}

@@ -9,14 +9,13 @@ public class IssueJudgement : MonoBehaviour
 	[SerializeField] GameObject m_resultScreen;
 	[SerializeField] Image m_winnerImage;
 	[SerializeField] CharacterDatas characterDatas;
+	[SerializeField] RuleSettingsData m_ruleSettingsData;
 
-	[SerializeField] Sprite[] m_winnerSprites;
-
-	static int[] VictoryCrownCount = { 3, 5, 10 };
+    [SerializeField] Sprite[] m_winnerSprites;
 
 	AudioSource m_audioSource;
 
-	int m_vectoryCrownCountIndex;
+	int m_victoryCrownCountIndex;
 	int m_remainingLifeIndex;
 
 	bool m_isEnd;
@@ -48,10 +47,8 @@ public class IssueJudgement : MonoBehaviour
 	void Judgement()
 	{
 		//王冠を規定数集めたら勝利
-		if (characterDatas.CrownCount[0] >= VictoryCrownCount[0])
+		if (characterDatas.CrownCount[0] >= m_ruleSettingsData.VictoryCrownCount[m_ruleSettingsData.m_crownCount])
 		{
-			//m_resultScreen.SetActive(true);
-
 			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち王冠で");
@@ -64,8 +61,6 @@ public class IssueJudgement : MonoBehaviour
 		//残機を減らしたら勝利
 		else if (characterDatas.IsDeth[1])
 		{
-			//m_resultScreen.SetActive(true);
-
 			m_winnerImage.sprite = m_winnerSprites[0];
 
 			Debug.Log("かち残機なくして");
@@ -77,10 +72,8 @@ public class IssueJudgement : MonoBehaviour
         }
 
 		//王冠を規定数集めたら勝利
-		if (characterDatas.CrownCount[1] >= VictoryCrownCount[0])
+		if (characterDatas.CrownCount[1] >= m_ruleSettingsData.VictoryCrownCount[m_ruleSettingsData.m_crownCount])
 		{
-			//m_resultScreen.SetActive(true);
-
 			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち王冠で");
@@ -93,8 +86,6 @@ public class IssueJudgement : MonoBehaviour
 		//残機を減らしたら勝利
 		else if (characterDatas.IsDeth[0])
 		{
-			//m_resultScreen.SetActive(true);
-
 			m_winnerImage.sprite = m_winnerSprites[1];
 
 			Debug.Log("かち残機なくして");
