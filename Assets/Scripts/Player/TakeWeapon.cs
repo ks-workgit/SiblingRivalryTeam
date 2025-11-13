@@ -22,9 +22,17 @@ public class TakeWeapon : MonoBehaviour
 	bool m_isHaveWaepon;
 	bool m_isDroping;
 
-	public bool GetIsDroping()
+	public int GetHaveWeaponId()
 	{
-		return m_isDroping;
+		return m_weaponId;
+	}
+
+	private void Start()
+	{
+		m_weaponId = 0;
+
+		m_characterManager.GetSetAtttackDamage = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
+		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
 	}
 
 	private void Update()
@@ -44,8 +52,23 @@ public class TakeWeapon : MonoBehaviour
 		{
 			DropWeapon dropWaepon = other.GetComponent<DropWeapon>();
 
-			m_weaponId = dropWaepon.GetWeaponId();
+			GettingWeapon(dropWaepon.GetWeaponId());
 
+			Destroy(other.gameObject);
+		}
+	}
+
+	public void GettingWeapon(int weaponId)
+	{
+		m_weaponId = weaponId;
+
+		if(m_isHaveWaepon)
+		{
+			Destroy(m_haveWaepon.gameObject);
+		}
+
+		if(m_weaponId != 0)
+		{
 			m_haveWaepon = Instantiate(
 				m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs,
 				m_handPos.position,
@@ -53,14 +76,16 @@ public class TakeWeapon : MonoBehaviour
 				m_handPos);
 
 			m_haveWaepon.transform.localRotation = Quaternion.Euler(0, 0, 180);
-
-			m_characterManager.GetSetAtttackDamage += m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
-			m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
-
-			Destroy(other.gameObject);
-
-			m_isHaveWaepon = true;
 		}
+		else if(m_weaponId == 0 && m_isHaveWaepon)
+		{
+			//Destroy(m_haveWaepon.gameObject);
+		}
+
+		m_characterManager.GetSetAtttackDamage = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
+		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
+
+		m_isHaveWaepon = true;
 	}
 
 	//ïêäÌÇéÃÇƒÇÈèàóù

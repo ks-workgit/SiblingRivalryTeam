@@ -5317,7 +5317,7 @@ GameObject:
   - component: {fileID: 305098848454170755}
   - component: {fileID: 8908227207592368556}
   - component: {fileID: 6056699523493387234}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DeathFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

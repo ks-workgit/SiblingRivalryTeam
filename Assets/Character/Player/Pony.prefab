@@ -323,6 +323,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 457a6a7e-378f-47c4-9873-bd28d738390e
     m_ActionName: Player/WeaponDrop[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 85a1aec5-be16-4c0f-97e5-3ab5b0aad0a0
+    m_ActionName: Player/ItemDrop[/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -404,7 +408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
-  m_playerTransform: {fileID: 5601331812989150633}
   m_characterManeger: {fileID: 5100428621951176289}
 --- !u!114 &4022980618614678463
 MonoBehaviour:

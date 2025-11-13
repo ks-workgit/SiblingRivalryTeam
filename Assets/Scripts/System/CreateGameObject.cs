@@ -31,7 +31,7 @@ public class CreateGameObject : MonoBehaviour
 	{
 		int spownIndex = Random.Range(0, SpownPos.Count);
 		int itemIndex = Random.Range(0, m_itemDatas.m_itemDatas.Count);
-		int weaponIndex = Random.Range(0, m_weaponDatas.m_weaponDatas.Count);
+		int weaponIndex = Random.Range(1, m_weaponDatas.m_weaponDatas.Count);
 
 		//â§ä•ÇÃê∂ê¨
 		Instantiate(

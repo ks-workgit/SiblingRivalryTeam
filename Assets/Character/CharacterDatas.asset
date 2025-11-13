@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84497e44362436449bd27c0f1ff0d06b, type: 3}
   m_Name: CharacterDatas
   m_EditorClassIdentifier: 
-  PlayerOneCharacterId: 0
-  PlayerTwoCharacterId: 0
+  PlayerOneCharacterId: 7
+  PlayerTwoCharacterId: 7
   CrownCount: 0000000000000000
   IsDeth: 0000
   m_characterInfometions:
@@ -44,6 +44,24 @@ MonoBehaviour:
   - m_characterPrefab: {fileID: 4335917065569303653, guid: 21ddf39cf02fe654caa8b22c6319469e, type: 3}
     m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
     m_characterId: 4
+    m_chacterName: Pony
+    m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
+  - m_characterPrefab: {fileID: 6432877436252956837, guid: 587e4c5b672d2cc48a66a1d416b4390f, type: 3}
+    m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
+    m_characterId: 5
+    m_chacterName: Pony
+    m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
+  - m_characterPrefab: {fileID: 29009984315236877, guid: 0882f0603a78254478879f46de2410e4, type: 3}
+    m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
+    m_characterId: 6
+    m_chacterName: Pony
+    m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
+  - m_characterPrefab: {fileID: 269946766894649988, guid: 5e0de5133985b144298d8ea7deadb78d, type: 3}
+    m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
+    m_characterId: 7
     m_chacterName: Pony
     m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}

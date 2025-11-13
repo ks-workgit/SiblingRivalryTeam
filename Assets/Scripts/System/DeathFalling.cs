@@ -14,5 +14,10 @@ public class DeathFalling : MonoBehaviour
 
 			m_characterManeger.ReduceHealth(m_characterManeger.GetMaxHealth());
 		}
+
+		if(other.CompareTag("Item") || other.CompareTag("Weapon") || other.CompareTag("Crown"))
+		{
+			Destroy(other.gameObject);
+		}
 	}
 }

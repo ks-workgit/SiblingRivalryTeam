@@ -6,12 +6,25 @@ using UnityEngine.UI;
 public class UseAbility : MonoBehaviour
 {
 	[SerializeField] AbilityDatas m_abilityDatas;
-
 	[SerializeField] int m_characterId;
 
 	Image m_abilityIcon;
+	GameObject m_abilityObject;
 
 	float m_ablityCoolDown;
+
+	bool m_isUse;
+	bool m_reactivation;
+
+	public bool GetReactivation()
+	{
+		return m_reactivation;
+	}
+
+	public void ResetReactivation()
+	{
+		m_reactivation = false;
+	}
 
 	public void SetAbilityIcon(Image abilityIcon)
 	{
@@ -36,20 +49,33 @@ public class UseAbility : MonoBehaviour
 		{
 			m_abilityIcon.color = Color.black;
 		}
+
+		if(!m_abilityObject && m_isUse)
+		{
+			m_ablityCoolDown = m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityCoolDown;
+
+			m_isUse = false;
+		}
 	}
 
 	public void Use()
 	{
-		if (m_ablityCoolDown <= 0)
+		if (m_ablityCoolDown <= 0 && !m_isUse)
 		{
-			Instantiate(
+			m_abilityObject = Instantiate(
 			  m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityPrefab,
 			  gameObject.transform.position,
 			  Quaternion.identity,
 			  gameObject.transform
 			  );
 
-			m_ablityCoolDown = m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityCoolDown;
-		}      
+			m_abilityObject.transform.localRotation = Quaternion.identity;
+
+			m_isUse = true;
+		}
+		else if(m_isUse)
+		{
+			m_reactivation = true;
+		}
     }
 }

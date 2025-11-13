@@ -11,6 +11,7 @@ public class Crown : MonoBehaviour
 
 	AudioSource	m_se;
 	MeshRenderer m_mesh;
+	Rigidbody m_rigidbody;
 
 	bool m_isGeted;
 
@@ -19,6 +20,7 @@ public class Crown : MonoBehaviour
 		m_se = GetComponent<AudioSource>();
 		m_mesh = GetComponent<MeshRenderer>();
 		m_boxCollider = GetComponent<BoxCollider>();
+		m_rigidbody = GetComponent<Rigidbody>();
 	}
 
 	private void Update()
@@ -45,6 +47,11 @@ public class Crown : MonoBehaviour
 			m_boxCollider.enabled = false;
 
 			m_isGeted = true;
+		}
+
+		if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+		{
+			m_rigidbody.isKinematic = true;
 		}
 	}
 }

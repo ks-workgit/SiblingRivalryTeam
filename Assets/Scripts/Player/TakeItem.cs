@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TakeItem : MonoBehaviour
 {
 	[SerializeField] ItemDatas m_itemDatas;
-	[SerializeField] Transform m_playerTransform;
 	[SerializeField] CharacterManager m_characterManeger;
 
 	Image m_itemIcon;

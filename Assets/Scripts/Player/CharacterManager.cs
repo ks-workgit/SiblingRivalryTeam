@@ -12,8 +12,6 @@ public class CharacterManager : MonoBehaviour
 	const float MaxStamina = 50;
 	const int MaxShield = 100;
 	static int[] RemainingLife = { 3, 5 };		//c‹@‚Ì‰Šú”
-	const int AttackDamage = 10;
-	const float AttackSpeed = 1;
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
@@ -26,8 +24,8 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] int m_shield;
 	int m_remainingLife = RemainingLife[0];
 
-	[SerializeField] int m_attackDamage = AttackDamage;
-	[SerializeField] float m_attackSpeed = AttackSpeed;
+	[SerializeField] int m_attackDamage;
+	[SerializeField] float m_attackSpeed;
 
 	bool m_isDeth = false;
 
@@ -90,7 +88,11 @@ public class CharacterManager : MonoBehaviour
 
 	public void ReduceHealth(float reduceValue)
 	{
-		m_helth -= reduceValue;
+		// –³“G‚¶‚á‚È‚¢‚Æ‚«
+		if (!m_playerController.GetIsInvincible())
+		{
+			m_helth -= reduceValue;
+		}
 	}
 
 	public int GetSetAtttackDamage
