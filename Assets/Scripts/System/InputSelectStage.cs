@@ -6,39 +6,44 @@ using UnityEngine.InputSystem;
 public class InputSelectStage : MonoBehaviour
 {
     [SerializeField] MapSelectUI m_mapSelectUI;
-    PlayerInput m_playerInput;
 
-    private void Awake()
+    float m_inputTime;
+    float m_delay = 0.2f;
+
+    // UI‚ÌˆÚ“®
+    public void OnNavigate(InputAction.CallbackContext context)
     {
-        m_playerInput = GetComponent<PlayerInput>();
+        if (!context.performed) return;
+
+        var inputValue = context.ReadValue<Vector2>();
+
+        // ˆê’èŠÔŠu‚ð‚à‚½‚¹‚é
+        if (Time.time - m_inputTime > m_delay)
+        {
+            // ¶‰E‚Ì“ü—Í
+            if (inputValue.x > 0.5f)
+            {
+                HandleHorizontalInput(1);
+            }
+            else if (inputValue.x < -0.5f)
+            {
+                HandleHorizontalInput(-1);
+            }
+        }
     }
 
-    private void OnEnable()
+    // ¶‰E“ü—Í‚É‰ž‚¶‚Äˆ—
+    private void HandleHorizontalInput(int direction)
     {
-        m_playerInput.actions["RightSelect"].performed += OnRight;
-        m_playerInput.actions["LeftSelect"].performed += OnLeft;
-        m_playerInput.actions["Ready"].performed += OnReady;
-    }
+        if (direction > 0)
+        {
+            m_mapSelectUI.NextMap();
+        }
+        else if (direction < 0)
+        {
+            m_mapSelectUI.PrevMap();
+        }
 
-    private void OnDisable()
-    {
-        m_playerInput.actions["RightSelect"].performed -= OnRight;
-        m_playerInput.actions["LeftSelect"].performed -= OnLeft;
-        m_playerInput.actions["Ready"].performed -= OnReady;
-    }
-
-    private void OnRight(InputAction.CallbackContext callback)
-    {
-        m_mapSelectUI.NextMap();
-    }
-
-    private void OnLeft(InputAction.CallbackContext callback)
-    {
-        m_mapSelectUI.PrevMap();
-    }
-
-    private void OnReady(InputAction.CallbackContext callback)
-    {
-        m_mapSelectUI.StartGame();
+        m_inputTime = Time.time;
     }
 }

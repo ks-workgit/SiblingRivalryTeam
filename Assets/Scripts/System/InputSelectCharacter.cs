@@ -6,51 +6,48 @@ using UnityEngine.InputSystem;
 
 public class InputSelectCharacter : MonoBehaviour
 {
-    SelectCharacter m_selectCharacter;
-    PlayerInput m_playerInput;
+    [SerializeField] SelectCharacter m_selectCharacter;
 
-    //[SerializeField] Button[] m_buttons;
+    float m_inputTime;
+    float m_delay = 0.2f;
 
-    public void SetButton(Button[] buttons)
+    // UI‚ÌˆÚ“®
+    public void OnNavigate(InputAction.CallbackContext context)
     {
-        //m_buttons = buttons;
+        if (!context.performed) return;
+
+        var inputValue = context.ReadValue<Vector2>();
+
+        // ˆê’èŠÔŠu‚ð‚à‚½‚¹‚é
+        if (Time.time - m_inputTime > m_delay)
+        {
+            // ¶‰E‚Ì“ü—Í
+            if (inputValue.x > 0.5f)
+            {
+                HandleHorizontalInput(1);
+            }
+            else if (inputValue.x < -0.5f)
+            {
+                HandleHorizontalInput(-1);
+            }
+        }
+
+        Debug.Log(inputValue.x);
     }
 
-    private void Awake()
+    // ¶‰E“ü—Í‚É‰ž‚¶‚Äˆ—
+    private void HandleHorizontalInput(int direction)
     {
-        m_selectCharacter = GetComponent<SelectCharacter>();
-        m_playerInput = GetComponent<PlayerInput>();
-    }
+        if (direction > 0)
+        {
+            m_selectCharacter.RightButtonOnClick();
+        }
+        else if (direction < 0)
+        {
+            m_selectCharacter.LeftButtonOnClick();
+        }
 
-    private void OnEnable()
-    {
-        m_playerInput.actions["RightSelect"].performed += OnRight;
-        m_playerInput.actions["LeftSelect"].performed += OnLeft;
-        m_playerInput.actions["Ready"].performed += OnReady;
-    }
-
-    private void OnDisable()
-    {
-        m_playerInput.actions["RightSelect"].performed -= OnRight;
-        m_playerInput.actions["LeftSelect"].performed -= OnLeft;
-        m_playerInput.actions["Ready"].performed -= OnReady;
-    }
-
-    private void OnRight(InputAction.CallbackContext callback)
-    {
-        m_selectCharacter.RightButtonOnClick();
-
-        //m_buttons[0].onClick.AddListener(() => Debug.Log("test"));
-    }
-
-    private void OnLeft(InputAction.CallbackContext callback)
-    {
-        m_selectCharacter.LeftButtonOnClick();
-    }
-
-    private void OnReady(InputAction.CallbackContext callback)
-    {
-        m_selectCharacter.ReadyOnclick();
+        m_inputTime = Time.time;
     }
 
     public void SetSelectCharacter(SelectCharacter selectCharacter)
