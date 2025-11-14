@@ -26,7 +26,7 @@ public class OneWayPlatform : MonoBehaviour
 	void OnCollisionExit(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
-		{
+		{ 
 			// —£‚ê‚½‚çÄ‚Ñ“–‚½‚è”»’è‚ğ—LŒø‰»
 			Physics.IgnoreCollision(collision.collider, platformCollider, false);
 		}
