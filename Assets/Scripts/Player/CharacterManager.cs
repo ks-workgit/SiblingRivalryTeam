@@ -11,7 +11,7 @@ public class CharacterManager : MonoBehaviour
 	const float MaxHelth = 100;
 	const float MaxStamina = 50;
 	const int MaxShield = 100;
-	static int[] RemainingLife = { 3, 5 };		//残機の初期数
+	static int[] RemainingLife = { 3, 5 };		//残機の初期数	
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
@@ -109,7 +109,7 @@ public class CharacterManager : MonoBehaviour
 
 	void Start()
     {
-		
+		m_remainingLife = RuleManager.CurrentRule.LifeCount[RuleManager.CurrentRule.m_lifeCount];
 	}
 
     void Update()

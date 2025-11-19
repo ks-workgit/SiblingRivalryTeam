@@ -47,7 +47,7 @@ public class IssueJudgement : MonoBehaviour
 	void Judgement()
 	{
 		//‰¤Š¥‚ð‹K’è”W‚ß‚½‚çŸ—˜
-		if (characterDatas.CrownCount[0] >= m_ruleSettingsData.VictoryCrownCount[m_ruleSettingsData.m_crownCount])
+		if (characterDatas.CrownCount[0] >= RuleManager.CurrentRule.VictoryCrownCount[RuleManager.CurrentRule.m_crownCount])
 		{
 			m_winnerImage.sprite = m_winnerSprites[0];
 
@@ -72,7 +72,7 @@ public class IssueJudgement : MonoBehaviour
         }
 
 		//‰¤Š¥‚ð‹K’è”W‚ß‚½‚çŸ—˜
-		if (characterDatas.CrownCount[1] >= m_ruleSettingsData.VictoryCrownCount[m_ruleSettingsData.m_crownCount])
+		if (characterDatas.CrownCount[1] >= RuleManager.CurrentRule.VictoryCrownCount[RuleManager.CurrentRule.m_crownCount])
 		{
 			m_winnerImage.sprite = m_winnerSprites[1];
 

@@ -7,7 +7,7 @@ public class RuleSettingsData : ScriptableObject
 {
     public int[] RoundsCount = { 1, 2, 3 }; // ラウンド数
 
-    public int[] LifeCount = { 1, 2, 3 };   // 残機の数
+    public int[] LifeCount = { 1, 2, 3, 4, 5 };   // 残機の数
 
     public int[] VictoryCrownCount = { 3, 5, 10 };  // 勝利するための王冠の数
 

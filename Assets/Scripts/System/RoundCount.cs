@@ -67,8 +67,8 @@ public class RoundCount : MonoBehaviour
         yield return new WaitForSeconds(SceneLoadTime);
 
         // 現在のラウンド数が設定したラウンド数以上になったか
-        if (Round1P >= m_ruleSettingsData.RoundsCount[m_ruleSettingsData.m_roundCount] 
-            || Round2P >= m_ruleSettingsData.RoundsCount[m_ruleSettingsData.m_roundCount])
+        if (Round1P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount] 
+            || Round2P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount])
         {
             Round1P = 0;
             Round2P = 0;

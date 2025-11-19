@@ -31,8 +31,6 @@ public class InputSelectCharacter : MonoBehaviour
                 HandleHorizontalInput(-1);
             }
         }
-
-        Debug.Log(inputValue.x);
     }
 
     // ¶‰E“ü—Í‚É‰‚¶‚Äˆ—

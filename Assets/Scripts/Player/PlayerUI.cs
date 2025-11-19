@@ -56,6 +56,8 @@ public class PlayerUI : MonoBehaviour
 
 		DestoryRemainingLifeUi();
 		CreateCrownUi();
+
+        Debug.Log(m_remainingLife);
     }
 
 	//écã@ÇÃUIê∂ê¨

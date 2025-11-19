@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b4bf35b7c8a6f49bee99f444da5db7, type: 3}
   m_Name: RuleSettingsData
   m_EditorClassIdentifier: 
+  RoundsCount: 010000000200000003000000
+  LifeCount: 0100000002000000030000000400000005000000
+  VictoryCrownCount: 03000000050000000a000000
+  m_roundCount: 1
+  m_lifeCount: 1
+  m_crownCount: 0
