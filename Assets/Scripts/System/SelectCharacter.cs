@@ -9,7 +9,7 @@ public class SelectCharacter : MonoBehaviour
 {
 	[SerializeField] int m_playerNumder;
 
-	[SerializeField] Image m_characterIcon;
+	//[SerializeField] Image m_characterIcon;
 	[SerializeField] Image m_abilityIcon;
 
 	[SerializeField] GameObject m_player;
@@ -109,7 +109,7 @@ public class SelectCharacter : MonoBehaviour
 			m_player.transform);
 
 		//キャラクターアイコン
-		m_characterIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_characterIcon;
+		//m_characterIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_characterIcon;
 
 		//アビリティアイコン
 		m_abilityIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_abilityIcon;

@@ -32,11 +32,11 @@ MonoBehaviour:
     m_abilityIcon: {fileID: 21300000, guid: 6e018c34f10384a40b4d9ff6c4f916cd, type: 3}
     m_abilityCoolDown: 30
   - m_abilityPrefab: {fileID: 7899427958877846101, guid: 0b7c9cdd21800fa439b738a7828ff9cf, type: 3}
-    m_abilityIcon: {fileID: 21300000, guid: 6e018c34f10384a40b4d9ff6c4f916cd, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 425e111e17b49fc49b7dcebc35d03bfc, type: 3}
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 6665057992001990669, guid: a25a87376e57c134c928ad7b9aeee0c7, type: 3}
-    m_abilityIcon: {fileID: 21300000, guid: a47876c1d49d0ab42b67bba52dd479c9, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: 0dec3008e68824a418006435598a2f48, type: 3}
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 7088287607602735190, guid: 47deb48a005d66a4a91d5b303213d806, type: 3}
-    m_abilityIcon: {fileID: 21300000, guid: a47876c1d49d0ab42b67bba52dd479c9, type: 3}
+    m_abilityIcon: {fileID: 21300000, guid: a95b52f89a6cb3a4b8677db3af1e0b70, type: 3}
     m_abilityCoolDown: 0
