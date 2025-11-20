@@ -20,6 +20,7 @@ public class TakeWeapon : MonoBehaviour
 	int m_weaponId;
 
 	int m_noBuffDamage;
+	int m_weaponKind;
 	float m_noBuffSpeed;
 
 	bool m_isHaveWaepon;
@@ -49,6 +50,11 @@ public class TakeWeapon : MonoBehaviour
 	public void ResetTakeDrop()
 	{
 		m_takeDrop = false;
+	}
+
+	public int GetWeaponKind()
+	{
+		return m_weaponKind;
 	}
 
 	private void Start()
@@ -109,6 +115,8 @@ public class TakeWeapon : MonoBehaviour
 		m_noBuffDamage = m_characterManager.GetSetAtttackDamage;
 		m_noBuffSpeed = m_characterManager.GetSetAtttackSpeed;
 
+		m_weaponKind = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponKindId;
+
 		m_isHaveWaepon = true;
 		m_takeDrop = true;
 	}
@@ -142,6 +150,10 @@ public class TakeWeapon : MonoBehaviour
 
 			m_characterManager.GetSetAtttackDamage -= m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
+
+			m_weaponId = 0;
+
+			m_weaponKind = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponKindId;
 
 			m_isHaveWaepon = false;
 			m_takeDrop = true;

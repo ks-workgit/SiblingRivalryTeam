@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     UseAbility m_useAbility;
     CharacterManager m_characterManager;
     TakeItem m_takeItem;
+	TakeWeapon m_takeWeapon;
 
     float m_verticalVelocity;
     float m_recoverTime;    // ƒXƒ^ƒ“‚©‚ç‚Ì•œ‹AŽžŠÔ
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         m_useAbility = GetComponent<UseAbility>();
         m_characterManager = GetComponent<CharacterManager>();
         m_takeItem = GetComponent<TakeItem>();
+		m_takeWeapon = GetComponent<TakeWeapon>();
 	}
 
     private void Start()
@@ -171,6 +173,7 @@ public class PlayerController : MonoBehaviour
 
         m_canMove = false;
         m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
+		m_animator.SetInteger("AttackKind", m_takeWeapon.GetWeaponKind());
         m_animator.SetTrigger("Attack");
     }
 

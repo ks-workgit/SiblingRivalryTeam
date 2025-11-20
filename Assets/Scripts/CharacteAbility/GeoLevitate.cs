@@ -32,7 +32,7 @@ public class GeoLevitate : MonoBehaviour
     void Update()
 	{
 		//スキル使用後再度△を押したら岩を投げる
-		if (m_useAbility.GetReactivation())
+		if (m_useAbility.GetReactivation() && m_rockCount < 5)
 		{
 			ThrowRock();
 

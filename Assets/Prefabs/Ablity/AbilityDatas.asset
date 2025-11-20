@@ -39,4 +39,4 @@ MonoBehaviour:
     m_abilityCoolDown: 45
   - m_abilityPrefab: {fileID: 7088287607602735190, guid: 47deb48a005d66a4a91d5b303213d806, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: a95b52f89a6cb3a4b8677db3af1e0b70, type: 3}
-    m_abilityCoolDown: 0
+    m_abilityCoolDown: 50

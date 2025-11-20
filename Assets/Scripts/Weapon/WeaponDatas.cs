@@ -15,6 +15,7 @@ public class WeaponInfomertions
 	public GameObject m_weaponPrefabs;
 	public GameObject m_dropWeaponPrefabs;
 	public int m_weaponId;
+	public int m_weaponKindId;
 	public int m_attackDamage;
 	public float m_attackSpeed = 1.0f;
 }
