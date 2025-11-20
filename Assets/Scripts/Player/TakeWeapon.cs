@@ -19,20 +19,41 @@ public class TakeWeapon : MonoBehaviour
 
 	int m_weaponId;
 
+	int m_noBuffDamage;
+	float m_noBuffSpeed;
+
 	bool m_isHaveWaepon;
 	bool m_isDroping;
+	bool m_takeDrop;
 
 	public int GetHaveWeaponId()
 	{
 		return m_weaponId;
 	}
 
+	public int GetNoBuffDamage()
+	{
+		return m_noBuffDamage;
+	}
+
+	public float GetNoBuffSpeed()
+	{
+		return m_noBuffSpeed;
+	}
+
+	public bool GetTakeDrop()
+	{
+		return m_takeDrop;
+	}
+
+	public void ResetTakeDrop()
+	{
+		m_takeDrop = false;
+	}
+
 	private void Start()
 	{
 		m_weaponId = 0;
-
-		m_characterManager.GetSetAtttackDamage = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
-		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
 	}
 
 	private void Update()
@@ -82,10 +103,14 @@ public class TakeWeapon : MonoBehaviour
 			//Destroy(m_haveWaepon.gameObject);
 		}
 
-		m_characterManager.GetSetAtttackDamage = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
+		m_characterManager.GetSetAtttackDamage += m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
 
+		m_noBuffDamage = m_characterManager.GetSetAtttackDamage;
+		m_noBuffSpeed = m_characterManager.GetSetAtttackSpeed;
+
 		m_isHaveWaepon = true;
+		m_takeDrop = true;
 	}
 
 	//ïêäÌÇéÃÇƒÇÈèàóù
@@ -119,6 +144,7 @@ public class TakeWeapon : MonoBehaviour
 			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
 
 			m_isHaveWaepon = false;
+			m_takeDrop = true;
 
 			StartCoroutine(ResetHaveWeapon());
 		}

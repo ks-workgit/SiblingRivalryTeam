@@ -139,6 +139,19 @@ public class TakeItem : MonoBehaviour
 				ghost.SetTakeItem(this);
 
 				ghost.StealCrown();
+
+				m_nowHaveItem = false;
+			}
+			//その場に置くアイテム
+			else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 4)
+			{
+				GameObject item = Instantiate(
+					m_itemDatas.m_itemDatas[m_haveItemId].m_itemPrefabs,
+					new Vector3(transform.position.x, transform.position.y,transform.position.z),
+					Quaternion.identity
+					);
+
+				m_nowHaveItem = false;
 			}
 
 		}

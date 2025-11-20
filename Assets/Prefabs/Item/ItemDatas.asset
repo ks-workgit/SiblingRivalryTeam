@@ -55,3 +55,9 @@ MonoBehaviour:
     m_name: SlowGrenade
     m_itemKindNum: 0
     m_itemIcon: {fileID: 21300000, guid: 06f1980d2c8817e4cbacb97932e859e0, type: 3}
+  - m_itemPrefabs: {fileID: 4290700422926243642, guid: e4f74063c2c98ab4c9d1d4e4e16f782a, type: 3}
+    m_dropItemPrefabs: {fileID: 7580005823731849124, guid: 79a3da8f61afdf34a821b183ea7521ed, type: 3}
+    m_itemId: 7
+    m_name: LandMine
+    m_itemKindNum: 4
+    m_itemIcon: {fileID: 21300000, guid: 06f1980d2c8817e4cbacb97932e859e0, type: 3}

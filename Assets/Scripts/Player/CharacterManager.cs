@@ -11,7 +11,8 @@ public class CharacterManager : MonoBehaviour
 	const float MaxHelth = 100;
 	const float MaxStamina = 50;
 	const int MaxShield = 100;
-	static int[] RemainingLife = { 3, 5 };		//écã@ÇÃèâä˙êî	
+	const int AttackDamage = 10;
+	const int AttackSpeed = 1;
 
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] PlayerRespawn m_playerRespawn;
@@ -22,10 +23,10 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] float m_helth = MaxHelth;
 	[SerializeField] float m_stamina = MaxStamina;
 	[SerializeField] int m_shield;
-	int m_remainingLife = RemainingLife[0];
+	int m_remainingLife;
 
-	[SerializeField] int m_attackDamage;
-	[SerializeField] float m_attackSpeed;
+	[SerializeField] int m_attackDamage = AttackDamage;
+	[SerializeField] float m_attackSpeed = AttackSpeed;
 
 	bool m_isDeth = false;
 
@@ -95,6 +96,11 @@ public class CharacterManager : MonoBehaviour
 		}
 	}
 
+	public bool GetIsRespawn()
+	{
+		return m_isRespawn;
+	}
+
 	public int GetSetAtttackDamage
 	{
 		get { return m_attackDamage; }
@@ -107,7 +113,7 @@ public class CharacterManager : MonoBehaviour
 		set { m_attackSpeed = value; }
 	}
 
-	void Start()
+	void Awake()
     {
 		m_remainingLife = RuleManager.CurrentRule.LifeCount[RuleManager.CurrentRule.m_lifeCount];
 	}

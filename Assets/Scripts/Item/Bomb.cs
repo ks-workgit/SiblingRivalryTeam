@@ -44,13 +44,13 @@ public class Bomb : MonoBehaviour
             }
 
 			StartCoroutine(Detonation());
-		}		
+		}
     }
 	
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-		{ 
+		{
 			m_characterManeger = other.GetComponent<CharacterManager>();
 			m_playerController = other.GetComponent<PlayerController>();
 

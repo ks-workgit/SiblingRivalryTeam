@@ -23,7 +23,7 @@ public class SelectCharacter : MonoBehaviour
 	[SerializeField] Image m_readyImage;
 
 	int m_characterId;
-	int m_characterIdLenght = 4;
+	int m_characterIdLenght;
 
 	bool m_change;
 	bool m_isReady;
@@ -32,6 +32,8 @@ public class SelectCharacter : MonoBehaviour
 	{
         TitleChangeCharacter();
 		m_readyImage.enabled = false;
+
+		m_characterIdLenght = m_characterDatas.m_characterInfometions.Count - 1;
 	}
 
 	public void RightButtonOnClick()

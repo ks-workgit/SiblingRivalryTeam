@@ -60,7 +60,7 @@ public class UseAbility : MonoBehaviour
 
 	public void Use()
 	{
-		if (m_ablityCoolDown <= 0 && !m_isUse)
+		if (m_ablityCoolDown <= 0 && !m_isUse && m_characterId != 4)
 		{
 			m_abilityObject = Instantiate(
 			  m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityPrefab,
