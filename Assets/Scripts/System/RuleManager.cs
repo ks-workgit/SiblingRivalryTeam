@@ -8,7 +8,7 @@ public class RuleManager : MonoBehaviour
 
     public static RuleSettingsData CurrentRule;
 
-    [SerializeField] private RuleSettingsData m_ruleSettingsData;
+    [SerializeField] RuleSettingsData m_ruleSettingsData;
 
     private void Awake()
     {
