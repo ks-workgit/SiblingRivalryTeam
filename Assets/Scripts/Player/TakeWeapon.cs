@@ -151,6 +151,9 @@ public class TakeWeapon : MonoBehaviour
 			m_characterManager.GetSetAtttackDamage -= m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
 
+			m_noBuffDamage = m_characterManager.GetSetAtttackDamage;
+			m_noBuffSpeed = m_characterManager.GetSetAtttackSpeed;
+
 			m_weaponId = 0;
 
 			m_weaponKind = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponKindId;

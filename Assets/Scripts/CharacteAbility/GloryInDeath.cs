@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GloryInDeath : MonoBehaviour
 {
+	[SerializeField] GameObject m_effect;
+	[SerializeField] WeaponDatas m_weaponDatas;
+
+	const int NoWeaponDamage = 10;
 	const float DamageCoolDown = 5;
 	const int Damage = 20;
 
@@ -39,13 +43,28 @@ public class GloryInDeath : MonoBehaviour
 		{
 			m_damageCoolDown -= Time.deltaTime;
 
+			m_effect.SetActive(true);
+
 			if (m_damageCoolDown < 0)
 			{
 				m_characterManeger.ReduceHealth(Damage);
 
 				m_damageCoolDown = DamageCoolDown;
 			}
+
+			if (m_takeWeapon.GetTakeDrop())
+			{
+				m_noBuffDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
+				m_noBuffSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
+
+				m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * 5;
+				m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * 3;
+
+				m_takeWeapon.ResetTakeDrop();
+			}
 		}
+
+	
 
 		if (m_characterManeger.GetHelth() <= 0 && !m_isUse)
 		{
@@ -74,6 +93,7 @@ public class GloryInDeath : MonoBehaviour
 
 		if (m_characterManeger.GetIsRespawn())
 		{
+			m_effect.SetActive(false);
 			m_isUse = false;
 		}
 	}

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class OverdriveMode : MonoBehaviour
 {
+	const int NoWeaponDamage = 10;
+
+	[SerializeField] WeaponDatas m_weaponDatas;
+
 	CharacterManager m_characterManeger;
 	PlayerController m_playerController;
 	TakeWeapon m_takeWeapon;
@@ -27,18 +31,20 @@ public class OverdriveMode : MonoBehaviour
 		m_noBuffDamage = m_takeWeapon.GetNoBuffDamage();
 		m_noBuffSpeed = m_takeWeapon.GetNoBuffSpeed();
 
-		StartCoroutine(UseSkill());
+		if (m_takeWeapon.GetTakeDrop())
+		{
+			m_takeWeapon.ResetTakeDrop();
+		}
+
+		StartCoroutine(UseSkill());		
 	}
 
 	private void Update()
 	{
 		if (m_takeWeapon.GetTakeDrop())
 		{
-			m_noBuffDamage = m_takeWeapon.GetNoBuffDamage();
-			m_noBuffSpeed = m_takeWeapon.GetNoBuffSpeed();
-
-			m_noBuffDamage /= Magnification;
-			m_noBuffSpeed /= Magnification;
+			m_noBuffDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
+			m_noBuffSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 
 			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * Magnification;
 			m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * Magnification;
@@ -65,8 +71,8 @@ public class OverdriveMode : MonoBehaviour
 
 		speedMagnification /= Magnification;
 
-		m_characterManeger.GetSetAtttackDamage = m_takeWeapon.GetNoBuffDamage();
-		m_characterManeger.GetSetAtttackSpeed = m_takeWeapon.GetNoBuffSpeed();
+		m_characterManeger.GetSetAtttackDamage = m_noBuffDamage;
+		m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed;
 
 		m_playerController.GetSetSpeedMagnification = speedMagnification;
 
