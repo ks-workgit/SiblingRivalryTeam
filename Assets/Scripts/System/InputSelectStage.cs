@@ -32,6 +32,13 @@ public class InputSelectStage : MonoBehaviour
         }
     }
 
+    public void OnCancel(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        SceneController.BackToBeforScene();
+    }
+
     // ¶‰E“ü—Í‚É‰‚¶‚Äˆ—
     private void HandleHorizontalInput(int direction)
     {

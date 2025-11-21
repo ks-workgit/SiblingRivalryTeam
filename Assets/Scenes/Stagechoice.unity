@@ -339,7 +339,19 @@ MonoBehaviour:
     m_ActionId: 38769eb0-cf9f-4b39-a392-3854ec94bf30
     m_ActionName: UI/Submit[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 844616009}
+        m_TargetAssemblyTypeName: InputSelectStage, Assembly-CSharp
+        m_MethodName: OnCancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: acde3d64-2b09-4d94-9004-30687a4b06d8
     m_ActionName: UI/Cancel[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   - m_PersistentCalls:

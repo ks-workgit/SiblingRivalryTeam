@@ -33,7 +33,6 @@ public class PlayerUI : MonoBehaviour
     {
         m_healthBar = health;
         m_staminaBar = stamina;
-
     }
 
     public void SetCharacterManager(CharacterManager characterManager)
@@ -56,8 +55,6 @@ public class PlayerUI : MonoBehaviour
 
 		DestoryRemainingLifeUi();
 		CreateCrownUi();
-
-        Debug.Log(m_remainingLife);
     }
 
 	//écã@ÇÃUIê∂ê¨

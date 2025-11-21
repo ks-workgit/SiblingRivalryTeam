@@ -719,7 +719,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerNumder: 2
-  m_characterIcon: {fileID: 0}
   m_abilityIcon: {fileID: 1878992390}
   m_player: {fileID: 281537836}
   m_characterName: {fileID: 488679082}
@@ -1667,7 +1666,19 @@ MonoBehaviour:
     m_ActionId: 38769eb0-cf9f-4b39-a392-3854ec94bf30
     m_ActionName: UI/Submit[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 530637655}
+        m_TargetAssemblyTypeName: InputSelectCharacter, Assembly-CSharp
+        m_MethodName: OnCancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: acde3d64-2b09-4d94-9004-30687a4b06d8
     m_ActionName: UI/Cancel[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   - m_PersistentCalls:
@@ -2909,7 +2920,19 @@ MonoBehaviour:
     m_ActionId: 38769eb0-cf9f-4b39-a392-3854ec94bf30
     m_ActionName: UI/Submit[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1598485162}
+        m_TargetAssemblyTypeName: InputSelectCharacter, Assembly-CSharp
+        m_MethodName: OnCancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: acde3d64-2b09-4d94-9004-30687a4b06d8
     m_ActionName: UI/Cancel[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   - m_PersistentCalls:
@@ -3526,7 +3549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerNumder: 1
-  m_characterIcon: {fileID: 0}
   m_abilityIcon: {fileID: 797152903}
   m_player: {fileID: 788644197}
   m_characterName: {fileID: 3866256}
