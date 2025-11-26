@@ -744,7 +744,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8542913043100210308}
-  - component: {fileID: 615073397604033326}
   m_Layer: 6
   m_Name: BrickBlpock (2)
   m_TagString: Untagged
@@ -771,24 +770,6 @@ Transform:
   - {fileID: 6915309458998306761}
   m_Father: {fileID: 6987696943364604582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &615073397604033326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455403943529915323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 4803877209775643687}
-  - {fileID: 884442076148248665}
-  - {fileID: 4636832089325107343}
-  - {fileID: 6417569184913572303}
-  waitTime: 4
 --- !u!1 &471592965734098427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,7 +1619,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8087401178871973508}
-  - component: {fileID: 1932251018982531187}
   m_Layer: 6
   m_Name: BrickBlpock (2)
   m_TagString: Untagged
@@ -1665,24 +1645,6 @@ Transform:
   - {fileID: 8701007671593841369}
   m_Father: {fileID: 6945252133366461760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1932251018982531187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769224549213413848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 4065439447619599950}
-  - {fileID: 7079313973143352617}
-  - {fileID: 1155543426917395324}
-  - {fileID: 7602048418617653392}
-  waitTime: 2
 --- !u!1 &801340008455147395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,7 +3604,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710330005142920461}
-  - component: {fileID: 5950576450527054952}
   m_Layer: 6
   m_Name: BrickBlpock (1)
   m_TagString: Untagged
@@ -3669,24 +3630,6 @@ Transform:
   - {fileID: 3388570006938391073}
   m_Father: {fileID: 6987696943364604582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5950576450527054952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866686066272071476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 6911831403302997032}
-  - {fileID: 7619306605937473855}
-  - {fileID: 8680528278653610992}
-  - {fileID: 7183727926472492850}
-  waitTime: 6
 --- !u!1 &1916352958326205068
 GameObject:
   m_ObjectHideFlags: 0
@@ -6487,6 +6430,7 @@ MonoBehaviour:
   m_weaponDatas: {fileID: 11400000, guid: 595f0930daaee8149bffe01a15e7cade, type: 2}
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
   CrownPrefab: {fileID: 2203841068471228637, guid: f66c739d6c6dd224ba055733b5dfdfaa, type: 3}
+  m_itemBox: {fileID: 252829289677435990, guid: b552431d985780e4bbef8431b7cc61d3, type: 3}
   SpownPos: []
 --- !u!1 &3782932127470543534
 GameObject:
@@ -6952,7 +6896,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3551508025121933446}
-  - component: {fileID: 6696068510592014748}
   m_Layer: 6
   m_Name: BrickBlpock
   m_TagString: Untagged
@@ -6979,24 +6922,6 @@ Transform:
   - {fileID: 5010997851999036709}
   m_Father: {fileID: 6987696943364604582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6696068510592014748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4562616060486894608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 4564978983214234855}
-  - {fileID: 1860570975335633255}
-  - {fileID: 2264274218613468509}
-  - {fileID: 6012366873675389904}
-  waitTime: 2
 --- !u!1 &4564978983214234855
 GameObject:
   m_ObjectHideFlags: 0
@@ -8281,7 +8206,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194102995222246670}
-  - component: {fileID: 785217752842225863}
   m_Layer: 6
   m_Name: BrickBlpock (1)
   m_TagString: Untagged
@@ -8308,24 +8232,6 @@ Transform:
   - {fileID: 3551982761166515427}
   m_Father: {fileID: 6945252133366461760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &785217752842225863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5346336007968350552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 6438177268649646991}
-  - {fileID: 1544104623035290591}
-  - {fileID: 841246457718356751}
-  - {fileID: 4899743163221346502}
-  waitTime: 4
 --- !u!1 &5399534312250609259
 GameObject:
   m_ObjectHideFlags: 0
@@ -9420,7 +9326,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7840828847225683556}
-  - component: {fileID: 1759563484014967583}
   m_Layer: 6
   m_Name: BrickBlpock
   m_TagString: Untagged
@@ -9447,24 +9352,6 @@ Transform:
   - {fileID: 3760007292209548874}
   m_Father: {fileID: 6945252133366461760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1759563484014967583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215317130992285687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5f1fb2b9142074da3f742702768917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 7316827919753837681}
-  - {fileID: 507621174880363708}
-  - {fileID: 856906202659003481}
-  - {fileID: 874568598830058782}
-  waitTime: 6
 --- !u!1 &6266899734371979886
 GameObject:
   m_ObjectHideFlags: 0
