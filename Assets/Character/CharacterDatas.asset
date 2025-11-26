@@ -21,31 +21,31 @@ MonoBehaviour:
     m_titleCharacterPrefab: {fileID: 2237340058932335362, guid: 5acfd34f659cf1c4bb213c59e129a767, type: 3}
     m_characterId: 0
     m_chacterName: "\u30AD\u30E3\u30B5\u30EA\u30F3"
-    m_characterIcon: {fileID: 21300000, guid: 4f149ca99a351c048b818858da095ba5, type: 3}
+    m_characterIcon: {fileID: 21300000, guid: ea9e6a12c29ac4d41ac1e33d6e286f1c, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: df4054d0b4b87de48871318130529150, type: 3}
   - m_characterPrefab: {fileID: 5471674113087940143, guid: d3a203700b959794fbde532be3d09c6d, type: 3}
     m_titleCharacterPrefab: {fileID: 5714485871464273268, guid: b590b67124da33b40b72edfef0a4f4c7, type: 3}
     m_characterId: 1
     m_chacterName: "\u30C8\u30E0"
-    m_characterIcon: {fileID: 21300000, guid: a3817d83c80391d4ba2147007916ec95, type: 3}
+    m_characterIcon: {fileID: 21300000, guid: 304c7c21dd0ccea479bda34b7e235b9c, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 406be21271272614488f2db24272466a, type: 3}
   - m_characterPrefab: {fileID: 8473122308971430539, guid: f4b8bf2d03f33e7429233d30d381c88c, type: 3}
     m_titleCharacterPrefab: {fileID: 8532796935585729696, guid: 0176b3f66e4d5b342bc647e16dfbe012, type: 3}
     m_characterId: 2
     m_chacterName: "\u30B8\u30E3\u30C3\u30AF"
-    m_characterIcon: {fileID: 21300000, guid: c47a510d7b66abc47b99328dbd87843c, type: 3}
+    m_characterIcon: {fileID: 21300000, guid: b40ce11abcf5e374ea1458112238640e, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 3b5357af1f1a25d4c9166981d4d274f1, type: 3}
   - m_characterPrefab: {fileID: 7314802202389301887, guid: 6d528b01fcf41a242a55a01264886e1a, type: 3}
     m_titleCharacterPrefab: {fileID: 1174069383388713581, guid: 5a3c43eba3cd60640b7b7c8c551bba28, type: 3}
     m_characterId: 3
     m_chacterName: "\u30CB\u30C3\u30AF"
-    m_characterIcon: {fileID: 21300000, guid: e0f91dbe234c21349842e415f5ae8407, type: 3}
+    m_characterIcon: {fileID: 21300000, guid: 12ba5c00b9a80f741afb8f021c41921f, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 17fd776ecc0a61047aaae9238c2daffc, type: 3}
   - m_characterPrefab: {fileID: 4335917065569303653, guid: 21ddf39cf02fe654caa8b22c6319469e, type: 3}
     m_titleCharacterPrefab: {fileID: 5989747551389955534, guid: 9124308b2d3e7ca438e5549b22c1fe1c, type: 3}
     m_characterId: 4
     m_chacterName: "\u30DD\u30CB\u30FC"
-    m_characterIcon: {fileID: 21300000, guid: e7858cfa1fe85b048aca0b5bc3191f29, type: 3}
+    m_characterIcon: {fileID: 21300000, guid: eca66455e5885e24f9736cee205c544d, type: 3}
     m_abilityIcon: {fileID: 21300000, guid: 69a3b631ceb342e4492b8e7c88f486a9, type: 3}
   - m_characterPrefab: {fileID: 6432877436252956837, guid: 587e4c5b672d2cc48a66a1d416b4390f, type: 3}
     m_titleCharacterPrefab: {fileID: 2492899716597030650, guid: fe04e9360d98fe04197ab6bc7de913d9, type: 3}
