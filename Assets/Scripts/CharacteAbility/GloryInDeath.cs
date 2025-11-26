@@ -14,6 +14,7 @@ public class GloryInDeath : MonoBehaviour
 	CharacterManager m_characterManeger;
 	PlayerController m_playerController;
 	TakeWeapon m_takeWeapon;
+	AudioSource m_se;
 
 	GameObject m_player;
 
@@ -31,6 +32,7 @@ public class GloryInDeath : MonoBehaviour
         m_characterManeger = m_player.GetComponent<CharacterManager>();
 		m_playerController = m_player.GetComponent<PlayerController>();
 		m_takeWeapon = m_player.GetComponent<TakeWeapon>();
+		m_se = GetComponent<AudioSource>();
 
 		m_noBuffDamage = m_takeWeapon.GetNoBuffDamage();
 		m_noBuffSpeed = m_takeWeapon.GetNoBuffSpeed();
@@ -62,12 +64,11 @@ public class GloryInDeath : MonoBehaviour
 
 				m_takeWeapon.ResetTakeDrop();
 			}
-		}
-
-	
+		}	
 
 		if (m_characterManeger.GetHelth() <= 0 && !m_isUse)
 		{
+			m_se.Play();
 			m_characterManeger.Heal(100);
 
 			Debug.Log("–¼—_‚ ‚éŽ€”­“®");
@@ -83,8 +84,8 @@ public class GloryInDeath : MonoBehaviour
 		}
 		else if(m_characterManeger.GetHelth() <= 0 && m_isUse)
 		{
-			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage;
-			m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed;
+			m_characterManeger.GetSetAtttackDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
+			m_characterManeger.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 
 			m_playerController.GetSetSpeedMagnification = 1;
 

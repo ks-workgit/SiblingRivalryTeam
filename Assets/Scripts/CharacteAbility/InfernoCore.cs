@@ -13,6 +13,8 @@ public class InfernoCore : MonoBehaviour
 		m_player = transform.parent.gameObject;
 
 		gameObject.transform.parent = null;
+
+		StartCoroutine(OffCollider());
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -29,5 +31,14 @@ public class InfernoCore : MonoBehaviour
 
 			collider.enabled = false;
 		}
+	}
+
+	IEnumerator OffCollider()
+	{
+		Collider collider = gameObject.GetComponent<Collider>();
+
+		yield return new WaitForSeconds(0.5f);		
+
+		collider.enabled = false;
 	}
 }

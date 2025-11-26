@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PhantomTrade : MonoBehaviour
 {
+	[SerializeField] GameObject m_effect;
+
 	GameObject m_player;
 
 	AudioSource m_se;
@@ -49,6 +51,10 @@ public class PhantomTrade : MonoBehaviour
 
 			m_player.transform.position = enemyPosition;
 			other.transform.position = playerPosition;
+
+			//エフェクト生成
+			Instantiate(m_effect, transform.position, Quaternion.identity, transform);
+			Instantiate(m_effect, other.transform.position, Quaternion.identity, other.transform);			
 
 			Debug.Log("ファントムトレード発動");
 			Debug.Log("自身" + m_player.transform.position + "相手" + other.transform.position);
