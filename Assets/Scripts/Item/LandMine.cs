@@ -7,14 +7,20 @@ public class LandMine : MonoBehaviour
 	const int DamageValue = 50;
 
 	[SerializeField] GameObject bombEffect;
+	[SerializeField] AudioSource m_se;
 
-	BoxCollider m_boxCollider;
+	[SerializeField] SphereCollider m_sphereCollider;
+	[SerializeField] BoxCollider m_boxCollider;
 
-	private void Start()
+	bool m_isExplosion;
+	bool m_installationl;   //地雷を設置できたか
+
+	private void Update()
 	{
-		m_boxCollider = GetComponent<BoxCollider>();
-
-		StartCoroutine(OnCollider());
+		if(m_isExplosion && !m_se.isPlaying)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -24,27 +30,33 @@ public class LandMine : MonoBehaviour
 			Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
 
 			rigidbody.isKinematic = true;
-		}
-	}
 
-	private void OnTriggerExit(Collider other)
-	{
-		if(other.CompareTag("Player"))
+			m_installationl = true;
+		}
+
+		//離れた後周囲にいるプレイヤーにダメージ
+		if (other.CompareTag("Player") && m_isExplosion)
 		{
 			CharacterManager characterManager = other.GetComponent<CharacterManager>();
 
 			characterManager.Damage(DamageValue);
 
-			Instantiate(bombEffect, transform.position, Quaternion.identity);
-
-			Destroy(gameObject);
+			m_sphereCollider.enabled = false;
 		}
 	}
 
-	IEnumerator OnCollider()
+	private void OnTriggerExit(Collider other)
 	{
-		yield return new WaitForSeconds(0.5f);
+		//プレイヤーが地雷を踏んで離れたら
+		if(other.CompareTag("Player") && m_installationl)
+		{
+			Instantiate(bombEffect, transform.position, Quaternion.identity);
 
-		m_boxCollider.enabled = true;
+			m_isExplosion = true;
+			m_se.Play();
+
+			m_sphereCollider.enabled = true; 
+			m_boxCollider.enabled = false;
+		}
 	}
 }
