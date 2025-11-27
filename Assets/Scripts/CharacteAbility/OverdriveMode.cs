@@ -28,8 +28,8 @@ public class OverdriveMode : MonoBehaviour
 		m_playerController = m_player.GetComponent<PlayerController>();
 		m_takeWeapon = m_player.GetComponent<TakeWeapon>();
 
-		m_noBuffDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
-		m_noBuffSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
+		m_noBuffDamage = m_takeWeapon.GetNoBuffDamage();
+		m_noBuffSpeed = m_takeWeapon.GetNoBuffSpeed();
 
 		if (m_takeWeapon.GetTakeDrop())
 		{

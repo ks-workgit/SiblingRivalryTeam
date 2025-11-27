@@ -6,7 +6,7 @@ public class DeathFalling : MonoBehaviour
 {
 	CharacterManager m_characterManeger;
 
-	private void OnTriggerStay(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
 		if(other.CompareTag("Player"))
 		{
