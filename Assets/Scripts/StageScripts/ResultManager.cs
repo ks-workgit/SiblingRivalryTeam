@@ -3,45 +3,45 @@ using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
-	[Header("キャラデータ")]
-	[SerializeField] CharacterDatas m_characterDatas;
-
 	[Header("UI")]
-	[SerializeField] Image m_winnerIcon;
-	[SerializeField] Image m_loserIcon;
+	[SerializeField] private Image loserIcon; // 負けアイコンを表示
+	[SerializeField] private Transform winnerParent; // 勝者を表示する位置
 
-	GameObject winnerObj;
-	GameObject loserObj;
+	[Header("通常キャラ")]
+	[SerializeField] private GameObject[] characterPrefabs;
+	// ※Inspectorでキャラのプレハブを配列にセット
 
-	public void SetWinner(int winner, Transform winnerPos,Transform loserPos)
+	[SerializeField] private CharacterDatas characterDatas;
+
+	public void ShowResult(bool isPlayerOneWin)
 	{
-		UpdateResuItUI(winner);
-		SpawnCharacters(winner,winnerPos,loserPos);
-	}
-	public void UpdateResuItUI(int winner)
-	{
-		int p1id = m_characterDatas.PlayerOneCharacterId;
-		int p2id = m_characterDatas.PlayerTwoCharacterId;
+		int winnerId = isPlayerOneWin ?
+			characterDatas.PlayerOneCharacterId :
+			characterDatas.PlayerTwoCharacterId;
 
-		if(winner == 1)
+		int loserId = isPlayerOneWin ?
+			characterDatas.PlayerTwoCharacterId :
+			characterDatas.PlayerOneCharacterId;
+
+
+		// ◆勝者キャラを生成して配置
+		GameObject winObj = Instantiate(
+			characterPrefabs[winnerId],
+			winnerParent.position,
+			Quaternion.identity,
+			winnerParent
+		);
+		winObj.transform.localScale = Vector3.one;
+
+		// ◆勝者キャラのアニメ再生依頼
+		Animator anim = winObj.GetComponent<Animator>();
+		if (anim != null)
 		{
-			m_winnerIcon.sprite = m_characterDatas.m_characterInfometions[p1id].m_characterIcon;
-			m_loserIcon.sprite = m_characterDatas.m_characterInfometions[p2id].m_characterIcon;
+			anim.SetTrigger("Win"); // プレイヤー側で管理する勝利モーション
 		}
-		else 
-		{
-			m_winnerIcon.sprite = m_characterDatas.m_characterInfometions[p2id].m_characterIcon;
-			m_loserIcon.sprite = m_characterDatas.m_characterInfometions[p1id].m_characterIcon;
-		}
-	}
-	public void SpawnCharacters(int winner,Transform winnerPos,Transform loserPos)
-	{
-		int p1id = m_characterDatas.PlayerOneCharacterId;
-		int p2id = m_characterDatas.PlayerTwoCharacterId;
 
-		int winId = (winner == 1) ? p1id : p2id;
-		//winnerObj = Instantiate(m_characterDatas.m_characterInfometions[winId].m_titleCharacterPrefab, winnerPos);
-		int loseId = (winner == 1) ?p2id : p1id;
-		//loserObj = Instantiate(m_characterDatas.m_characterInfometions[loseId].m_titleCharacterPrefab, loserPos);
+		// ◆敗者アイコンをセット
+		loserIcon.sprite =
+			characterDatas.m_characterInfometions[loserId].m_characterIcon;
 	}
 }
