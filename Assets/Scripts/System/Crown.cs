@@ -5,13 +5,13 @@ using UnityEngine;
 public class Crown : MonoBehaviour
 {
 	[SerializeField] CharacterDatas m_characterDatas;
+	[SerializeField] Rigidbody m_rigidbody;
+
 	CharacterManager m_characterManeger;
 
 	BoxCollider m_boxCollider;
-
 	AudioSource	m_se;
 	MeshRenderer m_mesh;
-	Rigidbody m_rigidbody;
 
 	bool m_isGeted;
 

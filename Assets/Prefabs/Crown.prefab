@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_rigidbody: {fileID: 9155096020804578019}
 --- !u!82 &-7819128485797002474
 AudioSource:
   m_ObjectHideFlags: 0

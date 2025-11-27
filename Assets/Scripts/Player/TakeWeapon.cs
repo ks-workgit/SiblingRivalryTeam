@@ -18,10 +18,7 @@ public class TakeWeapon : MonoBehaviour
 	GameObject m_haveWaepon;
 
 	int m_weaponId;
-
-	int m_noBuffDamage;
 	int m_weaponKind;
-	float m_noBuffSpeed;
 
 	bool m_isHaveWaepon;
 	bool m_isDroping;
@@ -30,16 +27,6 @@ public class TakeWeapon : MonoBehaviour
 	public int GetHaveWeaponId()
 	{
 		return m_weaponId;
-	}
-
-	public int GetNoBuffDamage()
-	{
-		return m_noBuffDamage;
-	}
-
-	public float GetNoBuffSpeed()
-	{
-		return m_noBuffSpeed;
 	}
 
 	public bool GetTakeDrop()
@@ -112,9 +99,6 @@ public class TakeWeapon : MonoBehaviour
 		m_characterManager.GetSetAtttackDamage += m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
 
-		m_noBuffDamage = m_characterManager.GetSetAtttackDamage;
-		m_noBuffSpeed = m_characterManager.GetSetAtttackSpeed;
-
 		m_weaponKind = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponKindId;
 
 		m_isHaveWaepon = true;
@@ -150,9 +134,6 @@ public class TakeWeapon : MonoBehaviour
 
 			m_characterManager.GetSetAtttackDamage -= m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
-
-			m_noBuffDamage = m_characterManager.GetSetAtttackDamage;
-			m_noBuffSpeed = m_characterManager.GetSetAtttackSpeed;
 
 			m_weaponId = 0;
 
