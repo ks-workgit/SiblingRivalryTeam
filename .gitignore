@@ -73,3 +73,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/KawaiiLand/Render pipeline/Build-in.unitypackage.meta
+Assets/KawaiiLand/Render pipeline/URP.unitypackage.meta
+Assets/KawaiiLand/Ruletile/RuletileResources.unitypackage.meta

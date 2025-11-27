@@ -8,8 +8,9 @@ public class DropItem : MonoBehaviour
 	[SerializeField] int m_itemId;
 
 	bool m_isGround;
+	bool m_isTouch;
 
-	private Rigidbody m_rigidbody;
+    private Rigidbody m_rigidbody;
 
 	private void Start()
 	{
@@ -22,6 +23,11 @@ public class DropItem : MonoBehaviour
 		{
 			m_rigidbody.isKinematic = true;
 		}
+
+		if (m_isTouch)
+		{
+			m_isTouch = false;
+		}
 	}
 
 	public int GetItemId()
@@ -29,11 +35,21 @@ public class DropItem : MonoBehaviour
 		return m_itemId;
 	}
 
-	private void OnTriggerEnter(Collider other)
+    public bool GetIsTouch()
+    {
+        return m_isTouch;
+    }
+
+    private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
 		{
 			m_isGround = true;
 		}
+
+		if (other.CompareTag("Player"))
+		{
+            m_isTouch = true;
+        }
 	}
 }
