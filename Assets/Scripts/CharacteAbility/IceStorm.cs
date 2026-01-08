@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IceStorm : MonoBehaviour
 {
-	const float Damage = 10;
+	const int Damage = 10;
 
 	GameObject m_usePlayer;
 

@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 307195813595906490}
   - component: {fileID: 6440123992225554232}
   - component: {fileID: 5166605499398722763}
+  - component: {fileID: -7683366190827171875}
   - component: {fileID: -354147980165965390}
   m_Layer: 0
   m_Name: Catherine
@@ -1589,6 +1590,24 @@ MonoBehaviour:
   m_weaponDatas: {fileID: 11400000, guid: 595f0930daaee8149bffe01a15e7cade, type: 2}
   m_characterManager: {fileID: -3323073569137445664}
   m_playerController: {fileID: 5478181343302709016}
+--- !u!114 &-7683366190827171875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218075769930803476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!143 &-354147980165965390
 CharacterController:
   m_ObjectHideFlags: 0

@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 763355596717534571}
   - component: {fileID: 974004175630893636}
   - component: {fileID: 7148193045335854667}
+  - component: {fileID: -6839316206656439819}
   m_Layer: 0
   m_Name: Pony
   m_TagString: Player
@@ -466,6 +467,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.15, z: 0}
+--- !u!114 &-6839316206656439819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335917065569303653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8017406674770369756
 GameObject:
   m_ObjectHideFlags: 0

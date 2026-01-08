@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3996791981346434847}
   - component: {fileID: 5268124347292342010}
   - component: {fileID: 3215818318498005860}
+  - component: {fileID: 5199894146225618480}
   m_Layer: 0
   m_Name: Glacier
   m_TagString: Player
@@ -349,6 +350,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.15, z: 0}
+--- !u!114 &5199894146225618480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29009984315236877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &114670513783418930
 GameObject:
   m_ObjectHideFlags: 0
