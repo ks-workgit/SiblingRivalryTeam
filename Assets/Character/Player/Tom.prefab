@@ -428,6 +428,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 457a6a7e-378f-47c4-9873-bd28d738390e
     m_ActionName: Player/WeaponDrop[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 85a1aec5-be16-4c0f-97e5-3ab5b0aad0a0
+    m_ActionName: Player/ItemDrop[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -509,7 +513,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
-  m_playerTransform: {fileID: 8928061519572923426}
   m_characterManeger: {fileID: 6952976182452654463}
 --- !u!114 &5690507617016210172
 MonoBehaviour:
@@ -562,8 +565,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.7
   m_Radius: 0.4
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 80
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.15, z: 0}

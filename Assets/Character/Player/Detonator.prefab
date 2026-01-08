@@ -699,13 +699,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.73
-  m_Radius: 0.36
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_Height: 1.7
+  m_Radius: 0.4
+  m_SlopeLimit: 80
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.87, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!4 &2159680778446019510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}

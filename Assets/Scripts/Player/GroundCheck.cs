@@ -20,10 +20,10 @@ public class GroundCheck : MonoBehaviour
 
         Ray[] ray = {
             new Ray(m_position, m_direction),
-            new Ray(m_position + new Vector3(-0.25f, 0, 0), m_direction),
-            new Ray(m_position + new Vector3( 0.25f, 0, 0), m_direction),
-            new Ray(m_position + new Vector3(0, 0, -0.25f), m_direction),
-            new Ray(m_position + new Vector3(0, 0,  0.25f), m_direction),
+            new Ray(m_position + new Vector3(-0.5f, 0, 0), m_direction),
+            new Ray(m_position + new Vector3( 0.5f, 0, 0), m_direction),
+            new Ray(m_position + new Vector3(0, 0, -0.5f), m_direction),
+            new Ray(m_position + new Vector3(0, 0,  0.5f), m_direction),
         };
 
         foreach (Ray r in ray)

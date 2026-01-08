@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a318391d7273754c8106514a8f88bb8, type: 3}
       propertyPath: m_Name
-      value: Hero_Nature_Body 1
+      value: Moss
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a318391d7273754c8106514a8f88bb8, type: 3}
       propertyPath: m_IsActive
@@ -642,13 +642,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.73
-  m_Radius: 0.36
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_Height: 1.7
+  m_Radius: 0.4
+  m_SlopeLimit: 80
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.87, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!1001 &6763787437125973337
 PrefabInstance:
   m_ObjectHideFlags: 0
