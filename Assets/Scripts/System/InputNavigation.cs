@@ -18,7 +18,7 @@ public class InputNavigation : MonoBehaviour
         var inputValue = context.ReadValue<Vector2>();
 
         // ˆê’èŠÔŠu‚ð‚à‚½‚¹‚é
-        if (Time.time -  m_inputTime > m_delay)
+        if (Time.time - m_inputTime > m_delay)
         {
             // ¶‰E‚Ì“ü—Í
             if (inputValue.x > 0.5f)
