@@ -71,12 +71,14 @@ public class RoundCount : MonoBehaviour
 			|| Round2P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount])
 		{
 			Round1P = 0;
-			Round2P = 0;
+			Round2P = 0;			
 			SceneManager.LoadScene("Result");
+			SceneController.SetCanBack(true);
 		}
 		else
 		{
 			SceneManager.LoadScene("Stagechoice");
+			SceneController.SetCanBack(false);
 		}
 
 		m_roundPanel.SetActive(false);

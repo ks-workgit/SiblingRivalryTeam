@@ -36,7 +36,7 @@ public class InputNavigation : MonoBehaviour
     {
         if (!context.performed) return;
 
-        SceneController.BackToBeforScene();
+        SceneController.BackToBeforeScene();
     }
 
     // ¶‰E“ü—Í‚É‰‚¶‚Äˆ—
