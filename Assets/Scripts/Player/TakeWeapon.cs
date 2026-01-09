@@ -123,7 +123,7 @@ public class TakeWeapon : MonoBehaviour
 			GameObject dropWeapon = Instantiate(
 				m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs,
 				 playerFrontPos,
-				Quaternion.Euler(-90,0,0)
+				 m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs.transform.rotation
 				);
 
 			Rigidbody weaponRb = dropWeapon.GetComponent<Rigidbody>();
