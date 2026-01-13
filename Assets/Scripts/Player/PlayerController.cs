@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     CharacterController m_characterController;
 
     [SerializeField] GroundCheck m_footGround;
+    [SerializeField] Transform m_shieldPosition;
     [SerializeField] GameObject m_shieldObject;
     [SerializeField] Collider m_collider;
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     CharacterManager m_characterManager;
     TakeItem m_takeItem;
 	TakeWeapon m_takeWeapon;
+    GameObject m_shieldGenerate;
 
     float m_verticalVelocity;
     float m_recoverTime;    // スタンからの復帰時間
@@ -86,7 +88,6 @@ public class PlayerController : MonoBehaviour
         m_isInvincible = false;
 
         m_collider.enabled = false;
-        m_shieldObject.SetActive(false);
         m_stamina = m_characterManager.GetStamina();
 
 		m_speedMagnification = 1;		
@@ -184,20 +185,15 @@ public class PlayerController : MonoBehaviour
         switch (callback.phase)
         {
             case InputActionPhase.Performed:
+                if (m_isGuard) return;
                 // ボタンが押されたとき
-                m_shieldObject.SetActive(true);
-                m_animator.SetBool("Guard", true);
                 m_isGuard = true;
-                m_isInvincible = true;
-                m_canMove = false;
+                Guard(m_isGuard);
                 break;
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
-                m_shieldObject.SetActive(false);
-                m_animator.SetBool("Guard", false);
                 m_isGuard = false;
-                m_isInvincible = false;
-                m_canMove = true;
+                Guard(m_isGuard);                
                 break;
         }
     }
@@ -328,61 +324,8 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
     {
-		var isGrounded = m_characterController.isGrounded;
-
-		if (isGrounded && !m_isGrounded && !m_isJump && m_verticalVelocity < 0)
-		{
-			// 着地する瞬間に落下の初速を指定しておく
-			m_verticalVelocity = -m_initFallSpeed;
-		}
-		else if (!isGrounded)
-		{
-			// 空中にいるときは下向きに重力加速度を与えて落下させる
-			if(!m_isJump)
-			{
-				m_verticalVelocity -= m_gravity * Time.deltaTime;
-			}
-			else
-			{
-				m_isJump = false;
-			}
-
-			// 落下する速さ以上にならないように補正
-			if (m_verticalVelocity < -m_fallSpeed)
-			{
-				m_verticalVelocity = -m_fallSpeed;
-			}
-		}
-		m_isGrounded = isGrounded;
-
-        // カメラの正面ベクトルを作成
-        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-
-        // カメラの向きを考慮した移動量
-        m_velocity = cameraForward * m_direction.z + Camera.main.transform.right * m_direction.x;
-        m_velocity *= m_isDash ? m_dashSpeed : m_speed;
-
-        var moveVelocity = new Vector3(
-            m_velocity.x,
-            m_verticalVelocity,
-            m_velocity.z
-        );
-
-        // 現在フレームの移動量を移動速度から計算
-        var moveDelta = moveVelocity * Time.deltaTime;
-
-        // 進行方向にゆっくり向く
-        if (m_velocity != Vector3.zero)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                Quaternion.LookRotation(m_velocity.normalized), 0.3f);
-        }
-
-        // 移動
-        if (m_canMove && !m_isStun)
-        {
-            m_characterController.Move(moveDelta);
-        }
+        MoveCharacter();
+        ApplyGravity();
 
         // スタミナ消費
         if (m_isDash && m_isMoving && !m_isGuard)
@@ -430,6 +373,39 @@ public class PlayerController : MonoBehaviour
                 m_isInvincible = false;
             }
         }
+    }
+
+    // 移動関連
+    private void MoveCharacter()
+    {
+        // カメラの正面ベクトルを作成
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        // カメラの向きを考慮した移動量
+        m_velocity = cameraForward * m_direction.z + Camera.main.transform.right * m_direction.x;
+        m_velocity *= m_isDash ? m_dashSpeed : m_speed;
+
+        var moveVelocity = new Vector3(
+            m_velocity.x,
+            m_verticalVelocity,
+            m_velocity.z
+        );
+
+        // 現在フレームの移動量を移動速度から計算
+        var moveDelta = moveVelocity * Time.deltaTime;
+
+        // 進行方向にゆっくり向く
+        if (m_velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(m_velocity.normalized), 0.3f);
+        }
+
+        // 移動
+        if (m_canMove && !m_isStun)
+        {
+            m_characterController.Move(moveDelta);
+        }
 
         // 移動時のアニメーション
         if (m_isMoving && !m_isGuard)
@@ -444,28 +420,78 @@ public class PlayerController : MonoBehaviour
                 m_animator.SetBool("Move", true);
             }
         }
-
-        OnGround();
     }
 
-    // 接地
-    private void OnGround()
+    // 重力、接地判定
+    private void ApplyGravity()
     {
-        if (m_footGround.CheckGround())
+        bool isGrounded = m_characterController.isGrounded || m_footGround.CheckGround();
+
+        if (isGrounded)
         {
-            m_isGrounded = true;
+            if (!m_isGrounded && !m_isJump && m_verticalVelocity < 0)
+            {
+                // 着地の瞬間
+                m_verticalVelocity = -m_initFallSpeed;
+            }
+            else
+            {
+                // 地上では張り付かせる
+                m_verticalVelocity = -m_initFallSpeed;
+            }
         }
         else
         {
-            m_isGrounded = false;
-            m_isGuard = false;
+            // 空中にいるときは下向きに重力加速度を与えて落下させる
+            if (!m_isJump)
+            {
+                m_verticalVelocity -= m_gravity * Time.deltaTime;
+            }
+            else
+            {
+                m_isJump = false;
+            }
+
+            // 落下する速さ以上にならないように補正
+            if (m_verticalVelocity < -m_fallSpeed)
+            {
+                m_verticalVelocity = -m_fallSpeed;
+            }
         }
+
+        m_isGrounded = isGrounded;
     }
 
-	public void OnIsGrounded()
+    public void OnIsGrounded()
 	{
 		m_isGrounded = true;
 	}
+
+    // ガード
+    private void Guard(bool isGuard)
+    {
+        if (isGuard)
+        {
+            m_shieldGenerate = Instantiate(m_shieldObject, m_shieldPosition.position, Quaternion.identity);
+            m_shieldGenerate.transform.parent = m_shieldPosition;
+
+            m_animator.SetBool("Guard", true);
+            m_isInvincible = true;
+            m_canMove = false;
+        }
+        else
+        {
+            if (m_shieldGenerate != null)
+            {
+                Destroy(m_shieldGenerate);
+                m_shieldGenerate = null;
+            }
+
+            m_animator.SetBool("Guard", false);
+            m_isInvincible = false;
+            m_canMove = true;
+        }
+    }
 
     // 回避
     IEnumerator Avoidance(Vector3 direction)
