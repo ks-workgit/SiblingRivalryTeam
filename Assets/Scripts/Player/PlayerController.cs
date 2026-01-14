@@ -231,23 +231,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnAbility(InputAction.CallbackContext callback)
     {
-        if (m_isStun) return;
+        if (m_isStun || m_isAttacking) return;
         m_useAbility.Use();
     }
 
     private void OnItem(InputAction.CallbackContext callback)
     {
+        if (m_isStun || m_isAttacking) return;
         m_takeItem.ItemUse();
     }
 
 	private void OnWeaponDrop(InputAction.CallbackContext callback)
-	{
-		m_weaponDrop = true;
+    {
+        if (m_isStun || m_isAttacking) return;
+        m_weaponDrop = true;
 	}
 
 	private void OnItemDrop(InputAction.CallbackContext callback)
-	{
-		m_takeItem.DropItem();
+    {
+        if (m_isStun || m_isAttacking) return;
+        m_takeItem.DropItem();
 	}
 
 	// アニメーションから呼ばれる
