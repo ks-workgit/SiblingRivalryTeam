@@ -7,9 +7,12 @@ public class InfernoCore : MonoBehaviour
 	const int DamageValue = 75;
 
 	GameObject m_player;
+	AudioSource m_se;
 
 	private void Start()
 	{
+		m_se = GetComponent<AudioSource>();
+
 		m_player = transform.parent.gameObject;
 
 		gameObject.transform.parent = null;
@@ -42,7 +45,12 @@ public class InfernoCore : MonoBehaviour
 	{
 		Collider collider = gameObject.GetComponent<Collider>();
 
-		yield return new WaitForSeconds(0.5f);		
+		yield return new WaitForSeconds(2f);
+
+		m_se.Play();
+		collider.enabled = true;
+
+		yield return new WaitForSeconds(0.5f);
 
 		collider.enabled = false;
 	}
