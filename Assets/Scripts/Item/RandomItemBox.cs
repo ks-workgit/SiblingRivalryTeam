@@ -34,7 +34,11 @@ public class RandomItemBox : MonoBehaviour
                 }
 
                 // êVÇµÇ≠ê∂ê¨Çµï€ë∂
-                GameObject itemObject = Instantiate(m_itemDatas.m_itemDatas[m_index].m_dropItemPrefabs, gameObject.transform.position, Quaternion.identity);
+                GameObject itemObject = Instantiate(
+					m_itemDatas.m_itemDatas[m_index].m_dropItemPrefabs,
+					gameObject.transform.position,
+					Quaternion.identity,
+					transform);
                 m_retentionObject = itemObject;
 
                 if (itemObject.TryGetComponent<Rigidbody>(out var itemObjectRb))

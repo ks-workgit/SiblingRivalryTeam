@@ -21,7 +21,7 @@ public class CreateWeapon : MonoBehaviour
 		Instantiate(
 			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs,
 			WeaponSpownPos[spownIndex].position,
-			Quaternion.Euler(-90, 0, 0)
+			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs.transform.rotation
 			);
 	}
 }

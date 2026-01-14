@@ -38,7 +38,8 @@ public class CreateGameObject : MonoBehaviour
 		Instantiate(
 			CrownPrefab,
 			SpownPos[spownIndex].position,
-			Quaternion.Euler(-90, 0, 0)
+			Quaternion.Euler(-90, 0, 0),
+			transform
 			);
 
 		SpownPos.RemoveAt(spownIndex);
@@ -49,7 +50,8 @@ public class CreateGameObject : MonoBehaviour
 		Instantiate(
             m_itemBox,
 			SpownPos[spownIndex].position,
-			Quaternion.identity
+			Quaternion.identity,
+			transform
 			);
 
 		SpownPos.RemoveAt(spownIndex);
@@ -60,7 +62,8 @@ public class CreateGameObject : MonoBehaviour
 		Instantiate(
 			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs,
 			SpownPos[spownIndex].position,
-			Quaternion.Euler(-90, 0, 0)
+			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs.transform.rotation,
+			transform
 			);
 	}
 }

@@ -6,6 +6,7 @@ public class MapSpawner : MonoBehaviour
 	//ゲームシーン側
 	[SerializeField] private MapGroup[] mapGroups;
 	[SerializeField] private float mapWidth = 90f;
+	[SerializeField] private bool inTitle;
 
 	private List<GameObject> activeMaps = new List<GameObject>();
 	private float spawnX = 0f;
@@ -25,6 +26,11 @@ public class MapSpawner : MonoBehaviour
 		{
 			Debug.LogError("マップ選択が無効です。");
 			return;
+		}
+
+		if(inTitle)
+		{
+			selectedIndex = Random.Range(0, mapGroups.Length);
 		}
 
 		// 最初に4枚並べる
