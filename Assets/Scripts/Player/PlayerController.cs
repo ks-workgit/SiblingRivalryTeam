@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
             case InputActionPhase.Canceled:
                 // ボタンが離されたとき
                 m_isGuard = false;
-                Guard(m_isGuard);                
+                Guard(m_isGuard);
                 break;
         }
     }
@@ -372,6 +372,21 @@ public class PlayerController : MonoBehaviour
                 m_invincibleTimer = 0;
                 m_isInvincible = false;
             }
+        }
+
+        // ガード中、空中のときガード解除
+        if (!m_isGrounded && m_isGuard)
+        {
+            if (m_shieldGenerate != null)
+            {
+                Destroy(m_shieldGenerate);
+                m_shieldGenerate = null;
+            }
+
+            m_animator.SetBool("Guard", false);
+            m_isInvincible = false;
+            m_canMove = true;
+            m_isGuard = false;
         }
     }
 
