@@ -44,6 +44,16 @@ public class TakeWeapon : MonoBehaviour
 		return m_weaponKind;
 	}
 
+	public bool GetIsHaveWeapon()
+	{
+		return m_isHaveWaepon;
+	}
+
+	public void SetIsHaveWeapon(bool isHaveWeapon)
+	{
+		m_isHaveWaepon = isHaveWeapon;
+	}
+
 	private void Start()
 	{
 		m_weaponId = 0;
@@ -51,7 +61,10 @@ public class TakeWeapon : MonoBehaviour
 
 	private void Update()
 	{
-		DropWeapon();
+		if(m_playerController.GetWeaPonDrop())
+		{
+			DropingWeapon(true);
+		}
 
 		if(!m_isHaveWaepon || m_isDroping)
 		{
@@ -96,6 +109,8 @@ public class TakeWeapon : MonoBehaviour
 			//Destroy(m_haveWaepon.gameObject);
 		}
 
+		m_characterManager.ResetAttack();
+
 		m_characterManager.GetSetAtttackDamage += m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
 		m_characterManager.GetSetAtttackSpeed = m_weaponDatas.m_weaponDatas[m_weaponId].m_attackSpeed;
 
@@ -106,38 +121,39 @@ public class TakeWeapon : MonoBehaviour
 	}
 
 	//武器を捨てる処理
-	void DropWeapon()
+	public void DropingWeapon(bool dropingWeapon)
 	{
-		if (m_playerController.GetWeaPonDrop() && m_isHaveWaepon && !m_isDroping)
+		if (m_isHaveWaepon && !m_isDroping)
 		{
+			if(dropingWeapon)
+			{
+				//プレイヤーの前方の位置を計算
+				Vector3 playerFrontPos = new Vector3(
+					transform.position.x + transform.forward.x,
+					transform.position.y + transform.forward.y + OffSet,
+					transform.position.z + transform.forward.z);
+
+				GameObject dropWeapon = Instantiate(
+					m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs,
+					 playerFrontPos,
+					 m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs.transform.rotation
+					);
+
+				Rigidbody weaponRb = dropWeapon.GetComponent<Rigidbody>();
+				//落とした武器を前に投げる
+				weaponRb.velocity = new Vector3(transform.forward.x * 7, transform.forward.y * 7, transform.forward.z * 7);
+			}
+
 			m_isDroping = true;
 
 			Destroy(m_haveWaepon.gameObject);
 
-			//プレイヤーの前方の位置を計算
-			Vector3 playerFrontPos = new Vector3(
-				transform.position.x + transform.forward.x,
-				transform.position.y + transform.forward.y + OffSet,
-				transform.position.z + transform.forward.z);
-
-			GameObject dropWeapon = Instantiate(
-				m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs,
-				 playerFrontPos,
-				 m_weaponDatas.m_weaponDatas[m_weaponId].m_dropWeaponPrefabs.transform.rotation
-				);
-
-			Rigidbody weaponRb = dropWeapon.GetComponent<Rigidbody>();
-			//落とした武器を前に投げる
-			weaponRb.velocity = new Vector3(transform.forward.x * 7, transform.forward.y * 7, transform.forward.z * 7);
-
 			m_playerController.ResetWeaponDrop();
 
-			m_characterManager.GetSetAtttackDamage -= m_weaponDatas.m_weaponDatas[m_weaponId].m_attackDamage;
-			m_characterManager.GetSetAtttackSpeed = AttackSpeedInitial;
+			m_characterManager.ResetAttack();
 
 			m_weaponId = 0;
-
-			m_weaponKind = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponKindId;
+			m_weaponKind = 0;
 
 			m_isHaveWaepon = false;
 			m_takeDrop = true;

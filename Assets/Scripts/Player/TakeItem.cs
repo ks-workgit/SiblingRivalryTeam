@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class TakeItem : MonoBehaviour
 {
@@ -26,6 +27,16 @@ public class TakeItem : MonoBehaviour
 	public void SetHaveItem(bool haveItem)
 	{
 		m_nowHaveItem = haveItem;
+	}
+
+	public bool GetHaveItem()
+	{
+		return m_nowHaveItem;
+	}
+
+	public int GetHaveItemId()
+	{
+		return m_haveItemId;
 	}
 
 	private void Update()
@@ -58,20 +69,22 @@ public class TakeItem : MonoBehaviour
 			DropItem dropItem = other.GetComponent<DropItem>();
 
 			int ItemId = dropItem.GetItemId();
-			var itemData = m_itemDatas.m_itemDatas[ItemId];
 
-			//アイコン生成
-			ObtainingItem(ItemId);
-
-			m_haveItemId = ItemId;
-
-			Debug.Log("拾った");
+			GettingItem(ItemId);
 
 			//落ちていたアイテムオブジェクトを削除
 			Destroy(other.gameObject);
-		}
+		}		
+	}
 
-		
+	public void GettingItem(int itemId)
+	{
+		//アイコン生成
+		ObtainingItem(itemId);
+
+		m_haveItemId = itemId;
+
+		Debug.Log("拾った");
 	}
 
 	public void ItemUse()
@@ -139,8 +152,6 @@ public class TakeItem : MonoBehaviour
 				ghost.SetTakeItem(this);
 
 				ghost.StealCrown();
-
-				m_nowHaveItem = false;
 			}
 			//その場に置くアイテム
 			else if(m_itemDatas.m_itemDatas[m_haveItemId].m_itemKindNum == 4)

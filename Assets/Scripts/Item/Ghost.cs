@@ -39,7 +39,7 @@ public class Ghost : MonoBehaviour
 
 			m_takeItem.SetHaveItem(false);
 		}
-		
+
 		Destroy(gameObject);
 	}
 }

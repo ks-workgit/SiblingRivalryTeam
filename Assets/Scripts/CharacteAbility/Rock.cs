@@ -48,7 +48,7 @@ public class Rock : MonoBehaviour
 
 			characterManager.Damage(Damage);
 
-			//岩がプレイヤーに当たった場合は岩を一つ復活
+			//岩がプレイヤーに当たった場合は岩を復活
 			m_geoLevitate.RockHit();
 		}
 

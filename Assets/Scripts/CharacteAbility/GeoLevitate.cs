@@ -5,6 +5,7 @@ using UnityEngine;
 public class GeoLevitate : MonoBehaviour
 {
 	const int ThrowSpeed = 1000;	//投げる速さ
+	const int MaxRockCount = 4;
 
 	[SerializeField] GameObject m_rockPrefab;
 	[SerializeField] GameObject[] m_levitateRock;
@@ -13,7 +14,7 @@ public class GeoLevitate : MonoBehaviour
 	GameObject m_rock;
 	GameObject m_player;
 
-	int m_rockCount;
+	int m_rockCount = MaxRockCount;
 
 	public void SetUseAblity(UseAbility useAbility)
 	{
@@ -32,7 +33,7 @@ public class GeoLevitate : MonoBehaviour
     void Update()
 	{
 		//スキル使用後再度△を押したら岩を投げる
-		if (m_useAbility.GetReactivation() && m_rockCount < 5)
+		if (m_useAbility.GetReactivation() && m_rockCount >= 0)
 		{
 			ThrowRock();
 
@@ -71,7 +72,7 @@ public class GeoLevitate : MonoBehaviour
 
 		m_levitateRock[m_rockCount].SetActive(false);
 
-		m_rockCount++;
+		m_rockCount--;
 	}
 
 	IEnumerator OnCollider(Collider collider)
@@ -80,9 +81,9 @@ public class GeoLevitate : MonoBehaviour
 
 		collider.enabled = true;
 
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 
-		if (m_rockCount >= 5)
+		if (m_rockCount < 0)
 		{
 			Destroy(gameObject);
 		}
@@ -90,8 +91,11 @@ public class GeoLevitate : MonoBehaviour
 
 	public void RockHit()
 	{
-		m_rockCount--;
+		for (int i = 0; i <= MaxRockCount; i++)
+		{
+			m_levitateRock[i].SetActive(true);
+		}
 
-		m_levitateRock[m_rockCount].SetActive(true);
+		m_rockCount = MaxRockCount;
 	}
 }

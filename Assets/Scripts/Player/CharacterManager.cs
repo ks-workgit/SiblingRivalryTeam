@@ -130,6 +130,12 @@ public class CharacterManager : MonoBehaviour
 		set { m_attackSpeed = value; }
 	}
 
+	public void ResetAttack()
+	{
+		m_attackDamage = AttackDamage;
+		m_attackSpeed = AttackSpeed;
+	}
+
 	void Awake()
     {
 		m_remainingLife = RuleManager.CurrentRule.LifeCount[RuleManager.CurrentRule.m_lifeCount];
