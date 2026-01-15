@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
 	const float Speed = 7;
 	const float DashSpeed = 10;
+    const float GravityPower = 10.0f;
 
     const float StaminaRecoveryTime = 1.0f; // スタミナが回復するまでの時間
 
@@ -447,15 +448,15 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
-            if (!m_isGrounded && !m_isJump && m_verticalVelocity < 0)
+            if (m_verticalVelocity <= 0 && !m_isJump)
             {
                 // 着地の瞬間
                 m_verticalVelocity = -m_initFallSpeed;
             }
-            else
+
+            if (!m_isJump)
             {
-                // 地上では張り付かせる
-                m_verticalVelocity = -m_initFallSpeed;
+                m_verticalVelocity -= m_gravity * GravityPower * Time.deltaTime;
             }
         }
         else
@@ -478,6 +479,7 @@ public class PlayerController : MonoBehaviour
         }
 
         m_isGrounded = isGrounded;
+        Debug.Log($"接地 {m_isGrounded}");
     }
 
     public void OnIsGrounded()

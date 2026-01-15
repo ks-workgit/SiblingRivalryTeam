@@ -13,7 +13,8 @@ public class OverdriveMode : MonoBehaviour
 	TakeWeapon m_takeWeapon;
 
 	const int SkillDuration = 15;	//ƒXƒLƒ‹‚Ì’·‚³
-	const int Magnification = 2;	//‹­‰»‚Ì”{—¦
+	const float Magnification = 1.5f;   //‹­‰»‚Ì”{—¦
+	const int DamageMagnification = 2;
 
 	GameObject m_player;
 
@@ -46,7 +47,7 @@ public class OverdriveMode : MonoBehaviour
 			m_noBuffDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
 			m_noBuffSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 
-			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * Magnification;
+			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * DamageMagnification;
 			m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * Magnification;
 
 			m_takeWeapon.ResetTakeDrop();
@@ -58,7 +59,7 @@ public class OverdriveMode : MonoBehaviour
 		float speedMagnification = m_playerController.GetSetSpeedMagnification;
 		speedMagnification *= Magnification;
 
-		m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * Magnification;
+		m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * DamageMagnification;
 		m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * Magnification;
 
 		m_playerController.GetSetSpeedMagnification = speedMagnification;
