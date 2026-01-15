@@ -479,7 +479,6 @@ public class PlayerController : MonoBehaviour
         }
 
         m_isGrounded = isGrounded;
-        Debug.Log($"Ú’n {m_isGrounded}");
     }
 
     public void OnIsGrounded()
