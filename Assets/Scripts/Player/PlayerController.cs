@@ -320,6 +320,11 @@ public class PlayerController : MonoBehaviour
 		m_weaponDrop = false;
 	}
 
+	public bool GetIsGrounded()
+	{
+		return m_isGrounded;
+	}
+
 	public float GetSetSpeedMagnification
 	{
 		get { return m_speedMagnification; }

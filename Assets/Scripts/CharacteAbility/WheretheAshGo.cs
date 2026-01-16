@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class WheretheAshGo : MonoBehaviour
 {
-	[SerializeField] GameObject FirePrefab;
-	const float FireColldown = 0.5f;		//炎を出すクールダウン
+	GameObject m_player;
 
-	const int SkillDuration = 10;       //スキルの長さ
+	[SerializeField] GameObject FirePrefab;
+	const float FireColldown = 0.3f;		//炎を出すクールダウン
+
+	const int SkillDuration = 15;       //スキルの長さ
 
 	float m_fireColldown;
 	bool m_isUseSkill;
@@ -15,6 +17,8 @@ public class WheretheAshGo : MonoBehaviour
 	private void Start()
 	{
         StartCoroutine(UseSkill());
+
+		m_player = gameObject.transform.parent.gameObject;
 	}
 
 	private void Update()
@@ -25,11 +29,14 @@ public class WheretheAshGo : MonoBehaviour
 		{
 			if (m_fireColldown >= FireColldown)
 			{
-				Instantiate(
+				GameObject fireObject = Instantiate(
 					FirePrefab,
 					gameObject.transform.position,
 					Quaternion.identity
 					);
+
+				Fire fire = fireObject.GetComponent<Fire>();
+				fire.SetPlayer(m_player);
 
 				m_fireColldown = 0;
 			}

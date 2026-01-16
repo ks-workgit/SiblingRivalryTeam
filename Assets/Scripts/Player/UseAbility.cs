@@ -26,6 +26,11 @@ public class UseAbility : MonoBehaviour
 		m_reactivation = false;
 	}
 
+	public void ResetIsUse()
+	{
+		m_isUse = false;
+	}
+
 	public void SetAbilityIcon(Image abilityIcon)
 	{
 		m_abilityIcon = abilityIcon;

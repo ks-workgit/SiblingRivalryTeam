@@ -7,6 +7,7 @@ public class Thunder : MonoBehaviour
 	CharacterManager m_characterManeger;
 
 	int m_damage = 75;
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.CompareTag("Player"))

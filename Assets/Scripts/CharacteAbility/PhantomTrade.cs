@@ -5,10 +5,11 @@ using UnityEngine;
 public class PhantomTrade : MonoBehaviour
 {
 	[SerializeField] GameObject m_effect;
-
 	GameObject m_player;
 
 	AudioSource m_se;
+	PlayerController m_characterController;
+	UseAbility m_useAbility;
 
 	bool m_isUse;
 
@@ -17,6 +18,8 @@ public class PhantomTrade : MonoBehaviour
 		m_player = transform.parent.gameObject;
 
         m_se = GetComponent<AudioSource>();	
+		m_characterController = m_player.GetComponent<PlayerController>();
+		m_useAbility = m_player.GetComponent<UseAbility>();
     }
 
 	private void Update()
@@ -32,11 +35,17 @@ public class PhantomTrade : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player") && !m_isUse)
+		if (!m_characterController.GetIsGrounded())
+		{
+			m_useAbility.ResetIsUse();
+
+			Destroy(gameObject);
+		}
+		else if (other.CompareTag("Player") && !m_isUse)
 		{
 			if (other.transform.position == m_player.transform.position) return;
 
-          //  m_se.Play();
+            m_se.Play();
 
             CharacterController enemy = other.GetComponent<CharacterController>();
 			CharacterController player = m_player.GetComponent<CharacterController>();
