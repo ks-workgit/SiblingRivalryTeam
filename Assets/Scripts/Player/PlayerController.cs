@@ -165,8 +165,8 @@ public class PlayerController : MonoBehaviour
         m_verticalVelocity = m_jumpSpeed;
         m_isGrounded = false;
         m_animator.SetTrigger("Jump");
-
-		m_isJump = true;
+        m_animator.SetBool("IsGrounded", false);
+        m_isJump = true;
 	}
 
     private void OnAttack(InputAction.CallbackContext callback)
@@ -449,16 +449,21 @@ public class PlayerController : MonoBehaviour
     // 重力、接地判定
     private void ApplyGravity()
     {
+        // CharacterControllerまたは足元のレイによる接地判定
         bool isGrounded = m_characterController.isGrounded || m_footGround.CheckGround();
+
+        m_animator.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded)
         {
+            // 地面にいるか落下中かつジャンプ中でない場合
             if (m_verticalVelocity <= 0 && !m_isJump)
             {
                 // 着地の瞬間
                 m_verticalVelocity = -m_initFallSpeed;
             }
 
+            // ジャンプ中でなければ地面にいる間も重力を適用
             if (!m_isJump)
             {
                 m_verticalVelocity -= m_gravity * GravityPower * Time.deltaTime;
@@ -466,13 +471,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // 空中にいるときは下向きに重力加速度を与えて落下させる
+            // 空中にいるときの処理
             if (!m_isJump)
             {
+                // ジャンプ上昇が終わった後は通常の重力をかけて落下させる
                 m_verticalVelocity -= m_gravity * Time.deltaTime;
             }
             else
             {
+                // ジャンプ直後は重力をかけないためのフラグ
                 m_isJump = false;
             }
 
@@ -481,9 +488,15 @@ public class PlayerController : MonoBehaviour
             {
                 m_verticalVelocity = -m_fallSpeed;
             }
+
         }
 
         m_isGrounded = isGrounded;
+
+        // 接地してないかつ下向き速度になったら落下中と判定
+        bool isFalling = !isGrounded && m_verticalVelocity < 0;
+
+        m_animator.SetBool("IsFalling", isFalling);
     }
 
     public void OnIsGrounded()
