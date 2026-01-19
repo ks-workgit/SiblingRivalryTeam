@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GroundCheck m_footGround;
     [SerializeField] Transform m_shieldPosition;
     [SerializeField] GameObject m_shieldObject;
-    [SerializeField] Collider m_collider;
+    Collider m_collider;
 
     UseAbility m_useAbility;
     CharacterManager m_characterManager;
@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
         m_isStun = false;
         m_isInvincible = false;
 
-        m_collider.enabled = false;
         m_stamina = m_characterManager.GetStamina();
 
 		m_speedMagnification = 1;		
@@ -323,6 +322,11 @@ public class PlayerController : MonoBehaviour
 	public bool GetIsGrounded()
 	{
 		return m_isGrounded;
+	}
+
+	public void SetCollider(Collider collider)
+	{
+		m_collider = collider;
 	}
 
 	public float GetSetSpeedMagnification

@@ -7,11 +7,14 @@ public class UseAbility : MonoBehaviour
 {
 	[SerializeField] AbilityDatas m_abilityDatas;
 	[SerializeField] int m_characterId;
+	[SerializeField] Sprite m_outline;
 
+	GameObject m_ablityIconObject;
 	Image m_abilityIcon;
 	GameObject m_abilityObject;
 
 	float m_ablityCoolDown;
+	float m_ablityUse;
 
 	bool m_isUse;
 	bool m_reactivation;
@@ -31,9 +34,10 @@ public class UseAbility : MonoBehaviour
 		m_isUse = false;
 	}
 
-	public void SetAbilityIcon(Image abilityIcon)
+	public void SetAbilityIcon(GameObject abilityIcon)
 	{
-		m_abilityIcon = abilityIcon;
+		m_ablityIconObject = abilityIcon;
+		m_abilityIcon = m_ablityIconObject.GetComponent<Image>();
 	}
 
 	private void Start()
@@ -55,8 +59,15 @@ public class UseAbility : MonoBehaviour
 			m_abilityIcon.color = Color.black;
 		}
 
+		if (m_isUse)
+		{
+
+		}
+
 		if(!m_abilityObject && m_isUse)
 		{
+			m_abilityIcon.enabled = true;
+
 			m_ablityCoolDown = m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityCoolDown;
 
 			m_isUse = false;
