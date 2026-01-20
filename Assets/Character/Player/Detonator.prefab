@@ -252,7 +252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 1635768278405333260}
+  m_hand: {fileID: 39115587180015111}
   m_characterManager: {fileID: 6683033140524925546}
+  m_playerController: {fileID: 8570440160515583698}
+  m_takeWeapon: {fileID: 4771472176694041988}
 --- !u!1001 &1905589186233039965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,6 +319,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8423466343303410108, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8423466343303410108, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8423466343303410108, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_Name
@@ -554,7 +569,6 @@ MonoBehaviour:
   m_footGround: {fileID: 1776280545573481707}
   m_shieldPosition: {fileID: 8599546426212876633}
   m_shieldObject: {fileID: 2299019509971517357, guid: b4afde569940cfd46be385b4811c41f3, type: 3}
-  m_collider: {fileID: 5275427531928353659}
 --- !u!114 &6683033140524925546
 MonoBehaviour:
   m_ObjectHideFlags: 0

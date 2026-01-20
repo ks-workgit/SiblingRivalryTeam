@@ -94,6 +94,8 @@ public class TakeWeapon : MonoBehaviour
 			Destroy(m_haveWaepon.gameObject);
 		}
 
+		
+
 		if(m_weaponId != 0)
 		{
 			m_haveWaepon = Instantiate(
@@ -102,7 +104,8 @@ public class TakeWeapon : MonoBehaviour
 				Quaternion.identity,
 				m_handPos);
 
-			m_haveWaepon.transform.localRotation = Quaternion.Euler(0, 0, 180);
+			m_haveWaepon.transform.localPosition = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs.transform.position;
+			m_haveWaepon.transform.localRotation = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs.transform.rotation;
 		}
 		else if(m_weaponId == 0 && m_isHaveWaepon)
 		{

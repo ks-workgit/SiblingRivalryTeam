@@ -243,7 +243,6 @@ MonoBehaviour:
   m_footGround: {fileID: 5597942651839721879}
   m_shieldPosition: {fileID: 7876828133606260406}
   m_shieldObject: {fileID: 2299019509971517357, guid: b4afde569940cfd46be385b4811c41f3, type: 3}
-  m_collider: {fileID: 4039329679443635842}
 --- !u!114 &8194401045801740999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,7 +4155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 29009984315236877}
+  m_hand: {fileID: 2318205042337674829}
   m_characterManager: {fileID: 8194401045801740999}
+  m_playerController: {fileID: 9172739794230449760}
+  m_takeWeapon: {fileID: 5268124347292342010}
 --- !u!1 &6741211659981628645
 GameObject:
   m_ObjectHideFlags: 0

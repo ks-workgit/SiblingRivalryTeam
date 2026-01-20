@@ -16,7 +16,7 @@ public class CreatePlayer : MonoBehaviour
     [SerializeField] PlayerUI[] m_playerUI;
     [SerializeField] Slider[] m_healthBar, m_staminaBar;
 	[SerializeField] Image[] m_itemIcon;
-	[SerializeField] Image[] m_abilityIcon;
+	[SerializeField] GameObject[] m_abilityIcon;
 
 	TakeItem m_takeItem;
 

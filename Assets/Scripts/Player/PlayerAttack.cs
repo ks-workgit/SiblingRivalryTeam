@@ -7,7 +7,14 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject m_owner;
+	[SerializeField] GameObject m_hand;
 	[SerializeField] CharacterManager m_characterManager;
+	[SerializeField] PlayerController m_playerController;
+	[SerializeField] TakeWeapon m_takeWeapon;
+
+	GameObject m_weaponObject;
+	Weapon m_weapon;
+
     int m_damage;
 
     Collider m_collider;
@@ -17,25 +24,62 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         m_collider = GetComponent<Collider>();
-    }
+		m_playerController.SetCollider(m_collider);
 
-    private void OnTriggerEnter(Collider other)
+		m_collider.enabled = false;
+	}
+
+	private void Update()
+	{
+		if(m_hand.transform.childCount > 0)
+		{
+			m_weaponObject = m_hand.transform.GetChild(0).gameObject;
+
+			m_collider = m_weaponObject.GetComponent<Collider>();
+			m_weapon = m_weaponObject.GetComponent<Weapon>();
+			//•Ší‚ğ‚Á‚Ä‚¢‚é‚È‚ç•Ší‚ÌƒRƒ‰ƒCƒ_[‚ğ“n‚·
+			m_playerController.SetCollider(m_collider);
+
+			//•Ší‚ğU‚Á‚Ä“G‚É“–‚½‚Á‚½‚ç’Ê‚é
+			if (m_weapon.GetHit())
+			{
+				AttackHit(m_weapon.GetEnemy());
+
+				m_weapon.ResetHit();
+			}
+		}
+		else
+		{
+			m_collider = GetComponent<Collider>();
+
+			//•Ší‚ğ‚Á‚Ä‚¢‚È‚¢‚È‚çŒ³‚Ì” ‚ÌƒRƒ‰ƒCƒ_[‚ğ“n‚·
+			m_playerController.SetCollider(m_collider);
+		}		
+	}
+
+	private void OnTriggerEnter(Collider other)
     {
-        // ©•ª©g‚È‚ç–³‹
-        if (other.transform.root == m_owner.transform) return;
-
         if (other.CompareTag("Player"))
         {
-			m_damage = m_characterManager.GetSetAtttackDamage;
-
-			Debug.Log($"{m_owner.name} hit {other.name}");
-            
-			m_enemy = other.GetComponent<CharacterManager>();
-			m_enemy.Damage(m_damage);
-            Debug.Log("ƒqƒbƒg");
-
-            // ‘½’iƒqƒbƒg–h~
-            m_collider.enabled = false;
+			AttackHit(other);          
         }
     }
+
+	//UŒ‚‚ª“–‚½‚Á‚½‚Ìˆ—
+	void AttackHit(Collider enemy)
+	{
+		// ©•ª©g‚È‚ç–³‹
+		if (enemy.transform.root == m_owner.transform) return;
+
+		m_damage = m_characterManager.GetSetAtttackDamage;
+
+		Debug.Log($"{m_owner.name} hit {enemy.name}");
+
+		m_enemy = enemy.GetComponent<CharacterManager>();
+		m_enemy.Damage(m_damage);
+		Debug.Log("ƒqƒbƒg");
+
+		// ‘½’iƒqƒbƒg–h~
+		m_collider.enabled = false;
+	}
 }
