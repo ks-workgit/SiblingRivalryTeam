@@ -8,6 +8,7 @@ public class CreateGameObject : MonoBehaviour
 	[SerializeField] ItemDatas m_itemDatas;
 	[SerializeField] GameObject CrownPrefab;
 	[SerializeField] GameObject m_itemBox;
+	[SerializeField] GameObject m_weaponBox;
 
 	[SerializeField] List<Transform> SpownPos = new List<Transform>();
 
@@ -60,7 +61,7 @@ public class CreateGameObject : MonoBehaviour
 
 		//ïêäÌÇÃê∂ê¨
 		Instantiate(
-			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs,
+            m_weaponBox,
 			SpownPos[spownIndex].position,
 			m_weaponDatas.m_weaponDatas[weaponIndex].m_dropWeaponPrefabs.transform.rotation,
 			transform

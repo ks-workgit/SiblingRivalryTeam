@@ -10839,6 +10839,7 @@ MonoBehaviour:
   m_itemDatas: {fileID: 11400000, guid: 8d93da67ef70bec4699c002c4b67783d, type: 2}
   CrownPrefab: {fileID: 2203841068471228637, guid: f66c739d6c6dd224ba055733b5dfdfaa, type: 3}
   m_itemBox: {fileID: 252829289677435990, guid: b552431d985780e4bbef8431b7cc61d3, type: 3}
+  m_weaponBox: {fileID: 252829289677435990, guid: a8a278b0ed14e164f9881398ae880699, type: 3}
   SpownPos: []
 --- !u!1 &5046905692496376528
 GameObject:
