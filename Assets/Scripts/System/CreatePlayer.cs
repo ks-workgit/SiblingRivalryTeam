@@ -10,6 +10,7 @@ public class CreatePlayer : MonoBehaviour
 	[SerializeField] PlayerInputManager m_playerInputManager;
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] IssueJudgement m_issueJudgement;
+	[SerializeField] Advantageous m_advantageous;
 
 	[SerializeField] Transform m_respawnPos;
 
@@ -70,6 +71,8 @@ public class CreatePlayer : MonoBehaviour
 
 		UseAbility useAbility = player.GetComponent<UseAbility>();
 		useAbility.SetAbilityIcon(m_abilityIcon[playerId]);
+
+		m_advantageous.SetCharacterManager(characterManeger);
 
 		Debug.Log("生成　プレイヤーID" + playerId + "キャラクターID" + characterId[playerId]);
 	}

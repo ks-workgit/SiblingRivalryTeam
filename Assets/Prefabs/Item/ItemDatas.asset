@@ -19,45 +19,53 @@ MonoBehaviour:
     m_name: Bomb
     m_itemKindNum: 0
     m_itemIcon: {fileID: 21300000, guid: 06f1980d2c8817e4cbacb97932e859e0, type: 3}
+    m_tier: 2
   - m_itemPrefabs: {fileID: 805305953236288442, guid: 7311c10c253b07c478ad75c744340631, type: 3}
     m_dropItemPrefabs: {fileID: 8303406497602835359, guid: a1f5c87aea5e55445915970eca5a9a19, type: 3}
     m_itemId: 1
     m_name: Donut
     m_itemKindNum: 1
     m_itemIcon: {fileID: 21300000, guid: 72368c3b930b56a45bab46810bb3a829, type: 3}
+    m_tier: 3
   - m_itemPrefabs: {fileID: 4791993677673310231, guid: b0a5cbcf597846044ae1ee739ea953fc, type: 3}
     m_dropItemPrefabs: {fileID: 7255642907937858143, guid: 9d195665f3b180f4eb0a7884b4ea7d46, type: 3}
     m_itemId: 2
     m_name: HealPositon
     m_itemKindNum: 1
     m_itemIcon: {fileID: 21300000, guid: d44d0be3355872945aa5f43f483a4103, type: 3}
+    m_tier: 2
   - m_itemPrefabs: {fileID: 4962560833042547825, guid: 3af21923d96221643b63c68b245cad17, type: 3}
     m_dropItemPrefabs: {fileID: 5504844140821340209, guid: e5354d92944fc3a4caa2c81dcc8c5b0d, type: 3}
     m_itemId: 3
     m_name: ShieldPositon
     m_itemKindNum: 2
     m_itemIcon: {fileID: 21300000, guid: ec5832b369527db4ebee541fb279562f, type: 3}
+    m_tier: 3
   - m_itemPrefabs: {fileID: 4547455878607570360, guid: b1680b3d8139d0444818ff9b9ab01d71, type: 3}
     m_dropItemPrefabs: {fileID: 217347444547420952, guid: d9fc3598b9cca544795e26a24bd2dde4, type: 3}
     m_itemId: 4
     m_name: Shield
     m_itemKindNum: 2
     m_itemIcon: {fileID: 21300000, guid: 18fe8ccc604c05b45b7cf055a14e9217, type: 3}
+    m_tier: 2
   - m_itemPrefabs: {fileID: 3097717117418878691, guid: 7bbc21792d1107c42be1a09b6de1de0b, type: 3}
     m_dropItemPrefabs: {fileID: 5444273472858304750, guid: 3f9428c578e93794a840c9db7d62dd17, type: 3}
     m_itemId: 5
     m_name: Ghost
     m_itemKindNum: 3
     m_itemIcon: {fileID: 21300000, guid: 25e996e22dc0f0a408737dda13a099a8, type: 3}
+    m_tier: 2
   - m_itemPrefabs: {fileID: 2598533959476117327, guid: ded4b4bc45d996246be3f0c69d069440, type: 3}
     m_dropItemPrefabs: {fileID: 6369324770873104029, guid: c92acbf7ae0d67d48aded2505d1cae66, type: 3}
     m_itemId: 6
     m_name: SlowGrenade
     m_itemKindNum: 0
     m_itemIcon: {fileID: 21300000, guid: 677cdfc34cc4e2a47b3192c1203fc7be, type: 3}
+    m_tier: 2
   - m_itemPrefabs: {fileID: 4290700422926243642, guid: e4f74063c2c98ab4c9d1d4e4e16f782a, type: 3}
     m_dropItemPrefabs: {fileID: 7580005823731849124, guid: 79a3da8f61afdf34a821b183ea7521ed, type: 3}
     m_itemId: 7
     m_name: LandMine
     m_itemKindNum: 4
     m_itemIcon: {fileID: 21300000, guid: 0917935444ef45f4db7b794e5652d495, type: 3}
+    m_tier: 3

@@ -18,4 +18,5 @@ public class WeaponInfomertions
 	public int m_weaponKindId;
 	public int m_attackDamage;
 	public float m_attackSpeed = 1.0f;
+	public int m_tier;
 }

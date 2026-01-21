@@ -19,33 +19,39 @@ MonoBehaviour:
     m_weaponKindId: 0
     m_attackDamage: 0
     m_attackSpeed: 1
+    m_tier: 0
   - m_weaponPrefabs: {fileID: 1561698794029010284, guid: 6529d89803a8cc840971f96c80f68c04, type: 3}
     m_dropWeaponPrefabs: {fileID: 4227139767313832769, guid: bbb9844696a394647a864f10e30a41d2, type: 3}
     m_weaponId: 1
     m_weaponKindId: 1
     m_attackDamage: 15
     m_attackSpeed: 1.25
+    m_tier: 3
   - m_weaponPrefabs: {fileID: 2614206577411177481, guid: d9c09bd92eee50a42899b772a15da28b, type: 3}
     m_dropWeaponPrefabs: {fileID: 788488347092482983, guid: e080c438d89503e4bb49e362c9f02973, type: 3}
     m_weaponId: 2
     m_weaponKindId: 2
     m_attackDamage: 25
     m_attackSpeed: 0.85
+    m_tier: 3
   - m_weaponPrefabs: {fileID: 896877497980810858, guid: 55bb072c2da67014b9076f51a25fea68, type: 3}
     m_dropWeaponPrefabs: {fileID: 289241028541015161, guid: 64722ad728189b644814d32aee2f9377, type: 3}
     m_weaponId: 3
     m_weaponKindId: 3
     m_attackDamage: 5
     m_attackSpeed: 1.5
+    m_tier: 3
   - m_weaponPrefabs: {fileID: 8675054365839025251, guid: 7be094dd994b31a48844aa91cf356650, type: 3}
     m_dropWeaponPrefabs: {fileID: 7660577210656037803, guid: 5f3ae1c1fa791d24396102ab48d8284d, type: 3}
     m_weaponId: 4
     m_weaponKindId: 2
     m_attackDamage: 30
     m_attackSpeed: 0.7
+    m_tier: 3
   - m_weaponPrefabs: {fileID: 6928359477629977630, guid: f3aa36854f0f89a4697643d3c8f988ff, type: 3}
     m_dropWeaponPrefabs: {fileID: 5208816471078786950, guid: f2c97e8c145d1b144b569610c4d3b20e, type: 3}
     m_weaponId: 5
     m_weaponKindId: 1
     m_attackDamage: 20
     m_attackSpeed: 1
+    m_tier: 3
