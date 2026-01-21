@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
 
         m_verticalVelocity = m_jumpSpeed;
         m_isGrounded = false;

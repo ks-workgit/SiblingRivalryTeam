@@ -8,7 +8,6 @@ using static UnityEditor.Progress;
 public class RandomItemBox : MonoBehaviour
 {
     [SerializeField] ItemDatas m_itemDatas;
-    DropItem m_dropItem;
 
     GameObject m_retentionObject;   // 前のオブジェクト保存用
 
@@ -18,11 +17,10 @@ public class RandomItemBox : MonoBehaviour
     float m_delay = 0.3f;
 
     bool m_isGet = false;
-    bool m_isFirst = false;
 
     private void Update()
     {
-        if(!m_isGet)
+        if (!m_isGet)
         {
             // 一定間隔でインデックスを進める
             if (Time.time - m_inputTime > m_delay)
@@ -46,7 +44,10 @@ public class RandomItemBox : MonoBehaviour
                     itemObjectRb.useGravity = false;
                 }
 
-                m_dropItem = itemObject.GetComponent<DropItem>();
+                if (itemObject.TryGetComponent<BoxCollider>(out var itemObjectCol))
+                {
+                    itemObjectCol.enabled = false;
+                }
 
                 m_index++;
                 m_inputTime = Time.time;
@@ -55,11 +56,29 @@ public class RandomItemBox : MonoBehaviour
                 {
                     m_index = 0;
                 }
-
-                m_isFirst = true;
-            }            
+            }
         }
+    }
 
-        if (m_isFirst) m_isGet = m_dropItem.GetIsTouch();
+    private void OnTriggerEnter(Collider other)
+    {
+        if (m_isGet) return;
+
+        if (other.CompareTag("Player"))
+        {
+            m_isGet = true;
+            Destroy(m_retentionObject);
+
+            if (other.TryGetComponent<TakeItem>(out var player))
+            {
+                // アイテムを持っているときは抽選しない
+                if (!player.GetHaveItem())
+                {
+                    // ランダムに選ばれたアイテムをプレイヤーに持たせる
+                    int itemIndex = Random.Range(0, m_itemDatas.m_itemDatas.Count);
+                    player.GettingItem(itemIndex);
+                }
+            }
+        }
     }
 }
