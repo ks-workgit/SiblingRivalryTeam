@@ -74,11 +74,94 @@ public class RandomItemBox : MonoBehaviour
                 // アイテムを持っているときは抽選しない
                 if (!player.GetHaveItem())
                 {
-                    // ランダムに選ばれたアイテムをプレイヤーに持たせる
-                    int itemIndex = Random.Range(0, m_itemDatas.m_itemDatas.Count);
-                    player.GettingItem(itemIndex);
+                    // プレイヤーにアイテムを持たせる
+                    player.GettingItem(LotteryItem());
                 }
             }
         }
+    }
+
+    // アイテムのティアをランダムに選ぶ
+    private int TierIndex()
+    {
+        // Tier1,Tier2,Tier3の重み
+        int[] tierWeights = { 1, 5, 20 };
+
+        // Chooseは0,1,2を返す
+        int index = Choose(tierWeights);
+
+        // 1～3のTier番号に変換
+        return index + 1;
+    }
+
+    // 重みに応じてインデックスを返す
+    private int Choose(int[] weights)
+    {
+        int total = 0;
+
+        // 配列の要素を合計して重みの計算
+        foreach (int elem in weights)
+        {
+            total += elem;
+        }
+
+        // 0～totalの範囲でランダムに抽選
+        int randomPoint = Random.Range(0, total);
+
+        // 重みに応じて抽選
+        for (int i = 0; i < weights.Length; i++)
+        {
+            if (randomPoint < weights[i])
+            {
+                // 抽選に当たったインデックスを返す
+                return i;
+            }
+            // 当たらなければ残りのポイントで次へ
+            randomPoint -= weights[i];
+        }
+
+        // 念のため最後の配列のインデックスを返す
+        return weights.Length - 1;
+    }
+
+    // アイテムをランダムに選ぶ
+    private int LotteryItem()
+    {
+        int maxTier = 0;
+
+        // データ内の最大ティアを取得
+        for (int i = 0; i < m_itemDatas.m_itemDatas.Count; i++)
+        {
+            if (m_itemDatas.m_itemDatas[i].m_tier > maxTier)
+            {
+                maxTier = m_itemDatas.m_itemDatas[i].m_tier;
+            }
+        }
+
+        // ランダムに選んだティア
+        int selectedTier = TierIndex();
+
+        List<int> itemsList = new List<int>();
+
+        // 選ばれたティアに属するアイテムのインデックスをリストに追加
+        for (int i = 0; i < m_itemDatas.m_itemDatas.Count; i++)
+        {
+            if (m_itemDatas.m_itemDatas[i].m_tier == selectedTier)
+            {
+                itemsList.Add(i);
+            }
+        }
+
+        // 該当ティアのアイテムがない場合は-1を返す(存在しないID)
+        if (itemsList.Count == 0)
+        {
+            return -1;
+        }
+
+        // 該当ティアからランダムに1つ選ぶ
+        int dataIndex = itemsList[Random.Range(0, itemsList.Count)];
+        
+        // 選ばれたアイテムのIDを返す
+        return m_itemDatas.m_itemDatas[dataIndex].m_itemId;
     }
 }

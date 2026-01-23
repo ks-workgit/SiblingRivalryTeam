@@ -8,7 +8,7 @@ public class WeaponRandomBox : MonoBehaviour
 
     GameObject m_retentionObject;   // 前のオブジェクト保存用
 
-    int m_index = 1;
+    int m_index = 1;    // 0は素手なので1からスタート
 
     float m_inputTime;
     float m_delay = 0.3f;
@@ -29,21 +29,21 @@ public class WeaponRandomBox : MonoBehaviour
                 }
 
                 // 新しく生成し保存
-                GameObject itemObject = Instantiate(
+                GameObject weaponObject = Instantiate(
                     m_weaponDatas.m_weaponDatas[m_index].m_dropWeaponPrefabs,
                     gameObject.transform.position,
                     Quaternion.identity,
                     transform);
-                m_retentionObject = itemObject;
+                m_retentionObject = weaponObject;
 
-                if (itemObject.TryGetComponent<Rigidbody>(out var itemObjectRb))
+                if (weaponObject.TryGetComponent<Rigidbody>(out var weaponObjectRb))
                 {
-                    itemObjectRb.useGravity = false;
+                    weaponObjectRb.useGravity = false;
                 }
 
-                if (itemObject.TryGetComponent<BoxCollider>(out var itemObjectCol))
+                if (weaponObject.TryGetComponent<BoxCollider>(out var weaponObjectCol))
                 {
-                    itemObjectCol.enabled = false;
+                    weaponObjectCol.enabled = false;
                 }
 
                 m_index++;
@@ -70,12 +70,95 @@ public class WeaponRandomBox : MonoBehaviour
             {
                 // アイテムを持っているときは抽選しない
                 if (!player.GetIsHaveWeapon())
-                {
-                    // ランダムに選ばれたアイテムをプレイヤーに持たせる
-                    int itemIndex = Random.Range(0, m_weaponDatas.m_weaponDatas.Count);
-                    player.GettingWeapon(itemIndex);
+                {   
+                    // プレイヤーに武器を持たせる
+                    player.GettingWeapon(LotteryWeapon());
                 }
             }
         }
+    }
+
+    // 武器のティアをランダムに選ぶ
+    private int TierIndex()
+    {
+        // Tier1,Tier2,Tier3の重み
+        int[] tierWeights = { 1, 5, 20 };
+
+        // Chooseは0,1,2を返す
+        int index = ChooseWeighted(tierWeights);
+
+        // 1～3のTier番号に変換
+        return index + 1;
+    }
+
+    // 重みに応じてインデックスを返す
+    private int ChooseWeighted(int[] weights)
+    {
+        int total = 0;
+
+        // 配列の要素を合計して重みの計算
+        foreach (int elem in weights)
+        {
+            total += elem;
+        }
+
+        // 0～totalの範囲でランダムに抽選
+        int randomPoint = Random.Range(0, total);
+
+        // 重みに応じて抽選
+        for (int i = 0; i < weights.Length; i++)
+        {
+            if (randomPoint < weights[i])
+            {
+                // 抽選に当たったインデックスを返す
+                return i;
+            }
+            // 当たらなければ残りのポイントで次へ
+            randomPoint -= weights[i];
+        }
+
+        // 念のため最後の配列のインデックスを返す
+        return weights.Length - 1;
+    }
+
+    // 武器をランダムに選ぶ
+    private int LotteryWeapon()
+    {
+        int maxTier = 0;
+
+        // データ内の最大ティアを取得
+        for (int i = 0; i < m_weaponDatas.m_weaponDatas.Count; i++)
+        {
+            if (m_weaponDatas.m_weaponDatas[i].m_tier > maxTier)
+            {
+                maxTier = m_weaponDatas.m_weaponDatas[i].m_tier;
+            }
+        }
+
+        // ランダムに選んだティア
+        int selectedTier = TierIndex();
+
+        List<int> weaponsList = new List<int>();
+
+        // 選ばれたティアに属する武器のインデックスをリストに追加
+        for (int i = 0; i < m_weaponDatas.m_weaponDatas.Count; i++)
+        {
+            if (m_weaponDatas.m_weaponDatas[i].m_tier == selectedTier)
+            {
+                weaponsList.Add(i);
+            }
+        }
+
+        // 該当ティアの武器がない場合は0を返す(ID 0は素手)
+        if (weaponsList.Count == 0)
+        {
+            return 0;
+        }
+
+        // 該当ティアからランダムに1つ選ぶ
+        int dataIndex = weaponsList[Random.Range(0, weaponsList.Count)];
+
+        // 選ばれた武器のIDを返す
+        return m_weaponDatas.m_weaponDatas[dataIndex].m_weaponId;
     }
 }
