@@ -87,15 +87,15 @@ public class RandomItemBox : MonoBehaviour
         // Tier1,Tier2,Tier3の重み
         int[] tierWeights = { 1, 5, 20 };
 
-        // Chooseは0,1,2を返す
-        int index = Choose(tierWeights);
+        // ChooseWeightedは0,1,2を返す
+        int index = ChooseWeighted(tierWeights);
 
         // 1～3のTier番号に変換
         return index + 1;
     }
 
     // 重みに応じてインデックスを返す
-    private int Choose(int[] weights)
+    private int ChooseWeighted(int[] weights)
     {
         int total = 0;
 

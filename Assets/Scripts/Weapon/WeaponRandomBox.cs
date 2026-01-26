@@ -84,7 +84,7 @@ public class WeaponRandomBox : MonoBehaviour
         // Tier1,Tier2,Tier3‚Ìd‚İ
         int[] tierWeights = { 1, 5, 20 };
 
-        // Choose‚Í0,1,2‚ğ•Ô‚·
+        // ChooseWeighted‚Í0,1,2‚ğ•Ô‚·
         int index = ChooseWeighted(tierWeights);
 
         // 1`3‚ÌTier”Ô†‚É•ÏŠ·

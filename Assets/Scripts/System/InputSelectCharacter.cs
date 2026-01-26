@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class InputSelectCharacter : MonoBehaviour
 {
     [SerializeField] SelectCharacter m_selectCharacter;
+    [SerializeField] MoveGameScene m_moveGameScene;
 
     float m_inputTime;
     float m_delay = 0.2f;
@@ -33,11 +34,34 @@ public class InputSelectCharacter : MonoBehaviour
         }
     }
 
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        // 全員が準備完了したとき
+        if (m_moveGameScene.GetmIsCompletion())
+        {
+            // ゲームスタートフラグをセット
+            m_moveGameScene.SetStartGame(true);
+        }
+    }
+
     public void OnCancel(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
-        SceneController.BackToBeforeScene();
+        // Readyのとき
+        if (m_selectCharacter.GetReady())
+        {
+            // Readyをfalseに
+            m_moveGameScene.NotReady();
+            m_selectCharacter.SetIsReady(false);
+        }
+        else
+        {
+            // ReadyじゃないときSceneを戻れる
+            SceneController.BackToBeforeScene();
+        }
     }
 
     // 左右入力に応じて処理
