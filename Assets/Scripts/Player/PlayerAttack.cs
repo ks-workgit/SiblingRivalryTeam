@@ -43,7 +43,14 @@ public class PlayerAttack : MonoBehaviour
 			//•Ší‚ğU‚Á‚Ä“G‚É“–‚½‚Á‚½‚ç’Ê‚é
 			if (m_weapon.GetHit())
 			{
-				AttackHit(m_weapon.GetEnemy());
+				if(m_weapon.GetNotStun())
+				{
+					NotStunAttackHit(m_weapon.GetEnemy());
+				}
+				else
+				{
+					AttackHit(m_weapon.GetEnemy());
+				}
 
 				m_weapon.ResetHit();
 			}
@@ -77,6 +84,24 @@ public class PlayerAttack : MonoBehaviour
 
 		m_enemy = enemy.GetComponent<CharacterManager>();
 		m_enemy.Damage(m_damage);
+		Debug.Log("ƒqƒbƒg");
+
+		// ‘½’iƒqƒbƒg–h~
+		m_collider.enabled = false;
+	}
+
+	//ƒXƒ^ƒ“‚µ‚È‚¢•Ší‚Ìê‡‚ÌUŒ‚
+	void NotStunAttackHit(Collider enemy)
+	{
+		// ©•ª©g‚È‚ç–³‹
+		if (enemy.transform.root == m_owner.transform) return;
+
+		m_damage = m_characterManager.GetSetAtttackDamage;
+
+		Debug.Log($"{m_owner.name} hit {enemy.name}");
+
+		m_enemy = enemy.GetComponent<CharacterManager>();
+		m_enemy.ReduceHealth(m_damage);
 		Debug.Log("ƒqƒbƒg");
 
 		// ‘½’iƒqƒbƒg–h~

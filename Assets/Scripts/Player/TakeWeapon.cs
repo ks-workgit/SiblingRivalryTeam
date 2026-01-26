@@ -94,8 +94,6 @@ public class TakeWeapon : MonoBehaviour
 			Destroy(m_haveWaepon.gameObject);
 		}
 
-		
-
 		if(m_weaponId != 0)
 		{
 			m_haveWaepon = Instantiate(
@@ -106,6 +104,10 @@ public class TakeWeapon : MonoBehaviour
 
 			m_haveWaepon.transform.localPosition = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs.transform.position;
 			m_haveWaepon.transform.localRotation = m_weaponDatas.m_weaponDatas[m_weaponId].m_weaponPrefabs.transform.rotation;
+
+			Weapon weapon = m_haveWaepon.GetComponent<Weapon>();
+
+			weapon.SetOwner(gameObject);
 		}
 		else if(m_weaponId == 0 && m_isHaveWaepon)
 		{

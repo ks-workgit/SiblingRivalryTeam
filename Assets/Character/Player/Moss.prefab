@@ -579,6 +579,7 @@ MonoBehaviour:
   m_footGround: {fileID: 1198652753343914804}
   m_shieldPosition: {fileID: 7135135746693447854}
   m_shieldObject: {fileID: 2299019509971517357, guid: b4afde569940cfd46be385b4811c41f3, type: 3}
+  m_icePrefab: {fileID: 200416796049452429, guid: db27abeb87864fb4d9ebf8ce303db8cc, type: 3}
 --- !u!114 &8950657239744318232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 5
+  m_outline: {fileID: 0}
 --- !u!114 &255820926215722696
 MonoBehaviour:
   m_ObjectHideFlags: 0

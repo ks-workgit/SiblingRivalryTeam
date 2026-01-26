@@ -55,3 +55,45 @@ MonoBehaviour:
     m_attackDamage: 20
     m_attackSpeed: 1
     m_tier: 3
+  - m_weaponPrefabs: {fileID: 5483744093877871063, guid: 81376c8b9b5db96448e32a1611b46cf4, type: 3}
+    m_dropWeaponPrefabs: {fileID: 2858774608978936173, guid: 54c923a867d23ea45af6657e09bbb9fd, type: 3}
+    m_weaponId: 6
+    m_weaponKindId: 1
+    m_attackDamage: -50
+    m_attackSpeed: 1
+    m_tier: 1
+  - m_weaponPrefabs: {fileID: 7241862008552887067, guid: 24854f832ef71b44987b315923a35db2, type: 3}
+    m_dropWeaponPrefabs: {fileID: 6914493981455391936, guid: 0804905c029555b4e9ced74591c7213d, type: 3}
+    m_weaponId: 7
+    m_weaponKindId: 1
+    m_attackDamage: 20
+    m_attackSpeed: 1
+    m_tier: 2
+  - m_weaponPrefabs: {fileID: 6315084401270194595, guid: a04427f0d759fd54f9b70432545a1a52, type: 3}
+    m_dropWeaponPrefabs: {fileID: 5310518251765203931, guid: 79317e882a5fd5d45bf9fc9f92652683, type: 3}
+    m_weaponId: 8
+    m_weaponKindId: 2
+    m_attackDamage: 0
+    m_attackSpeed: 0.7
+    m_tier: 2
+  - m_weaponPrefabs: {fileID: 2559488562745503999, guid: a65a9ee7b031bbb4abe17317a739b377, type: 3}
+    m_dropWeaponPrefabs: {fileID: 3092084599058084107, guid: 24641bfe450753f46ac182919e59bdd4, type: 3}
+    m_weaponId: 9
+    m_weaponKindId: 1
+    m_attackDamage: 20
+    m_attackSpeed: 1
+    m_tier: 1
+  - m_weaponPrefabs: {fileID: 7093637310256598832, guid: 5cb4bdaccf0e6b44982664676cbf7b1e, type: 3}
+    m_dropWeaponPrefabs: {fileID: 4100456004341452115, guid: ac943d34539072d439bffaa4fbaa69b6, type: 3}
+    m_weaponId: 10
+    m_weaponKindId: 3
+    m_attackDamage: 10
+    m_attackSpeed: 1.5
+    m_tier: 2
+  - m_weaponPrefabs: {fileID: 7729311989722045881, guid: c84c4a80981d1d14fa8aa5b76f7cd9b7, type: 3}
+    m_dropWeaponPrefabs: {fileID: 8961885861635787473, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+    m_weaponId: 11
+    m_weaponKindId: 1
+    m_attackDamage: 20
+    m_attackSpeed: 1
+    m_tier: 1

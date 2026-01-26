@@ -40,6 +40,14 @@ public class UseAbility : MonoBehaviour
 		m_abilityIcon = m_ablityIconObject.GetComponent<Image>();
 	}
 
+	public void SetAblityCoolDown(float coolTime)
+	{
+		if(!m_isUse)
+		{
+			m_ablityCoolDown = coolTime;
+		}
+	}
+
 	private void Start()
 	{
 		m_abilityIcon.sprite = m_abilityDatas.m_abilityInfometions[m_characterId].m_abilityIcon;

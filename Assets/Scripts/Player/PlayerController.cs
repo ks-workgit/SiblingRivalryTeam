@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     const float StaminaRecoveryTime = 1.0f; // スタミナが回復するまでの時間
 
-    [SerializeField] float m_speed = Speed;
+	[SerializeField] float m_speed = Speed;
     [SerializeField] float m_dashSpeed = 10;
     [SerializeField] float m_jumpSpeed;
     [SerializeField] float m_gravity;
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GroundCheck m_footGround;
     [SerializeField] Transform m_shieldPosition;
     [SerializeField] GameObject m_shieldObject;
+	[SerializeField] GameObject m_icePrefab;
     Collider m_collider;
 
     UseAbility m_useAbility;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     TakeItem m_takeItem;
 	TakeWeapon m_takeWeapon;
     GameObject m_shieldGenerate;
+	GameObject m_iceObject;
 
     float m_verticalVelocity;
     float m_recoverTime;    // スタンからの復帰時間
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
 	float m_stamina;    // 現在のスタミナ
     float m_duration;   // スタミナが回復するまでの時間
 
+	float m_meltTime;	//氷が解けるまでの時間
+
     bool m_isGrounded;
     bool m_isDash;
     bool m_isAttacking;
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
     bool m_isMoving;
     bool m_canMove;
     bool m_isStun;
+	bool m_isFreeze;
     bool m_isInvincible;
 	bool m_isJump;
 	bool m_weaponDrop;
@@ -86,6 +91,7 @@ public class PlayerController : MonoBehaviour
         m_isMoving = false;
         m_canMove = true;
         m_isStun = false;
+		m_isFreeze = false;
         m_isInvincible = false;
 
         m_stamina = m_characterManager.GetStamina();
@@ -127,7 +133,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext callback)
     {
-        if (m_isStun || m_isGuard) return;
+		if(m_isFreeze)
+		{
+			m_meltTime -= 0.1f;
+		}
+
+        if (m_isStun || m_isGuard || m_isFreeze) return;
 
         m_isMoving = true;
 		var value = callback.ReadValue<Vector2>();
@@ -159,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         m_verticalVelocity = m_jumpSpeed;
         m_isGrounded = false;
@@ -170,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
 		m_animator.SetInteger("AttackKind", m_takeWeapon.GetWeaponKind());
@@ -179,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnGuard(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isStun || m_isAvoidance || m_isAttacking) return;
+        if (!m_isGrounded || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         switch (callback.phase)
         {
@@ -199,7 +210,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceStick(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina || m_isFreeze) return;
 
         // スティックを倒した方向に回避
         var value = callback.ReadValue<Vector2>();
@@ -215,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceKey(InputAction.CallbackContext callback)
     {
-        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina) return;
+        if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina || m_isFreeze) return;
 
         // 前方向に回避
         var forward = transform.forward;
@@ -230,25 +241,25 @@ public class PlayerController : MonoBehaviour
 
     private void OnAbility(InputAction.CallbackContext callback)
     {
-        if (m_isStun || m_isAttacking) return;
+        if (m_isStun || m_isAttacking || m_isFreeze) return;
         m_useAbility.Use();
     }
 
     private void OnItem(InputAction.CallbackContext callback)
     {
-        if (m_isStun || m_isAttacking) return;
+        if (m_isStun || m_isAttacking || m_isFreeze) return;
         m_takeItem.ItemUse();
     }
 
 	private void OnWeaponDrop(InputAction.CallbackContext callback)
     {
-        if (m_isStun || m_isAttacking) return;
+        if (m_isStun || m_isAttacking || m_isFreeze) return;
         m_weaponDrop = true;
 	}
 
 	private void OnItemDrop(InputAction.CallbackContext callback)
     {
-        if (m_isStun || m_isAttacking) return;
+        if (m_isStun || m_isAttacking || m_isFreeze) return;
         m_takeItem.DropItem();
 	}
 
@@ -297,6 +308,21 @@ public class PlayerController : MonoBehaviour
         m_animator.SetTrigger("Stun");
     }
 
+	//凍る時の処理
+	public void SetIsFreeze(float meltsTime)
+	{
+		m_isFreeze = true;
+
+		if(m_iceObject == null)
+		{
+			m_iceObject = Instantiate(m_icePrefab,transform.position,Quaternion.identity,transform);
+			m_iceObject.transform.localPosition = m_icePrefab.transform.position;
+		}
+		m_animator.speed = 0;
+
+		m_meltTime = meltsTime;
+	}
+
     // 無敵フラグを返す
     public bool GetIsInvincible()
     {
@@ -326,6 +352,11 @@ public class PlayerController : MonoBehaviour
 	public void SetCollider(Collider collider)
 	{
 		m_collider = collider;
+	}
+
+	public bool GetIsStun()
+	{
+		return m_isStun;
 	}
 
 	public float GetSetSpeedMagnification
@@ -400,6 +431,16 @@ public class PlayerController : MonoBehaviour
             m_canMove = true;
             m_isGuard = false;
         }
+
+		if(m_isFreeze)
+		{
+			m_meltTime -= Time.deltaTime;
+
+			if(m_meltTime <= 0)
+			{
+				IceMelts();
+			}
+		}
     }
 
     // 移動関連
@@ -572,6 +613,14 @@ public class PlayerController : MonoBehaviour
 
         m_isAvoidance = false;
     }
+
+	//時間がたったら氷が解ける
+	public void IceMelts()
+	{
+		m_isFreeze = false;
+		m_animator.speed = 1;
+		Destroy(m_iceObject);
+	}
 
 	public void ChangeSpeed()
 	{

@@ -42,6 +42,7 @@ public class PlayerRespawn : MonoBehaviour
 		{
 			m_isKnockDown = true;
 
+			m_playerController.IceMelts();
 			m_characterManager.OnIsRespawn();
 
 			DropCrown(transform.position);
@@ -50,6 +51,7 @@ public class PlayerRespawn : MonoBehaviour
 		}
 	}
 
+	//Ž€–S‚µ‚½‚Æ‚«‚É‰¤Š¥‚ð—Ž‚Æ‚·
 	void DropCrown(Vector3 playerPos)
 	{
 		if (m_characterDatas.CrownCount[m_characterManager.GetPlayerId()] > 0)

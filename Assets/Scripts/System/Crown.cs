@@ -38,6 +38,9 @@ public class Crown : MonoBehaviour
 	{
 		if(other.CompareTag("Player"))
 		{
+			PlayerController playerController = other.GetComponent<PlayerController>();
+			if (playerController.GetIsStun()) return;
+
 			m_characterManeger = other.GetComponent<CharacterManager>();
 
 			m_characterDatas.CrownCount[m_characterManeger.GetPlayerId()]++;
