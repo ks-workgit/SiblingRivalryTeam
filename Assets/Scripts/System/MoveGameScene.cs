@@ -45,6 +45,7 @@ public class MoveGameScene : MonoBehaviour
 		}
 		else
 		{
+			m_isCompletion = false;
 			m_readyToFightImage.enabled = false;
 		}
 	}

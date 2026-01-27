@@ -9,7 +9,6 @@ public class SelectCharacter : MonoBehaviour
 {
 	[SerializeField] int m_playerNumber;
 
-	//[SerializeField] Image m_characterIcon;
 	[SerializeField] Image m_abilityIcon;
 
 	[SerializeField] GameObject m_player;
@@ -19,7 +18,6 @@ public class SelectCharacter : MonoBehaviour
 
 	[SerializeField] MoveGameScene m_moveGameScene;
 
-	[SerializeField] Button[] m_button;
 	[SerializeField] Image m_readyImage;
 
 	int m_characterId;
@@ -31,7 +29,6 @@ public class SelectCharacter : MonoBehaviour
     void Start()
 	{
         TitleChangeCharacter();
-		m_readyImage.enabled = false;
 
         m_characterIdLength = m_characterDatas.m_characterInfometions.Count - 1;
 	}
@@ -66,6 +63,7 @@ public class SelectCharacter : MonoBehaviour
 
 			m_isReady = true;
 			m_readyImage.enabled = true;
+			m_readyImage.GetComponent<Image>().color = Color.blue;
 		}
 	}
 
@@ -97,8 +95,8 @@ public class SelectCharacter : MonoBehaviour
 
 		if (!m_isReady)
 		{
-			m_readyImage.enabled = false;
-		}
+            m_readyImage.GetComponent<Image>().color = Color.white;
+        }
 	}
 
 	//キャラクターが変更されたときの見た目の変化など
@@ -109,9 +107,6 @@ public class SelectCharacter : MonoBehaviour
 		Instantiate(
 			m_characterDatas.m_characterInfometions[m_characterId].m_titleCharacterPrefab,
 			m_player.transform);
-
-		//キャラクターアイコン
-		//m_characterIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_characterIcon;
 
 		//アビリティアイコン
 		m_abilityIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_abilityIcon;
