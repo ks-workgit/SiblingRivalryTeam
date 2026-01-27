@@ -7,6 +7,7 @@ public class WeaponRandomBox : MonoBehaviour
     [SerializeField] WeaponDatas m_weaponDatas;
 
     GameObject m_retentionObject;   // 前のオブジェクト保存用
+	Advantageous m_advantageous;
 
     int m_index = 1;    // 0は素手なので1からスタート
 
@@ -66,6 +67,8 @@ public class WeaponRandomBox : MonoBehaviour
             m_isGet = true;
             Destroy(m_retentionObject);
 
+			m_advantageous = other.GetComponent<Advantageous>();
+
             if (other.TryGetComponent<TakeWeapon>(out var player))
             {
                 // アイテムを持っているときは抽選しない
@@ -81,11 +84,42 @@ public class WeaponRandomBox : MonoBehaviour
     // 武器のティアをランダムに選ぶ
     private int TierIndex()
     {
-        // Tier1,Tier2,Tier3の重み
-        int[] tierWeights = { 1, 5, 20 };
+		// Tier1,Tier2,Tier3の重み
+		int[] tierWeights = { 1, 5, 19 };
 
-        // ChooseWeightedは0,1,2を返す
-        int index = ChooseWeighted(tierWeights);
+		if (m_advantageous.GetSituation() == Advantageous.Situation.Advantage)
+		{
+			tierWeights = new int[] { 1, 3, 21 };
+
+			Debug.Log(Advantageous.Situation.Advantage);
+		}
+		else if (m_advantageous.GetSituation() == Advantageous.Situation.SlightAdvantage)
+		{
+			tierWeights = new int[] { 3, 5, 17 };
+
+			Debug.Log(Advantageous.Situation.SlightAdvantage);
+		}
+		else if (m_advantageous.GetSituation() == Advantageous.Situation.Even)
+		{
+			tierWeights = new int[] { 5, 7, 13 };
+
+			Debug.Log(Advantageous.Situation.Even);
+		}
+		else if (m_advantageous.GetSituation() == Advantageous.Situation.SlightDisadvantage)
+		{
+			tierWeights = new int[] { 7, 10, 8 };
+
+			Debug.Log(Advantageous.Situation.SlightDisadvantage);
+		}
+		else if (m_advantageous.GetSituation() == Advantageous.Situation.Disadvantage)
+		{
+			tierWeights = new int[] { 10, 15, 5 };
+
+			Debug.Log(Advantageous.Situation.Disadvantage);
+		}
+
+		// ChooseWeightedは0,1,2を返す
+		int index = ChooseWeighted(tierWeights);
 
         // 1～3のTier番号に変換
         return index + 1;

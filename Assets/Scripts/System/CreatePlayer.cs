@@ -10,7 +10,6 @@ public class CreatePlayer : MonoBehaviour
 	[SerializeField] PlayerInputManager m_playerInputManager;
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] IssueJudgement m_issueJudgement;
-	[SerializeField] Advantageous m_advantageous;
 
 	[SerializeField] Transform m_respawnPos;
 
@@ -20,6 +19,8 @@ public class CreatePlayer : MonoBehaviour
 	[SerializeField] GameObject[] m_abilityIcon;
 
 	TakeItem m_takeItem;
+	List<Advantageous> m_advantageous = new List<Advantageous>();
+	List<CharacterManager> m_characterManager = new List<CharacterManager>();
 
 	int m_createPlayerCount = 0;
 
@@ -38,6 +39,11 @@ public class CreatePlayer : MonoBehaviour
 
 				m_createPlayerCount++;
 			}
+		}
+
+		for(int i = 0; i < m_advantageous.Count; i++)
+		{
+			m_advantageous[i].SetCharacterManager(m_characterManager);
 		}
 	}
 
@@ -59,6 +65,7 @@ public class CreatePlayer : MonoBehaviour
 		m_takeItem.SetItemIcon(m_itemIcon[playerId]);
 
 		CharacterManager characterManeger = player.GetComponent<CharacterManager>();
+		m_characterManager.Add(characterManeger);
 		characterManeger.SetPlayerId(playerId);
 
 		m_playerUI[playerId].SetCharacterManager(characterManeger);
@@ -72,7 +79,7 @@ public class CreatePlayer : MonoBehaviour
 		UseAbility useAbility = player.GetComponent<UseAbility>();
 		useAbility.SetAbilityIcon(m_abilityIcon[playerId]);
 
-		m_advantageous.SetCharacterManager(characterManeger);
+		m_advantageous.Add(player.GetComponent<Advantageous>());
 
 		Debug.Log("生成　プレイヤーID" + playerId + "キャラクターID" + characterId[playerId]);
 	}

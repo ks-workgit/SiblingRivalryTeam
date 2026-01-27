@@ -8,8 +8,8 @@ public class Advantageous : MonoBehaviour
 
 	private List<CharacterManager> m_characterManager = new List<CharacterManager>();
 
-	int m_ownerId = 0;
-	int m_enemyId = 1;
+	int m_ownerId;
+	int m_enemyId;
 
 	int m_difference;	//残機や王冠の数の差
 
@@ -23,16 +23,30 @@ public class Advantageous : MonoBehaviour
 	}
 
 	Situation m_ownerSituation;
-	Situation m_enemySituation;
 
 	public Situation GetSituation()
 	{
 		return m_ownerSituation;
 	}
 
-	public void SetCharacterManager(CharacterManager characterManager)
+	public void SetCharacterManager(List<CharacterManager> characterManager)
 	{
-		m_characterManager.Add(characterManager);
+		m_characterManager.AddRange(characterManager);
+	}
+
+	private void Start()
+	{
+		CharacterManager characterManager = GetComponent<CharacterManager>();
+		m_ownerId = characterManager.GetPlayerId();
+
+		if(m_ownerId == 0)
+		{
+			m_enemyId = 1;
+		}
+		else
+		{
+			m_enemyId = 0;
+		}
 	}
 
 	private void Update()
@@ -61,8 +75,5 @@ public class Advantageous : MonoBehaviour
 		{
 			m_ownerSituation = Situation.SlightDisadvantage;
 		}
-
-
-		Debug.Log("有利不利状況" + m_ownerSituation);
 	}
 }

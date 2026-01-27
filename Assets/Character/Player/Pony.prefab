@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 974004175630893636}
   - component: {fileID: 7148193045335854667}
   - component: {fileID: -6839316206656439819}
+  - component: {fileID: 7603916166902108550}
   m_Layer: 0
   m_Name: Pony
   m_TagString: Player
@@ -490,6 +491,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7603916166902108550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335917065569303653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64f22e38fa45d846aeb4b91f5238bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
 --- !u!1 &6840804945068916281
 GameObject:
   m_ObjectHideFlags: 0
