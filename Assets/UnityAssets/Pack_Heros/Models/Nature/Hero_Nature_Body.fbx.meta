@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 7a318391d7273754c8106514a8f88bb8
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 6273393516357117681
@@ -80,7 +80,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -88,6 +88,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -115,6 +116,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -1266,8 +1268,7 @@ ModelImporter:
     - name: CC_Base_L_Breast
       parentName: CC_Base_L_RibsTwist
       position: {x: -0.000011864129, y: 1.7043649, z: 0.00007018841}
-      rotation: {x: 0.00000011920882, y: -0.0000000014244961, z: 0.0000001922997,
-        w: 1}
+      rotation: {x: 0.00000011920882, y: -0.0000000014244961, z: 0.0000001922997, w: 1}
       scale: {x: 1.0000012, y: 1.000001, z: 1.0000001}
     - name: CC_Base_L_Breast_end
       parentName: CC_Base_L_Breast
@@ -1297,6 +1298,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

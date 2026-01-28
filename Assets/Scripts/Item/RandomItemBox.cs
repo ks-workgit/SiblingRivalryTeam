@@ -50,6 +50,11 @@ public class RandomItemBox : MonoBehaviour
                     itemObjectCol.enabled = false;
                 }
 
+                if (itemObject.TryGetComponent<CapsuleCollider>(out var itemObjectCapCol))
+                {
+                    itemObjectCapCol.enabled = false;
+                }
+
                 m_index++;
                 m_inputTime = Time.time;
 

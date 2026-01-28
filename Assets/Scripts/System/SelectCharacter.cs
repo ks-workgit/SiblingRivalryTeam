@@ -20,11 +20,14 @@ public class SelectCharacter : MonoBehaviour
 
 	[SerializeField] Image m_readyImage;
 
+	[SerializeField] TextMeshProUGUI m_randomCharacter;
+
 	int m_characterId;
 	int m_characterIdLength;
 
 	bool m_change;
 	bool m_isReady;
+	bool m_isRandomChara;
 
     void Start()
 	{
@@ -40,6 +43,12 @@ public class SelectCharacter : MonoBehaviour
 		{
 			m_characterId++;
 			m_change = true;
+
+			if (m_isRandomChara)
+			{
+                m_characterId = 0;
+				m_isRandomChara = false;
+            }
         }
 	}
 
@@ -50,6 +59,12 @@ public class SelectCharacter : MonoBehaviour
 		{
 			m_characterId--;
 			m_change = true;
+
+			if (m_isRandomChara)
+			{
+                m_characterId = m_characterIdLength;
+				m_isRandomChara = false;
+            }
         }
 	}
 
@@ -72,14 +87,16 @@ public class SelectCharacter : MonoBehaviour
 		//IDの数値が規定量より大きくなったり小さくなった時にそれ以上いかないように
 		if (m_characterId < 0)
 		{
-			m_characterId = m_characterIdLength;
+			m_isRandomChara = true;
+			RandomCharacter();
 		}
 		else if (m_characterId > m_characterIdLength)
 		{
-			m_characterId = 0;
+			m_isRandomChara = true;
+            RandomCharacter();
 		}
 
-		if(m_change)
+		if (m_change)
 		{
 			TitleChangeCharacter();
 		}
@@ -102,20 +119,42 @@ public class SelectCharacter : MonoBehaviour
 	//キャラクターが変更されたときの見た目の変化など
 	void TitleChangeCharacter()
 	{
-		Destroy(m_player.transform.GetChild(0).gameObject);
+		if (m_player.transform.childCount != 0)
+		{
+			Destroy(m_player.transform.GetChild(0).gameObject);
+		}
 
-		Instantiate(
-			m_characterDatas.m_characterInfometions[m_characterId].m_titleCharacterPrefab,
-			m_player.transform);
+		if (!m_isRandomChara)
+		{
+			Instantiate(
+				m_characterDatas.m_characterInfometions[m_characterId].m_titleCharacterPrefab,
+				m_player.transform);
 
-		//アビリティアイコン
-		m_abilityIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_abilityIcon;
+            //アビリティアイコン
+            m_abilityIcon.enabled = true;
+            m_abilityIcon.sprite = m_characterDatas.m_characterInfometions[m_characterId].m_abilityIcon;
 
-		//キャラクターの名前
-		m_characterName.text = m_characterDatas.m_characterInfometions[m_characterId].m_chacterName;
+            //キャラクターの名前
+            m_characterName.text = m_characterDatas.m_characterInfometions[m_characterId].m_chacterName;
+
+            m_randomCharacter.enabled = false;
+        }
 
 		m_change = false;
 	}
+
+	private void RandomCharacter()
+	{
+		m_abilityIcon.enabled = false;
+        m_randomCharacter.enabled = true;
+        m_characterName.text = "おまかせ";
+
+		if (m_isReady)
+		{
+			int rand = Random.Range(0, m_characterDatas.m_characterInfometions.Count + 1);
+			m_characterId = rand;
+		}
+    }
 
 	public bool GetReady()
 	{
