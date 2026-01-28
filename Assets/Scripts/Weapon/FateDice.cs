@@ -27,7 +27,7 @@ public class FateDice : MonoBehaviour
 		{
 			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
 
-			if (!m_playerController.GetIsGrounded())
+			if (!m_playerController.GetIsInvincible())
 			{
 				Lottery();
 			}

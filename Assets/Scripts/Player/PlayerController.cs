@@ -313,6 +313,8 @@ public class PlayerController : MonoBehaviour
 	{
 		m_isFreeze = true;
 
+        m_canMove = false;
+
 		if(m_iceObject == null)
 		{
 			m_iceObject = Instantiate(m_icePrefab,transform.position,Quaternion.identity,transform);
@@ -620,6 +622,8 @@ public class PlayerController : MonoBehaviour
 		m_isFreeze = false;
 		m_animator.speed = 1;
 		Destroy(m_iceObject);
+
+        m_canMove = true;
 	}
 
 	public void ChangeSpeed()

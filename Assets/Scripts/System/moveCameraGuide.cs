@@ -14,7 +14,7 @@ public class moveCameraGuide : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
     {
-		for(int i = 0; i <= m_characterDatas.CrownCount.Length; i++)
+		for(int i = 0; i <= m_characterDatas.CrownCount.Length - 1; i++)
 		{
 			if (m_characterDatas.CrownCount[i] >= 3)
 			{
