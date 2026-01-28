@@ -6,6 +6,7 @@ public class DrainSword : MonoBehaviour
 {
 	Weapon m_weapon;
 	CharacterManager m_owner;
+	PlayerController m_playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,12 @@ public class DrainSword : MonoBehaviour
     {
         if(m_weapon.GetHit())
 		{
-			Drain();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				Drain();
+			}
 		}
     }
 

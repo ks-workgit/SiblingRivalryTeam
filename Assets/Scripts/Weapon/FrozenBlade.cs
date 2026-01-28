@@ -7,6 +7,7 @@ public class FrozenBlade : MonoBehaviour
 	const float MeltsTime = 5f;
 
 	Weapon m_weapon;
+	PlayerController m_playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +20,18 @@ public class FrozenBlade : MonoBehaviour
     {
         if(m_weapon.GetHit())
 		{
-			Frozen();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				Frozen();
+			}
 		}
     }
 
 	//‘Šè‚ÉUŒ‚‚ª“–‚½‚ê‚Î‘Šè‚ğ“€‚ç‚¹‚é‚±‚Æ‚ª‚Å‚«‚é
 	void Frozen()
 	{
-		GameObject enemy = m_weapon.GetEnemy().gameObject;
-
-		PlayerController playerController = enemy.GetComponent<PlayerController>();
-
-		playerController.SetIsFreeze(MeltsTime);
+		m_playerController.SetIsFreeze(MeltsTime);
 	}
 }

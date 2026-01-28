@@ -7,6 +7,7 @@ public class SilenceDagger : MonoBehaviour
 	const float CoolTime = 10;
 
 	Weapon m_weapon;
+	PlayerController m_playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,12 @@ public class SilenceDagger : MonoBehaviour
     {
         if(m_weapon.GetHit())
 		{
-			Silence();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				Silence();
+			}
 		}
     }
 

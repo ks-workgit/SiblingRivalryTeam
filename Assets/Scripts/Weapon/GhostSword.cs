@@ -12,6 +12,7 @@ public class GhostSword : MonoBehaviour
 	[SerializeField] CharacterDatas m_characterDatas;
 	[SerializeField] GameObject m_crownPrefab;
 
+	PlayerController m_playerController;
 	Weapon m_weapon;
 	GameObject m_owner;
 	GameObject m_enemy;
@@ -27,7 +28,12 @@ public class GhostSword : MonoBehaviour
 		//•Ší‚©‚ç“–‚½‚Á‚½‚Æ•Ô‚Á‚Ä—ˆ‚½‚ç
 		if(m_weapon.GetHit())
 		{
-			SteeleCrown();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				SteeleCrown();
+			}
 		}
 	}
 

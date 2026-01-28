@@ -87,29 +87,38 @@ public class CharacterManager : MonoBehaviour
 		m_isRespawn = true;
 	}
 
+	public void HelthToZero()
+	{
+		m_helth = 0;
+	}
+
 	public void ReduceHealth(int reduceValue)
 	{
-		//シールドがある時のダメージ処理
-		if (m_shield > 0)
+		// 無敵じゃないとき
+		if (!m_playerController.GetIsInvincible())
 		{
-			//ダメージがシールドの量を上回った時
-			if (reduceValue > m_shield)
+			//シールドがある時のダメージ処理
+			if (m_shield > 0)
 			{
-				int restDamage = 0;
-				restDamage = reduceValue - m_shield;
+				//ダメージがシールドの量を上回った時
+				if (reduceValue > m_shield)
+				{
+					int restDamage = 0;
+					restDamage = reduceValue - m_shield;
 
-				m_shield -= reduceValue;
-				m_helth -= restDamage;
+					m_shield -= reduceValue;
+					m_helth -= restDamage;
+				}
+				else
+				{
+					m_shield -= reduceValue;
+				}
 			}
+			//シールドがない時のダメージ処理
 			else
 			{
-				m_shield -= reduceValue;
+				m_helth -= reduceValue;
 			}
-		}
-		//シールドがない時のダメージ処理
-		else
-		{
-			m_helth -= reduceValue;
 		}
 	}
 

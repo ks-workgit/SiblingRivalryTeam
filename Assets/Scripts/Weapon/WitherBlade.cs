@@ -32,7 +32,12 @@ public class WitherBlade : MonoBehaviour
 	{
 		if (m_weapon.GetHit() && !m_isDebuff)
 		{
-			Debuff();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				Debuff();
+			}
 		}
 
 		if (m_isDebuff)
@@ -68,8 +73,6 @@ public class WitherBlade : MonoBehaviour
 				}
 			}
 		}
-
-		
 	}
 
 	void Debuff()
@@ -77,7 +80,7 @@ public class WitherBlade : MonoBehaviour
 		GameObject enemy = m_weapon.GetEnemy().gameObject;
 
 		m_characterManager = enemy.GetComponent<CharacterManager>();
-		m_playerController = enemy.GetComponent<PlayerController>();
+		
 		m_takeWeapon = m_weapon.GetEnemy().GetComponent<TakeWeapon>();
 
 		//攻撃力、攻撃スピードを下げてる
@@ -109,6 +112,7 @@ public class WitherBlade : MonoBehaviour
 		m_characterManager.GetSetAtttackSpeed =
 			m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 		//スピードのリセット
+		m_playerController.GetSetSpeedMagnification = 1;
 		m_playerController.InitializationSpeed();
 
 		m_isDebuff = false;

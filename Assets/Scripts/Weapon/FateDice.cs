@@ -5,14 +5,13 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class FateDice : MonoBehaviour
 {
-	const int MaxDamage = 200;
-
 	Weapon m_weapon;
 
 	int[] Dice = { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
 
 	CharacterManager m_owner;
 	int m_ownerAttackDamage;
+	PlayerController m_playerController;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,7 +25,12 @@ public class FateDice : MonoBehaviour
     {
 		if (m_weapon.GetHit())
 		{
-			Lottery();
+			m_playerController = m_weapon.GetEnemy().GetComponent<PlayerController>();
+
+			if (!m_playerController.GetIsGrounded())
+			{
+				Lottery();
+			}
 		}
 		else
 		{
@@ -41,9 +45,9 @@ public class FateDice : MonoBehaviour
 
 		if (Dice[diceRoll] == 0)
 		{
-			m_ownerAttackDamage = m_owner.GetSetAtttackDamage;
+			CharacterManager enemy = m_weapon.GetComponent<CharacterManager>();
 
-			m_owner.GetSetAtttackDamage = MaxDamage;
+			enemy.HelthToZero();
 
 			Dice = new int[]{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
 		}
