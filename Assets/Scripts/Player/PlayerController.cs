@@ -628,13 +628,10 @@ public class PlayerController : MonoBehaviour
 
 	public void ChangeSpeed()
 	{
-		m_speed *= m_speedMagnification;
-		m_dashSpeed *= m_speedMagnification;
-	}
-
-	public void InitializationSpeed()
-	{
 		m_speed = Speed;
 		m_dashSpeed = DashSpeed;
+
+		m_speed *= m_speedMagnification;
+		m_dashSpeed *= m_speedMagnification;
 	}
 }

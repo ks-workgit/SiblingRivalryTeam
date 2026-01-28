@@ -62,7 +62,7 @@ public class OverdriveMode : MonoBehaviour
 		m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * DamageMagnification;
 		m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * Magnification;
 
-		m_playerController.GetSetSpeedMagnification = speedMagnification;
+		m_playerController.GetSetSpeedMagnification += 0.5f;
 
 		m_playerController.ChangeSpeed();
 
@@ -75,9 +75,9 @@ public class OverdriveMode : MonoBehaviour
 		m_characterManeger.GetSetAtttackDamage = m_noBuffDamage;
 		m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed;
 
-		m_playerController.GetSetSpeedMagnification = speedMagnification;
+		m_playerController.GetSetSpeedMagnification -= 0.5f;
 
-		m_playerController.InitializationSpeed();
+		m_playerController.ChangeSpeed();
 
 		Debug.Log("オーバードライブモード終了");
 

@@ -32,7 +32,7 @@ public class SlowField : MonoBehaviour
 		{
 			m_playerController = other.GetComponent<PlayerController>();
 
-			m_playerController.GetSetSpeedMagnification = ChageMagnification;
+			m_playerController.GetSetSpeedMagnification -= ChageMagnification;
 
 			m_playerController.ChangeSpeed();
 
@@ -47,7 +47,8 @@ public class SlowField : MonoBehaviour
 		{
 			m_playerController = other.GetComponent<PlayerController>();
 
-			m_playerController.InitializationSpeed();
+			m_playerController.GetSetSpeedMagnification += ChageMagnification;
+			m_playerController.ChangeSpeed();
 		}
 	}
 
@@ -55,7 +56,8 @@ public class SlowField : MonoBehaviour
 	{
 		for (int i = 0;i < m_touchedPlayer.Count; i++)
 		{
-			m_touchedPlayer[i].InitializationSpeed();
+			m_playerController.GetSetSpeedMagnification += ChageMagnification;
+			m_touchedPlayer[i].ChangeSpeed();
 		}
 	}
 }

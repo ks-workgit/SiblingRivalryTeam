@@ -3769,7 +3769,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628214347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6df569305bebf154983dd2645edc3fcc, type: 3}
   m_Name: 
@@ -4133,6 +4133,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809661151}
   m_CullTransparentMesh: 1
+--- !u!1001 &1862088393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.119
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.481483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983232269838637883, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961885861635787473, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
+      propertyPath: m_Name
+      value: DropWitherBlade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 61865abb4908eed4bb87fbd8d9e0cd88, type: 3}
 --- !u!1 &1862874579
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,3 +4539,4 @@ SceneRoots:
   - {fileID: 85264555}
   - {fileID: 2097005773}
   - {fileID: 1581749956}
+  - {fileID: 1862088393}

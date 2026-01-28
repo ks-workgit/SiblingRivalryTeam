@@ -65,7 +65,8 @@ public class WitherBlade : MonoBehaviour
 					m_characterManager.GetSetAtttackSpeed =
 						m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 					//スピードのリセット
-					m_playerController.InitializationSpeed();
+					m_playerController.GetSetSpeedMagnification = 1;
+					m_playerController.ChangeSpeed();
 
 					m_isDebuff = false;
 
@@ -88,7 +89,7 @@ public class WitherBlade : MonoBehaviour
 		m_characterManager.GetSetAtttackSpeed /= 2;
 
 		//移動速度を下げている
-		m_playerController.GetSetSpeedMagnification /= 1.5f;
+		m_playerController.GetSetSpeedMagnification -= 0.5f;
 		m_playerController.ChangeSpeed();
 
 		m_debuffEffect = Instantiate(
@@ -112,8 +113,8 @@ public class WitherBlade : MonoBehaviour
 		m_characterManager.GetSetAtttackSpeed =
 			m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 		//スピードのリセット
-		m_playerController.GetSetSpeedMagnification = 1;
-		m_playerController.InitializationSpeed();
+		m_playerController.GetSetSpeedMagnification += 0.5f;
+		m_playerController.ChangeSpeed();
 
 		m_isDebuff = false;
 
