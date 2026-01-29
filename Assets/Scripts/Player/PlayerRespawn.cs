@@ -13,7 +13,11 @@ public class PlayerRespawn : MonoBehaviour
 	[SerializeField] GameObject m_crownPrefab;
 	[SerializeField] CharacterDatas m_characterDatas;
 
+	[SerializeField] GameObject m_dethEffect;
+	[SerializeField] GameObject m_floorPrefab;
+
 	Transform m_respawnPos;
+	GameObject m_floorGameObject;
 
 	bool m_isKnockDown;
 
@@ -69,15 +73,35 @@ public class PlayerRespawn : MonoBehaviour
 		{
 			Vector3 respawnPos = new Vector3(m_respawnPos.position.x, m_respawnPos.position.y + 1, m_respawnPos.position.z);
 
+			Instantiate(
+				m_dethEffect,
+				transform.position,
+				Quaternion.identity);
+
 			m_characterController.enabled = false;
 
+			m_floorGameObject = Instantiate(
+				m_floorPrefab,
+				m_respawnPos.position,
+				Quaternion.identity);
+
 			this.gameObject.transform.position = respawnPos;
+
+			//キャラクターの向きを正面に
+			transform.rotation = Quaternion.Euler(0f, 90f, 0f);
 
 			m_isKnockDown = false;
 
 			m_playerController.OnIsGrounded();
 
 			m_characterController.enabled = true;
+		}
+	}
+	private void OnTriggerExit(Collider other)
+	{
+		if(other.CompareTag("RespawnFloor"))
+		{
+			Destroy(m_floorGameObject);
 		}
 	}
 }

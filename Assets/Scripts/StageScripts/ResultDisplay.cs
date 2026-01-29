@@ -10,6 +10,10 @@ public class ResultDisplay : MonoBehaviour
 	[Header("位置表示")]
 	[SerializeField] private Transform[] rankePositions;
 
+	[SerializeField] CharacterDatas m_characterDatas;
+
+	bool m_createFinished = false;
+
     void Start()
     {
 		ShowReesut();
@@ -20,14 +24,56 @@ public class ResultDisplay : MonoBehaviour
 	{
 		for (int i = 0; i < rankedPlayers.Count && i < rankePositions.Length; i++)
 		{
-			GameObject player = rankedPlayers[i];
+			int winPlayerId = RoundCount.m_winPlayerId;
+			GameObject player = null;
+
+			if(!m_createFinished)
+			{
+				if (winPlayerId == 0)
+				{
+					player =Instantiate(
+						m_characterDatas.m_characterInfometions[m_characterDatas.PlayerOneCharacterId].m_titleCharacterPrefab,
+						rankePositions[i].position,
+						rankePositions[i].rotation
+						);
+					m_createFinished = true;
+				}
+				else
+				{
+					player = Instantiate(
+						m_characterDatas.m_characterInfometions[m_characterDatas.PlayerTwoCharacterId].m_titleCharacterPrefab,
+						rankePositions[i].position,
+						rankePositions[i].rotation
+						);
+					m_createFinished = true;
+				}
+			}
+			else
+			{
+				if (winPlayerId != 0)
+				{
+					player = Instantiate(
+						m_characterDatas.m_characterInfometions[m_characterDatas.PlayerOneCharacterId].m_titleCharacterPrefab,
+						rankePositions[i].position,
+						rankePositions[i].rotation
+						);
+				}
+				else
+				{
+					player = Instantiate(
+						m_characterDatas.m_characterInfometions[m_characterDatas.PlayerTwoCharacterId].m_titleCharacterPrefab,
+						rankePositions[i].position,
+						rankePositions[i].rotation
+						);
+				}
+			}
 
 			player.transform.position = rankePositions[i].position;
 			player.transform.rotation = rankePositions[i].rotation;
 
 			var controller = player.GetComponent<PlayerController>();
 			if(controller != null)
-				controller.enabled = false;
+			controller.enabled = false;
 
 			var rd = player.GetComponent<Rigidbody>();
 			if(rd != null)
@@ -35,12 +81,6 @@ public class ResultDisplay : MonoBehaviour
 				rd.velocity = Vector3.zero;
 				rd.isKinematic = true;
 			}
-
-			/*
-			//アニメーション用
-			 var anim = player.GetComponent<Animator>();
-			if (anim != null)
-				anim.Play("Result");*/
 		}
 	}
 }

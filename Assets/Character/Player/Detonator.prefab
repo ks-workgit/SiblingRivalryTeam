@@ -278,19 +278,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.1
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.26
+      value: 13.950001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5699997
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 761f8dfa87de85a468c7bb470366d0f6, type: 3}
       propertyPath: m_LocalRotation.z
@@ -610,6 +610,8 @@ MonoBehaviour:
   m_playerController: {fileID: 8570440160515583698}
   m_crownPrefab: {fileID: 2203841068471228637, guid: f66c739d6c6dd224ba055733b5dfdfaa, type: 3}
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_dethEffect: {fileID: 5931627496393814694, guid: eaf56538ee740d14490b737ff6674941, type: 3}
+  m_floorPrefab: {fileID: 6759385696434905163, guid: 0905ccdb5e0425a418ef27b0cb5ec070, type: 3}
 --- !u!114 &2586551288062670133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,7 +640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 8
-  m_outline: {fileID: 0}
 --- !u!114 &4771472176694041988
 MonoBehaviour:
   m_ObjectHideFlags: 0

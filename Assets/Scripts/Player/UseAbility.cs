@@ -7,7 +7,6 @@ public class UseAbility : MonoBehaviour
 {
 	[SerializeField] AbilityDatas m_abilityDatas;
 	[SerializeField] int m_characterId;
-	[SerializeField] Sprite m_outline;
 
 	GameObject m_ablityIconObject;
 	Image m_abilityIcon;
@@ -18,7 +17,7 @@ public class UseAbility : MonoBehaviour
 
 	bool m_isUse;
 	bool m_reactivation;
-
+	
 	public bool GetReactivation()
 	{
 		return m_reactivation;

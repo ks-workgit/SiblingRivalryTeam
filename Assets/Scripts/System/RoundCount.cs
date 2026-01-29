@@ -17,6 +17,8 @@ public class RoundCount : MonoBehaviour
 
 	bool m_isFinished = false;
 
+	public static int m_winPlayerId;
+
 	const float SceneLoadTime = 3.0f;   // ƒV[ƒ“‘JˆÚ‚·‚é‚Ü‚Å‚ÌŽžŠÔ
 
 	private void Start()
@@ -70,8 +72,17 @@ public class RoundCount : MonoBehaviour
 		if (Round1P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount]
 			|| Round2P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount])
 		{
+			if(Round1P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount])
+			{
+				m_winPlayerId = 0;
+			}
+			else if(Round2P >= RuleManager.CurrentRule.RoundsCount[RuleManager.CurrentRule.m_roundCount])
+			{
+				m_winPlayerId = 1;
+			}
+
 			Round1P = 0;
-			Round2P = 0;			
+			Round2P = 0;		
 			SceneManager.LoadScene("Result");
 			SceneController.SetCanBack(true);
 		}

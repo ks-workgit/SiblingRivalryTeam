@@ -45,7 +45,7 @@ public class FateDice : MonoBehaviour
 
 		if (Dice[diceRoll] == 0)
 		{
-			CharacterManager enemy = m_weapon.GetComponent<CharacterManager>();
+			CharacterManager enemy = m_weapon.GetEnemy().GetComponent<CharacterManager>();
 
 			enemy.HelthToZero();
 

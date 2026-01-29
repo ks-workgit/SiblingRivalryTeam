@@ -8,6 +8,7 @@ TagManager:
   - Crown
   - Item
   - Weapon
+  - RespawnFloor
   layers:
   - Default
   - TransparentFX

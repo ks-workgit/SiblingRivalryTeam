@@ -282,6 +282,8 @@ MonoBehaviour:
   m_playerController: {fileID: 9172739794230449760}
   m_crownPrefab: {fileID: 2203841068471228637, guid: f66c739d6c6dd224ba055733b5dfdfaa, type: 3}
   m_characterDatas: {fileID: 11400000, guid: 37433ba9974fbe541955e7ab8946f5a2, type: 2}
+  m_dethEffect: {fileID: 5931627496393814694, guid: eaf56538ee740d14490b737ff6674941, type: 3}
+  m_floorPrefab: {fileID: 6759385696434905163, guid: 0905ccdb5e0425a418ef27b0cb5ec070, type: 3}
 --- !u!114 &4223323162120231820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +312,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityDatas: {fileID: 11400000, guid: ad3d65dbe4d76af4298f74044412e7f3, type: 2}
   m_characterId: 6
-  m_outline: {fileID: 0}
 --- !u!114 &5268124347292342010
 MonoBehaviour:
   m_ObjectHideFlags: 0

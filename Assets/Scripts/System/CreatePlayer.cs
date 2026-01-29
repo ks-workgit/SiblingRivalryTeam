@@ -55,10 +55,23 @@ public class CreatePlayer : MonoBehaviour
 		m_playerInputManager.playerPrefab =
 			m_characterDatas.m_characterInfometions[characterId[playerId]].m_characterPrefab;
 
-		m_playerInputManager.playerPrefab.transform.position = m_respawnPos.position;
+		//1Pと2Pで位置をずらす
+		if(playerId == 0)
+		{
+			m_playerInputManager.playerPrefab.transform.position = 
+				new Vector3(m_respawnPos.position.x, m_respawnPos.position.y,m_respawnPos.position.z + 2);
+		}
+		else
+		{
+			m_playerInputManager.playerPrefab.transform.position =
+				new Vector3(m_respawnPos.position.x, m_respawnPos.position.y, m_respawnPos.position.z - 2);
+		}
+		//キャラクターの向きを正面に
+		m_playerInputManager.playerPrefab.transform.rotation = Quaternion.Euler(0f,90f,0f);
+
 
 		//プレイヤーを生成
-		PlayerInput player = m_playerInputManager.JoinPlayer(-1,-1,null, gamePad);
+		PlayerInput player = m_playerInputManager.JoinPlayer(-1, -1, null, gamePad);
 
 		//代入
 		m_takeItem = player.GetComponent<TakeItem>();
