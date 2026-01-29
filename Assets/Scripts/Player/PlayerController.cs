@@ -133,6 +133,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
+
 		if(m_isFreeze)
 		{
 			m_meltTime -= 0.1f;
@@ -170,6 +172,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         m_verticalVelocity = m_jumpSpeed;
@@ -181,6 +184,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
@@ -190,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnGuard(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
         if (!m_isGrounded || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
         switch (callback.phase)
@@ -210,6 +215,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAvoidanceStick(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAttacking || m_stamina <= m_rollStamina || m_isFreeze) return;
 
         // スティックを倒した方向に回避
@@ -241,6 +247,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAbility(InputAction.CallbackContext callback)
     {
+        if (!StartCountDown.Instance.GetIsActive()) return;
         if (m_isStun || m_isAttacking || m_isFreeze) return;
         m_useAbility.Use();
     }

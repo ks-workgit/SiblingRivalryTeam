@@ -14,23 +14,26 @@ public class moveCameraGuide : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
     {
-		for(int i = 0; i <= m_characterDatas.CrownCount.Length - 1; i++)
-		{
-			if (m_characterDatas.CrownCount[i] >= 3)
+        if (StartCountDown.Instance.GetIsActive())
+        {
+			for (int i = 0; i <= m_characterDatas.CrownCount.Length - 1; i++)
 			{
-				m_moveSpeed = MoveSpeed * 1.15f;
-			}
-			else if(m_characterDatas.CrownCount[i] >= 5)
-			{
-				m_moveSpeed = MoveSpeed * 1.3f;
-			}
-			else if (m_characterDatas.CrownCount[i] >= 8)
-			{
-				m_moveSpeed = MoveSpeed * 1.4f;
+				if (m_characterDatas.CrownCount[i] >= 3)
+				{
+					m_moveSpeed = MoveSpeed * 1.15f;
+				}
+				else if(m_characterDatas.CrownCount[i] >= 5)
+				{
+					m_moveSpeed = MoveSpeed * 1.3f;
+				}
+				else if (m_characterDatas.CrownCount[i] >= 8)
+				{
+					m_moveSpeed = MoveSpeed * 1.4f;
+				}
+
 			}
 
-		}
-
-		CameraGuide.transform.position += new Vector3(m_moveSpeed, 0,0);
+			CameraGuide.transform.position += new Vector3(m_moveSpeed, 0,0);
+        }
     }
 }
