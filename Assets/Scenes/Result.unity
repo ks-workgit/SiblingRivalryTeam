@@ -252,6 +252,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &821156548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2237340058932335362, guid: 5acfd34f659cf1c4bb213c59e129a767, type: 3}
+  m_PrefabInstance: {fileID: 1745475580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &837251236
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,8 +559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rankedPlayers:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 821156548}
+  - {fileID: 1903311601}
   rankePositions:
   - {fileID: 1894947440}
   - {fileID: 6396747}
@@ -956,6 +961,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5524594549843282751, guid: 5acfd34f659cf1c4bb213c59e129a767, type: 3}
   m_PrefabInstance: {fileID: 1745475580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1903311601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2237340058932335362, guid: 5acfd34f659cf1c4bb213c59e129a767, type: 3}
+  m_PrefabInstance: {fileID: 120398560}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1932228722
 GameObject:

@@ -12,7 +12,7 @@ public class ResultDisplay : MonoBehaviour
 
     void Start()
     {
-		ShowReesut();   
+		ShowReesut();
     }
 
     // Update is called once per frame
