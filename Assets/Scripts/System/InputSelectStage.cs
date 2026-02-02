@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputSelectStage : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class InputSelectStage : MonoBehaviour
 
     float m_inputTime;
     float m_delay = 0.2f;
+
+    private void Start()
+    {
+        SceneController.SetIsSelectStage(true);        
+    }
 
     // UI‚ÌˆÚ“®
     public void OnNavigate(InputAction.CallbackContext context)

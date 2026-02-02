@@ -368,6 +368,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0f80cb85-4d36-4160-a8bf-830f21b6a99c
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 369fea70-06d4-440a-af35-3d834e873bd7
+    m_ActionName: UI/AnyButton[/XInputControllerWindows/start,/XInputControllerWindows/select,/XInputControllerWindows/leftStickPress,/XInputControllerWindows/rightStickPress,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -395,7 +399,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844616006}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897e673932d76fa4693679f9dc56d9f9, type: 3}
   m_Name: 

@@ -17,6 +17,8 @@ public class MoveGameScene : MonoBehaviour
     private void Start()
     {
         m_readyToFightImage.enabled = false;
+
+        SceneController.SetIsSelectStage(false);
     }
 
     // ReadyƒJƒEƒ“ƒg‚ğ‘‚â‚·

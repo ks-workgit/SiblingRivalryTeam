@@ -84,12 +84,12 @@ public class RoundCount : MonoBehaviour
 			Round1P = 0;
 			Round2P = 0;		
 			SceneManager.LoadScene("Result");
-			SceneController.SetCanBack(true);
-		}
+            SceneController.SetIsRounded(false);
+        }
 		else
 		{
 			SceneManager.LoadScene("Stagechoice");
-			SceneController.SetCanBack(false);
+			SceneController.SetIsRounded(true);
 		}
 
 		m_roundPanel.SetActive(false);
