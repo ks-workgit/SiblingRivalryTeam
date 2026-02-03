@@ -49,6 +49,14 @@ public class SlowField : MonoBehaviour
 
 			m_playerController.GetSetSpeedMagnification += ChageMagnification;
 			m_playerController.ChangeSpeed();
+
+			for (int i = 0; i < m_touchedPlayer.Count; i++)
+			{
+				if(m_touchedPlayer[i] == other)
+				{
+					m_touchedPlayer.RemoveAt(i);
+				}
+			}
 		}
 	}
 

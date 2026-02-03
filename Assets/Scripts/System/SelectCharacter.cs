@@ -101,7 +101,7 @@ public class SelectCharacter : MonoBehaviour
 			TitleChangeCharacter();
 		}
 
-		if (m_playerNumber == 1)
+		if (m_playerNumber == 0)
 		{
 			m_characterDatas.PlayerOneCharacterId = m_characterId;
 		}

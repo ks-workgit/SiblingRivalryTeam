@@ -20,11 +20,13 @@ public class PlayerAttack : MonoBehaviour
     Collider m_collider;
 
 	CharacterManager m_enemy;
+	AudioSource m_se;	//殴るSe
 
     private void Start()
     {
         m_collider = GetComponent<Collider>();
 		m_playerController.SetCollider(m_collider);
+		m_se = GetComponent<AudioSource>();
 
 		m_collider.enabled = false;
 	}
@@ -39,6 +41,16 @@ public class PlayerAttack : MonoBehaviour
 			m_weapon = m_weaponObject.GetComponent<Weapon>();
 			//武器を持っているなら武器のコライダーを渡す
 			m_playerController.SetCollider(m_collider);
+
+			if(m_playerController.GetAttackStart())
+			{
+				AudioSource se = m_weaponObject.GetComponent<AudioSource>();
+				Debug.Log("尾となった");
+
+				se.Play();
+				m_playerController.ResetAttackStart();
+
+			}
 
 			//武器を振って敵に当たったら通る
 			if (m_weapon.GetHit())
@@ -61,6 +73,16 @@ public class PlayerAttack : MonoBehaviour
 
 			//武器を持っていないなら元の箱のコライダーを渡す
 			m_playerController.SetCollider(m_collider);
+
+			if(m_playerController.GetAttackStart())
+			{
+				Debug.Log("尾となった");
+
+				//殴るSe再生
+				m_se.Play();
+
+				m_playerController.ResetAttackStart();
+			}
 		}		
 	}
 

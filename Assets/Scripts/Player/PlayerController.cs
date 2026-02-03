@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     bool m_isGrounded;
     bool m_isDash;
     bool m_isAttacking;
+	bool m_attackStart;
     bool m_isGuard;
     bool m_isAvoidance;
     bool m_isMoving;
@@ -86,7 +87,8 @@ public class PlayerController : MonoBehaviour
         m_isGrounded = true;
         m_isDash = false;
         m_isAttacking = false;
-        m_isGuard = false;
+		m_attackStart = false;
+		m_isGuard = false;
         m_isAvoidance = false;
         m_isMoving = false;
         m_canMove = true;
@@ -187,7 +189,8 @@ public class PlayerController : MonoBehaviour
         if (!StartCountDown.Instance.GetIsActive()) return;
         if (!m_isGrounded || m_isGuard || m_isStun || m_isAvoidance || m_isAttacking || m_isFreeze) return;
 
-        m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
+		
+		m_animator.SetFloat("AttackSpeed", m_characterManager.GetSetAtttackSpeed);
 		m_animator.SetInteger("AttackKind", m_takeWeapon.GetWeaponKind());
         m_animator.SetTrigger("Attack");
     }
@@ -283,14 +286,14 @@ public class PlayerController : MonoBehaviour
     // 攻撃開始
     public void AttackStart()
     {
-        m_isAttacking = true;
-    }
+        m_isAttacking = true; m_attackStart = true;
+	}
 
     // 攻撃終了
     public void AttackEnd()
     {
-        m_isAttacking = false;
-    }
+        m_isAttacking = false; 
+	}
 
     // コライダーをオンにする
     public void EnableCollision()
@@ -372,6 +375,16 @@ public class PlayerController : MonoBehaviour
 	{
 		get { return m_speedMagnification; }
 		set { m_speedMagnification = value; }
+	}
+
+	public bool GetAttackStart()
+	{
+		return m_attackStart;
+	}
+
+	public bool ResetAttackStart()
+	{
+		return m_attackStart = false;
 	}
 
 	private void FixedUpdate()
