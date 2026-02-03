@@ -12,9 +12,13 @@ public class RuleSettings : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_roundText, m_lifeText, m_crownText;
     [SerializeField] Button[] m_buttons;
 
+	[SerializeField] AudioSource m_buttonSe;
+	[SerializeField] AudioSource m_switchingSe;
+
     bool m_roundSelect;
     bool m_lifeSelect;
     bool m_crownSelect;
+	bool m_onClick;
 
     public enum Setting
     {
@@ -41,11 +45,21 @@ public class RuleSettings : MonoBehaviour
             {
                 if (selectedObject == m_buttons[i].gameObject)
                 {
-                    Setting setting = (Setting)i;
+					m_switchingSe.Play();
+
+					Setting setting = (Setting)i;
                     SelectedObject(setting);
                 }
             }
         }
+
+		if(m_onClick)
+		{
+			if(!m_buttonSe.isPlaying)
+			{
+				SceneManager.LoadScene("Stagechoice");
+			}
+		}
     }
 
     private void SelectedObject(Setting setting)
@@ -110,6 +124,8 @@ public class RuleSettings : MonoBehaviour
     // シーン遷移するボタン
     public void OnClickButton()
     {
-        SceneManager.LoadScene("Stagechoice");
+		m_buttonSe.Play();
+
+		m_onClick = true;
     }
 }

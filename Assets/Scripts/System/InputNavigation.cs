@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputNavigation : MonoBehaviour
 {
     [SerializeField] RuleSettings m_ruleSettings;
+	[SerializeField] AudioSource m_selectSe;
 
     float m_inputTime;
     float m_delay = 0.2f;
@@ -23,11 +24,15 @@ public class InputNavigation : MonoBehaviour
             // ¶‰E‚Ì“ü—Í
             if (inputValue.x > 0.5f)
             {
-                HandleHorizontalInput(1);
+				m_selectSe.Play();
+
+				HandleHorizontalInput(1);
             }
             else if (inputValue.x < -0.5f)
-            {
-                HandleHorizontalInput(-1);
+			{
+				m_selectSe.Play();
+
+				HandleHorizontalInput(-1);
             }
         }
     }

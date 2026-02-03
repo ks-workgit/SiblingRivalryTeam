@@ -22,6 +22,9 @@ public class SelectCharacter : MonoBehaviour
 
 	[SerializeField] TextMeshProUGUI m_randomCharacter;
 
+	[SerializeField] AudioSource m_readySe;
+	[SerializeField] AudioSource m_selectSe;
+
 	int m_characterId;
 	int m_characterIdLength;
 
@@ -41,6 +44,8 @@ public class SelectCharacter : MonoBehaviour
 	{
 		if (!m_isReady)
 		{
+			m_selectSe.Play();
+
 			m_characterId++;
 			m_change = true;
 
@@ -57,6 +62,8 @@ public class SelectCharacter : MonoBehaviour
 	{
 		if (!m_isReady)
 		{
+			m_selectSe.Play();
+
 			m_characterId--;
 			m_change = true;
 
@@ -73,6 +80,8 @@ public class SelectCharacter : MonoBehaviour
 	{
 		if(!m_isReady)
 		{
+			m_readySe.Play();
+
 			// ReadyƒJƒEƒ“ƒg‚ğ‘‚â‚·
 			m_moveGameScene.Ready();
 

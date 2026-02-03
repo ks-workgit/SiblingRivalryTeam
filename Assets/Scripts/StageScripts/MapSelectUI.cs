@@ -13,8 +13,13 @@ public class MapSelectUI : MonoBehaviour
 	[Header("マップ画像")]
 	[SerializeField] private Sprite[] mapSprites;     // UIで表示するマップ画像たち
 
+	[SerializeField] AudioSource m_buttonSe;
+	[SerializeField] AudioSource m_selectSe;
+
 	public static int SelectedMapIndex = 0;           // 選ばれたマップ番号を他シーンに渡す用
 	private int currentIndex = 0;
+
+	bool m_onClick;
 
 	void Start()
 	{
@@ -27,8 +32,22 @@ public class MapSelectUI : MonoBehaviour
 		startButton.onClick.AddListener(StartGame);
 	}
 
+	private void Update()
+	{
+		if(m_onClick)
+		{
+			if(!m_buttonSe.isPlaying)
+			{
+				Debug.Log("選ばれたマップ番号: " + SelectedMapIndex);
+				SceneManager.LoadScene("CharacterSelectScene");
+			}
+		}
+	}
+
 	public void PrevMap()
 	{
+		m_selectSe.Play();
+
 		currentIndex--;
 		if (currentIndex < 0) currentIndex = mapSprites.Length - 1;
 		UpdateMapDisplay();
@@ -36,6 +55,8 @@ public class MapSelectUI : MonoBehaviour
 
 	public void NextMap()
 	{
+		m_selectSe.Play();
+
 		currentIndex++;
 		if (currentIndex >= mapSprites.Length) currentIndex = 0;
 		UpdateMapDisplay();
@@ -49,7 +70,8 @@ public class MapSelectUI : MonoBehaviour
 
 	public void StartGame()
 	{
-		Debug.Log("選ばれたマップ番号: " + SelectedMapIndex);
-		SceneManager.LoadScene("CharacterSelectScene");
+		m_buttonSe.Play();
+
+		m_onClick = true;
 	}
 }
