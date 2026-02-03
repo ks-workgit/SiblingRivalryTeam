@@ -30,13 +30,13 @@ public class SlowField : MonoBehaviour
 		//ƒvƒŒƒCƒ„[‚ª“–‚½‚Á‚Ä‚¢‚é‚È‚ç‘«‚Ì‘¬‚³‚ğ‰º‚°‚é
 		if(other.gameObject.CompareTag("Player"))
 		{
-			m_playerController = other.GetComponent<PlayerController>();
+			PlayerController playerController = other.GetComponent<PlayerController>();
 
-			m_playerController.GetSetSpeedMagnification -= ChageMagnification;
+            playerController.GetSetSpeedMagnification -= ChageMagnification;
 
-			m_playerController.ChangeSpeed();
+            playerController.ChangeSpeed();
 
-			m_touchedPlayer.Add(m_playerController);
+			m_touchedPlayer.Add(playerController);
 		}
 	}
 
@@ -52,7 +52,7 @@ public class SlowField : MonoBehaviour
 
 			for (int i = 0; i < m_touchedPlayer.Count; i++)
 			{
-				if(m_touchedPlayer[i] == other)
+				if(m_touchedPlayer[i].gameObject == other.gameObject)
 				{
 					m_touchedPlayer.RemoveAt(i);
 				}
@@ -64,6 +64,8 @@ public class SlowField : MonoBehaviour
 	{
 		for (int i = 0;i < m_touchedPlayer.Count; i++)
 		{
+			m_playerController = m_touchedPlayer[i].GetComponent<PlayerController>();
+
 			m_playerController.GetSetSpeedMagnification += ChageMagnification;
 			m_touchedPlayer[i].ChangeSpeed();
 		}

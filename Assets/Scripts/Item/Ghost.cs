@@ -7,11 +7,19 @@ public class Ghost : MonoBehaviour
 	[SerializeField] CharacterDatas m_characterDatas;
 
 	TakeItem m_takeItem;
+	AudioSource m_audioSource;
 
 	int m_usePlayerId;
 	int m_enemyPlayerId;
 
-	public void SetUsePlayerId(int usePlayerId)
+	bool m_isPlaying;
+
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
+    public void SetUsePlayerId(int usePlayerId)
 	{
 		m_usePlayerId = usePlayerId;
 	}
@@ -20,8 +28,16 @@ public class Ghost : MonoBehaviour
 	{
 		m_takeItem = takeItem;
 	}
-	
-	public void StealCrown()
+
+    private void Update()
+    {
+        if(!m_audioSource.isPlaying)
+		{
+            Destroy(gameObject);
+        }
+    }
+
+    public void StealCrown()
 	{
 		if(m_usePlayerId == 0)
 		{
@@ -38,8 +54,13 @@ public class Ghost : MonoBehaviour
 			m_characterDatas.CrownCount[m_enemyPlayerId]--;
 
 			m_takeItem.SetHaveItem(false);
+        }
+		else
+		{
+			Destroy(gameObject);
 		}
 
-		Destroy(gameObject);
-	}
+		m_isPlaying = true;
+
+    }
 }

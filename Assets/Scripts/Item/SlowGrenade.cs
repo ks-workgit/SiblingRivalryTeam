@@ -8,6 +8,8 @@ public class SlowGrenade : MonoBehaviour
 
 	CapsuleCollider m_collider;
 
+	GameObject m_slowField;
+
     // Update is called once per frame
     void Start()
     {
@@ -18,11 +20,15 @@ public class SlowGrenade : MonoBehaviour
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
 		{
-			Instantiate(
-				SlowField,
-				transform.position,
-				Quaternion.Euler(-90,0,0)
-				);
+			if(m_slowField == null)
+			{
+                m_slowField = Instantiate(
+					SlowField,
+					transform.position,
+					Quaternion.Euler(-90, 0, 0)
+					);
+            }
+			
 
 			Destroy(gameObject);
 		}
