@@ -11,8 +11,12 @@ public class MoveGameScene : MonoBehaviour
 	int m_readyCount = 0;
 	bool m_isCompletion;
 	bool m_isStartGame;
+	bool m_sePlaying;
+	bool m_activeSePlaying;
 
 	[SerializeField] Image m_readyToFightImage;
+	[SerializeField] AudioSource m_startSe;
+	[SerializeField] AudioClip m_activeSe,m_readyToFightSe;
 
     private void Start()
     {
@@ -40,15 +44,32 @@ public class MoveGameScene : MonoBehaviour
 		{
 			m_readyToFightImage.enabled = true;
             m_isCompletion = true;
+
+			if (!m_activeSePlaying)
+			{
+				m_startSe.PlayOneShot(m_activeSe);
+				m_activeSePlaying = true;
+			}
 			if (m_isStartGame)
 			{
-				SceneManager.LoadScene("GameScene");
+				if (!m_sePlaying)
+				{
+					m_startSe.Play();
+					m_startSe.PlayOneShot(m_readyToFightSe);
+					Debug.Log("‰¹‚È‚Á‚½");
+					m_sePlaying = true;
+				}
+				if (!m_startSe.isPlaying)
+				{
+					SceneManager.LoadScene("GameScene");
+				}
 			}
 		}
 		else
 		{
 			m_isCompletion = false;
 			m_readyToFightImage.enabled = false;
+			m_activeSePlaying = false;
 		}
 	}
 
@@ -62,5 +83,10 @@ public class MoveGameScene : MonoBehaviour
 	public void SetStartGame(bool isStart)
 	{
 		m_isStartGame = isStart;
+	}
+
+	public bool IsStartGame()
+	{
+		return m_isStartGame;
 	}
 }

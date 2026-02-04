@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEditor.Rendering;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class RandomItemBox : MonoBehaviour
 {

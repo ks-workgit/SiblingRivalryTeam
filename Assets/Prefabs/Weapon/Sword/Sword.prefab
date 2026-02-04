@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4972755354961600663}
   - component: {fileID: 6074245238985333567}
   - component: {fileID: 7435668271444550732}
-  - component: {fileID: 1697504245187072819}
   - component: {fileID: 7071038786703675996}
   - component: {fileID: 3407192402350131916}
+  - component: {fileID: 4151240640998119726}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -87,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1697504245187072819
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6928359477629977630}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1550514412580984892, guid: e0a8e43e83a17a44e89b9b09991983ae, type: 3}
 --- !u!114 &7071038786703675996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +196,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &4151240640998119726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928359477629977630}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.015997592, y: 0.2746473, z: 0.073354535}
+  m_Center: {x: -0.000000464853, y: 0.17577308, z: -0.00149366}

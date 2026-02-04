@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5466461008441723531}
   - component: {fileID: 9037270921612660663}
   - component: {fileID: 2372047970244675211}
-  - component: {fileID: 1977067469938564494}
   - component: {fileID: 7750978193233619198}
   - component: {fileID: 5597788136606099145}
+  - component: {fileID: 3336105195321833026}
   m_Layer: 0
   m_Name: Mace
   m_TagString: Untagged
@@ -87,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1977067469938564494
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8675054365839025251}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7807538432633192378, guid: 458b1e3593e34494497b6a7905acb734, type: 3}
 --- !u!114 &7750978193233619198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +196,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &3336105195321833026
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675054365839025251}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.12563816, y: 0.17233649, z: 0.0825285}
+  m_Center: {x: 0.00095870113, y: 0.23786786, z: -0.0000008836592}

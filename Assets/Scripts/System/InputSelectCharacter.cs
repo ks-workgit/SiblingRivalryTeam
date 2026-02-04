@@ -49,6 +49,7 @@ public class InputSelectCharacter : MonoBehaviour
     public void OnCancel(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (m_moveGameScene.IsStartGame()) return;
 
         // Ready‚Ì‚Æ‚«
         if (m_selectCharacter.GetReady())

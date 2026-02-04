@@ -12,8 +12,6 @@ public class Ghost : MonoBehaviour
 	int m_usePlayerId;
 	int m_enemyPlayerId;
 
-	bool m_isPlaying;
-
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
@@ -59,8 +57,5 @@ public class Ghost : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-
-		m_isPlaying = true;
-
     }
 }

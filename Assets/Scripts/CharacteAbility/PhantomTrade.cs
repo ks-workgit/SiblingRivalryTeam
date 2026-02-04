@@ -35,7 +35,7 @@ public class PhantomTrade : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player") && !m_characterController.GetIsGrounded())
+		if (other.CompareTag("Player") && !m_characterController.GetIsGrounded() && !m_isUse)
 		{
 			m_useAbility.ResetIsUse();
 

@@ -7,7 +7,7 @@ public class FateDice : MonoBehaviour
 {
 	Weapon m_weapon;
 
-	int[] Dice = { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
+	int[] Dice = { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1 };
 
 	CharacterManager m_owner;
 	int m_ownerAttackDamage;
@@ -38,7 +38,7 @@ public class FateDice : MonoBehaviour
 		}
 	}
 
-	//’Š‘I30%‚ÌŠm—¦‚ÅˆêŒ‚‚ÅŽ€–S
+	//’Š‘I20%‚ÌŠm—¦‚ÅˆêŒ‚‚ÅŽ€–S
 	void Lottery()
 	{
 		int diceRoll = Random.Range(0, Dice.Length);
@@ -49,7 +49,7 @@ public class FateDice : MonoBehaviour
 
 			enemy.HelthToZero();
 
-			Dice = new int[]{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
+			Dice = new int[]{ 0, 0, 1, 1, 1, 1, 1, 1, 1, 1 };
 		}
 		else
 		{

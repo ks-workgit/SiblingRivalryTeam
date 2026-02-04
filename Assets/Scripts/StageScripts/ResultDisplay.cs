@@ -11,12 +11,14 @@ public class ResultDisplay : MonoBehaviour
 	[SerializeField] private Transform[] rankePositions;
 
 	[SerializeField] CharacterDatas m_characterDatas;
+	[SerializeField] AudioSource m_resultBGM;
 
 	bool m_createFinished = false;
 
     void Start()
     {
 		ShowReesut();
+        m_resultBGM.Play();
     }
 
     // Update is called once per frame
