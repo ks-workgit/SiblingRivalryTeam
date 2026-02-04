@@ -16,6 +16,7 @@ public class MapSpawner : MonoBehaviour
 	public class MapGroup
 	{
 		public GameObject[] mapVariants;
+		public Vector3 spawnOffset;
 	}
 
 	void Start()
@@ -59,7 +60,8 @@ public class MapSpawner : MonoBehaviour
 	void SpawnMap(int mapIndex, int variantIndex)
 	{
 		GameObject prefab = mapGroups[mapIndex].mapVariants[variantIndex];
-		GameObject map = Instantiate(prefab, new Vector3(spawnX, 0, 0), Quaternion.identity);
+		Vector3 offset = mapGroups[mapIndex].spawnOffset;
+		GameObject map = Instantiate(prefab, new Vector3(spawnX, 0, 0) + offset, Quaternion.identity);
 		activeMaps.Add(map);
 		spawnX += mapWidth;
 	}

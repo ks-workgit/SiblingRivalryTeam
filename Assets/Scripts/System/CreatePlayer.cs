@@ -59,7 +59,7 @@ public class CreatePlayer : MonoBehaviour
 		if(playerId == 0)
 		{
 			m_playerInputManager.playerPrefab.transform.position = 
-				new Vector3(m_respawnPos.position.x, m_respawnPos.position.y,m_respawnPos.position.z + 2);
+				new Vector3(m_respawnPos.position.x, m_respawnPos.position.y,m_respawnPos.position.z + 4);
 		}
 		else
 		{
