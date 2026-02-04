@@ -6,6 +6,7 @@ public class GloryInDeath : MonoBehaviour
 {
 	[SerializeField] GameObject m_effect;
 	[SerializeField] WeaponDatas m_weaponDatas;
+	[SerializeField] AudioSource m_se;
 
 	const int NoWeaponDamage = 10;
 	const float DamageCoolDown = 5;
@@ -14,7 +15,6 @@ public class GloryInDeath : MonoBehaviour
 	CharacterManager m_characterManeger;
 	PlayerController m_playerController;
 	TakeWeapon m_takeWeapon;
-	AudioSource m_se;
 
 	GameObject m_player;
 
@@ -32,7 +32,6 @@ public class GloryInDeath : MonoBehaviour
         m_characterManeger = m_player.GetComponent<CharacterManager>();
 		m_playerController = m_player.GetComponent<PlayerController>();
 		m_takeWeapon = m_player.GetComponent<TakeWeapon>();
-		m_se = GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame

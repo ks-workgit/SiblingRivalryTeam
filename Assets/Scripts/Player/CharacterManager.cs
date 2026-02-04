@@ -28,6 +28,8 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField] int m_attackDamage = AttackDamage;
 	[SerializeField] float m_attackSpeed = AttackSpeed;
 
+	[SerializeField] AudioSource m_dethSe;
+
 	bool m_isDeth = false;
 
 	bool m_isRespawn = false;
@@ -154,6 +156,8 @@ public class CharacterManager : MonoBehaviour
     {
         if(m_helth <= 0)
 		{
+			m_dethSe.Play();
+
 			KnockDown();
 		}
 

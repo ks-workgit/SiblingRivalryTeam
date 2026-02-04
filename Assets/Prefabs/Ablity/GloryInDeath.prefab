@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_effect: {fileID: 1675461685360824079}
   m_weaponDatas: {fileID: 11400000, guid: 595f0930daaee8149bffe01a15e7cade, type: 2}
+  m_se: {fileID: 6110387718887679676}
 --- !u!82 &6110387718887679676
 AudioSource:
   m_ObjectHideFlags: 0
