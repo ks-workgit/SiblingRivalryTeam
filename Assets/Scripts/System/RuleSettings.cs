@@ -13,7 +13,9 @@ public class RuleSettings : MonoBehaviour
     [SerializeField] Button[] m_buttons;
 
 	[SerializeField] AudioSource m_buttonSe;
-	[SerializeField] AudioSource m_switchingSe;
+	[SerializeField] AudioClip m_switchingSe;
+
+    GameObject m_lastSelected;
 
     bool m_roundSelect;
     bool m_lifeSelect;
@@ -45,11 +47,15 @@ public class RuleSettings : MonoBehaviour
             {
                 if (selectedObject == m_buttons[i].gameObject)
                 {
-					m_switchingSe.Play();
-
-					Setting setting = (Setting)i;
+                    Setting setting = (Setting)i;
                     SelectedObject(setting);
                 }
+            }
+
+            if (selectedObject != m_lastSelected)
+            {
+                m_buttonSe.PlayOneShot(m_switchingSe);
+                m_lastSelected = selectedObject;
             }
         }
 

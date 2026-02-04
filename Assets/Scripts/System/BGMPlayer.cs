@@ -37,8 +37,10 @@ public class BGMPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(m_bgm == null && SceneManager.GetActiveScene().name == "RuleSettings")
+		if(m_bgm == null)			
 		{
+			if(SceneManager.GetActiveScene().name == "RuleSettings" ||
+            SceneManager.GetActiveScene().name == "Stagechoice")
 			m_bgm = Instantiate(m_bgmPrefab, transform);
 		}
 		else if(SceneManager.GetActiveScene().name == "GameScene")

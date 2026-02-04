@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 	TakeWeapon m_takeWeapon;
     GameObject m_shieldGenerate;
 	GameObject m_iceObject;
+    AudioSource m_audioSource;
+    [SerializeField] AudioClip m_jumpClip;
 
     float m_verticalVelocity;
     float m_recoverTime;    // ƒXƒ^ƒ“‚©‚ç‚Ì•œ‹AŽžŠÔ
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
         m_characterManager = GetComponent<CharacterManager>();
         m_takeItem = GetComponent<TakeItem>();
 		m_takeWeapon = GetComponent<TakeWeapon>();
+        m_audioSource = GetComponent<AudioSource>();
 	}
 
     private void Start()
@@ -182,6 +185,7 @@ public class PlayerController : MonoBehaviour
         m_animator.SetTrigger("Jump");
         m_animator.SetBool("IsGrounded", false);
         m_isJump = true;
+        m_audioSource.PlayOneShot(m_jumpClip);
 	}
 
     private void OnAttack(InputAction.CallbackContext callback)

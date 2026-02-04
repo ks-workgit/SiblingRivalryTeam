@@ -390,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 5471674113087940143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -13.6, y: 13.950001, z: -3.75}
+  m_LocalPosition: {x: -13.6, y: 13.950001, z: 0.25}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -598,6 +598,7 @@ MonoBehaviour:
   m_shieldPosition: {fileID: 615397085065014651}
   m_shieldObject: {fileID: 2299019509971517357, guid: b4afde569940cfd46be385b4811c41f3, type: 3}
   m_icePrefab: {fileID: 200416796049452429, guid: db27abeb87864fb4d9ebf8ce303db8cc, type: 3}
+  m_jumpClip: {fileID: 8300000, guid: 099714b1f1db2af4392c987594f6903f, type: 3}
 --- !u!114 &6952976182452654463
 MonoBehaviour:
   m_ObjectHideFlags: 0

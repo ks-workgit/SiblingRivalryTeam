@@ -463,6 +463,7 @@ MonoBehaviour:
   m_shieldPosition: {fileID: 1037935677262995488}
   m_shieldObject: {fileID: 2299019509971517357, guid: b4afde569940cfd46be385b4811c41f3, type: 3}
   m_icePrefab: {fileID: 200416796049452429, guid: db27abeb87864fb4d9ebf8ce303db8cc, type: 3}
+  m_jumpClip: {fileID: 8300000, guid: 099714b1f1db2af4392c987594f6903f, type: 3}
 --- !u!114 &5100428621951176289
 MonoBehaviour:
   m_ObjectHideFlags: 0
