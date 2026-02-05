@@ -107,16 +107,19 @@ public class WitherBlade : MonoBehaviour
 	{
 		yield return new WaitForSeconds(Duration);
 
-		//攻撃力、攻撃スピードをリセット
-		m_characterManager.GetSetAtttackDamage =
-			InitialAttackDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
-		m_characterManager.GetSetAtttackSpeed =
-			m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
-		//スピードのリセット
-		m_playerController.GetSetSpeedMagnification += 0.5f;
-		m_playerController.ChangeSpeed();
+		if(m_isDebuff )
+		{
+			//攻撃力、攻撃スピードをリセット
+			m_characterManager.GetSetAtttackDamage =
+				InitialAttackDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
+			m_characterManager.GetSetAtttackSpeed =
+				m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
+			//スピードのリセット
+			m_playerController.GetSetSpeedMagnification += 0.5f;
+			m_playerController.ChangeSpeed();
 
-		m_isDebuff = false;
+			m_isDebuff = false;
+		}
 
 		Destroy(m_debuffEffect);
 	}

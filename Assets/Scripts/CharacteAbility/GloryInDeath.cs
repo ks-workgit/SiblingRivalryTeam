@@ -55,7 +55,7 @@ public class GloryInDeath : MonoBehaviour
 				m_noBuffDamage = NoWeaponDamage + m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackDamage;
 				m_noBuffSpeed = m_weaponDatas.m_weaponDatas[m_takeWeapon.GetHaveWeaponId()].m_attackSpeed;
 
-				m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * 5;
+				m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * 3;
 				m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * 3;
 
 				m_takeWeapon.ResetTakeDrop();
@@ -72,7 +72,7 @@ public class GloryInDeath : MonoBehaviour
 
 			Debug.Log("–¼—_‚ ‚éŽ€”­“®");
 
-			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * 5;
+			m_characterManeger.GetSetAtttackDamage = m_noBuffDamage * 3;
 			m_characterManeger.GetSetAtttackSpeed = m_noBuffSpeed * 3;
 
 			m_playerController.GetSetSpeedMagnification += 0.5f;
